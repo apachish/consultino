@@ -1,0 +1,7080 @@
+/*--------------------------------------------------------------
+# Normalize
+--------------------------------------------------------------*/
+
+* {
+    margin: 0 auto;
+    text-decoration: none !important;
+    outline: none !important;
+    -webkit-font-smoothing: auto;
+    -moz-osx-font-smoothing: auto;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizelegibility;
+}
+
+a, a:hover {
+    color: #30353b;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizelegibility;
+}
+h1,h2,h3,h4,h5,h6 {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizelegibility;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border: 0;
+    border-radius: 0;
+}
+
+iframe {
+    max-width: 100%;
+}
+
+ul,
+ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+ol {
+    list-style: decimal inside;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 0;
+    visibility: inherit !important;
+    color: #30353b;
+}
+
+strong {
+    font-weight: bold;
+}
+
+p {
+    margin-bottom: 20px;
+    padding: 0;
+}
+
+blockquote {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+label {
+    font-weight: 400;
+}
+
+del,
+del * {
+    text-decoration: line-through !important;
+}
+
+
+.btn-primary.focus,
+.btn-primary:focus {
+    box-shadow: none;
+}
+
+.btn.focus,
+.btn:focus {
+    box-shadow: none;
+}
+
+figure {
+    margin: 0;
+}
+
+body {
+    -webkit-font-smoothing: auto;
+    -moz-osx-font-smoothing: auto;
+    scroll-behavior: smooth;
+}
+
+.elementor-editor-active .elementor-heading-title {
+    line-height: inherit;
+}
+
+.elementor-column {
+    min-height: auto !important;
+}
+.elementor-progress-bar {
+    border-radius: 0px !important;
+    margin: 0;
+    margin-top: 15px;
+}
+.elementor-progress-percentage {
+    position: relative;
+    top: -30px;
+    font-size: 17px;
+    padding-right: 0;
+}
+.elementor-section.elementor-section-boxed > .elementor-container {
+    max-width: 1266px !important;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .elementor-editor-active .elementor-heading-title {
+        line-height: inherit;
+    }
+
+    .elementor-column {
+        min-height: auto !important;
+    }
+
+    .elementor-heading-title {
+        line-height: normal !important;
+    }
+}
+
+@media all and (max-width: 767px) {
+    .elementor-editor-active .elementor-heading-title {
+        line-height: inherit;
+    }
+
+    .elementor-column {
+        min-height: auto !important;
+    }
+
+    .elementor-heading-title {
+        line-height: normal !important;
+    }
+}
+
+/*--------------------------------------------------------------
+# Scrollup
+--------------------------------------------------------------*/
+
+body > .scrollup {
+    position: fixed;
+    bottom: 20px;
+    width: 40px;
+    height: 40px;
+    z-index: 9999;
+    border-radius: 50%;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    background: #fff;
+}
+
+body > .scrollup.left {
+    left: -50px;
+}
+
+body > .scrollup.right {
+    right: -50px;
+}
+
+body > .scrollup.left.active {
+    left: 15px;
+}
+
+body > .scrollup.right.active {
+    right: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body > .scrollup:hover {
+    transform: translateY(-7px);
+    -webkit-transform: translateY(-7px);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+body > .scrollup span[class*="ti-"] {
+    font-size: 20px;
+    color: inherit;
+    line-height: 40px;
+}
+
+/* Column Space CSS Starts */
+@media only screen and (min-width: 1025px) {
+    .column-space .elementor-column-gap-default {
+        column-gap: 30px;
+    }
+
+    .column-space-zero .elementor-column-gap-default {
+        column-gap: 0;
+    }
+}
+
+/* Column Space CSS Ends */
+
+/* Particle Moving CSS Starts */
+.icon-moving-left-right img {
+    transition: all .35s cubic-bezier(.38, 3, .57, 1.6);
+}
+
+.icon-moving-left-right:hover img {
+    transform: translate3d(-6px, 0px, 0);
+}
+
+.icon-moving-top-bottom .elementor-image-box-img img {
+    transition: all .35s cubic-bezier(.38, 3, .57, 1.6);
+}
+
+.icon-moving-top-bottom:hover .elementor-image-box-img img {
+    transform: translate3d(0px, -6px, 0);
+}
+
+.moving-image-left-right .elementor-widget-container img {
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+}
+
+.moving-image-left-right:hover .elementor-widget-container img {
+    transform: translate3d(-10px, 0, 0);
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+}
+
+
+.image-move-top-bottom .elementor-widget-container img {
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+}
+
+.image-move-top-bottom:hover .elementor-widget-container img {
+    transform: translate3d(0, -10px, 0);
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+}
+
+.bg-icon-moving-style-one .elementor-widget-container img {
+    position: relative;
+    animation: iconmove 10s infinite;
+}
+
+@keyframes iconmove {
+    0% {
+        left: 0;
+    }
+
+    50% {
+        left: 30%;
+    }
+
+    100% {
+        left: 0;
+    }
+}
+
+.bg-icon-moving-style-two .elementor-widget-container img {
+    position: relative;
+    animation: iconmove 8s infinite;
+}
+
+.bg-icon-moving-style-two .elementor-image img {
+    position: relative;
+    animation: iconmove 8s infinite;
+}
+
+@keyframes iconmove {
+    0% {
+        left: 0;
+    }
+
+    50% {
+        left: 35%;
+    }
+
+    100% {
+        left: 0;
+    }
+}
+
+.bg-icon-moving-style-two .elementor-icon svg {
+    position: relative;
+    animation: iconmove 2s infinite;
+}
+
+@keyframes iconmove {
+    0% {
+        left: 0;
+    }
+
+    50% {
+        left: 35%;
+    }
+
+    100% {
+        left: 0;
+    }
+}
+
+.bg-icon-moving-style-three-up .elementor-image img {
+    position: relative;
+    animation: iconmoveup 10s infinite;
+}
+
+.bg-icon-moving-style-three-up .elementor-widget-container img {
+    position: relative;
+    animation: iconmoveup 10s infinite;
+}
+
+
+@keyframes iconmoveup {
+    0% {
+        bottom: 0;
+    }
+
+    50% {
+        bottom: 50px;
+    }
+
+    100% {
+        bottom: 0;
+    }
+}
+.icon-moving-rotate .elementor-icon {
+    animation:particlerotate1 5s infinite linear;
+}
+@keyframes particlerotate1 {0%{transform:translate(0, 0) rotate(0deg);-webkit-transform:translate(0, 0) rotate(0deg);}
+25%{transform:translate(-10px, 10px) rotate(10deg);-webkit-transform:translate(-10px, 10px) rotate(10deg);}
+50%{transform:translate(5px, -5px) rotate(25deg);-webkit-transform:translate(5px, -5px) rotate(25deg);}
+75%{transform:translate(15px, -5px) rotate(15deg);-webkit-transform:translate(15px, -5px) rotate(15deg);}
+100%{transform:translate(0, 0) rotate(0deg);-webkit-transform:translate(0, 0) rotate(0deg);}
+}
+
+.moving-icon-updown-style .elementor-image img {
+    position: relative;
+    animation: iconmoveup 15s infinite;
+}
+
+.moving-icon-updown-style-two .elementor-widget-container img {
+    position: relative;
+    animation: iconmoveup 8s infinite;
+}
+
+
+.moving-icon-updown-style .elementor-widget-container img {
+    position: relative;
+    animation: iconmoveup 15s infinite;
+}
+
+.moving-icon-updown-style-two .elementor-widget-container img {
+    position: relative;
+    animation: iconmoveup 8s infinite;
+}
+
+
+@keyframes iconmoveup {
+    0% {
+        bottom: 0;
+    }
+
+    50% {
+        bottom: -10px;
+    }
+
+    100% {
+        bottom: 0;
+    }
+}
+
+
+.bg-icon-moving-style-three-up .elementor-icon svg {
+    position: relative;
+    animation: moveupicon 10s infinite;
+}
+
+
+@keyframes moveupicon {
+    0% {
+        bottom: 0;
+    }
+
+    50% {
+        bottom: 50px;
+    }
+
+    100% {
+        bottom: 0;
+    }
+}
+
+.particle-moving-1 .elementor-image {
+    animation: particlemove1 4.5s infinite linear;
+}
+
+@keyframes particlemove1 {
+    0% {
+        transform: translate(0, 0);
+        -webkit-transform: translate(0, 0);
+    }
+
+    25% {
+        transform: translate(10px, -5px);
+        -webkit-transform: translate(10px, -5px);
+    }
+
+    50% {
+        transform: translate(5px, 5px);
+        -webkit-transform: translate(5px, 5px);
+    }
+
+    75% {
+        transform: translate(10px, 10px);
+        -webkit-transform: translate(10px, 10px);
+    }
+
+    100% {
+        transform: translate(0, 0);
+        -webkit-transform: translate(0, 0);
+    }
+}
+
+
+.particle-moving-2 .elementor-image {
+    animation: particlemove2 4.5s infinite linear;
+}
+
+@keyframes particlemove2 {
+    0% {
+        transform: translate(0, 0);
+        -webkit-transform: translate(0, 0);
+    }
+
+    25% {
+        transform: translate(10px, 10px);
+        -webkit-transform: translate(10px, 10px);
+    }
+
+    50% {
+        transform: translate(5px, 5px);
+        -webkit-transform: translate(5px, 5px);
+    }
+
+    75% {
+        transform: translate(10px, -5px);
+        -webkit-transform: translate(10px, -5px);
+    }
+
+    100% {
+        transform: translate(0, 0);
+        -webkit-transform: translate(0, 0);
+    }
+}
+
+.particle-moving-2 .elementor-widget-container img {
+    animation: particlemove2 4.5s infinite linear;
+}
+/* Particle Moving CSS Ends */
+
+/* START OF COMMON CSS*/
+.moving-image-style-one .elementor-image img {
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+}
+
+.moving-image-style-one:hover .elementor-image img {
+    transform: translate3d(-10px, 0, 0);
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+}
+
+.moving-image-style-two .elementor-image img {
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+}
+
+.moving-image-style-two:hover .elementor-image img {
+    transform: translate3d(-10px, 5px, 0);
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+}
+
+.icon-moving .elementor-image-box-img img {
+    transition: all .35s cubic-bezier(.38, 3, .57, 1.6);
+}
+
+.icon-moving:hover .elementor-image-box-img img {
+    transform: translate3d(-6px, 0px, 0);
+}
+
+.icon-moving-style-two .elementor-image img {
+    transition: all .35s cubic-bezier(.38, 3, .57, 1.6);
+}
+
+.icon-moving-style-two:hover .elementor-image img {
+    transform: translate3d(0px, -6px, 0);
+}
+
+.icon-moving-style-three .elementor-image-box-img img {
+    transition: all .35s cubic-bezier(.38, 3, .57, 1.6);
+}
+
+.icon-moving-style-three:hover .elementor-image-box-img img {
+    transform: translate3d(0px, -6px, 0);
+}
+
+.icon-moving-style-four .elementor-image img {
+    transition: all .35s cubic-bezier(.38, 3, .57, 1.6);
+}
+
+.icon-moving-style-four:hover .elementor-image img {
+    transform: translate3d(-6px, 0px, 0);
+}
+
+.rt-portfolio-box.element-eight .overlay {
+    background-color: transparent !important;
+}
+
+.wraper_error_main.style-one .error_main .btn {
+    border-radius: 4px !important;
+}
+.wraper_error_main.style-one .error_main {
+    padding-top: 0;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.wraper_error_main.style-one .error_main h2 {
+    margin-bottom: 27px;
+}
+
+.wraper_error_main.style-one>.container {
+    padding-top: 120px;
+    padding-bottom: 120px;
+}
+
+@media (max-width: 1024px) {
+   .wraper_error_main.style-one>.container {
+    padding-top: 70px;
+    padding-bottom: 70px;
+    }
+}
+
+.wraper_error_main.style-one .error_main img {
+    margin-top: 0;
+    margin-bottom: 24px;
+}
+.wraper_error_main.style-one .error_main p {
+    margin-bottom: 32px;
+    text-align: center;
+    width: 40%;
+}
+
+.wraper_footer.style-default {
+    background: #33343b;
+    padding: 15px 0px;
+}
+.wraper_footer.style-default p {
+    margin-bottom: 0px;
+    color: #fff !important;
+}
+@media only screen and (min-width: 992px) and (max-width: 1024px) {
+    .wraper_error_main.style-one .error_main p {
+        width: 60%;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .wraper_error_main.style-one .error_main p {
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .wraper_error_main.style-one .error_main p {
+        width: 100%;
+    }
+}
+
+
+.landing-banner-img .elementor-image {
+    width: 1350px;
+    float: right;
+    position: relative;
+    left: 9%;
+}
+.landing-slider .swiper-slide {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+/* END OF COMMON CSS*/
+
+/* Step Position css start */
+
+.step-position .elementor-widget-wrap {
+    width: auto;
+}
+
+.step-position-right .elementor-column {
+    justify-content: flex-end;
+}
+
+.col-position-center .elementor-inner-column {
+    width: auto !important;
+}
+
+/* ==================================
+     Start Home Creative Agency
+================================== */
+.get-in-touch .form-row {
+    display: block;
+    margin-left: 0px;
+    margin-right: 15px;
+}
+
+.get-in-touch .form-row input[type="email"],
+.get-in-touch .form-row input[type="text"] {
+    font-size: 14px;
+    line-height: 24px;
+    outline: 0;
+    padding: 12px 15px 12px 0px;
+    margin-bottom: 15px;
+    height: 50px;
+    width: 100%;
+    color: #272727;
+    display: block;
+    background-color: transparent;
+    background-clip: padding-box;
+    border-style: none none solid;
+    border-width: 1px;
+    border-color: #7B7B7B;
+}
+
+.get-in-touch .form-row textarea {
+    font-size: 14px;
+    line-height: 24px;
+    outline: 0;
+    padding: 12px 15px 12px 0px;
+    margin-bottom: 30px;
+    width: 100%;
+    height: 100px;
+    color: #30353B;
+    display: block;
+    background-color: transparent;
+    background-clip: padding-box;
+    border-style: none none solid;
+    border-width: 1px;
+    border-color: #7B7B7B;
+}
+
+.get-in-touch .form-row input[type="text"]::placeholder,
+.get-in-touch .form-row input[type="email"]::placeholder,
+.get-in-touch .form-row textarea::placeholder {
+    color: #30353B;
+}
+
+.get-in-touch .form-row input[type="text"]:focus,
+.get-in-touch .form-row input[type="email"]:focus,
+.get-in-touch .form-row textarea:focus {
+    color: #30353B;
+}
+
+.get-in-touch .form-row.submit-btn {
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 500;
+    color: #fff;
+    padding: 14px 44px;
+    border: none;
+    background: #D94539;
+    border-radius: 50px;
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out !important;
+    -webkit-transition: all 0.3s ease-in-out;
+    text-align: center;
+}
+
+.get-in-touch .form-row.submit-btn .wpcf7-spinner {
+    position: absolute;
+}
+
+.get-in-touch .form-row.submit-btn input[type="submit"] {
+    color: #fff;
+    border: none;
+    background: none;
+    border-radius: 4px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.get-in-touch .no-padding.p-btn {
+    margin: 0px;
+}
+
+/* ==================================
+     End Home Creative Agency
+================================== */
+
+/*--------------------------------------------------------------
+# Header Top Left Align Start
+----------------------------------------------------------------*/
+.position-left .elementor-column-wrap {
+    width: auto;
+}
+
+/*--------------------------------------------------------------
+# Header Top Left Align End
+----------------------------------------------------------------*/
+/*--------------------------------------------------------------
+# Header Top Left Align Start
+----------------------------------------------------------------*/
+.counter-left .elementor-counter-number-prefix {
+    display: none;
+}
+
+/*--------------------------------------------------------------
+# Header Top Left Align End
+----------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# CONTACT PAGE STARTS
+----------------------------------------------------------------*/
+/*** About Corporate Start ***/
+
+.image-box-shadow .elementor-background-overlay {
+    filter: drop-shadow(0.8px 5px 18px rgba(0, 0, 0, 0.09));
+}
+
+.change-typo {
+    font-size: 16px;
+    color: #696e79;
+    font-weight: 400;
+}
+
+.change-typo span {
+    font-weight: 500;
+    color: #30353b;
+}
+
+.prefix-off .elementor-counter-number-prefix {
+    display: none;
+}
+
+/*** Number Effect Start ***/
+
+.number_effect_main_two:hover .numeric-effect .elementor-widget-container {
+    background-color: #ffffff !important;
+    border-color: #ffffff !important;
+    color: #30353b !important;
+    box-shadow: 10px 2px 12px 0px rgb(221 217 217 / 44%) !important;
+    transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+}
+
+
+/*** Number Effect End ***/
+
+/**** Hover Effect Start ****/
+.about-corporate-hover-effect:hover .move-up {
+    transform: translate3d(0, -10px, 0);
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+}
+
+.about-corporate-hover-effect .move-up {
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+}
+
+.about-corporate-change-color:hover .change-color .elementor-element-populated {
+    background-color: #0378E9 !important;
+}
+
+.about-corporate-change-color .change-color .elementor-heading-title {
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+}
+
+.about-corporate-change-color:hover .change-color .elementor-heading-title {
+    color: #ffffff;
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+}
+
+
+/**** Hover Effect End ****/
+
+.icon-space .elementor-icon svg {
+    width: 100%;
+    height: auto;
+}
+
+.icon-hover-effect .elementor-icon svg .cir01 {
+    fill: #0378e9;
+    transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+}
+
+.list-color-change ul li:first-child .elementor-icon-list-text {
+    color: #ffffff;
+}
+
+.list-color-change-2nd ul li:first-child .elementor-icon-list-text {
+    color: #878c96 !important;
+}
+
+
+.list-color-change-3rd ul li:first-child .elementor-icon-list-text {
+    color: #696e79 !important;
+}
+
+.list-color-change-4th ul li:last-child .elementor-icon-list-text {
+    color: #30353b;
+    font-weight: 700;
+}
+
+/*** Moving Effect Start ***/
+.move-icon-main .move-icon {
+    offset-path: path('M -3 -53 Q -37 -42 -17 3 Q -3 33 23 52 Q 67 73 80 -5 T -3 -53');
+    animation: move 15s infinite linear;
+    animation-play-state: paused;
+}
+
+.move-icon-main:hover .move-icon {
+    offset-path: path('M -3 -53 Q -37 -42 -17 3 Q -3 33 23 52 Q 67 73 80 -5 T -3 -53');
+    animation: move 15s infinite linear;
+}
+
+@keyframes move {
+    0% {
+        offset-distance: 0%;
+    }
+
+    100% {
+        offset-distance: 100%;
+    }
+}
+
+/*** Moving Effect End ***/
+
+
+/**** About Corporate End ***/
+
+/**** About Creative Start ***/
+
+.heading-position .rt-headline.rt-loading-bar span {
+    display: inline !important;
+    padding: 0 !important;
+}
+
+@media only screen and (max-width: 1024px) {
+    .animation-view .rt-is-visible {
+        font-size: 5.4vw !important;
+    }
+}
+
+/*** Moving Icon Effect Start***/
+.icon-hover-effect:hover .elementor-animation-wobble-to-top-right {
+    animation-name: elementor-animation-wobble-to-top-right;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+}
+
+/*** Moving Icon Effect End***/
+
+/*** Slide Circle Effect Start ***/
+
+.icon-width .elementor-icon svg {
+    width: auto;
+    height: auto;
+}
+
+.circle-move svg .cir01 {
+    -webkit-animation: slide-left 5s linear infinite both;
+    animation: slide-left 5s linear infinite both;
+}
+
+@keyframes slide-left {
+    0% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+
+    100% {
+        -webkit-transform: translateX(-20%);
+        transform: translateX(-20%);
+    }
+}
+
+/**** About Creative End ***/
+
+/*** About Company Start ***/
+
+
+.icon-hover-effect .elementor-icon svg .cir02 {
+    fill: #31cb53;
+    transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+}
+
+.select-width.elementor-inner-column {
+    width: auto !important;
+}
+
+/*** About Company End ***/
+
+/*** About Modern Start ***/
+
+/**** Progress Start ****/
+.progress-style .rt-progressbar-left-label {
+    margin-bottom: -26px;
+}
+
+.progress-style .rt-progressbar-bar {
+    float: left;
+}
+
+.progress-style .rt-progressbar-right-label {
+    float: right;
+    margin-bottom: 8px;
+}
+
+/**** Progress End ****/
+
+.text-underline .elementor-widget-container {
+    text-decoration: underline !important;
+}
+
+
+/*** About Modern End ***/
+
+
+/*** Service Corporate Start ***/
+
+
+
+@media screen and (min-width: 1025px) {
+    .color-position > .elementor-background-overlay {
+        width: 65%;
+    }
+}
+
+.number_effect_main:hover .numeric-effect .elementor-widget-container {
+    background-color: #ffffff !important;
+    border-color: #ffffff !important;
+    color: #30353b !important;
+    box-shadow: 10px 2px 12px 0px rgb(221 217 217 / 44%) !important;
+    transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+}
+
+.list-color-change-two ul li:first-child .elementor-icon-list-text {
+    color: #30353b !important;
+    font-weight: 600 !important;
+}
+
+@media only screen and (min-width: 768px) {
+    .bg-width-adjust .elementor-background-overlay {
+        width: 60% !important;
+    }
+}
+
+.position-down {
+    position: absolute !important;
+    left: 20px !important;
+    bottom: 60px !important;
+}
+
+/*** Service Corporate End ***/
+
+/*** Service Creative Start ***/
+.icon-effect-div:hover .elementor-animation-grow-rotate {
+    transform: scale(1.1) rotate(4deg);
+}
+
+/*** Number Hover Effect Start ***/
+.numeric-effect-main .numeric-effect .elementor-widget-container {
+    -webkit-transition: all 0.7s ease;
+    transition: all 0.7s ease;
+}
+
+.numeric-effect-main:hover .numeric-effect .elementor-widget-container {
+    border-style: solid !important;
+    border-width: 2px 2px 2px 2px !important;
+    border-color: #ffca1c !important;
+    background: #ffca1c;
+    -webkit-transition: all 0.7s ease;
+    transition: all 0.7s ease;
+}
+
+.line-effect:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background-color: #ffca1b;
+    z-index: 9;
+}
+
+.line-effect:hover:before {
+    -webkit-animation: move-line 3s linear infinite;
+    animation: move-line 3s linear infinite;
+
+}
+
+@-webkit-keyframes move-line {
+    0% {
+        width: 100px;
+        left: 0;
+        opacity: 1;
+    }
+
+    80% {
+        width: 100px;
+        left: 75%;
+        opacity: 0.5;
+    }
+
+    100% {
+        width: 100px;
+        left: 78%;
+        opacity: 0;
+    }
+}
+
+/*** Number Hover Effect End ***/
+
+
+/*** Service Creative End ***/
+/*** Service Company Start ***/
+
+.step-position .elementor-widget-wrap {
+    width: auto;
+}
+
+.step-position-right .elementor-column {
+    justify-content: flex-end;
+}
+
+.col-position-center .elementor-inner-column {
+    width: auto !important;
+}
+
+.service-company-color-change .clients.element-three .clients-item .pic {
+    filter: brightness(0);
+}
+
+
+/*** Service Company End ***/
+
+/*** Service Modern Start ***/
+
+.content-center-position.elementor-column {
+    width: auto;
+}
+
+.number-hover-effect:hover .numeric-effect .elementor-widget-container {
+    background-color: #ffffff !important;
+    border-color: #ffffff !important;
+}
+
+.number-hover-effect:hover .numeric-effect .elementor-widget-container {
+    color: #282B3C !important;
+}
+
+.number-hover-effect:hover .elementor-heading-title {
+    color: #ffffff !important;
+}
+
+.number-hover-effect:hover .elementor-widget-container {
+    color: #878c96;
+}
+
+.service-modern-color-change .clients.element-three .clients-item .client-cover-img {
+    filter: brightness(0);
+    opacity: 0.5;
+}
+
+.service-modern-color-change .clients.element-three .clients-item .client-alt-img {
+    filter: brightness(0);
+    opacity: 1;
+}
+
+
+/*** Service Modern End ***/
+
+/*** Service Simple Start ***/
+
+.dashed-border:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: dashed #696e79 2px;
+    border-radius: 150%;
+}
+
+/**** Hover Effect Start ****/
+.hover-effect-up:hover .move-up {
+    transform: translate3d(0, -60px, 0);
+    transition: all .7s ease-in-out;
+    -webkit-transition: all .7s ease-in-out;
+}
+
+.hover-effect-up .move-up {
+    transition: all .7s ease-in-out;
+    -webkit-transition: all .7s ease-in-out;
+}
+
+.hover-effect-up:hover .change-color .elementor-element-populated {
+    background-color: #0a46e2 !important;
+}
+
+.hover-effect-up:hover .change-color .elementor-heading-title {
+    color: #ffffff;
+}
+
+.hover-effect-up:hover .change-color .elementor-icon-list-item a .elementor-icon-list-text {
+    color: #ffffff;
+}
+
+
+/**** Hover Effect End ****/
+/*** Service Simple End ***/
+
+/*** Contact Corporate Start ***/
+
+/*** Contact Form Start ***/
+.contact_corporate_name,
+.contact_corporate_lstname,
+.contact_corporate_mail,
+.contact_corporate_phone {
+    width: calc(50% - 10px);
+    height: 52px;
+    border-radius: 4px;
+    background-color: #ffffff;
+    border: 1px solid #e7e9f2;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.contact_corporate_name,
+.contact_corporate_mail {
+    margin-right: 10px;
+}
+
+.contact_corporate_lstname,
+.contact_corporate_phone {
+    margin-left: 10px;
+}
+
+@media only screen and (max-width: 767px) {
+
+    .contact_corporate_name,
+    .contact_corporate_lstname,
+    .contact_corporate_mail,
+    .contact_corporate_phone {
+        width: 100%;
+    }
+
+    .contact_corporate_lstname,
+    .contact_corporate_phone {
+        margin-left: 0px;
+    }
+}
+
+.contact_corporate_subject {
+    width: 100%;
+    height: 52px;
+    border-radius: 4px;
+    background-color: #ffffff;
+    border: 1px solid #e7e9f2;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.contact_corporate_msg {
+    width: 100%;
+    height: 112px;
+    resize: none;
+    border-radius: 4px;
+    background-color: #ffffff;
+    border: 1px solid #e7e9f2;
+    padding-left: 20px;
+    padding-top: 20px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.contact_corporate_btn {
+    background-color: #da082b;
+    color: #ffffff;
+    padding: 14px 44px;
+    border-radius: 4px;
+    filter: drop-shadow(3px 18px 15px rgba(218, 8, 43, 0.13));
+    border: none;
+}
+
+
+.contact_corporate_name::placeholder,
+.contact_corporate_lstname::placeholder,
+.contact_corporate_mail::placeholder,
+.contact_corporate_phone::placeholder,
+.contact_corporate_subject::placeholder,
+.contact_corporate_msg::placeholder {
+    color: #30353b !important;
+}
+
+/*** Contact Form End ***/
+/*** Contact Corporate End ***/
+
+/*** Contact Creative Start ***/
+/*** Contact Form Start ***/
+.contact_creative_name,
+.contact_creative_lstname,
+.contact_creative_mail,
+.contact_creative_phone {
+    width: calc(50% - 5px);
+    height: 52px;
+    border-radius: 4px;
+    background-color: #ffffff;
+    border: 1px solid #e7e9f2;
+    padding-left: 20px;
+    margin-bottom: 7.5px;
+    margin-top: 7.5px;
+}
+
+.contact_creative_name,
+.contact_creative_mail {
+    margin-right: 5px;
+}
+
+.contact_creative_lstname,
+.contact_creative_phone {
+    margin-left: 5px;
+}
+
+.contact_creative_subject {
+    width: 100%;
+    height: 52px;
+    border-radius: 4px;
+    background-color: #ffffff;
+    border: 1px solid #e7e9f2;
+    padding-left: 20px;
+    margin-bottom: 7.5px;
+    margin-top: 7.5px;
+}
+
+.contact_creative_msg {
+    width: 100%;
+    height: 112px;
+    resize: none;
+    border-radius: 4px;
+    background-color: #ffffff;
+    border: 1px solid #e7e9f2;
+    padding-left: 20px;
+    padding-top: 20px;
+    margin-bottom: 7.5px;
+    margin-top: 7.5px;
+}
+
+.contact_creative_btn {
+    background-color: #0378E9;
+    color: #ffffff;
+    padding: 14px 44px;
+    border-radius: 4px;
+    filter: drop-shadow(3px 18px 15px rgba(9, 71, 225, 0.13));
+    border: none;
+}
+
+
+.contact_creative_name::placeholder,
+.contact_creative_lstname::placeholder,
+.contact_creative_mail::placeholder,
+.contact_creative_phone::placeholder,
+.contact_creative_subject::placeholder,
+.contact_creative_msg::placeholder {
+    color: #30353b !important;
+}
+
+/*** Contact Form End ***/
+.color-change-two .elementor-widget-container b {
+    color: #30353b;
+    font-weight: 500;
+}
+
+@media only screen and (max-width: 1024px) {
+    .contact_creative_btn {
+        width: calc(100% - 70%);
+        margin: 0 35%;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .contact_creative_btn {
+        width: 100%;
+        margin: 0;
+    }
+
+    .contact_creative_name,
+    .contact_creative_lstname,
+    .contact_creative_mail,
+    .contact_creative_phone {
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0;
+    }
+}
+
+/*** Contact Creative End ***/
+
+/*** Contact Company Start ***/
+
+/*** Contact Form Start ***/
+.contact_company_name,
+.contact_company_lstname,
+.contact_company_mail,
+.contact_company_phone {
+    width: calc(50% - 15px);
+    height: 52px;
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid #cbced4;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.contact_company_name,
+.contact_company_mail {
+    margin-right: 15px;
+}
+
+.contact_company_lstname,
+.contact_company_phone {
+    margin-left: 15px;
+}
+
+.contact_company_msg {
+    width: 100%;
+    height: 112px;
+    resize: none;
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid #cbced4;
+    padding-top: 20px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.contact_company_btn {
+    background-color: #ffca1c;
+    color: #30353b;
+    padding: 14px 44px;
+    border-radius: 4px;
+    filter: drop-shadow(3px 18px 15px rgba(255, 202, 28, 0.13));
+    border: none;
+}
+
+
+.contact_company_name::placeholder,
+.contact_company_lstname::placeholder,
+.contact_company_mail::placeholder,
+.contact_company_phone::placeholder,
+.contact_company_msg::placeholder {
+    color: #30353b !important;
+}
+
+/*** Contact Form End ***/
+.color-change-one .elementor-widget-container b {
+    color: #ffffff;
+    font-weight: 400;
+}
+
+/*** Contact Company End ***/
+
+/*** Contact Modern Start ***/
+
+.image-box-shadow .item img {
+    box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.08);
+}
+.image-box-shadow .swiper-slide img {
+    box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.08);
+}
+
+@media only screen and (max-width: 1024px) {
+    .contact_company_btn {
+        width: 100%;
+        margin: 0 35%;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .contact_company_btn {
+        width: 100%;
+        margin: 0;
+    }
+
+    .contact_company_name,
+    .contact_company_lstname,
+    .contact_company_mail,
+    .contact_company_phone {
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0;
+    }
+}
+
+/*** Contact Form Start ***/
+
+.contact_modern_name,
+.contact_modern_lstname,
+.contact_modern_mail,
+.contact_modern_phone {
+    width: calc(50% - 10px);
+    height: 52px;
+    border-radius: 4px;
+    background-color: #ffffff;
+    border: 1px solid #e7e9f2;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.contact_modern_name,
+.contact_modern_mail {
+    margin-right: 10px;
+}
+
+.contact_modern_lstname,
+.contact_modern_phone {
+    margin-left: 10px;
+}
+
+.contact_modern_subject {
+    width: 100%;
+    height: 52px;
+    border-radius: 4px;
+    background-color: #ffffff;
+    border: 1px solid #e7e9f2;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.contact_modern_msg {
+    width: 100%;
+    height: 112px;
+    resize: none;
+    border-radius: 4px;
+    background-color: #ffffff;
+    border: 1px solid #e7e9f2;
+    padding-left: 20px;
+    padding-top: 20px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.contact_modern_btn {
+    width: calc(100% - 80%);
+    height: 53px;
+    background-color: #31cb53;
+    color: #ffffff;
+    border-radius: 4px;
+    filter: drop-shadow(3px 18px 15px rgba(9, 71, 225, 0.13));
+    margin: 0 40%;
+    border: none;
+}
+
+@media only screen and (max-width: 1024px) {
+    .contact_modern_btn {
+        width: calc(100% - 70%);
+        margin: 0 35%;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .contact_modern_btn {
+        width: 100%;
+        margin: 0;
+    }
+
+    .contact_modern_name,
+    .contact_modern_lstname,
+    .contact_modern_mail,
+    .contact_modern_phone {
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0;
+    }
+
+}
+
+
+
+.contact_modern_name::placeholder,
+.contact_modern_lstname::placeholder,
+.contact_modern_mail::placeholder,
+.contact_modern_phone::placeholder,
+.contact_modern_subject::placeholder,
+.contact_modern_msg::placeholder {
+    color: #30353b !important;
+}
+
+/*** Contact Form End ***/
+
+/*** Contact Modern End ***/
+
+/*** Contact Simple Start ***/
+
+/*** Contact Form Start ***/
+
+.contact_simple_mail,
+.contact_simple_phone {
+    width: calc(50% - 5px);
+    height: 52px;
+    border: 0;
+    border-radius: 4px;
+    background-color: #f8f9f9;
+    padding-left: 20px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.contact_simple_mail {
+    margin-right: 5px;
+}
+
+.contact_simple_phone {
+    margin-left: 5px;
+}
+
+.contact_simple_name,
+.contact_simple_subject {
+    width: 100%;
+    height: 52px;
+    border: 0;
+    border-radius: 4px;
+    background-color: #f8f9f9;
+    padding-left: 20px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.contact_simple_msg {
+    width: 100%;
+    height: 112px;
+    resize: none;
+    border: 0;
+    border-radius: 4px;
+    background-color: #f8f9f9;
+    padding-left: 20px;
+    padding-top: 20px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.contact_simple_btn {
+    padding: 14px 44px;
+    background-color: #0947e1;
+    color: #ffffff;
+    border-radius: 4px;
+    filter: drop-shadow(3px 18px 15px rgba(9, 71, 225, 0.13));
+    border: none;
+}
+
+.contact_simple_name::placeholder,
+.contact_simple_mail::placeholder,
+.contact_simple_phone::placeholder,
+.contact_simple_subject::placeholder,
+.contact_simple_msg::placeholder {
+    color: #696e79 !important;
+}
+
+
+
+@media only screen and (max-width: 1024px) {
+    .contact_simple_btn {
+        width: calc(100% - 70%);
+        margin: 0 35%;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .contact_simple_btn {
+        width: 100%;
+        margin: 0;
+    }
+
+    .contact_simple_mail,
+    .contact_simple_phone {
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0;
+    }
+}
+
+/*** Contact Form End ***/
+
+/*** Contact Simple End ***/
+/*** Blog Detail Start ***/
+.inline-list ul.elementor-icon-list-items.elementor-inline-items {
+    flex-wrap: unset;
+}
+
+/*** Blog Detail Contact Start***/
+.blog_detail_name,
+.blog_detail_mail,
+.blog_detail_phone {
+    width: calc(33.33% - 30px);
+    height: 70px;
+    margin-right: 30px;
+    margin-bottom: 20px;
+    border: 0;
+    border-bottom: 1px solid #cbced4;
+}
+
+.blog_detail_msg {
+    width: calc(100% - 30px);
+    height: 92px;
+    resize: none;
+    border: 0;
+    border-bottom: 1px solid #cbced4;
+    margin-bottom: 20px;
+}
+
+.blog_detail_btn {
+    padding: 14px 44px;
+    border-radius: 4px;
+    background-color: #0a46e2;
+    color: #ffffff;
+    margin-bottom: 30px;
+    filter: drop-shadow(3px 18px 15px rgba(10, 70, 226, 0.13));
+    border: none;
+}
+
+.blog_detail_chk {
+    width: 100%;
+    display: block;
+}
+
+.blog_detail_chk .wpcf7-list-item {
+    display: unset;
+    margin: 0 0 0 10px;
+}
+
+/*** Blog Detail Contact End***/
+
+.categories_typo .elementor-widget-container h5,
+.tags-typo .elementor-widget-container h5 {
+    font-size: 20px;
+    line-height: 30px;
+    margin-bottom: 10px;
+}
+
+.categories_typo .elementor-widget-container .cat-item a {
+    color: #696e79;
+}
+
+.categories_typo .elementor-widget-container .cat-item a:hover {
+    color: #0a46e2;
+}
+
+.categories_typo .elementor-widget-container .cat-item {
+    margin-bottom: 10px;
+}
+
+.tags-typo .elementor-widget-container .tagcloud .tag-cloud-link {
+    font-size: 14px !important;
+    line-height: 35px;
+    background-color: #f5f5f9;
+    color: #30353b;
+    padding: 6px 10px;
+    border-radius: 4px;
+}
+
+.tags-typo .elementor-widget-container .tagcloud .tag-cloud-link:hover {
+    background-color: #0a46e2;
+    color: #ffffff;
+}
+
+/*** Blog Detail Newsletter Start***/
+.blog_detail_newsletter_mail {
+    width: 100%;
+    height: 53px;
+    border: 0;
+    border-radius: 4px;
+    background-color: #2c2b32;
+    color: #ffffff;
+    margin-bottom: 15px;
+    padding-left: 15px;
+}
+
+.blog_detail_newsletter_mail::placeholder {
+    color: #878C96;
+}
+
+.blog_detail_newsletter_btn {
+    width: 100%;
+    height: 53px;
+    border: 0;
+    background-color: #0a46e2;
+    color: #ffffff;
+    border-radius: 4px;
+}
+
+/*** Blog Detail Newsletter End***/
+
+/*** Blog Detail Footer Newsletter Start ***/
+
+.blog_footer-main p {
+    display: flex;
+}
+
+.blog_footer_mail {
+    width: 100%;
+    height: 53px;
+    border: 0;
+    padding-left: 25px;
+    border-radius: 4px 0 0 4px;
+    background-color: #201f24;
+    color: #696e79;
+}
+
+.blog_footer_btn {
+    width: 25%;
+    height: 53px;
+    border: 0;
+    color: transparent;
+    border-radius: 0 4px 4px 0;
+    background-color: #ffffff;
+    background-image: url('/wp-content/uploads/2021/08/arrow_01-1.svg');
+    background-size: 20px 12px;
+    background-repeat: no-repeat;
+    background-position: top center;
+    transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+}
+
+.blog_footer_btn:hover {
+    background-position: 70% 50%;
+    transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+}
+
+/*** Blog Detail Footer newsletter End ***/
+/*** Blog Detail End ***/
+/*** Landing Page Start***/
+.text-gradient {
+    background: -webkit-linear-gradient(#FF6954, #981300);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.underline_effect .radiantthemes-custom-button-main .placeholder:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 95%;
+    height: 2px;
+    background-color: #30353b;
+    -webkit-transition: all 0.7s ease;
+    transition: all 0.7s ease;
+}
+
+.underline_effect .radiantthemes-custom-button-main .placeholder:hover:before {
+    width: 0;
+    -webkit-transition: all 0.7s ease;
+    transition: all 0.7s ease;
+}
+
+/*** Landing Page End***/
+/*** Play Button One Start ***/
+.play-btn01 svg .play-cir01 {
+    -webkit-animation: btn-color 4s cubic-bezier(0.390, 0.575, 0.565, 1.000) infinite alternate both;
+    animation: btn-color 4s cubic-bezier(0.390, 0.575, 0.565, 1.000) infinite alternate both;
+}
+
+@keyframes btn-color {
+    0% {
+        fill: #ffffff;
+    }
+
+    40% {
+        fill: #ffffff;
+    }
+
+    60% {
+        fill: #D90224;
+    }
+
+    100% {
+        fill: #D90224;
+    }
+}
+
+.play-btn01 svg .play01 {
+    -webkit-animation: btn-color2 4s cubic-bezier(0.390, 0.575, 0.565, 1.000) infinite alternate both;
+    animation: btn-color2 4s cubic-bezier(0.390, 0.575, 0.565, 1.000) infinite alternate both;
+}
+
+@keyframes btn-color2 {
+    0% {
+        fill: #18191d;
+    }
+
+    40% {
+        fill: #18191d;
+    }
+
+    60% {
+        fill: #ffffff;
+    }
+
+    100% {
+        fill: #ffffff;
+    }
+}
+
+/*** Play Button One End ***/
+
+/*** Play Button Two Start ***/
+
+.play-btn02 svg .play-cir02 {
+    -webkit-animation: btn2-color 4s linear infinite alternate both;
+    animation: btn2-color 4s linear infinite alternate both;
+}
+
+@keyframes btn2-color {
+    0% {
+        fill: #ffffff;
+    }
+
+    40% {
+        fill: #ffffff;
+    }
+
+    60% {
+        fill: #31CB53;
+    }
+
+    100% {
+        fill: #31CB53;
+    }
+}
+
+.play-btn02 svg .play02 {
+    -webkit-animation: btn2-color2 4s linear infinite alternate both;
+    animation: btn2-color2 4s linear infinite alternate both;
+}
+
+@keyframes btn2-color2 {
+    0% {
+        fill: #30353b;
+    }
+
+    40% {
+        fill: #30353b;
+    }
+
+    60% {
+        fill: #ffffff;
+    }
+
+    100% {
+        fill: #ffffff;
+    }
+}
+
+/*** Play Button Two End ***/
+.elementor-icon i::before,
+.elementor-icon svg::before {
+    top: 50%;
+}
+
+.bold-color-change .elementor-widget-container b {
+    color: #30353b;
+}
+
+/*** About Business Start ***/
+/*** Button Effect Start ***/
+.btn-effect-one .radiantthemes-custom-button-main::after {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    height: 100%;
+    width: 100%;
+    border: 1px solid #000;
+    z-index: -1;
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+}
+
+.btn-effect-two .radiantthemes-custom-button-main::after {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    height: 100%;
+    width: 100%;
+    border: 1px solid #fff;
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+}
+
+.btn-effect-one .radiantthemes-custom-button-main:hover:after,
+.btn-effect-two .radiantthemes-custom-button-main:hover:after {
+    top: 0;
+    left: 0;
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+}
+.full-button .radiantthemes-custom-button button {
+    width: 100% !important;
+}
+
+/*** Button Effect End ***/
+/*** Arrow Icon Effect Start ***/
+.arrow-btn-effect-main:hover .arrow-btn-effect svg circle {
+    -webkit-animation: fill-color 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: fill-color 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@keyframes fill-color {
+    0% {
+        fill: transparent;
+    }
+
+    100% {
+        fill: #ffffff;
+    }
+}
+
+.arrow-btn-effect-main .arrow-btn-effect svg path {
+    animation: 1s cubic-bezier(0.250, 0.460, 0.450, 0.940);
+    -webkit-animation: 1s cubic-bezier(0.250, 0.460, 0.450, 0.940);
+}
+
+.arrow-btn-effect-main:hover .arrow-btn-effect svg path {
+    -webkit-animation: slide-right 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) 1 both;
+    animation: slide-right 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) 1 both;
+}
+
+@keyframes slide-right {
+    0% {
+        stroke: #ffffff;
+        offset-path: path('M 0 0');
+    }
+
+    100% {
+        stroke: #1a1a1c;
+        offset-path: path('M 7 0');
+    }
+}
+
+/*** Arrow Icon Effect End ***/
+
+/*** Newsletter Start ***/
+
+.architect-main p {
+    display: flex;
+}
+
+.about-business-newsletter-mail {
+    width: 100%;
+    height: 53px;
+    border: 0;
+    padding-left: 25px;
+    background-color: #1f1f23;
+    color: #a6a6a6;
+}
+
+.about-business-newsletter-btn {
+    width: 30%;
+    height: 53px;
+    border: 0;
+    color: transparent;
+    background-color: #ffffff;
+    background-image: url('/wp-content/uploads/2021/08/arrow_01-1.svg');
+    background-size: 20px 12px;
+    background-repeat: no-repeat;
+    background-position: top center;
+    transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+}
+
+.about-business-newsletter-btn:hover {
+    background-position: 70% 50%;
+    transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+}
+
+/*** Newsletter End ***/
+/*** About Business End ***/
+/*** About Startup Start ***/
+.color-half-position .elementor-background-overlay {
+    width: 50%;
+    left: 50%;
+}
+
+/*** Newsletter Start ***/
+.about-startup-main p {
+    display: flex;
+}
+
+.about-startup-newsletter {
+    width: 100%;
+    height: 53px;
+    border: 0;
+    border-radius: 4px 0 0 4px;
+    filter: drop-shadow(2.816px 17.778px 29.5px rgba(0, 0, 0, 0.09));
+    margin: 0;
+    padding-left: 20px;
+}
+
+.about-startup-btn {
+    width: 15%;
+    height: 53px;
+    border: 0;
+    border-radius: 0 4px 4px 0;
+    color: transparent;
+    background-color: #4f44c6;
+    background-image: url('/wp-content/uploads/2021/08/arrow.svg');
+    background-size: 20px 12px;
+    background-repeat: no-repeat;
+    background-position: top center;
+    transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+}
+
+.about-startup-btn:hover {
+    background-position: 70% 50%;
+    transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+}
+
+/*** Newsletter End ***/
+/**** Hover Effect Second Start ****/
+.about-startup-hover-effect02:hover .move-up {
+    transform: translate3d(0, -10px, 0);
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+}
+
+.about-startup-hover-effect02 .move-up {
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+}
+
+.about-startup-change-color:hover .change-color .elementor-widget-container {
+    background-color: #4f44c6;
+}
+
+.about-startup-change-color:hover .change-color .elementor-heading-title {
+    color: #fff;
+}
+
+.about-startup-change-color .change-color .elementor-widget-container {
+    background-color: #fff;
+    border-radius: 4px;
+}
+
+/**** Hover Effect Second End ****/
+/*** Client Start ***/
+.client-height-change .clients.element-four .clients-item {
+    padding: 70px 50px;
+}
+
+.client-height-change .swiper-slide {
+    height: auto;
+}
+
+/*** Client End ***/
+.move-icon-hover .elementor-animation-grow-rotate {
+    transition-duration: .3s;
+    transition-property: transform;
+}
+
+.move-icon-hover:hover .elementor-animation-grow-rotate {
+    transform: scale(1.1) rotate(4deg);
+}
+
+/*** Arrow Effect Start ***/
+.show-caret svg .caret01 {
+    transform: translateX(-50px);
+    transition: all 2s ease-in-out;
+    -webkit-transition: all 2s ease-in-out;
+}
+
+.show-caret svg .caret02 {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 1s ease-in-out;
+    -webkit-transition: all 1s ease-in-out;
+}
+
+.show-caret:hover svg .caret01 {
+    opacity: 0;
+    transition: all 0.1s ease-in-out;
+    -webkit-transition: all 0.1s ease-in-out;
+}
+
+.show-caret:hover svg .caret02 {
+    opacity: 1;
+    transform: translateX(0);
+    transition: all 1s ease-in-out;
+    -webkit-transition: all 1s ease-in-out;
+    display: block;
+
+}
+
+/*** Arrow Effect End ***/
+/*** About Startup End ***/
+/*** About Landing Start ***/
+.header-text-effect .elementor-heading-title span:last-child {
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #ffffff;
+    word;
+}
+
+.header-text-effect .elementor-heading-title span:last-child {
+    margin-left: 220px;
+}
+
+@media screen and (max-width: 767px) {
+    .header-text-effect .elementor-heading-title span:last-child {
+        margin-left: 0;
+    }
+
+
+    .letter-effect .elementor-widget-container:first-letter {
+        color: #30353b;
+        font-size: 30px;
+        font-weight: 600;
+    }
+
+    .number-color-change-main:hover .number-color-change svg {
+        transition: all 0.5s ease;
+        -webkit-transition: all 0.5s ease;
+    }
+
+    .number-color-change-main:hover .number-color-change svg .num-shp0 {
+        fill: #f73f00;
+        stroke: #f73f00;
+        transition: all 0.5s ease;
+        -webkit-transition: all 0.5s ease;
+    }
+
+    .number-color-change-main:hover .number-color-change svg .num-txt1 {
+        fill: #ffffff;
+        transition: all 0.5s ease;
+        -webkit-transition: all 0.5s ease;
+    }
+
+    .about-landing-color-position .elementor-background-overlay {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .about-landing-color-position .elementor-background-overlay {
+        width: 100%;
+        height: 50%;
+    }
+}
+
+/*** Play Button Effect Start ***/
+
+svg .play-btn-01 {
+    animation: btn-move 3s linear infinite;
+    -webkit-animation: btn-move 3s linear infinite;
+}
+
+@keyframes btn-move {
+    0% {
+        d: path('M45.56 11.65C63.7 11.65 78.4 26.36 78.4 44.5C78.4 62.64 63.7 77.34 45.56 77.34C27.42 77.34 12.71 62.64 12.71 44.5C12.71 26.36 27.42 11.65 45.56 11.65Z');
+        opacity: 0.4;
+    }
+
+    70% {
+        d: path('M45.5 0C70.08 0 90 19.92 90 44.5C90 69.08 70.08 89 45.5 89C20.92 89 1 69.08 1 44.5C1 19.92 20.92 0 45.5 0Z');
+        opacity: 0.3;
+    }
+
+    100% {
+        d: path('M45.5 0C70.08 0 90 19.92 90 44.5C90 69.08 70.08 89 45.5 89C20.92 89 1 69.08 1 44.5C1 19.92 20.92 0 45.5 0Z');
+        opacity: 0;
+    }
+}
+
+/*** Play Button Effect End ***/
+/*** Newsletter Start ***/
+
+.about_landing_main p {
+    display: flex;
+}
+
+.about_landing_mail {
+    width: 100%;
+    height: 53px;
+    border: 0;
+    padding-left: 25px;
+    border-radius: 4px 0 0 4px;
+    background-color: #ffffff;
+    color: #696e79;
+}
+
+.about_landing_btn {
+    width: 25%;
+    height: 53px;
+    border: 0;
+    color: transparent;
+    border-radius: 0 4px 4px 0;
+    background-color: #f73f00;
+    background-image: url('../images/sleek-arrw.svg');
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: top center;
+    transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+}
+
+.about_landing_btn:hover {
+    background-position: 70% 50%;
+    transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+}
+
+/*** Newsletter End ***/
+/*** About Landing End ***/
+@media screen and (min-width:1266px) {
+    .fix-column-width.elementor-element {
+        width: 1266px;
+    }
+}
+
+@media screen and (max-width:1265px) {
+    .bg-image-position .elementor-background-overlay {
+        background-position: 0 !important;
+    }
+}
+
+/*--------------------------------------------------------------
+# Custom Heading Style One Underline Start
+----------------------------------------------------------------*/
+.underline-animation-text .rt-underline-txt{
+    top:7px;
+}
+
+.underline-animation-text-second .rt-underline-txt{
+    /*top:7px;*/
+    bottom: 12px;
+}
+.underline-animation-text-third .rt-underline-txt{
+    top:4px;
+}
+.icon-block .elementor-icon{
+    display: block;
+}
+
+/*--------------------------------------------------------------
+# Custom Heading Style One Underline End
+----------------------------------------------------------------*/
+
+
+/*--------------------------------------------------------------
+# CONTACT PAGE ENDS
+----------------------------------------------------------------*/
+.position-center .elementor-column {
+    justify-content: center;
+}
+
+.elementor-invisible {
+    visibility: visible !important;
+}
+
+
+@media only screen and (min-width: 1025px) {
+    .column-space .elementor-column-gap-default {
+        column-gap: 30px;
+    }
+
+    .column-space-zero .elementor-column-gap-default {
+        column-gap: 0;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .position-center-responsive .elementor-column {
+        justify-content: center;
+    }
+}
+
+/*--------------------------------------------------------------
+# Portfolio Starts
+----------------------------------------------------------------*/
+@media only screen and (min-width: 1024px){
+.rt-portfolio-parent {
+    position: relative;
+}
+
+.rt-portfolio-left-child {
+    position: relative;
+    left: 0;
+    margin: 0;
+}
+
+.rt-portfolio-child {
+    position: fixed !important;
+    right: 0;
+    top:35%;
+}
+}
+/*--------------------------------------------------------------
+# Portfolio Ends
+----------------------------------------------------------------*/
+/*--------------------------------------------------------------
+# Newsletter Start
+----------------------------------------------------------------*/
+.saas-newsletter-main input[type="email"] {
+    background: #fff;
+    box-shadow: 2px 25px 65px 0px rgba(42, 22, 139, 0.1);
+    border: none;
+    height: 50px;
+    padding: 0 15px;
+    border-radius: 4px;
+    margin-right: 15px;
+}
+
+
+.saas-newsletter-main input[type="submit"] {
+    color: #FFFFFF;
+    background: linear-gradient(to right, #FF7C74 0%, #FFA17D 100%);
+    border: none;
+    height: 50px;
+    border-radius: 4px;
+    padding: 0 44px;
+}
+
+@media (max-width:400px){
+   .saas-newsletter-main input[type="email"], .saas-newsletter-main input[type="submit"]{
+    width:100%;
+    margin-bottom: 10px;
+   }
+}
+
+/*--------------------------------------------------------------
+# Newsletter End
+----------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# Default Footer Newsletter Start
+----------------------------------------------------------------*/
+
+.default_footer_newsletter_mail{
+    width:calc(85% - 10px);
+    border:0;
+    border-radius:30px;
+    height:48px;
+    padding-left:20px;
+    margin-right:10px;
+}
+
+.default_footer_newsletter_btn{
+    border:0;
+    width:15%;
+  height:48px;
+    border-radius:30px;
+    color: transparent;
+    background-color:#004FFC;
+    background-image:url('https://consultino.radiantthemes.com/wp-content/uploads/2021/09/right-arrow-white.svg');
+ background-size:20px 20px;
+ background-repeat:no-repeat;
+ background-position:center center;
+    transition:all 0.3s ease;
+    -webkit-transition:all 0.3s ease;
+}
+
+.default_footer_newsletter_btn:hover{
+background-position:70% 50%;
+    transition:all 0.3s ease;
+    -webkit-transition:all 0.3s ease;
+}
+
+/*--------------------------------------------------------------
+# Default Footer Newsletter End
+----------------------------------------------------------------*/
+/*footer*/
+.wraper_footer.custom-footer {
+    width: 100%;
+    float: left;
+}
+
+/**************************************
+        Creative Agency Start
+**************************************/
+.position-left .elementor-widget-wrap{
+    width:auto;
+}
+@media only screen and (min-width: 1025px){
+
+.bg-position-change .elementor-background-overlay{
+    width:80%;
+}
+}
+
+.prefix-off .elementor-counter-number-prefix{
+    display:none;
+}
+
+.image-shadow .elementor-widget-container img{
+    border-radius:4px;
+}
+
+.creative-frm .get-in-touch .form-row.submit-btn {
+    background:#FF726D;
+}
+
+.creative-frm .get-in-touch .form-row.submit-btn input[type="submit"] {
+   color: #fff;
+    border: none;
+    font-weight: 600;
+    text-transform: capitalize;
+        font-size:16px;
+        line-height:28px;
+        letter-spacing:1px;
+}
+
+/*** Newsletter Start ***/
+
+.creative_agency_newsletter_mail{
+    width: 100%;
+    height: 53px;
+    border-style: none none solid !important;
+    padding-left: 0px;
+    border-radius: 0;
+    background-color: transparent;
+    color: #696e79;
+    border-width: 1px !important;
+}
+
+.creative_agency_newsletter_btn{
+    position:absolute;
+    top: 34px;
+    right: 0px;
+    width: 20px;
+    height: 25px;
+    border:0;
+    padding:0px;
+    color: transparent;
+    border-radius: 50em ;
+    background-color:transparent;
+    background-image:url('../images/img1.svg');
+     background-size:20px 20px;
+     background-repeat:no-repeat;
+     background-position:center center;
+    transition:all 0.3s ease;
+    -webkit-transition:all 0.3s ease;
+}
+
+.creative_agency_newsletter_btn:hover{
+    background-position:70% 50%;
+    transition:all 0.3s ease;
+    -webkit-transition:all 0.3s ease;
+}
+
+/*** Newsletter End ***/
+
+
+.image-shadow img{
+filter: drop-shadow(3px 4px 16px rgba(0,0,0,0.07));
+}
+
+.creative-agency-hover-div{
+    overflow:hidden;
+}
+
+.creative-agency-hover-div .hover-text-section{
+position:absolute;
+bottom:-35px;
+transition: all 0.7s ease;
+-webkit-transition: all 0.7s ease;
+overflow:hidden;
+background:linear-gradient(to bottom,rgba(31,35,45,0),rgba(35,124,143,1));
+}
+
+.creative-agency-hover-div:hover .hover-text-section{
+bottom:0;
+transition: all 0.7s ease;
+-webkit-transition: all 0.7s ease;
+overflow:hidden;
+background:linear-gradient(to bottom,rgba(31,35,45,0),rgba(35,124,143,1));
+
+}
+
+.tag-bar{
+    margin:0;
+    padding-bottom:10px;
+    display:block;
+}
+
+.get-in-touch .form-row {
+    display: block;
+    margin-left: 0px;
+    margin-right: 15px;
+}
+
+.get-in-touch .form-row input[type="email"],
+.get-in-touch .form-row input[type="text"] {
+    font-size: 14px;
+    line-height: 24px;
+    outline: 0;
+    padding: 12px 15px 12px 0px;
+    margin-bottom: 15px;
+    height: 50px;
+    width: 100%;
+    color: #272727;
+    display: block;
+    background-color: transparent;
+    background-clip: padding-box;
+    border-style: none none solid !important;
+    border-width: 1px !important;
+    border-color: #7B7B7B;
+}
+
+.get-in-touch .form-row textarea {
+    font-size: 14px;
+    line-height: 24px;
+    outline: 0;
+    padding: 12px 15px 12px 0px;
+    margin-bottom: 30px;
+    width: 100%;
+    height: 100px;
+    color: #30353B;
+    display: block;
+    background-color: transparent;
+    background-clip: padding-box;
+    border-style: none none solid;
+    border-width: 1px;
+    border-color: #7B7B7B;
+}
+
+.get-in-touch .form-row input[type="text"]::placeholder,
+.get-in-touch .form-row input[type="email"]::placeholder,
+.get-in-touch .form-row textarea::placeholder {
+    color: #30353B;
+}
+
+.get-in-touch .form-row input[type="text"]:focus,
+.get-in-touch .form-row input[type="email"]:focus,
+.get-in-touch .form-row textarea:focus {
+    color: #30353B;
+}
+
+.get-in-touch .form-row.submit-btn {
+        background:#FF726D;
+        color: #fff;
+    border: none;
+    font-weight: 600;
+    text-transform: capitalize;
+        font-size:16px;
+        line-height:28px;
+        letter-spacing:1px;
+        cursor:pointer;
+}
+
+.get-in-touch .form-row.submit-btn .wpcf7-spinner {
+    position: absolute;
+}
+
+.get-in-touch .form-row.submit-btn input[type="submit"] {
+    color: #fff;
+    border: none;
+    background: none;
+    font-weight: 600;
+    text-transform: capitalize;
+    letter-spacing:1px;
+}
+
+.get-in-touch .no-padding.p-btn {
+    margin: 0px;
+}
+
+@media screen and (max-width:991px) {
+    .creative_agency_newsletter_btn{
+        position:absolute;
+        top: 34px;
+        right: 10px;
+        width: 22px;
+        height: 25px;
+    }
+
+}
+@media screen and (max-width:768px) {
+    .title-circle-border .rt-underline-txt svg {
+        display: none;
+    }
+}
+/**************************************
+        Creative Agency End
+**************************************/
+
+/**************************************
+        Life Coach Start
+**************************************/
+
+/*** How Can I Help Start ***/
+.life-coach-hover-div{
+    overflow:hidden;
+}
+.life-coach-hover-div.hover-position .hover-text-section{
+    position:absolute;
+    bottom:0;
+}
+.life-coach-hover-div .hover-text-section{
+bottom:-55px;
+transition: all 0.5s ease;
+-webkit-transition: all 0.5s ease;
+overflow:hidden;
+}
+
+.life-coach-hover-div:hover .hover-text-section{
+bottom:0;
+transition: all 0.5s ease;
+-webkit-transition: all 0.5s ease;
+overflow:hidden;
+}
+
+.life-coach-hover-div.arrow-move:hover .arrow-move-fw .elementor-icon svg{
+    transform:translate3d(10px, 0, 0);
+    transition: all 0.5s ease;
+-webkit-transition: all 0.5s ease;
+}
+
+.life-coach-hover-div.arrow-move .arrow-move-fw .elementor-icon svg{
+    transform:translate3d(0, 0, 0);
+    transition: all 0.5s ease;
+-webkit-transition: all 0.5s ease;
+}
+
+/*** How Can I Help End ***/
+
+/**** Hover Effect Second Start ****/
+.life-coach-hover-effect:hover .move-up{
+      transform: translate3d(0, -30px, 0);
+    transition: all .7s ease-in-out;
+    -webkit-transition: all .7s ease-in-out;
+}
+.life-coach-hover-effect .move-up{
+    transition: all .7s ease-in-out;
+    -webkit-transition: all .7s ease-in-out;
+}
+
+.life-coach-change-color:hover .change-color .elementor-widget-container{
+    color:#466DB4;
+}
+.life-coach-change-color:hover .change-color .elementor-widget-container .elementor-heading-title{
+    color:#ffffff;
+}
+
+.life-coach-change-color:hover .change-color .elementor-element-populated{
+    background-color: #5dade1 !important;
+    border-bottom:5px solid #5dade1;
+}
+
+/**** Hover Effect Second End ****/
+
+.counter-prefix .elementor-counter-number-prefix{
+    display:none;
+}
+
+/*** Newsletter Start ***/
+
+.newsletter-position p{
+    text-align:right;
+    margin:0;
+    padding:0;
+}
+.newsletter-position span.wpcf7-spinner{display:contents;}
+.life-coach-newsletter-name, .life-coach-newsletter-mail{
+    width:calc(38% - 20px);
+    height:53px;
+    border:0;
+    border-radius:4px;
+    margin-right:10px;
+    padding-left:20px;
+}
+.life-coach-newsletter-btn{
+    width:24%;
+    height:53px;
+    border:0;
+    border-radius:4px;
+    background-color:#cd846a;
+    color:#ffffff;
+    font-size:13px;
+    line-height:29px;
+    letter-spacing:2.5px;
+    text-transform:uppercase;
+}
+@media only screen and (max-width: 767px){
+    .newsletter-position p{
+    text-align:left;
+}
+}
+
+@media only screen and (max-width: 480px){
+    .life-coach-newsletter-name, .life-coach-newsletter-mail{
+        width:100%;
+        margin:0;
+        margin-bottom:10px;
+    }
+
+    .life-coach-newsletter-btn{
+        width:100%;
+        margin:0;
+    }
+}
+/*** Newsletter End ***/
+
+
+.position-left .elementor-widget-wrap{
+    width:auto;
+}
+
+.position-change{
+    position:absolute;
+    left:0;
+    bottom:0;
+}
+.radiantthemes-accordion.element-one button.btn.btn-link.collapsed[aria-expanded="false"] .card-header:before{
+    padding:0 10px 14px 0;
+}
+.radiantthemes-accordion.element-one button.btn.btn-link[aria-expanded="true"] .card-header:after{
+    padding:0 10px 14px 0;
+}
+
+.mordern-business-accordion .collapse{
+    margin:0;
+}
+
+.mordern-business-accordion .collapsing{
+    margin:0;
+}
+
+.mordern-business-accordion .radiantthemes-accordion.element-one .mb-0 {
+    padding: 10px 0 6px 0;
+}
+
+/**************************************
+        Life Coach End
+**************************************/
+
+/**************************************
+        Software Business Start
+**************************************/
+/*** Newsletter Start ***/
+
+.software-business-main p{
+    display:flex;
+}
+
+.software-business-mail{
+    width:100%;
+    height:53px;
+    border:0;
+    padding-left:25px;
+    border-radius: 4px 0 0 4px;
+  background-color: #272a2f;
+    color:#696e79;
+}
+
+.software-business-btn{
+    width: 25%;
+    height: 53px;
+    border:0;
+    color: transparent;
+    border-radius: 0 4px 4px 0;
+    background-color:#0278e8;
+    background-image:url('/software-business/wp-content/uploads/sites/36/2022/03/sleek-arrow.svg');
+ background-size:20px 20px;
+ background-repeat:no-repeat;
+ background-position:center center;
+    transition:all 0.3s ease;
+    -webkit-transition:all 0.3s ease;
+}
+
+.software-business-btn:hover{
+    background-position:70% 50%;
+    transition:all 0.3s ease;
+    -webkit-transition:all 0.3s ease;
+}
+
+/*** Newsletter End ***/
+
+.list-color-change ul li:first-child .elementor-icon-list-text{
+    color:#ffffff!important;
+}
+
+/*** Moving Effect Start ***/
+.move-icon-main .move-icon{
+    offset-path: path('M -3 -53 Q -37 -42 -17 3 Q -3 33 23 52 Q 67 73 80 -5 T -3 -53');
+  animation: move 15s infinite linear;
+    animation-play-state: paused;
+}
+
+.move-icon-main:hover .move-icon{
+offset-path: path('M -3 -53 Q -37 -42 -17 3 Q -3 33 23 52 Q 67 73 80 -5 T -3 -53');
+  animation: move 15s infinite linear;
+}
+
+@keyframes move {
+  0% {
+    offset-distance: 0%;
+  }
+  100% {
+    offset-distance: 100%;
+  }
+}
+
+/*** Moving Effect End ***/
+
+.position-left .elementor-widget-wrap{
+    width:auto;
+}
+.wpcf7-form-control-wrap {
+`margin: 0;
+}
+.pricing-dash-off .switch-tag {
+    display: none;
+}
+
+/**************************************
+        Software Business End
+**************************************/
+
+/**************************************
+        Personal Finance Start
+**************************************/
+.position-left .elementor-widget-wrap, .position-right .elementor-widget-wrap{
+    width:auto;
+}
+.position-right.elementor-inner-column{
+    justify-content:flex-end;
+}
+
+.top-heading .elementor-heading-title {
+    padding-left:80px;
+}
+.top-heading .elementor-heading-title:before {
+    content: "";
+    position: absolute;
+    width: 67px;
+    height: 1px;
+    background: currentcolor;
+    top: 40%;
+        margin-left:-80px;
+}
+
+.cloud_moving img{
+position: relative;
+animation: moverighticon 8s infinite;
+}
+.cloud_moving-2 img{
+position: relative;
+animation: moverighticon 6s infinite;
+}
+@keyframes moverighticon{
+    0% {
+        left:0
+    }
+    50% {
+        left:50%
+    }
+    100% {
+        left:0
+    }
+}
+
+/* Hover Effect Start */
+
+.personal-finance-number-hover-effect:hover .num-effect .elementor-widget-container
+{
+    background-color:#F73F00!important;
+    border-color:#F73F00!important;
+    color:#ffffff;
+    transition:all 0.5s ease;
+    -webkit-transition:all 0.5s ease;
+}
+
+@media screen and (min-width:768px){
+.connect-line:before{
+    content:"";
+    position:absolute;
+    top:5px;
+    left:22px;
+    width:1px;
+    height:100%;
+    background:#dedede;
+}
+}
+/* Hover Effect End */
+
+@media screen and (max-width: 1024px) {
+    .top-heading-text .elementor-column {
+    width: auto !important;
+}
+}
+
+.divider-left .rt-search-cart-holder .rt-search-box3{
+    border-left: 1px solid #a19f9f;
+}
+
+/**************************************
+        Personal Finance End
+**************************************/
+
+/**************************************
+        Broadband Start
+**************************************/
+@media(min-width:1296px){
+.change-broadband-bg-position .elementor-background-overlay{
+    width:53% !important;
+    left:3% !important;
+}
+}
+
+@media(max-width:1676px) and (min-width:1024px){
+.change-broadband-bg-position .elementor-background-overlay{
+    width:53% !important;
+    left:0 !important;
+}
+}
+
+@media(max-width:1023px) and (min-width:768px){
+.change-broadband-bg-position .elementor-background-overlay{
+    width:70% !important;
+    left:0 !important;
+}
+}
+/*** Hover Effect Start ***/
+.broad-band-hover-effect-main{
+    overflow:hidden;
+}
+.broad-band-hover-effect-main .hover-effect .elementor-widget-container{
+    opacity:0;
+    transform:translate3d(60px,0,0);
+    -webkit-transform:translate3d(60px,0,0);
+    transition:all 0.5s ease;
+    -webkit-transition:all 0.5s ease;
+}
+
+.broad-band-hover-effect-main:hover .hover-effect .elementor-widget-container{
+    opacity:1;
+    transform:translate3d(0,0,0);
+    -webkit-transform:translate3d(0,0,0);
+}
+
+/**************************************
+        Broadband End
+**************************************/
+
+/**************************************
+        Investment Start
+**************************************/
+@media (max-width: 880px){
+.col-width-change.elementor-column.elementor-col-50{
+    width:100% !important;
+}
+    .col-width-change > .elementor-element-populated {
+    margin:0px !important;
+    padding-top:28px !important;
+    }
+}
+
+.position-left .elementor-widget-wrap, .position-right .elementor-widget-wrap{
+    width:auto;
+}
+.position-right.elementor-inner-column{
+    justify-content:flex-end;
+}
+.position-left .elementor-widget__width-auto {
+    margin: 0;
+}
+
+/**************************************
+        Investment End
+**************************************/
+
+/**************************************
+        App Start
+**************************************/
+
+.rt-search-cart-holder .rt-search-box3{
+    border-left:0;
+}
+
+/**************************************
+        App End
+**************************************/
+
+/**************************************
+        Attorny Start
+**************************************/
+/*** Appearance Animation Start ***/
+.animated {
+    -webkit-animation-duration: 3s !important;
+    animation-duration: 3s !important;
+}
+/*** Appearance Animation End ***/
+/*** Footer Start ***/
+.footer-custom-stucking-container{
+    display:none;
+}
+/*** Footer End ***/
+/*** Newsletter Start ***/
+.attorney-main p{
+    display:inline-flex;
+}
+.attorney-newsletter-mail{
+    width:100%;
+    height:53px;
+    border:0;
+    padding-left:25px;
+    border-radius: 4px 0 0 4px;
+  background-color: #f3f3f3;
+    color:#696e79;
+}
+.attorney-newsletter-btn{
+    width: 30%;
+    height: 53px;
+    border:0;
+    color: transparent;
+    border-radius: 0 4px 4px 0;
+    background-color:#b8815e;
+    background-image:url('https://clients.rkwebsolutions.com/consultinomain/attorney/wp-content/uploads/sites/30/2022/03/sleek-arrow.svg');
+ background-size:20px 20px;
+ background-repeat:no-repeat;
+ background-position:center center;
+    transition:all 0.3s ease;
+    -webkit-transition:all 0.3s ease;
+}
+
+.attorney-newsletter-btn:hover{
+    background-position:70% 50%;
+    transition:all 0.3s ease;
+    -webkit-transition:all 0.3s ease;
+}
+/*** Arrow Start ***/
+
+.arrow-moving .elementor-icon-list-icon svg{
+    transform: translateX(0px);
+    transition:all 0.3s ease;
+}
+.arrow-moving:hover .elementor-icon-list-icon svg{
+    transform: translateX(8px);
+    transition:all 0.3s ease;
+}
+.arrow-moving .list-font-change svg {
+    top: 2px;
+    margin-top: 2px !important;
+    padding-top: 3px;
+}
+/*** Arrow End ***/
+/*** Newsletter End ***/
+
+.position-left .elementor-widget-wrap{
+    width:auto;
+}
+.list-display .elementor-icon-list-item{
+    display: -webkit-box;
+}
+.prefix-off .elementor-counter-number-prefix{
+    display:none;
+}
+.elementor-icon i::before, .elementor-icon svg::before{
+    top: 50%;
+}
+.button-ator .blog.element-four .blog-item .holder .post-btn .post-button{
+        background-color: #B8825E;
+}
+.button-ator .blog.element-four .blog-item .holder .post-btn .post-button:hover{
+        background-color: #D9B8A2;
+}
+@media screen and (max-width:767px) {
+    .protfolio-style-two .main .detail p.designation {
+    margin-bottom:0;
+}
+}
+@media only screen and (max-width: 1067px) {
+    .attorney-header .rt-header.mobile-header-style1 .mobile-logo-column {
+        text-align:left;
+    }
+}
+
+/**************************************
+        Attorny End
+**************************************/
+
+/**************************************
+        Digital Studio Start
+**************************************/
+
+
+/*** Background Hover Effect Start ***/
+.bg-hover .elementor-background-overlay{
+    filter: drop-shadow(3px 4px 34px rgba(0,0,0,0.08));
+}
+
+/*** Background Hover Effect End ***/
+
+/*** Number Effect Start ***/
+
+.num-color-effect-main .num-effect .elementor-widget-container{
+    transition:all 0.5s ease;
+    -webkit-transition:all 0.5s ease;
+}
+
+.num-color-effect-main:hover .num-effect .elementor-widget-container{
+    background-color:#2b63e5;
+    color:#ffffff;
+    transition:all 0.5s ease;
+    -webkit-transition:all 0.5s ease;
+}
+
+/*** Number Effect End ***/
+
+/*** Rocket Effect Start ***/
+
+.digital-studio-rocket-effect-main .rocket-effect .elementor-widget-container{
+transition:all 0.5s ease;
+    -webkit-transition:all 0.5s ease;
+}
+
+.digital-studio-rocket-effect-main:hover .rocket-effect .elementor-widget-container{
+/*  background-position: top center; */
+    transition:all 0.5s ease;
+    -webkit-transition:all 0.5s ease;
+}
+
+/*** Rocket Effect End ***/
+
+.image-box-shadow .item img{
+    filter: drop-shadow(3px 4px 34px rgba(0,0,0,0.08));
+}
+.digital-studio-main{background:#f0f4fa; border-radius: 50em; position:relative; overflow:hidden; padding:12px; }
+.digital-studio-main p{
+    display:flex;
+}
+.digital-studio-main input[type='email']{background:none;}
+.digital-studio-newsletter-mail{
+    width:100%;
+    border:0;
+    padding-left:25px;
+    color:#696e79;
+}
+.digital-studio-main .wpcf7-spinner{position:absolute; top:-10px; left:0;}
+.digital-studio-newsletter-btn{
+    position:absolute;
+    top: 7px;
+  right: 7px;
+    width: 60px;
+    height: 40px;
+    border:0;
+    color: transparent;
+    border-radius: 50em ;
+    background-color:#2b63e5;
+    background-image:url('/digital-studio/wp-content/uploads/sites/25/2022/03/sleek-arrow.svg');
+    fill:#fff;
+ background-size:30px 18px;
+ background-repeat:no-repeat;
+ background-position:center center;
+    transition:all 0.3s ease;
+    -webkit-transition:all 0.3s ease;
+}
+
+.digital-studio-newsletter-btn:hover{
+    background-position:70% 50%;
+    transition:all 0.3s ease;
+    -webkit-transition:all 0.3s ease;
+}
+
+/**************************************
+        Digital Studio End
+**************************************/
+
+/**************************************
+        Consultant Start
+**************************************/
+.bg-position-change .elementor-background-overlay{
+    width:50%;
+    left:50%;
+}
+
+/**** Hover Effect Second Start ****/
+.startup-hover-effect02:hover .move-up{
+      transform: translate3d(0, -10px, 0);
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+}
+.startup-hover-effect02 .move-up{
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+}
+
+.startup-change-color:hover .change-color .elementor-widget-container{
+    background-color:#01bc20;
+}
+.startup-change-color:hover .change-color .elementor-heading-title{
+    color:#fff;
+}
+.startup-change-color .change-color .elementor-widget-container{
+    background-color:#fff;
+    border-radius:4px;
+}
+/**** Hover Effect Second End ****/
+
+.prefix-off .elementor-counter-number-prefix{
+    display:none;
+}
+
+.text-effect .rt-headline.rt-loading-bar span{
+    display:inline;
+    padding:0;
+}
+
+.image-box-shadow.elementor-widget-image img{
+    filter: drop-shadow(0 0 17.5px rgba(0,0,0,0.09))!important;
+    /*border-radius: 100%;*/
+}
+.consultant-newsletter-mail {
+    width: calc(70% - 10px);
+    border: 0;
+    height: 53px;
+    filter: drop-shadow(-7px 8px 29px rgba(59, 60, 77, 0.1));
+    background-color: #ffffff;
+    padding-left: 25px;
+    margin-right: 10px;
+    border-radius: 4px;
+}
+
+.consultant-newsletter-btn {
+    width: 30%;
+    height: 54px;
+    color: #fff;
+    border: 0;
+    border-radius: 4px;
+    font-weight: 700;
+    background-color: #01bc20;
+    filter: drop-shadow(-3px 3px 12px rgba(0, 0, 0, 0.19));
+}
+
+.image-shadow img {
+    box-shadow: 3px 4px 42px rgba(0,0,0,0.2);
+}
+.underline-animation-text-consultant .rt-underline-txt {
+    bottom: 7px;
+}
+
+/**************************************
+        Consultant End
+**************************************/
+
+/**************************************
+        Corporate Start
+**************************************/
+.banner-width-change .elementor-background-overlay{
+    width:57.5%;
+    left:44.5%;
+    top:-1%;
+}
+.banner-width-change-two .elementor-background-overlay{
+    width:55%;
+    left:50%;
+    top:0;
+}
+.banner-width-change-three .elementor-background-overlay{
+    width:50%;
+    left:-100px;
+    top:0;
+}
+.image-box-shadow .elementor-background-overlay{
+    filter: drop-shadow(-3px 4px 30px rgba(0,0,0,0.08));
+}
+.shape-box-shadow .elementor-background-overlay{
+    filter:none;
+}
+
+@media (min-width: 1600px) {
+    .banner-width-change-two {
+        padding-bottom:10% !important;
+    }
+}
+
+/**** Hover Effect First Start ****/
+
+.corporate-hover-effect:hover .elementor-icon svg path{
+    fill:#db0225;
+}
+
+.corporate-bg-clr:hover .elementor-view-stacked .elementor-icon{
+    background-color:#ffffff!important;
+    transition:background 0.3s;
+    -webkit-transition:background 0.3s;
+}
+
+
+/**** Hover Effect First End ****/
+
+/**** Hover Effect Second Start ****/
+.corporate-hover-effect:hover .move-up,
+.corporate-hover-effect:hover .move-up-toggle{
+      transform: translate3d(0, -20px, 0);
+    -webkit-transform: translate3d(0, -20px, 0);
+    transition: all .5s ease-in-out;
+    -webkit-transition: all .5s ease-in-out;
+}
+.corporate-hover-effect .move-up,
+.corporate-hover-effect .move-up-toggle{
+    padding:15px 0 15px;
+    margin:20px;
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
+    filter: drop-shadow(-3px 4px 26px rgba(0,0,0,0.11));
+    transition: all .5s ease-in-out;
+    -webkit-transition: all .5s ease-in-out;
+}
+
+.corporate-change-color:hover .change-color,
+.corporate-change-color .change-color-toggle
+{
+    background-color:#db0225;
+    border-radius:4px;
+}
+.corporate-change-color .change-color{
+    background-color:#ffffff;
+    border-radius:4px;
+}
+.corporate-change-text-color:hover .text-color .elementor-heading-title,
+.corporate-change-text-color:hover .text-color .elementor-icon-list-text,
+.corporate-change-text-color .text-color-toggle .elementor-heading-title,
+.corporate-change-text-color .text-color-toggle .elementor-icon-list-text{
+    color:#ffffff!important;
+}
+
+/**** Hover Effect Second End ****/
+
+/*** Progress Bar Start ***/
+
+.progress-style .rt-progressbar-bar{
+    float:left;
+}
+.progress-style .rt-progressbar-right-label{
+    text-align:right;
+    margin: 0px 0px 10px 0px !important;
+}
+.progress-style .elementor-widget-container .rt-progressbar-container .rt-progressbar-left-label{
+    margin-bottom:-25px;
+}
+/*** Progress Bar End ***/
+
+/*** Project Form Start ***/
+.corporate-project-name,
+.corporate-project-mail,
+.corporate-project-phone,
+.corporate-project-website
+{
+width:calc(50% - 10px);
+height:53px;
+background-color:#f6f6f6;
+margin-bottom:10px;
+margin-right:7px;
+padding-left:15px;
+border:0;
+border-radius:4px;
+}
+.corporate-project-name::placeholder,
+.corporate-project-mail::placeholder,
+.corporate-project-phone::placeholder,
+.corporate-project-website::placeholder,
+.corporate-project-msg::placeholder{
+    color:#30353b;
+}
+
+.corporate-project-msg{
+width:calc(100% - 10px);
+height:113px;
+resize:none;
+background-color:#f6f6f6;
+margin-bottom:10px;
+margin-bottom:10px;
+padding-left:15px;
+border:0;
+border-radius:4px;
+}
+.corporate-project-btn{
+    padding:14px 44px;
+    border:0;
+    border-radius:4px;
+    color:#ffffff;
+    background-color:#DB0225;
+    font-weight:600;
+}
+
+
+@media (max-width: 767px) {
+    .corporate-project-name,
+.corporate-project-mail,
+.corporate-project-phone,
+.corporate-project-website
+{
+width:100%;
+}
+.corporate-project-msg
+{
+width:100%;
+}
+
+}
+
+/*** Project Form End ***/
+
+.position-left .elementor-widget-wrap{
+    width:auto;
+}
+.position-center.elementor-inner-column{
+    width:auto;
+}
+.prefix-off .elementor-counter-number-prefix{
+    display:none;
+}
+
+.elementor-icon i::before, .elementor-icon svg::before{
+    top:50%;
+}
+
+/**************************************
+        Corporate End
+**************************************/
+
+/**************************************
+        Marketing Start
+**************************************/
+.rt-testimonial.element-six .swiper-slide > .cards{
+    padding:30px !important;
+    margin:15px !important;
+}
+
+.marketing-underline-effect .elementor-widget-container{
+    text-decoration:underline !important;
+}
+
+
+/*** Button Effect Start ***/
+
+.btn-effect-one .radiantthemes-custom-button-main::after{
+content: "";
+position: absolute;
+top: 10px;
+left: 10px;
+height: 100%;
+width: 100%;
+border: 1px solid #000;
+z-index:-1;
+transition:all 0.3s ease-in-out;
+-webkit-transition:all 0.3s ease-in-out;
+}
+
+.btn-effect-two .radiantthemes-custom-button-main::after{
+content: "";
+position: absolute;
+top: 10px;
+left: 10px;
+height: 100%;
+width: 100%;
+border: 1px solid #fff;
+transition:all 0.3s ease-in-out;
+-webkit-transition:all 0.3s ease-in-out;
+}
+
+.btn-effect-one .radiantthemes-custom-button-main:hover:after, .btn-effect-two .radiantthemes-custom-button-main:hover:after{
+top: 0;
+left: 0;
+transition:all 0.3s ease-in-out;
+-webkit-transition:all 0.3s ease-in-out;
+}
+
+
+/*** Button Effect End ***/
+
+/*** Arrow Start ***/
+
+.arrow-moving .elementor-icon-list-icon svg{
+    transform: translateX(0px);
+    transition:all 0.3s ease;
+}
+
+.arrow-moving:hover .elementor-icon-list-icon svg{
+    transform: translateX(5px);
+    transition:all 0.3s ease;
+}
+.arrow-moving .list-font-change svg {
+    top: 2px;
+    margin-top: 2px !important;
+    padding-top: 3px;
+}
+/*** Arrow End ***/
+
+/*** What To D0 Start ***/
+.hover-div{
+    overflow:hidden;
+}
+.hover-position .hover-text-section, .hover-position .hover-text-section02{
+    position:absolute;
+}
+.hover-div .hover-text-section{
+bottom:-160px;
+transition: all 0.5s ease;
+-webkit-transition: all 0.5s ease;
+overflow:hidden;
+}
+
+.hover-div .hover-text-section02{
+    bottom:-110px;
+transition: all 0.5s ease;
+-webkit-transition: all 0.5s ease;
+overflow:hidden;
+}
+
+.hover-div:hover .hover-text-section{
+bottom:0;
+transition: all 0.5s ease;
+-webkit-transition: all 0.5s ease;
+overflow:hidden;
+}
+
+.hover-div:hover .hover-text-section02{
+    bottom:50px;
+transition: all 0.5s ease;
+-webkit-transition: all 0.5s ease;
+overflow:hidden;
+}
+
+@media screen and (max-width: 1024px){
+    .hover-div .hover-text-section02{
+        bottom:-160px;
+    }
+    .hover-div:hover .hover-text-section02{
+        bottom:0;
+    }
+}
+
+/*** What To D0 End ***/
+
+.visible-section{
+    visibility:visible !important;
+}
+
+.counter-position .elementor-counter-number-prefix{
+    display:none;
+}
+
+.position-change{
+    position:absolute;
+    bottom:10px;
+    right:0;
+}
+
+.position-left .elementor-widget-wrap{
+    width:auto;
+}
+@media screen and (max-width: 1024px){
+    .position-middle.elementor-inner-column{
+    width:auto;
+}
+}
+.position-center.elementor-inner-column{
+    width:auto;
+}
+
+/*** Arrow Effect Start ***/
+
+.hover-effect-one.right-arrow li:last-child{
+    transform:translate3d(-8px, 0, 0);
+    transition:all 0.5s ease;
+    -webkit-transition:all 0.5s ease;
+}
+
+.hover-effect-one:hover.right-arrow li:last-child{
+    transform:translate3d(10px, 0, 0);
+    transition:all 0.5s ease;
+    -webkit-transition:all 0.5s ease;
+}
+
+.hover-effect-one.right-arrow li:last-child svg path{
+    transition:all 0.5s ease;
+    -webkit-transition:all 0.5s ease;
+}
+
+.hover-effect-one:hover.right-arrow li:last-child svg path{
+    transition:all 0.5s ease;
+    -webkit-transition:all 0.5s ease;
+    stroke:#5856D6;
+}
+
+/**hover icon**/
+.marketing-box-hover-arrow .elementor-widget-wrap {
+    transition: all 0.3s ease !important;
+}
+.marketing-box-hover-arrow:hover .elementor-widget-wrap {
+    background: #EF6464 !important;
+
+}
+.marketing-box-hover-arrow:hover .elementor-widget-wrap .elementor-heading-title{
+    color:#ffffff;
+}
+.marketing-box-hover-arrow:hover .elementor-widget-wrap .elementor-icon svg {
+    fill:#ffffff !important;
+}
+.image-shadow img{
+    box-shadow: 3px 4px 42px rgba(0,0,0,0.07);
+}
+.m-align{
+    margin:0 !important;
+}
+.marketing-testimonial-nav .swiper-dot2.swiper-pagination-clickable {
+    position: initial;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+    z-index: 999;
+}
+.marketing-testimonial-nav .swiper-pagination-bullet {
+    width: 9px;
+    height: 9px;
+    display: inline-block;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    background: #000;
+}
+.marketing-main{
+    background:#1B5A72;
+    border-radius: 50em;
+    position:relative;
+    overflow:hidden;
+    padding:12px;
+}
+.marketing-main p{
+    display:flex;
+}
+
+.marketing-newsletter-mail{
+    width:100%;
+    border:0;
+    padding-left:25px;
+    color:#696e79;
+}
+.marketing-main .wpcf7-spinner{position:absolute; top:-10px; left:0;}
+.marketing-newsletter-btn{
+    position:absolute;
+    top: 7px;
+right: 7px;
+    width: 60px;
+    height: 40px;
+    border:0;
+    color: transparent;
+    border-radius: 50em ;
+    background-color:#1f1f23;
+    background-image:url('/architect/wp-content/uploads/sites/29/2022/03/sleek-arrow.svg');
+ background-size:40px 20px;
+ background-repeat:no-repeat;
+ background-position:center center;
+    transition:all 0.3s ease;
+    -webkit-transition:all 0.3s ease;
+}
+
+.marketing-newsletter-btn:hover{
+    background-position:70% 50%;
+    transition:all 0.3s ease;
+    -webkit-transition:all 0.3s ease;
+}
+
+/**************************************
+        Marketing End
+**************************************/
+
+/**************************************
+        Fitness Start
+**************************************/
+.footer-custom-stucking-container{
+    display:none;
+}
+
+/**** Hover Effect Start ****/
+.fitness-hover-effect:hover .move-up{
+      transform: translate3d(0, -40px, 0);
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+}
+.fitness-hover-effect .move-up{
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+}
+.fitness-change-color:hover .change-color .elementor-element-populated{
+    background-color:#f55823!important;
+}
+.fitness-change-color .change-color .elementor-heading-title{
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+}
+
+.fitness-change-color:hover .change-color .elementor-heading-title{
+    color:#ffffff!important;
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+}
+
+
+/**** Hover Effect End ****/
+
+.join-now-effect:before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:13px;
+    width:28px;
+    height:2px;
+    background-color:#f55823;
+}
+.join-now-effect:after{
+    content:"";
+    position:absolute;
+    top:13px;
+    left:-6px;
+    width:5px;
+    height:2px;
+    background-color:#ffffff;
+    -webkit-animation: move-fwd 1.7s linear infinite forwards;
+            animation: move-fwd 1.7s linear infinite forwards;
+}
+
+@-webkit-keyframes move-fwd {
+  0% {
+    left:-6px;
+        opacity:1;
+  }
+  80% {
+    left:20px;
+        opacity:1;
+  }
+
+    100% {
+    left:28px;
+        opacity:0;
+  }
+}
+
+
+/*** Appointment Form Start ***/
+.fitness-application-name{
+    width:100%;
+}
+.fitness-application-ph{
+    width:calc(50% - 20px);
+    margin-right:20px;
+}
+.fitness-application-mail{
+    width:calc(50% - 20px);
+    margin-left:20px;
+}
+.fitness-application-message{
+    width:100%;
+    height:113px;
+    resize:none;
+    border:0;
+    background-color:transparent;
+    border-bottom: 1px solid #cfcfcf;
+    padding-top:20px;
+    margin-bottom:25px;
+}
+
+.fitness-application-name, .fitness-application-ph, .fitness-application-mail{
+    height:53px;
+    border:0;
+    background-color:transparent;
+    border-bottom: 1px solid #cfcfcf !important;
+}
+
+.fitness-application-btn{
+    border:0;
+    padding:14px 44px;
+    line-height:23px;
+    background-color:#f55823;
+    color:#ffffff;
+}
+
+/*** Appointment Form End ***/
+
+/*** Newsletter Start ***/
+
+.fitness-main p{
+    display:flex;
+}
+
+.fitness-newsletter-mail{
+    width:100%;
+    height:53px;
+    border:0;
+    padding-left:25px;
+  background-color: #ffffff;
+}
+
+.fitness-newsletter-btn{
+    width: 30%;
+    height: 53px;
+    border:0;
+    color: transparent;
+    background-color:#f55823;
+    background-image:url('/fitness/wp-content/uploads/sites/34/2022/03/sleek-arrow.svg');
+     background-size:20px 20px;
+     background-repeat:no-repeat;
+     background-position:center center;
+    transition:all 0.3s ease;
+    -webkit-transition:all 0.3s ease;
+}
+
+.fitness-newsletter-btn:hover{
+    background-position:70% 50%;
+    transition:all 0.3s ease;
+    -webkit-transition:all 0.3s ease;
+}
+
+/*** Newsletter End ***/
+@media only screen and (max-width: 767px) {
+
+.change-bg-color .elementor-background-overlay{
+    background-color:#151718;
+}
+}
+
+.header-text-effect .elementor-heading-title{
+    color: #ffffff;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #ffffff; word;
+}
+
+.header-text-effect .elementor-heading-title span:last-child{
+    margin:0;
+}
+
+.text-bold-effect .elementor-widget-container b{
+    color: #30353b;
+    font-weight: 600;
+}
+
+.elementor-icon i:before, .elementor-icon svg:before{
+    top:50%;
+}
+
+/**************************************
+        Fitness End
+**************************************/
+
+/**************************************
+        Project Mangement Start
+**************************************/
+
+.position-right.elementor-inner-column{
+    justify-content:flex-end;
+}
+.position-left .elementor-widget-wrap{
+    width:auto;
+}
+
+.line_effect:before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:13px;
+    width:1px;
+    height:100%;
+    background:#30353b;
+}
+
+.top-heading .elementor-heading-title {
+    padding-left:80px;
+}
+.top-heading .elementor-heading-title:before {
+    content: "";
+    position: absolute;
+    width: 67px;
+    height: 1px;
+    background: currentcolor;
+    top: 40%;
+        margin-left:-80px;
+}
+.left-border-heading .elementor-heading-title {
+    padding-left:10px;
+}
+.left-border-heading .elementor-heading-title:before {
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 1px;
+    background: currentcolor;
+    top: 45%;
+        margin-left:-25px;
+}
+.verticle-heading {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+}
+.stroke-text {
+    background: #d1d1d1;
+-webkit-background-clip: text;
+-webkit-text-stroke: 4px transparent;
+color: #fff;
+}
+.counter-position .elementor-counter-number-prefix{
+    display:none;
+}
+.hover-div{
+    overflow:hidden;
+}
+.hover-position .hover-text-section, .hover-position .hover-text-section02{
+    position:absolute;
+}
+.hover-div .hover-text-section{
+bottom:-160px;
+transition: all 1.5s ease;
+-webkit-transition: all 1.5s ease;
+overflow:hidden;
+}
+
+.hover-div .hover-text-section02{
+    bottom:-110px;
+transition: all 1.5s ease;
+-webkit-transition: all 1.5s ease;
+overflow:hidden;
+}
+
+.hover-div:hover .hover-text-section{
+bottom:30px;
+transition: all 1.5s ease;
+-webkit-transition: all 1.5s ease;
+overflow:hidden;
+}
+
+.hover-div:hover .hover-text-section02{
+    bottom:50px;
+transition: all 1.5s ease;
+-webkit-transition: all 1.5s ease;
+overflow:hidden;
+}
+
+@media screen and (max-width: 1024px){
+    .hover-div .hover-text-section02{
+        bottom:-160px;
+    }
+    .hover-div:hover .hover-text-section02{
+        bottom:30px;
+    }
+}
+.move-icon{
+offset-path: path('M 0 0 L 0 55');
+  animation: move 6000ms infinite alternate ease-in-out;
+}
+
+@keyframes move {
+  0% {
+    offset-distance: 0%;
+  }
+  100% {
+    offset-distance: 100%;
+  }
+}
+.cloud_moving{
+offset-path: path('M 0 0 L 70 0');
+  animation: move 6000ms infinite alternate ease-in-out;
+}
+
+@keyframes move {
+  0% {
+    offset-distance: 0%;
+  }
+  100% {
+    offset-distance: 100%;
+  }
+}
+/*** Newsletter Start ***/
+
+.interior-main p{
+    display:flex;
+}
+
+.interior-newsletter-mail{
+    width:100%;
+    height:53px;
+    border:0;
+    padding-left:25px;
+  background-color: #1f1f23;
+    color:#a6a6a6;
+}
+
+.interior-newsletter-btn{
+    width: 30%;
+    height: 53px;
+    border:0;
+    color: transparent;
+    background-color:#2d2d2e;
+    background-image:url('/interior-design/wp-content/uploads/sites/40/2022/04/sleek-arrw.svg');
+ background-size:20px 20px;
+ background-repeat:no-repeat;
+ background-position:center center;
+    transition:all 0.3s ease;
+    -webkit-transition:all 0.3s ease;
+    border:none;
+}
+
+.interior-newsletter-btn:hover{
+    background-position:70% 50%;
+    transition:all 0.3s ease;
+    -webkit-transition:all 0.3s ease;
+}
+.wpcf7-form .wpcf7-form-control-wrap input[type*="email"]{
+    border:none;
+}
+.wpcf7-form input[type=submit]{
+    border:none;
+}
+
+/*** Newsletter End ***/
+
+/*** Moving Effect Start ***/
+.move-icon-main .move-icon{
+    offset-path: path('M -3 -53 Q -37 -42 -17 3 Q -3 33 23 52 Q 67 73 80 -5 T -3 -53');
+  animation: move 15s infinite linear;
+    animation-play-state: paused;
+}
+
+.move-icon-main:hover .move-icon{
+offset-path: path('M -3 -53 Q -37 -42 -17 3 Q -3 33 23 52 Q 67 73 80 -5 T -3 -53');
+  animation: move 15s infinite linear;
+}
+
+@keyframes move {
+  0% {
+    offset-distance: 0%;
+  }
+  100% {
+    offset-distance: 100%;
+  }
+}
+
+/*** Moving Effect End ***/
+.elementor-icon i::before{
+    top:40%;
+}
+
+.numeric-effect-main .numeric-effect svg .num01,
+.numeric-effect-main .numeric-effect svg .num03{
+    -webkit-transition:all 0.7s ease;
+transition:all 0.7s ease;
+}
+
+.numeric-effect-main:hover .numeric-effect svg .num01,
+.numeric-effect-main:hover .numeric-effect svg .num03{
+stroke:#f73f00;
+fill:#f73f00;
+-webkit-transition:all 0.7s ease;
+transition:all 0.7s ease;
+}
+
+.numeric-effect-txt-main:hover .numeric-effect svg .txt01,
+.numeric-effect-txt-main:hover .numeric-effect svg .txt03{
+    fill:#ffffff;
+-webkit-transition:all 0.3s ease;
+transition:all 0.3s ease;
+}
+.top-heading-text .elementor-column {
+    width: auto !important;
+}
+@media screen and (max-width: 1024px) {
+    .top-heading-text .elementor-column {
+    width: auto !important;
+}
+}
+
+/**leap**/
+.gradient-color{
+background: linear-gradient(167deg, #FF7397 29% ,#3687FF ,#8DE9C7 70%);
+-webkit-background-clip: text;
+ -webkit-text-fill-color:transparent !important;}
+
+/*** What To D0 Start ***/
+.hover-div{
+    overflow:hidden;
+}
+
+.hover-div .hover-text-section{
+position:absolute;
+bottom:-50px;
+transition: all 0.7s ease;
+-webkit-transition: all 0.7s ease;
+overflow:hidden;
+background:linear-gradient(to bottom,rgba(31,35,45,0),rgba(16,27,54,1));
+}
+
+.hover-div:hover .hover-text-section{
+bottom:0;
+transition: all 0.7s ease;
+-webkit-transition: all 0.7s ease;
+overflow:hidden;
+background:linear-gradient(to bottom,rgba(31,35,45,0),rgba(6,51,163,1));
+
+}
+
+.tag-bar{margin:0;
+    padding-bottom:10px;
+    display:block; }
+
+/*** What To D0 End ***/
+.dark-portfolio .rt-portfolio-box-content{ background:#0C0E13 !important;
+
+}
+.dark-portfolio .portfolio-title{
+    color:#ffffff !important;
+}
+.news-load .wpcf7-spinner{
+    display:none;
+}
+.wpcf7-form.init {
+    text-align: left;
+}
+@media screen and (max-width: 767px) {
+    .news-letter .wpcf7-form-control-wrap input[type*="email"] {
+width: 100% !important;
+}
+}
+
+/**************************************
+        Project Mangement End
+**************************************/
+
+/**************************************
+        Digital Payment Start
+**************************************/
+.rt-search-cart-holder .rt-search-box3{
+    border-left: 1px solid #303b35;
+}
+
+/*** Image Box Shadow Start ***/
+.box-shadow .elementor-background-overlay{
+    filter: drop-shadow(14px 23px 34px rgba(0,0,0,0.1));
+}
+/*** Image Box Shadow End ***/
+
+/*** buton ***/
+.digital-payment-hover-effect .right-arrow svg {
+top: 2px;
+margin-top: 2px;
+padding-top: 2px;
+}
+
+/*** Arrow Effect Start ***/
+
+.digital-payment-hover-effect .right-arrow li:last-child{
+    transform:translate3d(-8px, 0, 0);
+    transition:all 0.5s ease;
+    -webkit-transition:all 0.5s ease;
+}
+
+.digital-payment-hover-effect .right-arrow:hover li:last-child{
+    transform:translate3d(8px, 0, 0);
+    transition:all 0.5s ease;
+    -webkit-transition:all 0.5s ease;
+}
+
+.digital-payment-hover-effect .right-arrow svg path{
+    transition:all 0.5s ease;
+    -webkit-transition:all 0.5s ease;
+}
+
+.digital-payment-hover-effect .right-arrow:hover svg path{
+    transition:all 0.5s ease;
+    -webkit-transition:all 0.5s ease;
+    stroke:#30353b;
+}
+
+/*** Arrow Effect End ***/
+
+.text-display .rt-headline.rt-slide span{
+    display:inline;
+}
+
+.image-box-shadow .item img{
+    box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.12);
+}
+
+.prefix-off .elementor-counter .elementor-counter-number-prefix{
+    display:none;
+}
+.image-shadow img{
+    filter: drop-shadow(3px 4px 42px rgba(0,0,0,0.07));
+}
+
+/**************************************
+        Digital Payment End
+**************************************/
+
+/**************************************
+        Essential Oil Start
+**************************************/
+
+.position-left .elementor-widget-wrap, .position-center .elementor-widget-wrap{
+    width:auto;
+}
+
+.position-center.elementor-inner-column{
+    justify-content:center;
+}
+@media only screen and (min-width: 1025px){
+.column-space .elementor-container{
+    column-gap:30px;
+}
+}
+
+/*** Social Icon Effect Start ***/
+.icon-effect-div .icon-effect{
+    opacity:0;
+    transition:all 1s ease;
+}
+.icon-effect-div:hover .icon-effect,
+.icon-effect-div2:hover .icon-effect{
+    opacity:1;
+}
+
+.swiper.product-box.element-nine{
+    width:calc(100% - 200px) !important;
+}
+
+.essencial-oil-btn .radiantthemes-custom-button.element-four a.rt-readmore-btn::after,
+.essencial-oil-btn-one .radiantthemes-custom-button.element-four a.rt-readmore-btn::after {
+    background:#30353B;
+    bottom: -1px;
+}
+
+.essencial-oil-btn .radiantthemes-custom-button.element-four .rt-arrow-btn {
+    border-bottom: 1px solid #30353B;
+    border-radius:0px;
+}
+
+.image-shadow img{
+    box-shadow: 3px 4px 42px rgba(0,0,0,0.07);
+}
+
+.essential-prod-box .product-box.element-five .product-item .holder .pic:hover img.primary-hover-img {
+    transform:scale(1.0);
+}
+
+@media all and (max-width:1024px) {
+    .essential-header #mobile-menu .mobile-side-panel-inner .rt-search-cart-holder .rt-cart-box {
+        padding:10px 0;
+    }
+
+    .essential-header #mobile-menu .mobile-side-panel-inner .mobile-menu-top .rt-cart-box .header-cart-bar-icon {
+        margin-top:-3px;
+    }
+
+    .essential-header .header-cart-bar .header-cart-bar-icon {
+        top:-3px;
+    }
+
+    .essential-prod-box .product-box.element-five .col-md-3 {
+        flex:0 0 auto !important;
+    }
+
+}
+
+/**************************************
+        Essential Oil End
+**************************************/
+
+/**************************************
+        Logistics Start
+**************************************/
+/*** How Can I Help Start ***/
+.logistic-hover-div{
+    overflow:hidden;
+}
+.logistic-hover-div.logistic-hover-position .hover-text-section{
+    position:absolute;
+    bottom:0;
+}
+.logistic-hover-div .hover-text-section{
+bottom:-43px;
+transition: all 1s ease;
+-webkit-transition: all 1s ease;
+overflow:hidden;
+}
+
+.logistic-hover-div:hover .hover-text-section{
+bottom:0;
+transition: all 1s ease;
+-webkit-transition: all 1s ease;
+overflow:hidden;
+}
+
+/*** How Can I Help End ***/
+/* Testimonial CSS Start */
+@media (min-width:1690px){
+.logistic-testimonial .rt-testimonial.element-six .swiper-slide > .cards > .testi-detail-area .author_detail{
+    padding-left:5%;
+}
+}
+
+@media (min-width:1326px) and (max-width:1689px){
+.logistic-testimonial .rt-testimonial.element-six .swiper-slide > .cards > .testi-detail-area .author_detail{
+    padding-left:12%;
+}
+}
+
+@media (min-width:1200px) and (max-width:1325px){
+.logistic-testimonial .rt-testimonial.element-six .swiper-slide > .cards > .testi-detail-area .author_detail{
+    padding-left:18%;
+}
+}
+
+@media (max-width:1200px){
+.logistic-testimonial .rt-testimonial.element-six .swiper-slide > .cards > .testi-detail-area .author_detail{
+    padding-bottom:15px;
+}
+}
+@media (min-width:1367px){
+.position-left .elementor-widget-wrap {
+    width: auto;
+}
+}
+/* Testimonial CSS End */
+/*** Hover Effect Start ***/
+.logistic-hover-effect-one:hover .elementor-heading-title,
+.logistic-hover-effect-one:hover .elementor-widget-container{
+    color:#ffffff;
+}
+
+.logistic-hover-effect-one:hover  .change-background .elementor-widget-container{
+background-image: url("../images/Rectangle02.png")!important;
+}
+.logistic-hover-effect-one .elementor-icon-list-icon svg,
+.logistic-arrow-move .elementor-icon-list-icon svg{
+    transition:all 0.5s ease;
+    -webkit-transition:all 0.5s ease;
+}
+
+.logistic-hover-effect-one:hover .elementor-icon-list-icon svg,
+.logistic-arrow-move:hover .elementor-icon-list-icon svg{
+    transform:translate3d(10px, 0, 0)!important;
+    transition:all 0.5s ease;
+    -webkit-transition:all 0.5s ease;
+}
+/*** Hover Effect Start ***/
+/*** Contact us Start ***/
+.loigistics_name, .loigistics_mail, .loigistics_phone{
+    width:100%;
+    height:51px;
+    border:0;
+    border: 1px solid #e1e1e1;
+    margin-bottom:15px;
+    padding-left:20px;
+}
+
+.loigistics_msg{
+    width:100%;
+    height:94px;
+    resize:none;
+    border:0;
+    border: 1px solid #e1e1e1;
+    margin-bottom:-10px;
+    padding:15px 0 0 20px;
+    color:#696e79;
+}
+
+.loigistics_btn{
+    position:relative;
+    border:none;
+    color:#ffffff;
+    background-color:transparent;
+    width: 215px;
+    height: 53px;
+}
+.btn-bg-skew:before{
+content: "";
+position: absolute;
+left:0;
+bottom:0;
+width: 215px;
+height: 53px;
+background: #ff631b;
+border-radius:4px;
+transition:all 0.5s ease;
+    -webkit-transition:all 0.5s ease;
+}
+.btn-bg-skew:hover:before{
+    transform: skew(0, 0);
+    transition:all 0.5s ease;
+    -webkit-transition:all 0.5s ease;
+}
+@media only screen and (max-width: 1024px){
+    .btn-bg-skew:before{
+        bottom:unset;
+    }
+}
+/*** Contact us End ***/
+
+/*** Newsletter Start ***/
+.logistic-main{background:#065568; border-radius: 50em; position:relative; overflow:hidden; padding:12px; }
+
+.logistic-main input[type="email"]{background:none!important;}
+.logistic-newsletter-mail{
+    width:100%;
+    border:0;
+    padding-left:25px;
+    color:#696e79;
+}
+
+.logistic-main input[type="email"]::-webkit-input-placeholder { /* Edge */
+  color: #D4D5D6;
+}
+.logistic-main input[type="email"]:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #D4D5D6;
+}
+.logistic-main input[type="email"]::placeholder {
+  color: #D4D5D6;
+}
+.logistic-main .wpcf7-spinner{position:absolute; top:-10px; left:0;}
+.logistic-newsletter-btn{
+    position:absolute;
+    top: 7px;
+right: 7px;
+    width: 60px;
+    height: 40px;
+    border:0;
+    color: transparent;
+    border-radius: 50em ;
+    background-color:#FF631B;
+    background-image:url('/construction/wp-content/uploads/sites/27/2021/07/arw-rght.svg');
+ background-size:20px 20px;
+ background-repeat:no-repeat;
+ background-position:center center;
+    transition:all 0.3s ease;
+    -webkit-transition:all 0.3s ease;
+}
+.logistic-newsletter-btn:hover{
+    background-position:70% 50%;
+    transition:all 0.3s ease;
+    -webkit-transition:all 0.3s ease;
+}
+
+/**************************************
+        Logistics End
+**************************************/
+
+/**************************************
+        Spa Start
+**************************************/
+/* Spa Header and Gallery Start */
+.spa-header .rt-right-menu-holder {
+    padding-right:25px;
+}
+.spa-header .rt-search-cart-holder {
+    padding-right:25px;
+}
+.spa-header .search-btn3 {
+    margin-right:18px;
+}
+.spa-header .rt-search-cart-holder .rt-search-box3, .spa-header .rt-right-menu-holder .rt-search-box3 {
+    border-right: 1px solid #000000 !important;
+    border-left:0;
+}
+.spa-heading .letters {
+    z-index:1;
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .spa-gallery .rt-portfolio-box.rt-port-metro {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25%, 1fr));
+    grid-auto-rows: 450px;
+    grid-auto-flow: dense;
+    }
+    .spa-gallery .rt-portfolio-box.rt-port-metro .rt-portfolio-box-item.box-wide {
+    grid-column: span 2;
+    }
+}
+
+@media screen and (max-width: 675px) {
+    .spa-gallery .rt-portfolio-box.rt-port-metro {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+    grid-auto-rows: auto;
+    grid-auto-flow: dense;
+    }
+
+    .spa-gallery .rt-portfolio-box.rt-port-metro .rt-portfolio-box-item.box-wide {
+    grid-column: auto;
+    }
+
+    .spa-gallery .rt-portfolio-box.rt-port-metro .rt-portfolio-box-item {
+    padding: 15px;
+    }
+}
+/* Spa Header and Gallery Start */
+/*** Icon Effect Start ***/
+.spa-icon-hover-main-div:hover .spa-icon-hover-effect {
+    -webkit-animation: flip-icon 0.7s linear alternate both 2;
+            animation: flip-icon 0.7s linear alternate both 2;
+}
+
+@keyframes flip-icon {
+  0% {
+    -webkit-transform: scale(1) rotateY(0);
+            transform: scale(1) rotateY(0);
+  }
+  50% {
+    -webkit-transform: scale(1) rotateY(-90deg);
+            transform: scale(1) rotateY(-90deg);
+  }
+  100% {
+    -webkit-transform: scale(1) rotateY(-180deg);
+            transform: scale(1) rotateY(-180deg);
+  }
+}
+/*** Icon Effect End ***/
+/*** How Can I Help Start ***/
+.spa-hover-div{
+    overflow:hidden;
+}
+.spa-hover-position .spa-hover-text-section {
+    position:absolute;
+    bottom:0;
+}
+.spa-hover-div .spa-hover-text-section{
+bottom:-52px;
+transition: all 1s ease;
+-webkit-transition: all 1s ease;
+overflow:hidden;
+}
+
+.spa-hover-div:hover .spa-hover-text-section{
+bottom:0;
+transition: all 1s ease;
+-webkit-transition: all 1s ease;
+overflow:hidden;
+}
+
+/*** How Can I Help End ***/
+/*** Appointment Form Start ***/
+.spa-appointment-name{
+    width:100%;
+}
+.spa-appointment-ph{
+    width:calc(50% - 20px);
+    margin-right:20px;
+}
+.spa-appointment-mail{
+    width:calc(50% - 20px);
+    margin-left:20px;
+}
+.spa-appointment-msg{
+    width:100%;
+    height:113px;
+    resize:none;
+    border:0;
+    background-color:transparent;
+    border-bottom: 1px solid #acc8d3;
+    padding-top:20px;
+    margin-bottom:10px;
+}
+.spa-appointment-name, .spa-appointment-ph, .spa-appointment-mail{
+    height:53px;
+    border:0;
+    background-color:transparent;
+    border-bottom: 1px solid #acc8d3;
+}
+.spa-appointment-btn{
+    border:0;
+    padding:14px 44px;
+    line-height:28px;
+    letter-spacing:1px;
+    font-size:16px;
+    border-radius:50px;
+    text-transform:capitalize;
+    background-color:#FF726D;
+    color:#ffffff;
+    font-weight:600;
+}
+@media screen and (max-width:767px) {
+    .spa-appointment-ph,
+    .spa-appointment-mail{
+        width:100%;
+        margin-left:0;
+    }
+}
+/*** Appointment Form End ***/
+
+/*** Newsletter Start ***/
+
+.spa-main p{
+    display:flex;
+}
+
+.spa-main .wpcf7-form-control-wrap {
+    margin:0;
+}
+
+.spa-newsletter-mail{
+    width:100%;
+    height:53px;
+    border:0;
+    padding-left:25px;
+  background-color: #fffaf7;
+}
+
+.spa-newsletter-btn{
+    width: 20%;
+    height: 53px;
+    border:0;
+    color: transparent;
+    background-color:#FF8B69;
+    background-image:url('/spa/wp-content/uploads/sites/33/2022/03/sleek-arrow.svg');
+ background-size:20px 20px;
+ background-repeat:no-repeat;
+ background-position:center center;
+    transition:all 0.3s ease;
+    -webkit-transition:all 0.3s ease;
+}
+
+.spa-newsletter-btn:hover{
+    background-position:70% 50%;
+    transition:all 0.3s ease;
+    -webkit-transition:all 0.3s ease;
+}
+
+/*** Newsletter End ***/
+/**************************************
+        Spa End
+**************************************/
+
+/**************************************
+        Construction Start
+**************************************/
+/*** Appointment Form Start ***/
+
+.construction-appointment-name, .construction-appointment-mail, .construction-appointment-phone{
+    font-size:16px;
+    width:100%;
+    background-color: #f4f5fa;
+    border:0!important;
+    border-radius:4px;
+    margin-bottom:10px!important;
+    padding:15px!important;
+    height:53px;
+}
+
+.construction-appointment-msg{
+    font-size:16px;
+    width:100%;
+    height:95px;
+    resize:none;
+    background-color: #f4f5fa;
+    border:0!important;
+    border-radius:4px;
+    margin-bottom:10px!important;
+    padding:15px 0 0 15px!important;
+}
+
+.construction-appointment-btn{
+    background-color: #050c3b;
+    color:#ffffff;
+    border:0!important;
+    border-radius:4px;
+    padding:14px 44px!important;
+    font-weight:600;
+}
+
+@media only screen and (max-width: 767px) {
+    .construction-appointment-btn{width:100%;}
+}
+
+/*** Appointment Form End ***/
+
+/***Client Start***/
+
+.construction-global-clients .clients.element-one .clients-item > .holder > .table,
+.construction-local-clients .clients.element-one .clients-item > .holder > .table{
+    filter: grayscale(100%);
+    opacity:0.5;
+}
+
+.construction-global-clients .clients.element-one .clients-item > .holder > .table:hover,
+.construction-local-clients .clients.element-one .clients-item > .holder > .table:hover{
+    opacity:1;
+    transition:all 0.3s ease;
+    -webkit-transition:all 0.3s ease;
+}
+/***Client End***/
+
+/*** Newsletter Start ***/
+.construction-main{background:#fff; border-radius: 50em; position:relative; overflow:hidden; padding:12px; }
+.construction-main p{
+    display:flex;
+}
+
+.construction-newsletter-mail{
+    width:100%;
+    border:0;
+    padding-left:25px;
+    color:#696e79;
+}
+.construction-main .wpcf7-spinner{position:absolute; top:-10px; left:0;}
+.construction-newsletter-btn{
+    position:absolute;
+    top: 7px;
+right: 7px;
+    width: 60px;
+    height: 40px;
+    border:0;
+    color: transparent;
+    border-radius: 50em ;
+    background-color:#f73f00;
+    background-image:url('../images/sleek-arrow.svg');
+    background-size:40px 20px;
+    background-repeat:no-repeat;
+    background-position:center center;
+    transition:all 0.3s ease;
+    -webkit-transition:all 0.3s ease;
+}
+
+.construction-newsletter-btn:hover{
+    background-position:70% 50%;
+    transition:all 0.3s ease;
+    -webkit-transition:all 0.3s ease;
+}
+
+/*** Newsletter End ***/
+
+/*** List & Button Font Change End*/
+
+/*** Arrow Effect Start ***/
+
+.construction-hover-effect .right-arrow li:last-child{
+    transform:translate3d(-8px, 0, 0);
+    transition:all 0.5s ease;
+    -webkit-transition:all 0.5s ease;
+}
+
+.construction-hover-effect .right-arrow:hover li:last-child{
+    transform:translate3d(8px, 0, 0);
+    transition:all 0.5s ease;
+    -webkit-transition:all 0.5s ease;
+}
+
+.construction-hover-effect .right-arrow svg path{
+    transition:all 0.5s ease;
+    -webkit-transition:all 0.5s ease;
+}
+
+.construction-hover-effect .right-arrow:hover svg path{
+    transition:all 0.5s ease;
+    -webkit-transition:all 0.5s ease;
+    stroke:#F73F00;
+}
+
+/*** Arrow Effect End ***/
+/* Box Hover Arrow Start */
+.construction-box-hover-arrow .elementor-widget-wrap {
+    transition: all 0.3s ease !important;
+}
+.construction-box-hover-arrow:hover .elementor-widget-wrap {
+    background: #f73f01;
+    transform: translateY(-7px);
+    transition: all 0.3s ease !important;
+}
+.construction-box-hover-arrow:hover .elementor-widget-wrap .elementor-heading-title{
+    color:#ffffff;
+}
+.construction-box-hover-arrow:hover .elementor-widget-wrap .elementor-icon svg {
+    fill:#ffffff;
+}
+.construction-counter-position .elementor-counter-number-prefix {
+    display: none;
+}
+/* Box Hover Arrow End */
+
+/*** Number Hover Effect Start ***/
+.construction-numeric-effect-main .construction-numeric-effect .elementor-widget-container{
+    -webkit-transition:all 0.7s ease;
+transition:all 0.7s ease;
+}
+
+.construction-numeric-effect-main:hover .construction-numeric-effect .elementor-widget-container{
+background-color:#f73f00;
+color:#ffffff;
+border-color:#f73f00 !important;
+-webkit-transition:all 0.7s ease;
+transition:all 0.7s ease;
+}
+
+.construction-line-effect:before{
+    content:"";
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:0;
+    height:3px;
+    background-color:#f73f00;
+    z-index:9;
+}
+
+.construction-line-effect:hover:before{
+    -webkit-animation: move-line 3s linear infinite;
+            animation: move-line 3s linear infinite;
+
+}
+
+@-webkit-keyframes move-line {
+  0% {
+        width:200px;
+        left:0;
+        opacity:1;
+  }
+
+    80%{
+        width:200px;
+        left:30%;
+        opacity:0.5;
+    }
+
+    100%{
+        width:100px;
+        left:0;
+        opacity:0;
+    }
+}
+/*** Number Hover Effect End ***/
+.construction-position-adjust {
+    position:absolute !important;
+    bottom:-65px;
+    right:-1px;
+}
+.construction-text-highlight .elementor-widget-container b{
+    color:#30353b;
+    font-weight:unset;
+}
+/***Hover Effect Start***/
+
+.construction-hover-title-color-change:hover .elementor-heading-title{
+    color:#001940 !important;
+    transition:all 0.3s ease;
+    -webkit-transition:all 0.3s ease;
+}
+
+.construction-hover-des-color-change:hover .elementor-widget-container{
+    color:#696e79 !important;
+    transition:all 0.3s ease;
+    -webkit-transition:all 0.3s ease;
+}
+
+/**************************************
+        Constraction End
+**************************************/
+
+/**************************************
+        Digital Marketing Start
+**************************************/
+
+.position-left .elementor-widget-wrap, .position-right .elementor-widget-wrap{
+    width:auto;
+}
+.position-right.elementor-inner-column{
+    justify-content:flex-end;
+}
+
+/* Hover Effect Start */
+
+.digital-marketing-box-hover-effect:hover .elementor-icon-list-item .elementor-icon-list-text
+{
+    color:#3D59E8;
+}
+
+.digital-marketing-number-hover-effect:hover .num-effect .elementor-widget-container
+{
+    background-color:#3D59E8!important;
+    color:#ffffff;
+    transition:all 0.5s ease;
+    -webkit-transition:all 0.5s ease;
+}
+
+/*** Arrow Effect Start ***/
+
+.digital-marketing-arrow-hover-effect .right-arrow li:last-child{
+    transform:translate3d(-8px, 0, 0);
+    transition:all 0.5s ease;
+    -webkit-transition:all 0.5s ease;
+}
+
+.digital-marketing-arrow-hover-effect :hover .right-arrow li:last-child{
+    transform:translate3d(8px, 0, 0);
+    transition:all 0.5s ease;
+    -webkit-transition:all 0.5s ease;
+}
+
+.digital-marketing-arrow-hover-effect  .right-arrow li:last-child svg path{
+    transition:all 0.5s ease;
+    -webkit-transition:all 0.5s ease;
+}
+
+.digital-marketing-arrow-hover-effect :hover .right-arrow li:last-child svg path{
+    transition:all 0.5s ease;
+    -webkit-transition:all 0.5s ease;
+    stroke:#3D59E8;
+}
+.digital-marketing-arrow-hover-effect .right-arrow svg{
+    top: 2px;
+  margin-top: 1px !important;
+  padding-top: 2px;
+}
+
+/*** Arrow Effect End ***/
+/*** Hover Effect End ***/
+
+.elementor-icon i::before{
+    top:40%;
+}
+.underline-animation-text .rt-underline-txt{
+    top:32px;
+}
+/**** ROUND EFFECT START ****/
+.digital-marketing-rt-rotate-move{
+    -webkit-animation: rotate-center 20s linear infinite both;
+            animation: rotate-center 20s linear infinite both;
+}
+@-webkit-keyframes rotate-center {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+/**************************************
+        Digital Marketing End
+**************************************/
+
+/**************************************
+        Doctor Start
+**************************************/
+
+.doctor-learn_more_arrow .radiantthemes-custom-button.element-four .rt-arrow-btn svg{
+    margin-left:0;
+}
+
+/*** Icon Shadow Start ***/
+.doctor-icon-box-shadow01 .elementor-icon{
+    filter: drop-shadow(-2px 4px 12px rgba(7,59,140,0.07))!important;
+}
+
+.doctor-icon-box-shadow02 .elementor-icon{
+    filter: drop-shadow(-2px 4px 16px rgba(255,50,45,0.11))!important;
+}
+
+.doctor-icon-box-shadow03 .elementor-icon{
+    filter: drop-shadow(-2px 4px 16px rgba(0,204,85,0.11))!important;
+}
+
+.doctor-icon-box-shadow04 .elementor-icon{
+    filter: drop-shadow(-2px 4px 16px rgba(255,240,0,0.11))!important;
+}
+/*** Icon Shadow End ***/
+/**** Hover Effect Start ****/
+.doctor-hover-effect:hover .move-up{
+      transform: translate3d(0, -10px, 0);
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+}
+.doctor-hover-effect .move-up{
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+}
+.doctor-change-color:hover .change-color .elementor-element-populated{
+    background-color:#22D695!important;
+}
+.doctor-change-color .change-color .elementor-heading-title{
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+}
+
+.doctor-change-color:hover .change-color .elementor-heading-title{
+    color:#ffffff;
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+}
+/**** Hover Effect End ****/
+/*** Newsletter Start ***/
+
+.doctor-main p{
+    display:flex;
+}
+
+.doctor-newsletter-mail{
+    width:100%;
+    height:53px;
+    border:0;
+    border-radius:4px 0 0 4px;
+    padding-left:25px;
+  background-color: #ffffff;
+}
+
+.doctor-newsletter-btn{
+    width: 30%;
+    height: 53px;
+    border:0;
+    border-radius:0 4px 4px 0;
+    color: transparent;
+    background-color:#00cc55;
+    background-image:url('/doctor/wp-content/uploads/sites/31/2022/05/sleek-arrw.svg');
+ background-size:20px 20px;
+ background-repeat:no-repeat;
+ background-position:center center;
+    transition:all 0.3s ease;
+    -webkit-transition:all 0.3s ease;
+}
+
+.doctor-newsletter-btn:hover{
+    background-position:70% 50%;
+    transition:all 0.3s ease;
+    -webkit-transition:all 0.3s ease;
+}
+
+/*** Newsletter End ***/
+
+
+.position-left .elementor-widget-wrap{
+    width:auto;
+}
+
+.list-display .elementor-icon-list-item{
+    display: -webkit-box;
+}
+
+.image-box-shadow .item img{
+    filter: drop-shadow(-20px 30px 40px rgba(0, 0, 0, 0.18));
+}
+
+.doctor-team-effect .team.element-two .rt-team_box .team_share_icons {
+    display:none;
+}
+.image-shadow img {
+    filter: drop-shadow(3px 4px 42px,rgba(0,0,0,0.07));
+}
+
+/**************************************
+        Doctor End
+**************************************/
+
+/**************************************
+        Pet Care Start
+**************************************/
+.position-left .elementor-widget-wrap {
+    width: auto;
+}
+
+@media only screen and (max-width: 767px){
+.position-left-responsive .elementor-widget-wrap{
+    width:auto;
+}
+}
+
+@media only screen and (min-width: 1025px) {
+    .pet-care-column-width .elementor-container {
+        max-width: 1560px !important;
+    }
+}
+
+
+/*** Service Form Start ***/
+.pet_care_name {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.pet_care_phone {
+    width: calc(50% - 20px);
+    margin-right: 20px;
+}
+
+.pet_care_mail {
+    width: calc(50% - 20px);
+    margin-left: 20px;
+}
+
+.pet_care_name,
+.pet_care_phone,
+.pet_care_mail {
+    height: 53px;
+    border: 0;
+    background-color: transparent;
+    border-bottom: 1px solid #cfcfcf !important;
+}
+
+.pet_care_message {
+    width: 100%;
+    height: 113px;
+    resize: none;
+    border: 0;
+    background-color: transparent;
+    border-bottom: 1px solid #cfcfcf;
+    padding-top: 25px;
+    margin-bottom: 25px;
+    color: #696e79;
+}
+
+.pet_care_btn {
+    border: 0;
+    padding: 14px 44px;
+    border-radius: 50px;
+    background-color: #703edb;
+    color: #ffffff;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+}
+
+
+@media only screen and (max-width: 768px){
+    .pet_care_name, .pet_care_phone, .pet_care_mail{width:100%; margin-left:0;}
+}
+
+/*** Service Form End ***/
+
+/*** Newsletter Start ***/
+
+.pet-care-newsletter-main p {
+    margin-bottom: 0;
+}
+
+@media only screen and (max-width: 768px) {
+    .pet-care-newsletter-main .wpcf7-form-control-wrap {
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .pet-care-newsletter-mail {
+        width: 100%;
+        max-width: unset !important;
+    }
+}
+
+.pet-care-newsletter-main .wpcf7-form-control-wrap {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.pet-care-newsletter-mail {
+    width: 100%;
+    max-width: 500px;
+    height: 54px;
+    border: 0;
+    border-radius: 32px;
+    padding-left: 25px;
+    background-color: #ffffff;
+    color: #696e79;
+}
+
+.pet-care-newsletter-btn {
+    position: absolute;
+    top: 5px;
+    right: 6px;
+    width: 15%;
+    height: 42px;
+    border: 0;
+    border-radius: 50px;
+    background-color: #703edb;
+    color: #ffffff;
+    transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+}
+
+@media (max-width:450px){
+    .pet-care-newsletter-btn{
+        width: 20%;
+    }
+}
+
+
+/*** Newsletter End ***/
+
+
+/*** Arrow Effect Start ***/
+
+.pet-care-arrow-hover-effect .right-arrow .elementor-icon svg path{
+    transform:translate3d(-5px, 0, 0);
+    transition:all 0.5s ease;
+    -webkit-transition:all 0.5s ease;
+}
+
+.pet-care-arrow-hover-effect:hover .right-arrow .elementor-icon svg path{
+    transform:translate3d(0, 0, 0);
+    stroke:#30353b;
+    transition:all 0.5s ease;
+    -webkit-transition:all 0.5s ease;
+}
+
+.pet-care-arrow-hover-effect .right-arrow svg path:last-child{
+    transition:all 0.3s ease;
+    -webkit-transition:all 0.3s ease;
+}
+
+.pet-care-arrow-hover-effect:hover .right-arrow .elementor-icon svg path:last-child{
+    stroke:#30353b;
+    transition:all 0.3s ease;
+    -webkit-transition:all 0.3s ease;
+}
+/**************************************
+        Pet Care End
+**************************************/
+
+/**************************************
+        Agency Start
+**************************************/
+.center-pos .elementor-inner-column{
+    width:auto;
+}
+.btn-underline .radiantthemes-custom-button.element-four a.rt-readmore-btn::after{
+background: #30353b;
+}
+
+/*** Newsletter Start ***/
+
+.agency-main p{
+    display:inline-flex;
+}
+
+.newsletter-text {
+    width:100%;
+    height:53px;
+    border:0;
+    padding-left:25px;
+    border-radius: 4px 0 0 4px;
+  background-color: #f3f3f3;
+    color:#696e79;
+}
+
+.newsletter-button {
+    width: 30%;
+    height: 53px;
+    border:0;
+    color: transparent;
+    border-radius: 0 4px 4px 0;
+    background-color:#754FE4;
+    background-image:url('../images/sleek-arrow.svg');
+ background-size:20px 20px;
+ background-repeat:no-repeat;
+ background-position:center center;
+    transition:all 0.3s ease;
+    -webkit-transition:all 0.3s ease;
+}
+
+.newsletter-button:hover{
+    background-position:70% 50%;
+    transition:all 0.3s ease;
+    -webkit-transition:all 0.3s ease;
+}
+
+/*** Newsletter End ***/
+
+.agency-learn-more-btn a.rt-readmore-btn {
+    margin-right:0;
+}
+
+.agency-blg .blog.element-four .blog-item .holder .post-btn .post-button {
+    background:#754FE4;
+}
+
+.agency-blg .swiper-wrapper {
+    height:77vh;
+}
+
+@media screen and (max-width: 991px) {
+    .agency-blg .blog.element-four .blog-item .holder .data .category,
+.agency-blg .blog.element-four .blog-item .holder .data .date:after {
+    display:none;
+}
+}
+
+/**************************************
+        Agency End
+**************************************/
+
+/**************************************
+        Saas Start
+**************************************/
+
+/**** BANNER EFFECT START****/
+.saas-cloud_moving{
+offset-path: path('M 0 0 L 70 0');
+  animation: move 4000ms infinite alternate ease-in-out;
+}
+
+@keyframes move {
+  0% {
+    offset-distance: 0%;
+  }
+  100% {
+    offset-distance: 100%;
+  }
+}
+/**** BANNER EFFECT END****/
+
+.content-center-position.elementor-column{
+    width:auto;
+}
+
+.saas-position-change {
+    position:absolute !important;
+    bottom:-35px;
+    left:0;
+}
+
+.text-effect .rt-headline.rt-loading-bar span{
+    display:inline;
+    padding:0;
+}
+.saas-newsletter-main input[type="email"] {
+    background: #fff;
+    box-shadow: 2px 25px 65px 0px rgba(42, 22, 139, 0.1);
+    border: none;
+    height: 50px;
+    padding: 0 15px;
+    border-radius: 4px;
+    margin-right: 15px;
+    margin-bottom:15px;
+}
+
+.saas-newsletter-main input[type="submit"] {
+    color: #FFFFFF;
+    background: linear-gradient(to right, #FF7C74 0%, #FFA17D 100%);
+    border: none;
+    height: 50px;
+    border-radius: 4px;
+    padding: 0 44px;
+}
+
+@media (max-width:400px){
+   .saas-newsletter-main input[type="email"], .saas-newsletter-main input[type="submit"]{
+    width:100%;
+    margin-bottom: 10px;
+   }
+}
+@media (max-width: 767px) {
+
+
+.width-col .elementor-widget-wrap .elementor-widget-text-editor{
+        margin:0;}
+    }
+
+/**************************************
+        Saas End
+**************************************/
+
+/**************************************
+        Consulting Start
+**************************************/
+.consulting-number-position-left .elementor-counter-number-prefix{
+    display:none;
+}
+.consulting-text-position-left .elementor-counter .elementor-counter-title{
+    text-align: left !important;
+}
+
+.consulting-full-width-image .rt-link .rt-retina-image .rt-retina-image-container .rt-img{
+   width:100%;
+   height:100%;
+}
+.consulting-change-text-weight b{
+    color:#ffffff;
+    font-weight:500;
+}
+@media (max-width:768px){
+.consulting-shp-change .rt-underline-txt svg, .consulting-shp-change .rt-underline-txt svg rect{
+    height:50px !important;
+}
+}
+/**************************************
+        Consulting End
+**************************************/
+
+/**************************************
+        Handyman Start
+**************************************/
+.position-left .elementor-widget-wrap{
+    width:auto;
+}
+/* Hover Effect Second Start */
+
+.handyman-hover-effect-two .handyman-shape:before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:30px;
+    width:calc(100% - 60px);
+    height:100%;
+    background-color:   #ffffff;
+    filter: drop-shadow(6px 8px 31px rgba(0,0,0,0.06));
+    transform:skew(20deg);
+    -webkit-transform:skew(20deg);
+    transition:all 0.5s ease;
+    -webkit-transition:all 0.3s ease;
+}
+.handyman-hover-effect-two:hover .handyman-shape:before{
+    transform:skew(-20deg);
+    -webkit-transform:skew(-20deg);
+    transition:all 0.5s ease;
+    -webkit-transition:all 0.3s ease;
+    background-color:   #ffc01a;
+}
+
+/* Hover Effect Second End */
+/* Hover Effect Third Start */
+.handyman-hover-effect-three:hover .elementor-icon svg path{
+    stroke:#FFC01A;
+    transition:all 0.3s ease;
+}
+/* Hover Effect Third End */
+
+@media only screen and (min-width: 1025px){
+.handyman-fix-width-right.elementor-column{
+    width:650px !important;
+    margin-right:0 !important;
+}
+.handyman-fix-width-left.elementor-column{
+    width:600px !important;
+    margin-left:0 !important;
+}
+}
+
+@media only screen and (max-width: 767px){
+.handyman-application-form-main p{padding-bottom:0;margin-bottom:0;}
+}
+.change-color .elementor-icon-list-item b{
+    color:#ffc01a;
+    font-weight:600 !important;
+}
+.change-color-two ul li:first-child .elementor-icon-list-text{
+    color:#ffc01a !important;
+}
+.elementor-icon i:before{
+    top:90% !important;
+}
+/*** Newsletter Start ***/
+
+.handyman-newsletter-main p{
+    display:flex;
+}
+.handyman-newsletter-main p .wpcf7-form-control-wrap{
+    margin:0;
+}
+.handyman-newsletter-mail{
+    width:100%;
+    height:53px;
+    border:0;
+    padding-left:25px;
+  background-color: #ffffff;
+    color:#696e79;
+}
+
+.handyman-newsletter-btn{
+    width: 25%;
+    height: 53px;
+    border:0;
+    font-size:13px;
+    line-height:29px;
+    text-transform:uppercase;
+    letter-spacing:0.7;
+    color: transparent;
+    background-color:#ffc01a;
+    background-image:url('../images/sleek-dark-icon.svg');
+ background-size:20px 20px;
+ background-repeat:no-repeat;
+ background-position:center center;
+    transition:all 0.3s ease;
+    -webkit-transition:all 0.3s ease;
+}
+
+.handyman-newsletter-btn:hover{
+    background-position:70% 50%;
+    transition:all 0.3s ease;
+    -webkit-transition:all 0.3s ease;
+}
+
+@media (max-width:768px){
+    .handyman-newsletter-btn{
+        width:15%;
+    }
+}
+
+/*** Newsletter End ***/
+
+.handyman-banner-testimonial .rt-testimonial.element-six .swiper-slide > .cards::before {
+    transform: skew(0deg);
+box-shadow: 0 0 20px rgb(0 0 0 / 6%);
+border-radius: 30px 30px 30px 0px;
+}
+.handyman-banner-testimonial .elementor-star-rating {
+    margin: 0px;
+}
+
+.essencial-oil-btn .radiantthemes-custom-button.element-four a.rt-readmore-btn::after {
+    background:#30353B;
+    bottom: -1px;
+}
+
+.essencial-oil-btn .radiantthemes-custom-button.element-four .rt-arrow-btn {
+    border-bottom: 1px solid #30353B;
+    border-radius:0px;
+}
+
+@media screen and (max-width: 1420px) and (min-width: 1365px) {
+    .handyman-banner {
+        padding-bottom:6.7% !important;
+    }
+}
+
+@media screen and (max-width: 1600px) and (min-width: 1421px) {
+    .handyman-banner {
+        padding-bottom:6% !important;
+    }
+}
+
+@media screen and (max-width: 1680px) and (min-width: 1601px) {
+    .handyman-banner {
+        padding-bottom:5.8% !important;
+    }
+}
+
+@media screen and (max-width: 1780px) and (min-width: 1681px) {
+    .handyman-banner {
+        padding-bottom:7.3% !important;
+    }
+}
+
+@media screen and (max-width: 1850px) and (min-width: 1781px) {
+    .handyman-banner {
+        padding-bottom:8% !important;
+    }
+}
+
+/**************************************
+        Handyman End
+**************************************/
+
+/**************************************
+        Modern Business Start
+**************************************/
+@media only screen and (min-width: 1326px){
+.modern-banner-position .elementor-background-overlay{
+    width:70%
+}
+}
+@media only screen and (max-width: 1400px){
+.modern-responsive-position .elementor-element-populated{
+    margin-right:0!important;
+}
+.modern-responsive-position-image.elementor-element{
+        right:0!important;
+    }
+}
+
+/*** What To D0 Start ***/
+.modern-hover-div{
+    overflow:hidden;
+}
+
+.modern-hover-div .hover-text-section{
+position:absolute;
+bottom:-50px;
+transition: all 0.7s ease;
+-webkit-transition: all 0.7s ease;
+overflow:hidden;
+}
+
+.modern-hover-div:hover .hover-text-section{
+bottom:0;
+transition: all 0.7s ease;
+-webkit-transition: all 0.7s ease;
+overflow:hidden;
+}
+
+/*** What To D0 End ***/
+
+/**** Hover Effect First Start ****/
+
+.modern-hover-effect:hover .elementor-icon svg path{
+    fill:#fff;
+}
+.modern-bg-clr01:hover .elementor-view-stacked .elementor-icon{
+    background-color:#35e4af!important;
+}
+.modern-bg-clr02:hover .elementor-view-stacked .elementor-icon{
+    background-color:#ff2b59!important;
+}
+.modern-bg-clr03:hover .elementor-view-stacked .elementor-icon{
+    background-color:#fa800d!important;
+}
+
+.modern-bg-clr04:hover .elementor-view-stacked .elementor-icon{
+    background-color:#004ffd!important;
+}
+.modern-hover-effect:hover .elementor-view-stacked .elementor-icon{
+    filter: drop-shadow(5px 12px 5px rgba(0,0,0,0.06))
+}
+.modern-hover-effect02 .elementor-view-stacked .elementor-icon{
+    filter: drop-shadow(5px 12px 5px rgba(0,0,0,0.06))
+}
+
+.modern-moving-up-effect:hover{
+    transform: translate3d(0, -10px, 0);
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+}
+
+.modern-moving-up-effect{
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+}
+/**** Hover Effect First End ****/
+
+
+/*.image-box-shadow .elementor-widget-container img{
+    box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.12);
+}*/
+
+.prefix-off .elementor-counter-number-prefix{
+    display:none;
+}
+.btn-center-position.elementor-inner-column{
+    width:auto;
+}
+
+.radiantthemes-accordion.element-one .card .card-body {
+    margin:1px !important;
+}
+
+.text-bold-effect .elementor-widget-container b{
+    color:#30353b;
+    font-weight:600;
+}
+
+.elementor-icon i::before, .elementor-icon svg::before{
+    top:50%;
+}
+
+@media screen and (max-width: 1024px) {
+    .hamburger-align .rt-mobile-toggle-holder .rt-mobile-toggle {
+        top: 0px;
+    }
+}
+/**************************************
+        Modern Business End
+**************************************/
+
+/**************************************
+        Business Consultant Start
+**************************************/
+.position-change{
+    position:absolute;
+    left:0;
+    bottom:-30px;
+    z-index:9;
+}
+
+.image-shadow .rt-retina-image-container img{
+    box-shadow: 5px 5px 50px 10px rgba(0, 0, 0, 0.06);
+}
+
+.business-consultant-change-color .elementor-widget-container b{
+    font-weight:600;
+}
+.business-consultant-change-color-two .elementor-widget-container b,
+.color-change-list.elementor-list-item-link-full_width a{
+    color:#30353B;
+    font-weight:500;
+}
+
+.prefix-off .elementor-counter-number-prefix{
+    display:none;
+}
+
+.icon-gap .elementor-icon{
+    padding-top:10px;
+}
+
+.business-consultant-change-color-two .elementor-icon-list-items li:first-child .elementor-icon-list-text{
+    color:#babcc0 !important;
+}
+
+@media only screen and (min-width: 1025px){
+    .business-consultant-column-gap .elementor-column-gap-default{
+        column-gap:30px;
+    }
+}
+
+.icon-box-shadow .elementor-icon{
+    filter: drop-shadow(10.324px 14.745px 14.5px rgba(115,96,168,0.24));
+}
+
+
+/**************************************
+        Business Consultant End
+**************************************/
+
+/**************************************
+        Advisor Start
+**************************************/
+.underline-image .rt-underline-txt{
+    bottom:-16px;
+}
+/*** Move Up Start ***/
+.moving-up-effect{
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+}
+
+.moving-up-effect:hover{
+    transform: translate3d(0, -10px, 0);
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+}
+
+.num-effect-main .num-effect svg{
+    box-shadow: -7px 8px 20px rgba(0,0,0,0.1)
+}
+/*** Move Up End ***/
+/*** Number Effect Start ***/
+.num-effect-main:hover .num-effect .elementor-widget-container
+{
+    background-color:#ffffff;
+    -webkit-box-shadow: 5px 2px 30px 0px rgba(0,0,0,0.1);
+box-shadow: 5px 2px 30px 0px rgba(0,0,0,0.1);
+}
+
+.num-effect-main-two:hover .num-effect .elementor-widget-container{
+    background-color:#FFC869;
+    border-color: #FFC869;
+}
+/*** Number Effect End ***/
+
+.img-shadow-effect .elementor-background-overlay{
+    box-shadow:-3px 4px 27px rgba(0,0,0,0.1) !important;
+}
+
+/*** Newsletter Start ***/
+
+.advisor-newsletter-name, .advisor-newsletter-mail{
+    width:calc(35% - 10px);
+    height:53px;
+    border:0;
+    padding-left:15px;
+    margin-right:10px;
+    border-radius:4px;
+}
+.advisor-newsletter-btn{
+    width:26%;
+    height:53px;
+    border:0;
+    font-weight:700;
+    color:#30353b;
+    background-color:#FFC869;
+    border-radius:4px;
+}
+
+@media screen and (max-width: 510px){
+    .advisor-newsletter-name, .advisor-newsletter-mail, .advisor-newsletter-btn{
+        width:100%;
+        margin-bottom:10px;
+    }
+}
+/*** Newsletter End ***/
+
+/*** Number Hover Effect Start ***/
+.numeric-effect-main .numeric-effect svg .num-01,
+.numeric-effect-main .numeric-effect svg .num-03{
+    -webkit-transition:all 0.7s ease;
+transition:all 0.7s ease;
+}
+
+.numeric-effect-main:hover .numeric-effect svg .num-01,
+.numeric-effect-main:hover .numeric-effect svg .num-03{
+stroke:#FFC869;
+fill:#FFC869;
+-webkit-transition:all 0.7s ease;
+transition:all 0.7s ease;
+}
+
+.line-effect:before{
+    content:"";
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:0;
+    height:3px;
+    background-color:#FFC869;
+    z-index:9;
+}
+
+.line-effect:hover:before{
+    -webkit-animation: move-line 3s linear infinite;
+            animation: move-line 3s linear infinite;
+
+}
+
+@-webkit-keyframes move-line{
+  0% {
+    width:100px;
+        left:0;
+        opacity:1;
+  }
+
+    80%{
+        width:100px;
+        left:75%;
+        opacity:0.5;
+    }
+
+    100%{
+        width:100px;
+        left:78%;
+        opacity:0;
+    }
+}
+/*** Number Hover Effect End ***/
+    /**** Hover Effect Second Start ****/
+.advisor-hover-effect:hover .move-up{
+      transform: translate3d(0, -10px, 0);
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+}
+.advisor-hover-effect .move-up{
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+}
+
+.advisor-change-color:hover .change-color{
+    background-color:#FFC869;
+    color:#ffffff;
+}
+.advisor-change-color .change-color{
+    background-color:#ffffff;
+    border-radius:4px;
+    box-shadow: -3px 4px 26px rgba(0,0,0,0.11);
+}
+
+.advisor-change-color .change-color-toggle{
+    background-color:#FFC869;
+    box-shadow: -3px 4px 26px rgba(0,0,0,0.11);
+    border-radius:4px;
+}
+
+.underline-animation-text-advisor .rt-underline-txt {
+    /* top: 7px; */
+    bottom: 15px;
+}
+/**** Hover Effect Second End ****/
+
+.advisor-client .clients.element-four .clients-item > .holder .pic img {
+    max-width:80%;}
+/**price table**/
+@media screen and (max-width: 767px){
+.rt-pricing-table.element-five > .holder {
+    padding: 25px 15px 25px 15px !important;
+}
+}
+
+/**************************************
+        Advisor End
+**************************************/
+
+/**************************************
+        It Service Start
+**************************************/
+
+.it-services-service-main-div .service-play-btn{
+    opacity:0;
+    transition:all 1s ease;
+    -wibkit-transition:all 1s ease;
+}
+
+.it-services-service-main-div:hover .service-play-btn{
+    opacity:1;
+    transition:all 1s ease;
+    -wibkit-transition:all 1s ease;
+}
+
+.it-services-counter-position .elementor-counter-number-prefix{
+    display:none;
+}
+
+.it-services-position-change{
+    position:absolute;
+    bottom:-80px;
+    left:0;
+}
+
+/**************************************
+        It Service End
+**************************************/
+
+/**************************************
+        Education Start
+**************************************/
+.education-underline .rt-underline-txt{
+    bottom:-12px !important;
+}
+
+.education-font-weight-change b{
+    font-weight:600;
+    color:#30353b;
+}
+
+/* Number Effect Start */
+
+.education-hover-effect .number-effect .elementor-widget-container{
+    transition:all 0.5s ease;
+    -webkit-transition:all 0.5s ease;
+}
+
+.education-hover-effect:hover .number-effect .elementor-widget-container{
+    background-color:#ECD6FC !important;
+    color:#704B8B;
+    transition:all 0.5s ease;
+    -webkit-transition:all 0.5s ease;
+}
+.education-dashed-effect:before{
+    content:"";
+    position:absolute;
+    top:22px;
+    left:0;
+    width:100%;
+    height:2px;
+    border: dashed 2px #dedede;
+}
+
+/* Number Effect End */
+
+/**** Hover Effect Second Start ****/
+.education-hover-effect:hover .move-up{
+      transform: translate3d(0, -10px, 0);
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+}
+.education-hover-effect .move-up{
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+}
+
+.education-change-color:hover .change-color .elementor-heading-title,
+.education-change-color:hover .change-color .elementor-widget-container{
+    color:#fff !important;
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+}
+
+.education-change-color:hover .change-color .elementor-element-populated{
+    background-color: #ff632d!important;
+}
+
+/**** Hover Effect Second End ****/
+
+.radiantthemes-accordion.element-four .card button.btn.btn-link[aria-expanded="true"] .img-upload,
+.radiantthemes-accordion.element-four .card button.btn.btn-link.collapsed[aria-expanded="false"] .img-upload{
+ padding: 22px 10px 18px 0 !important;
+}
+
+/**** Newsletter Start ****/
+.education_mail{
+    width: 100%;
+    height: 53px;
+    border:0;
+    padding-left:25px;
+    border-radius: 33px;
+    filter: drop-shadow(2.868px 4.096px 31px rgba(0,0,0,0.08));
+    background-color: #ffffff;
+}
+.education_btn{
+    position:absolute;
+    top:20px;
+    right:0px;
+    width: 15%;
+    height: 53px;
+    border:0;
+    border-radius: 100px;
+    background-color: #ff632d;
+    color: #fff;
+}
+
+/**** Newsletter End ****/
+
+/*** Arrow Effect Start ***/
+
+.education-arrow-hover-effect .right-arrow li:last-child{
+    transform:translate3d(-8px, -1px, 0);
+    transition:all 0.5s ease;
+    -webkit-transition:all 0.5s ease;
+}
+
+.education-arrow-hover-effect :hover .right-arrow li:last-child{
+    transform:translate3d(8px, -1px, 0);
+    transition:all 0.5s ease;
+    -webkit-transition:all 0.5s ease;
+}
+
+.education-arrow-hover-effect  .right-arrow li:last-child svg path{
+    transition:all 0.5s ease;
+    -webkit-transition:all 0.5s ease;
+}
+.education-arrow-hover-effect .right-arrow svg {
+    top: 2px;
+    margin-top: 2px !important;
+    padding-top: 2px;
+}
+
+.education-arrow-hover-effect:hover .right-arrow li:last-child svg path{
+    transition:all 0.5s ease;
+    -webkit-transition:all 0.5s ease;
+    stroke:#FF632D;
+}
+
+/*** Arrow Effect End ***/
+
+.education-accordion .radiantthemes-accordion.element-four .img-upload{
+    padding: 24px 10px 18px 0;
+}
+
+/**************************************
+        Education End
+**************************************/
+
+/**************************************
+        Financial Service Start
+**************************************/
+/*** What To D0 Start ***/
+.financial-services-hover-div{
+    overflow:hidden;
+}
+
+.financial-services-hover-div .hover-text-section{
+position:absolute;
+bottom:-50px;
+transition: all 0.7s ease;
+-webkit-transition: all 0.7s ease;
+overflow:hidden;
+}
+
+.financial-services-hover-div:hover .hover-text-section{
+bottom:0;
+transition: all 0.7s ease;
+-webkit-transition: all 0.7s ease;
+overflow:hidden;
+}
+/*** What To D0 End ***/
+
+.financial-services-g-img .elementor-star-rating {
+    margin:0 !important;
+}
+
+/**************************************
+        Financial Service End
+**************************************/
+
+/**************************************
+        Cosulting Company Start
+**************************************/
+
+.consulting-change-color b{
+    color:#30353b !important;
+    font-weight:600 !important;
+}
+
+.consulting-image-shadow img{
+    filter: drop-shadow(3px 4px 27px rgba(0,0,0,0.06));
+}
+
+
+/* Hover Effect Start */
+
+.consulting-company-box-hover-effect:hover .elementor-icon-list-item .elementor-icon-list-text{
+    color:#873eda;
+}
+
+.consulting-company-number-hover-effect:hover .number-effect .elementor-widget-container{
+    background-color:#873eda;
+    color:#ffffff;
+}
+
+/*** Arrow Effect Start ***/
+
+.consulting-company-arrow-hover-effect .right-arrow li:last-child{
+    transform:translate3d(-8px, 0, 0);
+    transition:all 0.5s ease;
+    -webkit-transition:all 0.5s ease;
+}
+
+.consulting-company-arrow-hover-effect :hover .right-arrow li:last-child{
+    transform:translate3d(8px, 0, 0);
+    transition:all 0.5s ease;
+    -webkit-transition:all 0.5s ease;
+}
+
+.consulting-company-arrow-hover-effect  .right-arrow li:last-child svg path{
+    transition:all 0.5s ease;
+    -webkit-transition:all 0.5s ease;
+}
+
+.consulting-company-arrow-hover-effect:hover .right-arrow li:last-child svg path{
+    transition:all 0.5s ease;
+    -webkit-transition:all 0.5s ease;
+    stroke:#873eda;
+}
+
+/*** Newsletter Start ***/
+
+.consulting_company_mail{
+    width:100%;
+  height:53px;
+    border:0;
+    padding-left:25px;
+    border-radius: 28px;
+  background-color: #ffffff;
+    color:#696e79;
+}
+
+.consulting_company_btn{
+    position:absolute;
+    top: 7px;
+  right: 7px;
+    width: 40px;
+    height: 40px;
+    border:0;
+    color: transparent;
+    border-radius: 50em ;
+    background-color:#873eda;
+    background-image:url('/consulting-company/wp-content/uploads/sites/56/2022/04/newsletter-arrow-right.svg');
+ background-size:20px 20px;
+ background-repeat:no-repeat;
+ background-position:center center;
+    transition:all 0.3s ease;
+    -webkit-transition:all 0.3s ease;
+}
+
+.consulting_company_btn:hover{
+    background-position:70% 50%;
+    transition:all 0.3s ease;
+    -webkit-transition:all 0.3s ease;
+}
+
+/*** Newsletter End ***/
+.header-search .rt-search-cart-holder .rt-search-box3, .header-search .rt-right-menu-holder .rt-search-box3 {
+border-left: 1px solid #858585;
+}
+@media only screen and (min-width: 1025px) and (max-width: 1280px) {
+    .rt-header-inner .elementor-section-boxed .consulting-header .rt-header {
+    padding: 10px 0 !important;
+    }
+
+}
+
+@media only screen and (min-width: 1281px) and (max-width: 1366px) {
+    .rt-header-inner .elementor-section-boxed .consulting-header .rt-header {
+    padding: 0 !important;
+    }
+
+    *.rt-header-inner .elementor-section-boxed .consulting-header .rt-header.fixed {
+    padding: 0px 15px !important;
+    }
+}
+
+/**************************************
+        Cosulting Company End
+**************************************/
+
+/**************************************
+        Digital Agency Start
+**************************************/
+.digi-business-box:hover .elementor-widget-wrap {
+    background-color: #0c0d0f !important;
+}
+.digi-business-box:hover .elementor-widget-wrap .elementor-icon {
+    background-color: #D6FA51 !important;
+}
+.digi-business-box:hover .elementor-widget-wrap .elementor-icon svg {
+    fill: #161616 !important;
+}
+.digi-business-box:hover .elementor-widget-wrap .elementor-heading-title,
+.digi-business-box:hover .elementor-widget-wrap .elementor-widget-container,
+.digi-business-box:hover .elementor-widget-wrap .radiantthemes-custom-button a.rt-readmore-btn {
+    color: #fff !important;
+}
+
+@media only screen and (max-width: 1024px) {
+    .rt-nav-sidebar-menu .rt-mobile-toggle-holder .rt-mobile-toggle {
+    display: inline-flex;
+width: 18px;
+align-items: center;
+transition: none;
+vertical-align: middle;
+position: relative;
+top: 0px;
+}
+}
+
+
+@media only screen and (max-width: 1326px) and (min-width: 1199px){
+.consultino-website-layout.full-width.body-inner{
+    padding-left:80px;
+}
+#rev_slider_1_1_wrapper{
+    width:calc(100% - 80px) !important;
+    left:0 !important;
+    }
+}
+@media only screen and (min-width: 1024px){
+.digital-agency-image-border-box:after{
+    content:"";
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    height:100%;
+    max-width:468px;
+    max-height:528px;
+    border:10px solid #000;
+    z-index:-1;
+}
+}
+
+.digital-agency-image-shadow img{
+    border-radius: 20px;
+filter: drop-shadow(3px 4px 14px rgba(0,0,0,0.08));
+}
+
+.digital-agency-image-shadow img{
+    box-shadow: 3px 4px 41px rgba(0,0,0,0.12);
+}
+@media only screen and (min-width: 768px){
+.digital-agency-position-change{
+    position:absolute !important;
+    bottom:100px;
+    left:0;
+}
+}
+/**** Digital Agency Hover Effect Start ****/
+.digital-agency-hover-effect:hover .elementor-icon svg{
+    fill:#161616 !important;
+}
+
+.digital-agency-hover-effect:hover .elementor-icon{
+    background-color:#d6fa51 !important;
+}
+
+.digital-agency-hover-effect:hover
+.elementor-heading-title, .digital-agency-hover-effect:hover .elementor-widget-container{
+    color:#ffffff !important;
+}
+
+.digital-agency-hover-effect:hover .radiantthemes-custom-button.element-four .rt-arrow-btn .rt-readmore-btn{
+    color:#ffffff !important;
+}
+/**** Digital Agency Hover Effect End ****/
+
+/*** Checked Effect Start ***/
+
+.checked-circle-effect-main .elementor-icon{
+    transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+}
+
+.checked-circle-effect-main:hover .elementor-icon{
+    background-color:#d6fa51 ;
+    transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+}
+
+
+.digital-agency-icon-box-shadow .elementor-icon{
+filter: drop-shadow(10px 15px 15px rgba(115,96,168,0.24));
+}
+
+@media only screen and (min-width: 1024px){
+    .digital-agency-connect-line:before{
+    content:"";
+    position:absolute;
+    top:5px;
+    left:22px;
+    width:1px;
+    height:100%;
+    background:#dedede;
+}
+}
+
+
+/*** Checked Effect End ***/
+
+/*** Newsletter Start ***/
+
+.digital_agency_name,
+.digital-agency-mail{
+    width: calc(40% - 20px);
+    height: 57px;
+    border:0;
+    border-radius: 28px;
+    background-color: #ffffff;
+    font-size: 14px;
+    color: #999999;
+    padding-left:25px;
+    margin-right:20px
+}
+.digital_agency_btn{
+    width: 20%;
+    height: 57px;
+    border:0;
+    border-radius: 28px;
+    background-color: #d6fa51;
+    color:#30353b;
+    font-size: 13px;
+text-transform: uppercase;
+line-height: 29px;
+letter-spacing: 2.5px;
+}
+
+@media only screen and (max-width: 550px){
+.digital_agency_name,
+.digital-agency-mail,
+.digital_agency_btn{
+    width: 100%;
+    margin-right:0;
+    margin-bottom:10px;
+    }
+}
+
+/**************************************
+        Digital Agency End
+**************************************/
+
+/**************************************
+        Software Start
+**************************************/
+.prefix-off .elementor-counter-number-prefix{
+    display:none;
+}
+
+.position-left .elementor-widget-wrap{
+    width:auto;
+}
+
+.underline-position .rt-underline-txt{
+    top:23px;
+}
+
+@media screen and (max-width: 1400px){
+    .responsive-position-right.elementor-widget-image{
+        right:0 !important;
+    }
+    .responsive-position-left.elementor-widget-image{
+        left:0 !important;
+    }
+}
+
+
+.change-color .elementor-widget-container b,
+.color-change-list.elementor-list-item-link-full_width a{
+    color:#ffffff;
+    font-weight:500;
+}
+
+.list-center-position .elementor-inline-item{
+    align-items:center;
+}
+
+/*** How It Work Hover Effect Start ***/
+
+.how-it-works-hover:hover .software-hover-main .elementor-element-populated{
+    background-color: #00BC8A !important;
+    transition: 0.3s ease;
+    -webkit-transition: 0.3s ease;
+}
+
+.google-img .elementor-star-rating {
+    margin: 0 !important;
+}
+
+.how-it-works-hover:hover .software-hover-main .elementor-widget-container,
+.how-it-works-hover:hover .software-hover-main .elementor-heading-title{
+    color: #ffffff;
+    transition: 0.3s ease;
+    -webkit-transition: 0.3s ease;
+}
+/*** How It Work Hover Effect End ***/
+
+/**************************************
+        Software End
+**************************************/
+
+/**************************************
+        App Develpoment Start
+**************************************/
+
+.container-space.elementor-section-full_width{
+    max-width:1503px;
+    border-radius:12px;
+}
+.app-development-image-shadow img{
+filter: drop-shadow(3px 4px 27px rgba(0,0,0,0.06));
+}
+.text-bold-effect b{
+    color:#30353b;
+}
+
+.position-left .elementor-widget-wrap{
+    width:auto;
+}
+
+/*** Checked Effect Start ***/
+
+.checked-circle-effect-main .elementor-icon{
+    transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+}
+
+.checked-circle-effect-main:hover .elementor-icon{
+    background-color:#ffffff !important;
+    transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+    filter: drop-shadow(10px 15px 15px rgba(115,96,168,0.24));
+}
+
+.checked-circle-effect-main:hover .elementor-icon svg{
+    fill:#7347fb !important;
+    transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+}
+
+@media screen and (min-width:768px){
+.app-development-connect-line:before{
+    content:"";
+    position:absolute;
+    top:5px;
+    left:22px;
+    width:1px;
+    height:100%;
+    background:#dedede;
+}
+}
+/*** Checked Effect End ***/
+
+/*** Newsletter Start ***/
+
+.app-development-name,
+.app-development-mail{
+    width: calc(40% - 20px);
+    height: 53px;
+    border:0;
+    border-radius: 28px;
+    background-color: #ffffff;
+    font-size: 14px;
+    color: #999999;
+    padding-left:25px;
+    margin-right:20px;
+}
+.app-development-btn{
+    font-size: 16px;
+    font-weight: normal;
+    text-transform: capitalize;
+    line-height: 28px;
+    letter-spacing: 0.5px;
+    width: 20%;
+    height: 53px;
+    border:0;
+    border-radius: 28px;
+    background-color: #59cc72;
+    color:#ffffff;
+}
+
+@media only screen and (max-width: 550px){
+.app-development-name,
+.app-development-mail,
+.app-development-btn{
+    width: 100%;
+    margin-right:0;
+    margin-bottom:10px;
+    }
+}
+/**************************************
+        App Develpoment End
+**************************************/
+
+/**************************************
+        Marketing Agency Start
+**************************************/
+/*** Hover Effect Start ***/
+.marketing-agency-hover-effect:hover .elementor-heading-title,
+.marketing-agency-hover-effect:hover .elementor-widget-container{
+    color:#ffffff!important;
+}
+/*** Hover Effect End ***/
+/*** Progress Bar Start ***/
+
+.progress-style .rt-progressbar-bar{
+    float:left;
+    filter: drop-shadow(8px 16px 15px rgba(0,0,0,0.13));
+}
+.progress-style .rt-progressbar-right-label{
+    text-align:right;
+    margin: 0px 0px 0px 0px !important;
+}
+.progress-style .rt-progressbar-left-label{
+    margin-bottom:-28px !important;
+}
+
+
+/*** Progress Bar End ***/
+
+.counter-effect .elementor-counter-number-wrapper{
+    display: block;
+text-align: right;
+}
+
+.connect-us span{
+background: -webkit-linear-gradient(111deg, #ff654b 0%, #fe7d45 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+/*** Move Image Start ***/
+.marketing-agency-move-image{
+offset-path: path('M 0 0 Q 36 3 74 0');
+  animation: move 8000ms infinite alternate ease-in-out;
+}
+
+@keyframes move {
+  0% {
+    offset-distance: 0%;
+  }
+  100% {
+    offset-distance: 100%;
+  }
+}
+/*** Move Image End ***/
+@media (max-width: 1024px) and (min-width: 768px){
+.marketing-agency-accordion .collapse.show {
+margin: 0;
+    }}
+
+/* HEADER CSS FIX */
+
+/*@media screen and (min-width: 1420px) {
+    .market-agency-header .rt-header.style2.mobile-header-style1 {
+    background:#fff;
+    padding-left: 15px;
+  padding-right: 15px;
+  border-radius: 4px;
+    box-shadow:0px 0px 30px 0px rgb(0 0 0 / 6%);
+    }
+}*/
+
+.marketing-agency-btn .radiantthemes-custom-button.element-four a.rt-readmore-btn::after {
+    display:none;
+}
+
+.marketing-agency-case .rt-case-styleone a.rt-readmore-btn {
+    font-size: 16px;
+  line-height: 28px;
+  font-weight: 700;
+    text-transform:capitalize;
+}
+
+@media (max-width: 767px) {
+    .elementor-image-box-wrapper .elementor-image-box-img {
+        margin-bottom:20px;
+    }
+    .marketing-agency-imgbox .elementor-image-box-img {
+        padding-bottom:15px;
+    }
+}
+
+/**************************************
+        Marketing Agency End
+**************************************/
+
+/**************************************
+        Shop Fashion Start
+**************************************/
+.gap-space .elementor-column-gap-default{
+    column-gap:30px;
+}
+
+.image_object_fit img{
+    object-fit:cover;
+}
+.change-bg-position .elementor-background-overlay{
+    width:50%;
+}
+
+@media only screen and (min-width: 1025px){
+.bg-position .elementor-background-overlay{
+    width:50% !important;
+    left:50%;
+}
+
+}
+/*** Newsletter Start ***/
+
+.shop_newsletter_main p{
+    display:inline-flex;
+}
+
+.shop_newsletter_mail{
+    width:100%;
+    height:53px;
+    border:0;
+    padding-left:25px;
+  background-color: #ffffff;
+    color:#30353b;
+}
+
+.shop_newsletter_btn{
+    width: 25%;
+    height: 53px;
+    border:0;
+    color: #ffffff;
+    background-color:#151515;
+    padding:0 15px;
+}
+
+@media screen and (max-width: 10248px){
+    .shop_newsletter_btn{
+    width: 35%;
+    }
+}
+
+/*** Newsletter End ***/
+
+/**************************************
+        Shop Fashion End
+**************************************/
+
+/**************************************
+        Startup Company Start
+**************************************/
+
+
+.position-left .elementor-widget-wrap{
+    width:auto;
+}
+.prefix-off .elementor-counter-number-prefix{
+    display:none;
+}
+
+@media only screen and (max-width: 1100px){
+.bg-off .elementor-background-overlay{
+    width:0;
+}
+}
+
+/** Arrow Effect Start**/
+.arrow-color-change .elementor-icon svg path{
+    transform:translate3d(0, 0, 0);
+    -webkit-transform:translate3d(0, 0, 0);
+    transition:all 0.5s ease;
+    -webkit-transition:all 0.5s ease;
+}
+
+
+.arrow-color-change:hover .elementor-icon svg path{
+    fill: #fe593d;
+    transform:translate3d(-15px, 0, 0);
+    -webkit-transform:translate3d(-15px, 0, 0);
+    transition:all 0.5s ease;
+    -webkit-transition:all 0.5s ease;
+}
+@media only screen and (max-width:1200px){
+    .image-off .elementor-icon svg{
+        width: 0;
+    }
+}
+/** Arrow Effect End**/
+.icon-box-shadow .elementor-icon{
+filter: drop-shadow(10.324px 14.745px 14.5px rgba(115,96,168,0.24));
+}
+
+/*** Checked Effect Start ***/
+
+.checked-circle-effect-main .elementor-icon{
+    transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+}
+
+.checked-circle-effect-main:hover .elementor-icon{
+    background-color:#7360a8 ;
+    transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+}
+
+.checked-circle-effect-main:hover .elementor-icon svg{
+    fill:#ffffff;
+    transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+}
+
+.startup-company-connect-line:before{
+    content:"";
+    position:absolute;
+    top:5px;
+    left:22px;
+    width:1px;
+    height:100%;
+    background:#dedede;
+}
+
+/*** Checked Effect End ***/
+
+/**** Hover Effect Second Start ****/
+.startup-company-hover-effect02:hover .move-up{
+      transform: translate3d(0, -10px, 0);
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+}
+.startup-company-hover-effect02 .move-up{
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+}
+
+.startup-company-change-color:hover .change-color .elementor-heading-title,
+.startup-company-change-color:hover .change-color .elementor-widget-container{
+    color:#fff;
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+}
+
+
+.startup-company-hover-effect02:hover .change-color .elementor-element-populated{
+    background-color: #FE593D!important;
+}
+
+/**** Hover Effect Second End ****/
+
+.cloud_moving{
+offset-path: path('M 0 0 L 70 0');
+  animation: move 6000ms infinite alternate ease-in-out;
+}
+
+@keyframes move {
+  0% {
+    offset-distance: 0%;
+  }
+  100% {
+    offset-distance: 100%;
+  }
+}
+
+/*** Service Form Start ***/
+.startup-company-name{
+    width:100%;
+    margin-bottom:15px;
+}
+.startup-company-phone-no{
+    width:calc(50% - 20px);
+    margin-right:20px;
+}
+.startup-company-mail{
+    width:calc(50% - 20px);
+    margin-left:20px;
+}
+.startup-company-msg{
+    width:100%;
+    height:113px;
+    resize:none;
+    border:0;
+    background-color:transparent;
+    border-bottom: 1px solid #cfcfcf;
+    padding-top:25px;
+    margin-bottom:25px;
+    color:#696e79;
+}
+
+.startup-company-name, .startup-company-phone-no, .startup-company-mail{
+    height:53px;
+    border:0;
+    color:#696e79;
+    background-color:transparent;
+    border-bottom: 1px solid #cfcfcf;
+}
+
+.startup-company-name::placeholder,
+.startup-company-phone-no::placeholder,
+.startup-company-mail::placeholder{color:#696e79;}
+
+
+.startup-company-btn{
+    font-size:16px;
+    line-height:28px;
+    font-weight:600;
+    text-transform:Capitalized;
+    border:0;
+    letter-spacing:1px;
+    padding:14px 44px;
+    border-radius: 28px;
+    background-color: #fe593d;
+    color:#ffffff;
+}
+
+.startup-company-accodian p {
+    margin-bottom:0;
+}
+
+.startup-company-accodian .card-body {
+    padding: 1rem 1rem 0.5rem 1rem;
+}
+
+.startup-company-accodian .radiantthemes-accordion.element-one .mb-0 {
+    padding:6px 10px;
+}
+
+@media screen and (max-width:767px) {
+    .startup-company-phone-no,
+    .startup-company-mail{
+width: 100%;
+margin-right: 0;
+    margin-left:0;
+}
+.rt-consult-form p{padding-bottom:0; margin-bottom:0;}
+    .connect-line:before {
+        display:none;
+    }
+
+    .startup-company-accodian .radiantthemes-accordion.element-one .mb-0 {
+        width:100%;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .consulting-header .rt-mobile-toggle-holder .rt-mobile-toggle {
+        top: -3px;
+    }
+}
+/*** Service Form End ***/
+
+.radiantthemes-separator.element-one > .radiantthemes-separator-block {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    overflow: hidden;
+}
+
+/**************************************
+        Startup Company End
+**************************************/
+
+/**************************************
+        Startup Start
+**************************************/
+.rt-social-section{
+    border-left: 1px solid #30353B;
+}
+.rt-search-cart-holder .rt-search-box3{
+    border-left: 1px solid transparent;
+}
+@media (min-width:768px){
+.step-position-left .elementor-widget-wrap{
+    width:auto;
+}
+}
+/**** Banner Effect Start ****/
+/*** Button Start***/
+.startup-btn .radiantthemes-custom-button.element-four .rt-arrow-btn svg{
+    fill:none !important;
+    margin-left:0 !important;
+}
+
+.button-underline-black .radiantthemes-custom-button.element-four a.rt-readmore-btn::after{
+    background:#30353B;
+}
+
+/*** Button End***/
+
+.cloud_moving{
+offset-path: path('M 0 0 L 70 0');
+  animation: move 6000ms infinite alternate ease-in-out;
+}
+
+@keyframes move {
+  0% {
+    offset-distance: 0%;
+  }
+  100% {
+    offset-distance: 100%;
+  }
+}
+
+.circle-move {
+    -webkit-animation: rotate-center 6s linear infinite forwards;
+            animation: rotate-center 6s linear infinite forwards;
+}
+
+@-webkit-keyframes rotate-center {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@keyframes rotate-center {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+/**** Banner Effect End ****/
+
+/**** Hover Effect First Start ****/
+
+.startup-hover-effect:hover .elementor-icon svg path{
+    fill:#fff;
+}
+.startup-bg-clr01:hover .elementor-view-stacked .elementor-icon{
+    background-color:#0160e7!important;
+}
+.startup-bg-clr02:hover .elementor-view-stacked .elementor-icon{
+    background-color:#ff9c27!important;
+}
+.startup-bg-clr03:hover .elementor-view-stacked .elementor-icon{
+    background-color:#fe4c1c!important;
+}
+
+.startup-bg-clr04:hover .elementor-view-stacked .elementor-icon{
+    background-color:#68A885!important;
+}
+.startup-hover-effect:hover .elementor-view-stacked .elementor-icon{
+    filter: drop-shadow(5px 12px 5px rgba(0,0,0,0.06))
+}
+.startup-hover-effect02 .elementor-view-stacked .elementor-icon{
+    filter: drop-shadow(5px 12px 5px rgba(0,0,0,0.06))
+}
+
+.startup-moving-up-effect:hover{
+    transform: translate3d(0, -10px, 0);
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+}
+
+.startup-moving-up-effect{
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+}
+/**** Hover Effect First End ****/
+/**** Progress Start ****/
+.progress-style .rt-progressbar-left-label{
+    margin-bottom:-26px;
+}
+.progress-style .rt-progressbar-bar{
+    float:left;
+}
+.progress-style .rt-progressbar-right-label{
+    text-align:right;
+    margin-bottom:8px;
+}
+/**** Progress End ****/
+/**** Hover Effect Second Start ****/
+.startup-hover-effect02:hover .move-up{
+      transform: translate3d(0, -10px, 0);
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+}
+.startup-hover-effect02 .move-up{
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+}
+
+.startup-change-color:hover .change-color .elementor-widget-container{
+    background-color:#F40460;
+}
+.startup-change-color:hover .change-color .elementor-heading-title{
+    color:#fff;
+}
+.startup-change-color .change-color .elementor-widget-container{
+    background-color:#fff;
+    border-radius:4px;
+}
+/**** Hover Effect Second End ****/
+
+.prefix-off .elementor-counter-number-prefix{
+    display:none;
+}
+
+.elementor-icon i::before, .elementor-icon svg::before{
+    top:50%;
+}
+.position-change{
+    position:absolute;
+    left:0;
+    bottom:-100px;
+}
+
+@media only screen and (max-width: 767px){
+    .position-change{
+        position:unset;
+        bottom:0;
+    }
+}
+
+.startup-btn .radiantthemes-custom-button.element-four a.rt-readmore-btn::after {
+    background:#30353B;
+    bottom: -1px;
+}
+
+.startup-btn .radiantthemes-custom-button.element-four .rt-arrow-btn {
+    border-bottom: 1px solid #30353B;
+    border-radius:0px;
+}
+
+.startup-header .rt-search-cart-holder {
+    margin-top:-5px;
+}
+/**************************************
+        Startup End
+**************************************/

@@ -77,7 +77,7 @@
             </style>
             <link rel='stylesheet' id='bootstrap-css' href='https://rosetheme.us/consultino/wp-content/themes/consultino/assets/css/bootstrap.min.css?ver=1731229253' media='all' />
             <link rel='stylesheet' id='consultino-fonts-css' href='https://fonts.googleapis.com/css?family=IranYekan%3Aregular%7CEstedad-Bold%3A600%7CEstedad-Bold%3A600%7CEstedad-Bold%3A600%7CEstedad-Bold%3A600%7CEstedad-Bold%3A600%7CEstedad-Bold%3A600%7CIranYekan%3Aregular%7CIranYekan%3A600%7CIranYekan%3A600%7CSora%3A600%7CSora%3A600%7CSora%3A600%7CSora%3A600&#038;subset=latin&#038;display=fallback' media='all' />
-            <link rel='stylesheet' id='consultino-custom-css' href='https://rosetheme.us/consultino/wp-content/themes/consultino/assets/css/consultino-custom.css?ver=1731229253' media='all' />
+            <link rel='stylesheet' id='consultino-custom-css' href='/css/consultino-custom.css?ver=1731229253' media='all' />
             <link rel='stylesheet' id='consultino-menu-css' href='https://rosetheme.us/consultino/wp-content/themes/consultino/assets/css/header-menu.css?ver=1731229253' media='all' />
             <link rel='stylesheet' id='consultino-style-css' href='https://rosetheme.us/consultino/wp-content/themes/consultino/style.css?ver=1731229253' media='all' />
             <link rel='stylesheet' id='elementor-icons-css' href='https://rosetheme.us/consultino/wp-content/plugins/elementor/assets/lib/eicons/css/elementor-icons.min.css?ver=5.17.0' media='all' />
@@ -436,7 +436,7 @@
                                                     <a href="http://ایران%20،%20تهران%20،%20خیابان%20ولیعصر">
 
 												<span class="elementor-icon-list-icon">
-							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#CE846B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>						</span>
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#466DB4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>						</span>
                                                         <span class="elementor-icon-list-text">ایران ، تهران ، خیابان ولیعصر</span>
                                                     </a>
                                                 </li>
@@ -454,7 +454,7 @@
                                                     <a href="#">
 
 												<span class="elementor-icon-list-icon">
-							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#CE846B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-phone-call"><path d="M15.05 5A5 5 0 0 1 19 8.95M15.05 1A9 9 0 0 1 23 8.94m-1 7.98v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>						</span>
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#466DB4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-phone-call"><path d="M15.05 5A5 5 0 0 1 19 8.95M15.05 1A9 9 0 0 1 23 8.94m-1 7.98v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>						</span>
                                                         <span class="elementor-icon-list-text">سوالی دارید؟ تلفن 09121234567</span>
                                                     </a>
                                                 </li>
@@ -462,7 +462,7 @@
                                                     <a href="#">
 
 												<span class="elementor-icon-list-icon">
-							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#CE846B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>						</span>
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#466DB4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>						</span>
                                                         <span class="elementor-icon-list-text">ایمیل: info@examples.com</span>
                                                     </a>
                                                 </li>
@@ -1636,14 +1636,14 @@
                                                             </header>
                                                             <nav id="mobile-menu" class="side-panel">
                                                                 <header class="side-panel-header">
-                                                                    <span><img src="https://rosetheme.us/consultino/wp-content/uploads/2022/09/home29.svg" alt="logo" width="220" height="42"></span>
+                                                                    <span><img src="{{url("/images/logo-r.png")}}" alt="logo" width="220" height="42"></span>
                                                                     <div class="rt-toggle-close rt-close-btn" title="Close"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0" y="0" width="12" height="12" viewBox="1.1 1.1 12 12" enable-background="new 1.1 1.1 12 12" xml:space="preserve">
                 <path d="M8.3 7.1l4.6-4.6c0.3-0.3 0.3-0.8 0-1.2 -0.3-0.3-0.8-0.3-1.2 0L7.1 5.9 2.5 1.3c-0.3-0.3-0.8-0.3-1.2 0 -0.3 0.3-0.3 0.8 0 1.2L5.9 7.1l-4.6 4.6c-0.3 0.3-0.3 0.8 0 1.2s0.8 0.3 1.2 0L7.1 8.3l4.6 4.6c0.3 0.3 0.8 0.3 1.2 0 0.3-0.3 0.3-0.8 0-1.2L8.3 7.1z"></path>
             </svg></div>
                                                                 </header>
                                                                 <div class="side-panel-inner mobile-side-panel-inner">
                                                                     <div class="mobile-menu-top">
-                                                                        <form role="search" class="woocommerce-product-search rt-product-search" action="https://rosetheme.us/consultino/">
+                                                                        <form role="search" class="woocommerce-product-search rt-product-search" action="/">
                                                                             <label class="search-lebel">Search for:</label>
                                                                             <input type="search" class="search-field" placeholder="Search…" name="s">
                                                                             <button type="submit" value="Search" aria-label="Search">
@@ -2269,7 +2269,7 @@
                                     <div class="elementor-element elementor-element-1fa1845d elementor-absolute elementor-hidden-tablet elementor-hidden-mobile elementor-widget elementor-widget-image" data-id="1fa1845d" data-element_type="widget" data-settings="{&quot;_position&quot;:&quot;absolute&quot;}" data-widget_type="image.default">
                                         <div class="elementor-widget-container">
                                             <style>/*! elementor - v3.10.2 - 29-01-2023 */
-                                                .elementor-widget-image{text-align:center}.elementor-widget-image a{display:inline-block}.elementor-widget-image a img[src$=".svg"]{width:48px}.elementor-widget-image img{vertical-align:middle;display:inline-block}</style>												<img decoding="async" src="https://rosetheme.us/consultino/wp-content/uploads/elementor/thumbs/image_5@2x-pv8c4y6htsw5sh2s3ezxnhpus8ug6inu1r5ygk8612.png" title="image_5@2x.png" alt="image_5@2x.png" loading="lazy" />															</div>
+                                                .elementor-widget-image{text-align:center}.elementor-widget-image a{display:inline-block}.elementor-widget-image a img[src$=".svg"]{width:48px}.elementor-widget-image img{vertical-align:middle;display:inline-block}</style>												<img decoding="async" src="/images/book.png" title="image_5@2x.png" alt="image_5@2x.png" loading="lazy" />															</div>
                                     </div>
                                 </div>
                             </div>
@@ -2979,7 +2979,7 @@
                                     <div class="elementor-element elementor-element-170ca7c3 elementor-widget__width-initial elementor-absolute elementor-hidden-tablet elementor-hidden-mobile elementor-widget elementor-widget-radiant-image-scroll" data-id="170ca7c3" data-element_type="widget" data-settings="{&quot;_position&quot;:&quot;absolute&quot;}" data-widget_type="radiant-image-scroll.default">
                                         <div class="elementor-widget-container">
                                             <div class="item" rt-data-move="fade-zoom-in" rt-data-move-anchor-placement="top-bottom"><a class="rt-link" href="">
-                                                    <img decoding="async" class="rt-img"  src="https://rosetheme.us/consultino/wp-content/uploads/2022/09/image16.png" alt="دموی مشاوره زندگی" srcset="https://rosetheme.us/consultino/wp-content/uploads/2022/09/image16.png 1x, 2x"/>
+                                                    <img decoding="async" class="rt-img"  src="{{url("/images/image16.png")}}" alt="دموی مشاوره زندگی" srcset="{{url("/images/image16.png")}} 1x, 2x"/>
 
                                                 </a>		</div>
 
@@ -3212,12 +3212,9 @@
                                             <div class="elementor-widget-wrap elementor-element-populated">
                                                 <div class="elementor-element elementor-element-68f4e322 elementor-widget elementor-widget-image" data-id="68f4e322" data-element_type="widget" data-widget_type="image.default">
                                                     <div class="elementor-widget-container">
-                                                        <img width="314" height="60" src="https://rosetheme.us/consultino/wp-content/uploads/2022/09/home29.svg" class="attachment-full size-full wp-image-38260" alt="" loading="lazy" />															</div>
+                                                        <img width="314" height="60" src="{{url("/images/logo-r.png")}}" class="attachment-full size-full wp-image-38260" alt="" loading="lazy" />															</div>
                                                 </div>
-                                                <div class="elementor-element elementor-element-65e34c4f elementor-widget elementor-widget-text-editor" data-id="65e34c4f" data-element_type="widget" data-widget_type="text-editor.default">
-                                                    <div class="elementor-widget-container">
-                                                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>						</div>
-                                                </div>
+
                                                 <div class="elementor-element elementor-element-7ed52c54 elementor-shape-circle e-grid-align-left e-transform elementor-grid-0 elementor-widget elementor-widget-social-icons" data-id="7ed52c54" data-element_type="widget" data-settings="{&quot;_transform_flipX_effect&quot;:&quot;transform&quot;}" data-widget_type="social-icons.default">
                                                     <div class="elementor-widget-container">
                                                         <style>/*! elementor - v3.10.2 - 29-01-2023 */
@@ -3251,7 +3248,7 @@
                                             <div class="elementor-widget-wrap elementor-element-populated">
                                                 <div class="elementor-element elementor-element-6bfa5b32 elementor-widget elementor-widget-heading" data-id="6bfa5b32" data-element_type="widget" data-widget_type="heading.default">
                                                     <div class="elementor-widget-container">
-                                                        <h6 class="elementor-heading-title elementor-size-default">شرکت</h6>		</div>
+                                                        <h6 class="elementor-heading-title elementor-size-default">منو</h6>		</div>
                                                 </div>
                                                 <div class="elementor-element elementor-element-c21e961 elementor-icon-list--layout-inline elementor-align-right elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="c21e961" data-element_type="widget" data-widget_type="icon-list.default">
                                                     <div class="elementor-widget-container">
@@ -3307,7 +3304,7 @@
                                             <div class="elementor-widget-wrap elementor-element-populated">
                                                 <div class="elementor-element elementor-element-3ae9e592 elementor-widget elementor-widget-heading" data-id="3ae9e592" data-element_type="widget" data-widget_type="heading.default">
                                                     <div class="elementor-widget-container">
-                                                        <h6 class="elementor-heading-title elementor-size-default">لینک های سریع</h6>		</div>
+                                                        <h6 class="elementor-heading-title elementor-size-default">آخرین مطالب</h6>		</div>
                                                 </div>
                                                 <div class="elementor-element elementor-element-519a758b elementor-icon-list--layout-inline elementor-align-right elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="519a758b" data-element_type="widget" data-widget_type="icon-list.default">
                                                     <div class="elementor-widget-container">
