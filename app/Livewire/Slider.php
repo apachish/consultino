@@ -1,0 +1,14 @@
+<?php
+
+namespace App\Livewire;
+
+use Livewire\Component;
+
+class Slider extends Component
+{
+    public $type = "textslider";
+    public function render()
+    {
+        return view('livewire.slider');
+    }
+}
