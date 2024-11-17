@@ -21,6 +21,8 @@ Route::get('/', function () {
 Route::get('/', \App\Livewire\Home::class)->name("home");
 Route::get('/contact-us', \App\Livewire\ContactUs::class)->name("contact-us");
 Route::get('/about-us', \App\Livewire\AboutUs::class)->name("about-us");
+Route::get('/blog', \App\Livewire\Blog::class)->name("blog");
+Route::get('/blog/{slug}', \App\Livewire\BlogDetails::class)->name("blog.details");
 
 
 
