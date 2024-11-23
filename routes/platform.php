@@ -63,7 +63,7 @@ Route::screen('users', UserListScreen::class)
         ->parent('platform.index')
         ->push(__('Users'), route('platform.systems.users')));
 
-Route::screen('doctors', UserListScreen::class)
+Route::screen('doctors', \App\Orchid\Screens\User\DoctorList::class)
     ->name('platform.systems.doctors')
     ->breadcrumbs(fn (Trail $trail) => $trail
         ->parent('platform.index')

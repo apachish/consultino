@@ -4,10 +4,10 @@ namespace App\Livewire\Auth;
 
 use Livewire\Component;
 
-class Register extends Component
+class Email extends Component
 {
     public function render()
     {
-        return view('livewire.auth.register');
+        return view('livewire.auth.email');
     }
 }

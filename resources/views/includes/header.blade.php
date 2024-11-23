@@ -47,13 +47,22 @@
                         <li>
                             <button title="Search" class="header-searchtrigger"><i class="fa fa-search"></i></button>
                         </li>
+{{--                        <li>--}}
+{{--                            <a href="cart.html" title="Shopping Cart"><i class="fa fa-shopping-cart"></i></a>--}}
+{{--                        </li>--}}
+                        @auth
                         <li>
-                            <a href="cart.html" title="Shopping Cart"><i class="fa fa-shopping-cart"></i></a>
+                            <button title="dashboard" class="header-loginformtrigger" type="button"
+                                    onclick="window.location='{{route("platform.main")}}'"
+                                    ><i class="fa fa-user"></i></button>
                         </li>
-                        <li>
-                            <button title="Login / Register" class="header-loginformtrigger" type="button"
-                                    data-toggle="modal" data-target="#tm-loginregister-popup"><i class="fa fa-user"></i></button>
-                        </li>
+                        @else
+                            <li>
+                                <button title="Login / Register" class="header-loginformtrigger" type="button"
+                                        data-toggle="modal" data-target="#tm-loginregister-popup"><i class="fa fa-user"></i></button>
+                            </li>
+                        @endauth
+
                     </ul>
                 </div>
 

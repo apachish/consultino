@@ -321,7 +321,7 @@
         </div>
         <!--// Footer Area -->
 
-        <!-- Login Register Popup -->
+        <!-- Mobile Register Popup -->
         <div class="tm-loginregister-popup modal fade" id="tm-loginregister-popup" role="dialog" aria-hidden="true">
             <div class="container">
                 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -408,7 +408,7 @@
                 </div>
             </div>
         </div>
-        <!--// Login Register Popup -->
+        <!--// Mobile Register Popup -->
 
     </div>
     <!--// Wrapper -->

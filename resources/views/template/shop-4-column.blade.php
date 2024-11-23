@@ -609,7 +609,7 @@
         </div>
         <!--// Footer Area -->
 
-        <!-- Login Register Popup -->
+        <!-- Mobile Register Popup -->
         <div class="tm-loginregister-popup modal fade" id="tm-loginregister-popup" role="dialog" aria-hidden="true">
             <div class="container">
                 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -696,7 +696,7 @@
                 </div>
             </div>
         </div>
-        <!--// Login Register Popup -->
+        <!--// Mobile Register Popup -->
 
         <!-- Quick View Popup -->
         <div class="tm-quickview-popup modal fade" id="tm-product-quickview" role="dialog" aria-hidden="true">

@@ -180,6 +180,11 @@
     "of": "از",
     "show": "نشان دادن",
     "User Controls": "کنترل کاربران",
-    "Doctors": "دکترها"
+    "Doctors": "دکترها",
+    "Mobile": "شماره همراه",
+    "Log in to the panel using one of the two methods below:": "با یکی از دو روش زیر وارد پنل شوید:",
+    "Send verification code": "ارسال کد تایید",
+    "Enter your mobile number:": "شماره همراه خود را وارد کنید",
+    "Enter your Email:": "ایمیل خود را وارد کنید:"
 
 }

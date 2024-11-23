@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Orchid\Screens\User;
 
+use App\Models\Docter;
 use App\Orchid\Layouts\User\UserEditLayout;
 use App\Orchid\Layouts\User\UserFiltersLayout;
 use App\Orchid\Layouts\User\UserListLayout;
@@ -15,7 +16,7 @@ use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Layout;
 use Orchid\Support\Facades\Toast;
 
-class DocterList extends Screen
+class DoctorList extends Screen
 {
     /**
      * Fetch data to be displayed on the screen.
@@ -25,7 +26,7 @@ class DocterList extends Screen
     public function query(): iterable
     {
         return [
-            'users' => User::with('roles')
+            'users' => Docter::with('user')
                 ->filters(UserFiltersLayout::class)
                 ->defaultSort('id', 'desc')
                 ->paginate(),
