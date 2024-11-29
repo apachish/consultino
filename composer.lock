@@ -4,8 +4,125 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e037a64eea27a801dcd8e1fcb82a8d94",
+    "content-hash": "be12c5f1103fe741d2f57a03f18bb382",
     "packages": [
+        {
+            "name": "anetwork/validation",
+            "version": "v2.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/opencafe/validation.git",
+                "reference": "87e6b5f2cfb883ae214718c677adb1361c0b1069"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/opencafe/validation/zipball/87e6b5f2cfb883ae214718c677adb1361c0b1069",
+                "reference": "87e6b5f2cfb883ae214718c677adb1361c0b1069",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": ">=5.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "5.6.3"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Anetwork\\Validation\\PersianValidationServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Anetwork\\Validation\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Shahrokh Niakan",
+                    "email": "shahrokhniakan@gmail.com"
+                }
+            ],
+            "description": "Laravel persian validation",
+            "support": {
+                "issues": "https://github.com/opencafe/validation/issues",
+                "source": "https://github.com/opencafe/validation/tree/v2.3.0"
+            },
+            "time": "2022-04-25T14:44:03+00:00"
+        },
+        {
+            "name": "beberlei/assert",
+            "version": "v3.3.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/beberlei/assert.git",
+                "reference": "b5fd8eacd8915a1b627b8bfc027803f1939734dd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/beberlei/assert/zipball/b5fd8eacd8915a1b627b8bfc027803f1939734dd",
+                "reference": "b5fd8eacd8915a1b627b8bfc027803f1939734dd",
+                "shasum": ""
+            },
+            "require": {
+                "ext-ctype": "*",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "ext-simplexml": "*",
+                "php": "^7.1 || ^8.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "*",
+                "phpstan/phpstan": "*",
+                "phpunit/phpunit": ">=6.0.0",
+                "yoast/phpunit-polyfills": "^0.1.0"
+            },
+            "suggest": {
+                "ext-intl": "Needed to allow Assertion::count(), Assertion::isCountable(), Assertion::minCount(), and Assertion::maxCount() to operate on ResourceBundles"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "lib/Assert/functions.php"
+                ],
+                "psr-4": {
+                    "Assert\\": "lib/Assert"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Benjamin Eberlei",
+                    "email": "kontakt@beberlei.de",
+                    "role": "Lead Developer"
+                },
+                {
+                    "name": "Richard Quadling",
+                    "email": "rquadling@gmail.com",
+                    "role": "Collaborator"
+                }
+            ],
+            "description": "Thin assertion library for input validation in business models.",
+            "keywords": [
+                "assert",
+                "assertion",
+                "validation"
+            ],
+            "support": {
+                "issues": "https://github.com/beberlei/assert/issues",
+                "source": "https://github.com/beberlei/assert/tree/v3.3.3"
+            },
+            "time": "2024-07-15T13:18:35+00:00"
+        },
         {
             "name": "brick/math",
             "version": "0.12.1",
@@ -582,6 +699,89 @@
             "time": "2023-10-12T05:21:21+00:00"
         },
         {
+            "name": "giggsey/libphonenumber-for-php-lite",
+            "version": "8.13.50",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/giggsey/libphonenumber-for-php-lite.git",
+                "reference": "57bb2bfd8d4a9896ed961c584141247f2a35bc04"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php-lite/zipball/57bb2bfd8d4a9896ed961c584141247f2a35bc04",
+                "reference": "57bb2bfd8d4a9896ed961c584141247f2a35bc04",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.1",
+                "symfony/polyfill-mbstring": "^1.17"
+            },
+            "conflict": {
+                "giggsey/libphonenumber-for-php": "*"
+            },
+            "require-dev": {
+                "ext-dom": "*",
+                "friendsofphp/php-cs-fixer": "^3.12",
+                "infection/infection": "^0.28",
+                "pear/pear-core-minimal": "^1.10.11",
+                "pear/pear_exception": "^1.0.2",
+                "pear/versioncontrol_git": "^0.7",
+                "phing/phing": "^2.17.4",
+                "phpstan/extension-installer": "^1.2",
+                "phpstan/phpstan": "^1.8",
+                "phpstan/phpstan-phpunit": "^1.2",
+                "phpunit/phpunit": "^10.5",
+                "symfony/console": "^6.0",
+                "symfony/var-exporter": "^6.0"
+            },
+            "suggest": {
+                "giggsey/libphonenumber-for-php": "Use libphonenumber-for-php for geocoding, carriers, timezones and matching"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "8.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "libphonenumber\\": "src/"
+                },
+                "exclude-from-classmap": [
+                    "/src/data/",
+                    "/src/carrier/data/",
+                    "/src/geocoding/data/",
+                    "/src/timezone/data/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Joshua Gigg",
+                    "email": "giggsey@gmail.com",
+                    "homepage": "https://giggsey.com/"
+                }
+            ],
+            "description": "A lite version of giggsey/libphonenumber-for-php, which is a PHP Port of Google's libphonenumber",
+            "homepage": "https://github.com/giggsey/libphonenumber-for-php-lite",
+            "keywords": [
+                "geocoding",
+                "geolocation",
+                "libphonenumber",
+                "mobile",
+                "phonenumber",
+                "validation"
+            ],
+            "support": {
+                "issues": "https://github.com/giggsey/libphonenumber-for-php-lite/issues",
+                "source": "https://github.com/giggsey/libphonenumber-for-php-lite"
+            },
+            "time": "2024-11-18T09:58:30+00:00"
+        },
+        {
             "name": "graham-campbell/result-type",
             "version": "v1.1.3",
             "source": {
@@ -1053,6 +1253,153 @@
                 }
             ],
             "time": "2023-12-03T19:50:20+00:00"
+        },
+        {
+            "name": "ipe/smsir-php",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/IPeCompany/smsir-php.git",
+                "reference": "a9c1bf0259541cc0f29317f36b868186ec5a03ba"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/IPeCompany/smsir-php/zipball/a9c1bf0259541cc0f29317f36b868186ec5a03ba",
+                "reference": "a9c1bf0259541cc0f29317f36b868186ec5a03ba",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^7.0",
+                "php": "^7.3|^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Ipe\\Sdk\\SmsIrServiceProvider"
+                    ],
+                    "aliases": {
+                        "SmsIr": "Ipe\\Sdk\\Facades\\SmsIr"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Ipe\\Sdk\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A package for sending SMS.",
+            "support": {
+                "issues": "https://github.com/IPeCompany/smsir-php/issues",
+                "source": "https://github.com/IPeCompany/smsir-php/tree/v1.0.1"
+            },
+            "time": "2024-10-19T05:20:03+00:00"
+        },
+        {
+            "name": "kavenegar/laravel",
+            "version": "v1.3.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kavenegar/kavenegar-laravel.git",
+                "reference": "beae4f10bf6502429f2622c9a934a86fb2b798a6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kavenegar/kavenegar-laravel/zipball/beae4f10bf6502429f2622c9a934a86fb2b798a6",
+                "reference": "beae4f10bf6502429f2622c9a934a86fb2b798a6",
+                "shasum": ""
+            },
+            "require": {
+                "kavenegar/php": "*"
+            },
+            "type": "laravel-package",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Kavenegar\\Laravel\\ServiceProvider"
+                    ],
+                    "aliases": {
+                        "Kavenegar": "Kavenegar\\Laravel\\Facade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Kavenegar\\Laravel\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kavenegar API Team",
+                    "email": "support@kavenegar.com"
+                }
+            ],
+            "description": "laravel 4 and 5 kavenegar integration",
+            "keywords": [
+                "api",
+                "kavenegar",
+                "laravel",
+                "sms"
+            ],
+            "support": {
+                "issues": "https://github.com/kavenegar/kavenegar-laravel/issues",
+                "source": "https://github.com/kavenegar/kavenegar-laravel/tree/v1.3.8"
+            },
+            "time": "2024-03-26T08:13:06+00:00"
+        },
+        {
+            "name": "kavenegar/php",
+            "version": "v1.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kavenegar/kavenegar-php.git",
+                "reference": "884561b8d8c91b01f7db25284c2be9923c809412"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kavenegar/kavenegar-php/zipball/884561b8d8c91b01f7db25284c2be9923c809412",
+                "reference": "884561b8d8c91b01f7db25284c2be9923c809412",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Kavenegar\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kavenegar API Team",
+                    "email": "support@kavenegar.com"
+                }
+            ],
+            "description": "A PHP wrapper for Kavenegar's API",
+            "homepage": "http://github.com/Kavenegar/kavenegar-php",
+            "keywords": [
+                "api",
+                "kavenegar",
+                "sms"
+            ],
+            "support": {
+                "issues": "https://github.com/kavenegar/kavenegar-php/issues",
+                "source": "https://github.com/kavenegar/kavenegar-php/tree/master"
+            },
+            "time": "2019-02-26T12:49:19+00:00"
         },
         {
             "name": "laravel/framework",
@@ -2086,6 +2433,71 @@
             "time": "2024-11-12T13:57:08+00:00"
         },
         {
+            "name": "morilog/jalali",
+            "version": "v3.4.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/morilog/jalali.git",
+                "reference": "f475f4db7bd540c6abc01126e46824c897ed1e03"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/morilog/jalali/zipball/f475f4db7bd540c6abc01126e46824c897ed1e03",
+                "reference": "f475f4db7bd540c6abc01126e46824c897ed1e03",
+                "shasum": ""
+            },
+            "require": {
+                "beberlei/assert": "^3.0",
+                "nesbot/carbon": "^1.21 || ^2.0 || ^3.0",
+                "php": "^7.0 | ^8.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": ">4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Morilog\\Jalali\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Milad Rey",
+                    "email": "miladr@gmail.com"
+                },
+                {
+                    "name": "Morteza Parvini",
+                    "email": "m.parvini@outlook.com"
+                }
+            ],
+            "description": "This Package helps developers to easily work with Jalali (Shamsi or Iranian) dates in PHP applications, based on Jalali (Shamsi) DateTime class.",
+            "keywords": [
+                "Jalali",
+                "date",
+                "datetime",
+                "laravel",
+                "morilog"
+            ],
+            "support": {
+                "issues": "https://github.com/morilog/jalali/issues",
+                "source": "https://github.com/morilog/jalali/tree/v3.4.2"
+            },
+            "funding": [
+                {
+                    "url": "https://issuehunt.io/r/morilog",
+                    "type": "issuehunt"
+                }
+            ],
+            "time": "2024-05-09T08:44:51+00:00"
+        },
+        {
             "name": "nesbot/carbon",
             "version": "3.8.2",
             "source": {
@@ -2728,6 +3140,78 @@
                 }
             ],
             "time": "2024-07-20T21:41:07+00:00"
+        },
+        {
+            "name": "propaganistas/laravel-phone",
+            "version": "5.3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Propaganistas/Laravel-Phone.git",
+                "reference": "44efd6edc181616c49f895fff97ad1cc0f3fecb2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Propaganistas/Laravel-Phone/zipball/44efd6edc181616c49f895fff97ad1cc0f3fecb2",
+                "reference": "44efd6edc181616c49f895fff97ad1cc0f3fecb2",
+                "shasum": ""
+            },
+            "require": {
+                "giggsey/libphonenumber-for-php-lite": "^8.13.35",
+                "illuminate/contracts": "^10.0|^11.0",
+                "illuminate/support": "^10.0|^11.0",
+                "illuminate/validation": "^10.0|^11.0",
+                "php": "^8.1"
+            },
+            "require-dev": {
+                "larastan/larastan": "^2.9",
+                "laravel/pint": "^1.14",
+                "orchestra/testbench": "*",
+                "phpunit/phpunit": "^10.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Propaganistas\\LaravelPhone\\PhoneServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Propaganistas\\LaravelPhone\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Propaganistas",
+                    "email": "Propaganistas@users.noreply.github.com"
+                }
+            ],
+            "description": "Adds phone number functionality to Laravel based on Google's libphonenumber API.",
+            "keywords": [
+                "laravel",
+                "libphonenumber",
+                "phone",
+                "validation"
+            ],
+            "support": {
+                "issues": "https://github.com/Propaganistas/Laravel-Phone/issues",
+                "source": "https://github.com/Propaganistas/Laravel-Phone/tree/5.3.2"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/Propaganistas",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-04-24T09:18:58+00:00"
         },
         {
             "name": "psr/clock",

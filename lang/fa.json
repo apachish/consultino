@@ -185,6 +185,9 @@
     "Log in to the panel using one of the two methods below:": "با یکی از دو روش زیر وارد پنل شوید:",
     "Send verification code": "ارسال کد تایید",
     "Enter your mobile number:": "شماره همراه خود را وارد کنید",
-    "Enter your Email:": "ایمیل خود را وارد کنید:"
+    "Enter your Email:": "ایمیل خود را وارد کنید:",
+    "Verify Code": "کد تایید",
+    "Code verification": "تایید کد",
+    "Enter your verification code to :email_mobile :": "کد تایید خود را به :email_mobile : وارد کنید."
 
 }

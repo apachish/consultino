@@ -12,7 +12,10 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->append(\App\Http\Middleware\CustomerMiddleware::class);
-
+        $middleware->alias([
+            'customer' => \App\Http\Middleware\CustomerMiddleware::class,
+            'Kavenegar' => Kavenegar\Laravel\Facade::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

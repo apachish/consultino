@@ -19,11 +19,19 @@ Route::get('/', function () {
 
 
 Route::get('/', \App\Livewire\Home::class)->name("home");
+Route::get('/login', \App\Livewire\Home::class)->name("login");
 Route::get('/contact-us', \App\Livewire\ContactUs::class)->name("contact-us");
 Route::get('/about-us', \App\Livewire\AboutUs::class)->name("about-us");
 Route::get('/blog', \App\Livewire\Blog::class)->name("blog");
 Route::get('/blog/{slug}', \App\Livewire\BlogDetails::class)->name("blog.details");
 
+Route::group(['middleware'=>'guest'], function(){
+});
+
+Route::group(['middleware'=>'auth:customer'], function(){
+    Route::get('/dashboard', \App\Livewire\MyAccount::class)->name('dashboard');
+//    Route::get('/logout', Logout::class)->name('logout');
+});
 
 
 Route::prefix("template")->group(function () {

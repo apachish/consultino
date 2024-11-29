@@ -6,8 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 use Orchid\Filters\Types\Like;
 use Orchid\Filters\Types\Where;
 use Orchid\Filters\Types\WhereDateStartEnd;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Customer extends Model
+class Customer extends Authenticatable
 {
     /**
      * The attributes that are mass assignable.
@@ -15,11 +16,16 @@ class Customer extends Model
      * @var array
      */
     protected $fillable = [
-        'fullName',
+
         'mobile',
+        'email',
+        'fullName',
         'national_code',
-        'gender',
         'address',
+        'password',
+        'gender',
+        'is_verified',
+
     ];
 
     /**

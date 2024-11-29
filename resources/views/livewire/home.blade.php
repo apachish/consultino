@@ -1,5 +1,4 @@
 <div>
-
     <!-- About Us Area -->
     <livewire:section.about-us/>
     <!--// About Us Area -->

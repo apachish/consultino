@@ -79,6 +79,42 @@
 <script src="/assets/js/chart.min.js"></script>
 <script src="/assets/js/chart-active.js"></script>
 <script src="/assets/js/main.js"></script>
+<script>
+    function otpSend(num) {
+        const milliseconds = num * 1000 //60 seconds
+        const currentDate = Date.now() + milliseconds
+        var countDownTime = new Date(currentDate).getTime()
+        let interval;
+        return {
+            countDown: milliseconds,
+            countDownTimer: new Date(currentDate).getTime(),
+            intervalID: null,
+            init() {
+                if (!this.intervalID) {
+                    this.intervalID = setInterval(() => {
+                        this.countDown = this.countDownTimer - new Date().getTime();
+                    }, 1000);
+                }
+            },
+            getTime() {
+                if (this.countDown < 0) {
+                    this.clearTimer()
+                }
+                return this.countDown;
+            },
+            formatTime(num) {
+                var date = new Date(num);
+                return new Date(this.countDown).toLocaleTimeString(navigator.language, {
+                    minute: '2-digit',
+                    second: '2-digit'
+                });
+            },
+            clearTimer() {
+                clearInterval(this.intervalID);
+            }
+        }
+    }
+</script>
 <!--// Js Files -->
 </body>
 
