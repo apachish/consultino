@@ -38,12 +38,13 @@ class PlatformProvider extends OrchidServiceProvider
                 ->icon('bs.book')
                 ->route('platform.example')
             ->divider(),
+//
+//            Menu::make(__('Users'))
+//                ->icon('bs.people')
+//                ->route('platform.systems.users')
+//                ->permission('platform.systems.users')
+//                ->title(__('User Controls')),
 
-            Menu::make(__('Users'))
-                ->icon('bs.people')
-                ->route('platform.systems.users')
-                ->permission('platform.systems.users')
-                ->title(__('User Controls')),
 //
 //            Menu::make('Form Elements')
 //                ->icon('bs.card-list')
@@ -77,16 +78,48 @@ class PlatformProvider extends OrchidServiceProvider
                 ->icon('bs.person-hearts')
                 ->route('platform.systems.doctors')
                 ->permission('platform.systems.users'),
+            Menu::make(__('Customers'))
+                ->icon('bs.person-lines-fill')
+                ->route('platform.systems.customers')
+                ->permission('platform.systems.users'),
 
             Menu::make(__('Roles'))
                 ->icon('bs.shield')
                 ->route('platform.systems.roles')
                 ->permission('platform.systems.roles')
                 ->divider(),
+            Menu::make(__('Blogs'))
+                ->icon('bs.file-earmark-medical-fill')
+                ->route('platform.systems.blogs')
+                ->permission('platform.systems.users')
+                ->title(__('Site')),
+
+            Menu::make(__('Settings'))
+                ->icon('bs.gear')
+                ->route('platform.systems.settings')
+                ->permission('platform.systems.users'),
+            Menu::make(__('Sliders'))
+                ->icon('bs.sliders')
+                ->route('platform.systems.sliders')
+                ->permission('platform.systems.users'),
+            Menu::make(__('Links'))
+                ->icon('bs.link-45deg')
+                ->route('platform.systems.links')
+                ->permission('platform.systems.users'),
+            Menu::make(__('Services'))
+                ->icon('bs.columns-gap')
+                ->route('platform.systems.services')
+                ->permission('platform.systems.users'),
+            Menu::make(__('Portfolios'))
+                ->icon('bs.files')
+                ->route('platform.systems.portfolios')
+                ->permission('platform.systems.users')
+                ->divider(),
             Menu::make(__("Help"))
                 ->icon('bs.collection')
-                ->route('platform.index')
-            ,//->badge(fn () => 6)
+                ->route('platform.index'),
+
+            //->badge(fn () => 6)
 //            Menu::make('Documentation')
 //                ->title('Docs')
 //                ->icon('bs.box-arrow-up-right')

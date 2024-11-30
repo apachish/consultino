@@ -188,6 +188,21 @@
     "Enter your Email:": "ایمیل خود را وارد کنید:",
     "Verify Code": "کد تایید",
     "Code verification": "تایید کد",
-    "Enter your verification code to :email_mobile :": "کد تایید خود را به :email_mobile : وارد کنید."
+    "Customers": "مشتریان",
+    "Enter your verification code to :email_mobile :": "کد تایید خود را به :email_mobile : وارد کنید.",
+    "Customer Management": "مدیریت مشتری",
+    "There are no objects currently displayed": "هیچ ایتمی در حال حاضر نمایش داده نمی شود",
+    "Import or create objects, or check back later for updates": "ایتم را وارد یا ایجاد کنید، یا بعداً برای به\u200Cروزرسانی دوباره بررسی کنید",
+    "Blogs": "بلاگ",
+    "Settings": "تنظیمات",
+    "Sliders": "اسلایدر",
+    "Links": "لینک ها",
+    "Services": "خدمات",
+    "Portfolios": "نمونه کارها",
+    "Site": "سایت",
+    "Help": "راهنما",
+    "A comprehensive list of all registered customers, including their profiles and privileges.": "فهرستی جامع از تمام مشتریان ثبت نام شده، از جمله مشخصات  آنها.",
+    "A comprehensive list of all registered Doctor": "یک لیست جامع از تمام پزشکان ثبت نام شده",
+    "Doctor Management": "مدیریت دکترها"
 
 }

@@ -24,7 +24,7 @@ class Verify extends Component
         return [
             'code' => ['required', Rule::exists('verify_codes', 'code')
 //                ->where('expires_at',">=", now())
-                ->where('used',false)
+//                ->where('used',false)
             ],
         ];
     }

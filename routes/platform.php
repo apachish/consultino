@@ -63,11 +63,53 @@ Route::screen('users', UserListScreen::class)
         ->parent('platform.index')
         ->push(__('Users'), route('platform.systems.users')));
 
-Route::screen('doctors', \App\Orchid\Screens\User\DoctorList::class)
+Route::screen('doctors', \App\Orchid\Screens\User\DoctorListScreen::class)
     ->name('platform.systems.doctors')
     ->breadcrumbs(fn (Trail $trail) => $trail
         ->parent('platform.index')
         ->push(__('Doctors'), route('platform.systems.doctors')));
+
+Route::screen('customers', \App\Orchid\Screens\User\CustomerListScreen::class)
+    ->name('platform.systems.customers')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+        ->parent('platform.index')
+        ->push(__('Customers'), route('platform.systems.customers')));
+
+Route::screen('blogs', \App\Orchid\Screens\User\CustomerListScreen::class)
+    ->name('platform.systems.blogs')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+        ->parent('platform.index')
+        ->push(__('blogs'), route('platform.systems.blogs')));
+
+Route::screen('settings', \App\Orchid\Screens\User\CustomerListScreen::class)
+    ->name('platform.systems.settings')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+        ->parent('platform.index')
+        ->push(__('settings'), route('platform.systems.settings')));
+
+Route::screen('sliders', \App\Orchid\Screens\User\CustomerListScreen::class)
+    ->name('platform.systems.sliders')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+        ->parent('platform.index')
+        ->push(__('sliders'), route('platform.systems.sliders')));
+
+Route::screen('links', \App\Orchid\Screens\User\CustomerListScreen::class)
+    ->name('platform.systems.links')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+        ->parent('platform.index')
+        ->push(__('links'), route('platform.systems.links')));
+
+Route::screen('services', \App\Orchid\Screens\User\CustomerListScreen::class)
+    ->name('platform.systems.services')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+        ->parent('platform.index')
+        ->push(__('services'), route('platform.systems.services')));
+
+Route::screen('portfolios', \App\Orchid\Screens\User\CustomerListScreen::class)
+    ->name('platform.systems.portfolios')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+        ->parent('platform.index')
+        ->push(__('portfolios'), route('platform.systems.portfolios')));
 
 // Platform > System > Roles > Role
 Route::screen('roles/{role}/edit', RoleEditScreen::class)

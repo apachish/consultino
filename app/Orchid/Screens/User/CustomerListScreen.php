@@ -4,19 +4,18 @@ declare(strict_types=1);
 
 namespace App\Orchid\Screens\User;
 
-use App\Models\Docter;
+use App\Models\Customer;
+use App\Models\User;
+use App\Orchid\Layouts\Customer\CustomerListLayout;
 use App\Orchid\Layouts\User\UserEditLayout;
 use App\Orchid\Layouts\User\UserFiltersLayout;
-use App\Orchid\Layouts\User\UserListLayout;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
-use App\Models\User;
-use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Layout;
 use Orchid\Support\Facades\Toast;
 
-class DoctorList extends Screen
+class CustomerListScreen extends Screen
 {
     /**
      * Fetch data to be displayed on the screen.
@@ -26,8 +25,7 @@ class DoctorList extends Screen
     public function query(): iterable
     {
         return [
-            'users' => Docter::with('user')
-                ->filters(UserFiltersLayout::class)
+            'customers' => Customer::filters(UserFiltersLayout::class)
                 ->defaultSort('id', 'desc')
                 ->paginate(),
         ];
@@ -38,7 +36,7 @@ class DoctorList extends Screen
      */
     public function name(): ?string
     {
-        return 'User Management';
+        return 'Customer Management';
     }
 
     /**
@@ -46,7 +44,7 @@ class DoctorList extends Screen
      */
     public function description(): ?string
     {
-        return 'A comprehensive list of all registered users, including their profiles and privileges.';
+        return 'A comprehensive list of all registered customers, including their profiles and privileges.';
     }
 
     public function permission(): ?iterable
@@ -64,9 +62,7 @@ class DoctorList extends Screen
     public function commandBar(): iterable
     {
         return [
-            Link::make(__('Add'))
-                ->icon('bs.plus-circle')
-                ->route('platform.systems.users.create'),
+
         ];
     }
 
@@ -78,8 +74,8 @@ class DoctorList extends Screen
     public function layout(): iterable
     {
         return [
-            UserFiltersLayout::class,
-            UserListLayout::class,
+//            UserFiltersLayout::class,
+            CustomerListLayout::class,
 
             Layout::modal('editUserModal', UserEditLayout::class)
                 ->deferred('loadUserOnOpenModal'),
@@ -91,31 +87,31 @@ class DoctorList extends Screen
      *
      * @return array
      */
-    public function loadUserOnOpenModal(User $user): iterable
+    public function loadUserOnOpenModal(Customer $customer): iterable
     {
         return [
-            'user' => $user,
+            'customer' => $customer,
         ];
     }
 
-    public function saveUser(Request $request, User $user): void
+    public function saveUser(Request $request, Customer $customer): void
     {
         $request->validate([
             'user.email' => [
                 'required',
-                Rule::unique(User::class, 'email')->ignore($user),
+                Rule::unique(User::class, 'email')->ignore($customer),
             ],
         ]);
 
-        $user->fill($request->input('user'))->save();
+        $customer->fill($request->input('customer'))->save();
 
-        Toast::info(__('User was saved.'));
+        Toast::info(__('Customer was saved.'));
     }
 
     public function remove(Request $request): void
     {
-        User::findOrFail($request->get('id'))->delete();
+        Customer::findOrFail($request->get('id'))->delete();
 
-        Toast::info(__('User was removed'));
+        Toast::info(__('Customer was removed'));
     }
 }

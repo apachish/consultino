@@ -3,12 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Orchid\Filters\Filterable;
 use Orchid\Filters\Types\Like;
 use Orchid\Filters\Types\Where;
 use Orchid\Filters\Types\WhereDateStartEnd;
 
-class Docter extends Model
+class Doctor extends Model
 {
+    use  Filterable;
     /**
      * The attributes that are mass assignable.
      *
