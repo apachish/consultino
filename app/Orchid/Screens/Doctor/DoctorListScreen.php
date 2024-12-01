@@ -2,16 +2,15 @@
 
 declare(strict_types=1);
 
-namespace App\Orchid\Screens\User;
+namespace App\Orchid\Screens\Doctor;
 
 use App\Models\Doctor;
+use App\Models\User;
 use App\Orchid\Layouts\Doctor\DocterListLayout;
-use App\Orchid\Layouts\User\UserEditLayout;
+use App\Orchid\Layouts\Doctor\DoctorEditLayout;
 use App\Orchid\Layouts\User\UserFiltersLayout;
-use App\Orchid\Layouts\User\UserListLayout;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
-use App\Models\User;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Layout;
@@ -67,7 +66,7 @@ class DoctorListScreen extends Screen
         return [
             Link::make(__('Add'))
                 ->icon('bs.plus-circle')
-                ->route('platform.systems.users.create'),
+                ->route('platform.systems.doctors.create'),
         ];
     }
 
@@ -82,7 +81,7 @@ class DoctorListScreen extends Screen
             UserFiltersLayout::class,
             DocterListLayout::class,
 
-            Layout::modal('editUserModal', UserEditLayout::class)
+            Layout::modal('editDoctorModal', DoctorEditLayout::class)
                 ->deferred('loadUserOnOpenModal'),
         ];
     }

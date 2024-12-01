@@ -16,6 +16,7 @@ use App\Orchid\Screens\Role\RoleEditScreen;
 use App\Orchid\Screens\Role\RoleListScreen;
 use App\Orchid\Screens\User\UserEditScreen;
 use App\Orchid\Screens\User\UserListScreen;
+use App\Orchid\Screens\Doctor\DoctorEditScreen;
 use App\Orchid\Screens\User\UserProfileScreen;
 use Illuminate\Support\Facades\Route;
 use Tabuna\Breadcrumbs\Trail;
@@ -63,11 +64,28 @@ Route::screen('users', UserListScreen::class)
         ->parent('platform.index')
         ->push(__('Users'), route('platform.systems.users')));
 
-Route::screen('doctors', \App\Orchid\Screens\User\DoctorListScreen::class)
+Route::screen('doctors', \App\Orchid\Screens\Doctor\DoctorListScreen::class)
     ->name('platform.systems.doctors')
     ->breadcrumbs(fn (Trail $trail) => $trail
         ->parent('platform.index')
         ->push(__('Doctors'), route('platform.systems.doctors')));
+
+// Platform > System > doctors > Create
+Route::screen('doctors/create', DoctorEditScreen::class)
+    ->name('platform.systems.doctors.create')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+        ->parent('platform.systems.doctors')
+        ->push(__('Create'), route('platform.systems.doctors.create')));
+
+// Platform > System > doctors > Doctor
+Route::screen('doctors/{doctor}/edit', DoctorEditScreen::class)
+    ->name('platform.systems.doctors.edit')
+    ->breadcrumbs(fn (Trail $trail, $docter) => $trail
+        ->parent('platform.systems.doctors')
+        ->push($docter->name, route('platform.systems.doctors.edit', $docter)));
+
+
+
 
 Route::screen('customers', \App\Orchid\Screens\User\CustomerListScreen::class)
     ->name('platform.systems.customers')

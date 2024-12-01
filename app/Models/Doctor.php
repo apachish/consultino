@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Orchid\Access\UserAccess;
 use Orchid\Filters\Filterable;
 use Orchid\Filters\Types\Like;
 use Orchid\Filters\Types\Where;
@@ -10,7 +11,7 @@ use Orchid\Filters\Types\WhereDateStartEnd;
 
 class Doctor extends Model
 {
-    use  Filterable;
+    use  Filterable,UserAccess;
     /**
      * The attributes that are mass assignable.
      *
@@ -18,8 +19,13 @@ class Doctor extends Model
      */
     protected $fillable = [
         'fullName',
-        'email',
-        'password',
+        'avatar',
+        'national_code',
+        'mobile',
+        'birthday',
+        'degree',
+        'university',
+        'user_id',
     ];
 
     /**
@@ -68,4 +74,9 @@ class Doctor extends Model
         'updated_at',
         'created_at',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
