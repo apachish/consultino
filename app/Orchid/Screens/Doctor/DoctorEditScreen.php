@@ -39,7 +39,7 @@ class DoctorEditScreen extends Screen
         $doctor->load(['user']);
 
         return [
-            'user'       => $doctor,
+            'doctor'       => $doctor,
             'permission' => $doctor->getStatusPermission(),
         ];
     }
