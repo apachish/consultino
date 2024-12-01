@@ -101,28 +101,16 @@ class DoctorEditScreen extends Screen
         return [
 
             Layout::block(DoctorEditLayout::class)
-                ->title(__('Profile Information'))
-                ->description(__('Update your account\'s profile information and email address.'))
+                ->title(__('Doctor Information'))
+                ->description(__('Add a doctor or edit doctor information.'))
                 ->commands(
                     Button::make(__('Save'))
-                        ->type(Color::BASIC)
+                        ->type(Color::DARK)
                         ->icon('bs.check-circle')
                         ->canSee($this->doctor?:false)
                         ->method('save')
                 ),
 
-
-
-            Layout::block(RolePermissionLayout::class)
-                ->title(__('Permissions'))
-                ->description(__('Allow the doctor to perform some actions that are not provided for by his roles'))
-                ->commands(
-                    Button::make(__('Save'))
-                        ->type(Color::BASIC)
-                        ->icon('bs.check-circle')
-                        ->canSee($this->doctor?:false)
-                        ->method('save')
-                ),
 
         ];
     }
