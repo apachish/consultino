@@ -75,17 +75,12 @@ class DoctorEditScreen extends Screen
     public function commandBar(): iterable
     {
         return [
-            Button::make(__('Impersonate doctor'))
-                ->icon('bg.box-arrow-in-right')
-                ->confirm(__('You can revert to your original state by logging out.'))
-                ->method('loginAs')
-                ->canSee($this->doctor?:false && $this->doctor->id !== \request()->doctor()->id),
 
             Button::make(__('Remove'))
                 ->icon('bs.trash3')
                 ->confirm(__('Once the account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.'))
                 ->method('remove')
-                ->canSee($this->doctor?:false),
+                ->canSee($this->doctor?true:false),
 
             Button::make(__('Save'))
                 ->icon('bs.check-circle')
@@ -107,7 +102,7 @@ class DoctorEditScreen extends Screen
                     Button::make(__('Save'))
                         ->type(Color::DARK)
                         ->icon('bs.check-circle')
-                        ->canSee($this->doctor?:false)
+                        ->canSee($this->doctor?true:false)
                         ->method('save')
                 ),
 

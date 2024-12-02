@@ -8,7 +8,7 @@ use App\Models\Doctor;
 use App\Models\User;
 use App\Orchid\Layouts\Doctor\DocterListLayout;
 use App\Orchid\Layouts\Doctor\DoctorEditLayout;
-use App\Orchid\Layouts\User\UserFiltersLayout;
+use App\Orchid\Layouts\Doctor\DoctorFiltersLayout;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Orchid\Screen\Actions\Link;
@@ -27,7 +27,7 @@ class DoctorListScreen extends Screen
     {
         return [
             'doctors' => Doctor::with('user')
-                ->filters(UserFiltersLayout::class)
+                ->filters(DoctorFiltersLayout::class)
                 ->defaultSort('id', 'desc')
                 ->paginate(),
         ];
@@ -78,7 +78,7 @@ class DoctorListScreen extends Screen
     public function layout(): iterable
     {
         return [
-            UserFiltersLayout::class,
+            DoctorFiltersLayout::class,
             DocterListLayout::class,
 
             Layout::modal('editDoctorModal', DoctorEditLayout::class)

@@ -41,7 +41,7 @@
     <div class="col-md-6 col-xs-12">
         <button id="button-login" type="submit" class="btn btn-default btn-block" tabindex="3">
             <x-orchid-icon path="bs.box-arrow-in-right" class="small me-2"/>
-            {{__('Mobile')}}
+            {{__('Login')}}
         </button>
     </div>
 </div>

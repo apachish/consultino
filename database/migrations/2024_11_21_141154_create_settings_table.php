@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
+            $table->string("title",200);
+            $table->string("key")->unique();
+            $table->longText("value");
+            $table->enum("type", ["text", "textarea", "image", "file", "checkbox", "radio"]);
             $table->timestamps();
         });
     }

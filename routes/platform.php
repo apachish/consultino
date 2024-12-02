@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Orchid\Screens\Doctor\DoctorEditScreen;
 use App\Orchid\Screens\Examples\ExampleActionsScreen;
 use App\Orchid\Screens\Examples\ExampleCardsScreen;
 use App\Orchid\Screens\Examples\ExampleChartsScreen;
@@ -16,7 +17,6 @@ use App\Orchid\Screens\Role\RoleEditScreen;
 use App\Orchid\Screens\Role\RoleListScreen;
 use App\Orchid\Screens\User\UserEditScreen;
 use App\Orchid\Screens\User\UserListScreen;
-use App\Orchid\Screens\Doctor\DoctorEditScreen;
 use App\Orchid\Screens\User\UserProfileScreen;
 use Illuminate\Support\Facades\Route;
 use Tabuna\Breadcrumbs\Trail;
@@ -87,43 +87,59 @@ Route::screen('doctors/{doctor}/edit', DoctorEditScreen::class)
 
 
 
-Route::screen('customers', \App\Orchid\Screens\User\CustomerListScreen::class)
+Route::screen('customers', \App\Orchid\Screens\Customer\CustomerListScreen::class)
     ->name('platform.systems.customers')
     ->breadcrumbs(fn (Trail $trail) => $trail
         ->parent('platform.index')
         ->push(__('Customers'), route('platform.systems.customers')));
 
-Route::screen('blogs', \App\Orchid\Screens\User\CustomerListScreen::class)
+Route::screen('blogs', \App\Orchid\Screens\Customer\CustomerListScreen::class)
     ->name('platform.systems.blogs')
     ->breadcrumbs(fn (Trail $trail) => $trail
         ->parent('platform.index')
         ->push(__('blogs'), route('platform.systems.blogs')));
-
-Route::screen('settings', \App\Orchid\Screens\User\CustomerListScreen::class)
+/*
+ * setting
+ */
+Route::screen('settings', \App\Orchid\Screens\Setting\SettingListScreen::class)
     ->name('platform.systems.settings')
     ->breadcrumbs(fn (Trail $trail) => $trail
         ->parent('platform.index')
         ->push(__('settings'), route('platform.systems.settings')));
+// Platform > System > setting > Create
+Route::screen('settings/create', \App\Orchid\Screens\Setting\SettingEditScreen::class)
+    ->name('platform.systems.settings.create')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+        ->parent('platform.systems.settings')
+        ->push(__('Create'), route('platform.systems.settings.create')));
 
-Route::screen('sliders', \App\Orchid\Screens\User\CustomerListScreen::class)
+// Platform > System > setting > Doctor
+Route::screen('settings/{setting}/edit', \App\Orchid\Screens\Setting\SettingEditScreen::class)
+    ->name('platform.systems.settings.edit')
+    ->breadcrumbs(fn (Trail $trail, $setting) => $trail
+        ->parent('platform.systems.settings')
+        ->push($setting->name, route('platform.systems.settings.edit', $setting)));
+
+
+Route::screen('sliders', \App\Orchid\Screens\Customer\CustomerListScreen::class)
     ->name('platform.systems.sliders')
     ->breadcrumbs(fn (Trail $trail) => $trail
         ->parent('platform.index')
         ->push(__('sliders'), route('platform.systems.sliders')));
 
-Route::screen('links', \App\Orchid\Screens\User\CustomerListScreen::class)
+Route::screen('links', \App\Orchid\Screens\Customer\CustomerListScreen::class)
     ->name('platform.systems.links')
     ->breadcrumbs(fn (Trail $trail) => $trail
         ->parent('platform.index')
         ->push(__('links'), route('platform.systems.links')));
 
-Route::screen('services', \App\Orchid\Screens\User\CustomerListScreen::class)
+Route::screen('services', \App\Orchid\Screens\Customer\CustomerListScreen::class)
     ->name('platform.systems.services')
     ->breadcrumbs(fn (Trail $trail) => $trail
         ->parent('platform.index')
         ->push(__('services'), route('platform.systems.services')));
 
-Route::screen('portfolios', \App\Orchid\Screens\User\CustomerListScreen::class)
+Route::screen('portfolios', \App\Orchid\Screens\Customer\CustomerListScreen::class)
     ->name('platform.systems.portfolios')
     ->breadcrumbs(fn (Trail $trail) => $trail
         ->parent('platform.index')

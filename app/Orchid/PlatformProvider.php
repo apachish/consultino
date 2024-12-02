@@ -38,35 +38,35 @@ class PlatformProvider extends OrchidServiceProvider
                 ->icon('bs.book')
                 ->route('platform.example')
             ->divider(),
-//
-//            Menu::make(__('Users'))
-//                ->icon('bs.people')
-//                ->route('platform.systems.users')
-//                ->permission('platform.systems.users')
-//                ->title(__('User Controls')),
 
-//
-//            Menu::make('Form Elements')
-//                ->icon('bs.card-list')
-//                ->route('platform.example.fields')
-//                ->active('*/examples/form/*'),
-//
-//            Menu::make('Overview Layouts')
-//                ->icon('bs.window-sidebar')
-//                ->route('platform.example.layouts'),
-//
-//            Menu::make('Grid System')
-//                ->icon('bs.columns-gap')
-//                ->route('platform.example.grid'),
-//
-//            Menu::make('Charts')
-//                ->icon('bs.bar-chart')
-//                ->route('platform.example.charts'),
-//
-//            Menu::make('Cards')
-//                ->icon('bs.card-text')
-//                ->route('platform.example.cards')
-//                ->divider(),
+            Menu::make(__('Users'))
+                ->icon('bs.people')
+                ->route('platform.systems.users')
+                ->permission('platform.systems.users')
+                ->title(__('User Controls')),
+
+
+            Menu::make('Form Elements')
+                ->icon('bs.card-list')
+                ->route('platform.example.fields')
+                ->active('*/examples/form/*'),
+
+            Menu::make('Overview Layouts')
+                ->icon('bs.window-sidebar')
+                ->route('platform.example.layouts'),
+
+            Menu::make('Grid System')
+                ->icon('bs.columns-gap')
+                ->route('platform.example.grid'),
+
+            Menu::make('Charts')
+                ->icon('bs.bar-chart')
+                ->route('platform.example.charts'),
+
+            Menu::make('Cards')
+                ->icon('bs.card-text')
+                ->route('platform.example.cards')
+                ->divider(),
 
             Menu::make(__('Users'))
                 ->icon('bs.people')

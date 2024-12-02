@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace App\Orchid\Screens\User;
+namespace App\Orchid\Screens\Customer;
 
 use App\Models\Customer;
 use App\Models\User;
+use App\Orchid\Layouts\Customer\CustomerEditLayout;
+use App\Orchid\Layouts\Customer\CustomerFiltersLayout;
 use App\Orchid\Layouts\Customer\CustomerListLayout;
-use App\Orchid\Layouts\User\UserEditLayout;
-use App\Orchid\Layouts\User\UserFiltersLayout;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Orchid\Screen\Screen;
@@ -25,7 +25,7 @@ class CustomerListScreen extends Screen
     public function query(): iterable
     {
         return [
-            'customers' => Customer::filters(UserFiltersLayout::class)
+            'customers' => Customer::filters(CustomerFiltersLayout::class)
                 ->defaultSort('id', 'desc')
                 ->paginate(),
         ];
@@ -74,10 +74,10 @@ class CustomerListScreen extends Screen
     public function layout(): iterable
     {
         return [
-//            UserFiltersLayout::class,
+            CustomerFiltersLayout::class,
             CustomerListLayout::class,
 
-            Layout::modal('editUserModal', UserEditLayout::class)
+            Layout::modal('editUserModal', CustomerEditLayout::class)
                 ->deferred('loadUserOnOpenModal'),
         ];
     }
