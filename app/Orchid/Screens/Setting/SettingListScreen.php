@@ -78,8 +78,6 @@ class SettingListScreen extends Screen
             SettingFiltersLayout::class,
             SettingListLayout::class,
 
-            Layout::modal('editSettingModal', SettingEditLayout::class)
-                ->deferred('loadSettingOnOpenModal'),
         ];
     }
 

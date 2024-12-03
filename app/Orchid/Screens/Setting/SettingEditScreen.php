@@ -3,16 +3,15 @@
 namespace App\Orchid\Screens\Setting;
 
 use App\Models\Setting;
-use App\Orchid\Layouts\Setting\SettingEditLayout;
+use Illuminate\Support\Facades\Storage;
 use Orchid\Screen\Actions\Button;
-use Orchid\Screen\Fields\Attach;
-use Orchid\Screen\Fields\Cropper;
-use Orchid\Screen\Fields\Group;
+use Illuminate\Http\Request;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Picture;
+use Orchid\Screen\Fields\Select;
 use Orchid\Screen\Screen;
-use Orchid\Support\Color;
 use Orchid\Support\Facades\Layout;
+use Orchid\Support\Facades\Toast;
 
 class SettingEditScreen extends Screen
 {
@@ -80,6 +79,7 @@ class SettingEditScreen extends Screen
      */
     public function layout(): iterable
     {
+        $type = $this->setting && $this->setting->type ? $this->setting->type : 'text';
         return [
             Layout::rows([
                 Input::make('setting.title')
@@ -88,7 +88,14 @@ class SettingEditScreen extends Screen
                     ->required()
                     ->title(__('Title'))
                     ->placeholder(__('Name')),
-                $this->selectInput($this->setting->type),
+                $this->selectInput($type),
+                Select::make('setting.status')
+                    ->options([
+                        true=> __("active"),
+                        false => __("Deactivate"),
+                    ])
+                    ->title('Status')
+
             ]),
 //            Layout::block(SettingEditLayout::class)
 //                ->title(__('Setting Information'))
@@ -103,6 +110,40 @@ class SettingEditScreen extends Screen
         ];
     }
 
+    /**
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function save(Setting $setting, Request $request)
+    {
+
+        $request->validate([
+            'setting.title' => [
+                'required',
+            ],
+            'setting.value' => [
+                'required',
+            ],
+        ]);
+
+        $data = $request->collect('setting');
+//        if ($request->file()) {
+//            $file = $request->file('value');
+//            if(file_exists($setting->value)) {
+//                dd("w");
+//            }
+//            $fileName = time() . '_' . $file->getClientOriginalName();
+//            dd($fileName);
+//            Storage::disk('images')->put($fileName, $file);
+//
+//        }
+        $setting->update($data->toArray());
+
+
+        Toast::info(__('Setting was saved.'));
+
+        return redirect()->route('platform.systems.settings');
+    }
+
     public function selectInput($type)
     {
         switch ($type) {
@@ -114,12 +155,13 @@ class SettingEditScreen extends Screen
                     ->placeholder(__('Value'));
                break;
                case 'image':
-               return Attach::make('file')
+               return Picture::make('setting.value')
                     ->title('Upload Image')
                     ->accept('image/*')
 //                    ->multiple()
                     ->help('Select an image file. You can upload files in any image format, such as JPG, PNG, or GIF.')
-                    ->horizontal();
+                   ;
         }
     }
+
 }

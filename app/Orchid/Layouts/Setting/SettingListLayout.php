@@ -12,6 +12,7 @@ use Orchid\Screen\Components\Cells\DateTimeSplit;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Layouts\Table;
 use Orchid\Screen\TD;
+use Orchid\Support\Color;
 
 class SettingListLayout extends Table
 {
@@ -36,7 +37,11 @@ class SettingListLayout extends Table
                 ->sort()
                 ->cantHide()
                 ->filter(Input::make())
-                ->render(fn($setting) => e($setting->status?"فعال":"غیرفعال")),
+                ->render(fn($setting) => e($setting->status?
+                    Button::make('Active')->method('buttonClickProcessing')->type(Color::SUCCESS):
+                    Button::make('Deactivate')->method('buttonClickProcessing')->type(Color::DANGER)
+
+                )),
 
             TD::make('updated_at', __('Last edit'))
                 ->usingComponent(DateTimeSplit::class)

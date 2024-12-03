@@ -206,5 +206,10 @@
     "Doctor Management": "مدیریت دکترها",
     "Setting List": "لیست تنظیمات",
     "You can change the static content of the site from here.": "شما می توانید محتوای ثابت سایت از اینجا تغییر دهید",
-    "settings":"تنظیمات"
+    "settings":"تنظیمات",
+    "Setting was saved.": "تنظیمات ذخیره شد",
+    "Edit Setting": "ویرایش  تنظیمات",
+    "Edit site constants": "ویرایش اطلاعات ثابت سایت",
+    "Active": "فعال",
+    "Deactivate": "غیرفعال"
 }
