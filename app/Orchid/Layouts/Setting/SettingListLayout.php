@@ -5,14 +5,11 @@ declare(strict_types=1);
 namespace App\Orchid\Layouts\Setting;
 
 use App\Models\Setting;
-use App\Models\User;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\DropDown;
 use Orchid\Screen\Actions\Link;
-use Orchid\Screen\Actions\ModalToggle;
 use Orchid\Screen\Components\Cells\DateTimeSplit;
 use Orchid\Screen\Fields\Input;
-use Orchid\Screen\Layouts\Persona;
 use Orchid\Screen\Layouts\Table;
 use Orchid\Screen\TD;
 
@@ -29,10 +26,33 @@ class SettingListLayout extends Table
     public function columns(): array
     {
         return [
+
             TD::make('title', __('Title'))
                 ->sort()
                 ->cantHide()
+                ->filter(Input::make()),
+
+            TD::make('status', __('Status'))
+                ->sort()
+                ->cantHide()
                 ->filter(Input::make())
+                ->render(fn($setting) => e($setting->status?"فعال":"غیرفعال")),
+
+            TD::make('updated_at', __('Last edit'))
+                ->usingComponent(DateTimeSplit::class)
+                ->align(TD::ALIGN_RIGHT)
+                ->sort(),
+            TD::make(__('Actions'))
+                ->align(TD::ALIGN_CENTER)
+                ->width('100px')
+                ->render(fn (Setting $setting) => DropDown::make()
+                    ->icon('bs.three-dots-vertical')
+                    ->list([
+
+                        Link::make(__('Edit'))
+                            ->route('platform.systems.settings.edit', $setting->id)
+                            ->icon('bs.pencil'),
+                    ])),
         ];
     }
 }

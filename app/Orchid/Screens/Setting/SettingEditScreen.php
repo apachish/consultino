@@ -82,12 +82,13 @@ class SettingEditScreen extends Screen
     {
         return [
             Layout::rows([
-                Attach::make('file')
-                    ->title('Upload Image')
-                    ->accept('image/*')
-//                    ->multiple()
-                    ->help('Select an image file. You can upload files in any image format, such as JPG, PNG, or GIF.')
-                    ->horizontal(),
+                Input::make('setting.title')
+                    ->type('text')
+                    ->max(255)
+                    ->required()
+                    ->title(__('Title'))
+                    ->placeholder(__('Name')),
+                $this->selectInput($this->setting->type),
             ]),
 //            Layout::block(SettingEditLayout::class)
 //                ->title(__('Setting Information'))
@@ -100,5 +101,25 @@ class SettingEditScreen extends Screen
 //                        ->method('save')
 //                ),
         ];
+    }
+
+    public function selectInput($type)
+    {
+        switch ($type) {
+            case 'text':
+               return Input::make('setting.value')
+                    ->type('text')
+                    ->required()
+                    ->title(__('Value'))
+                    ->placeholder(__('Value'));
+               break;
+               case 'image':
+               return Attach::make('file')
+                    ->title('Upload Image')
+                    ->accept('image/*')
+//                    ->multiple()
+                    ->help('Select an image file. You can upload files in any image format, such as JPG, PNG, or GIF.')
+                    ->horizontal();
+        }
     }
 }

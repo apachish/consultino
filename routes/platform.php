@@ -118,7 +118,7 @@ Route::screen('settings/{setting}/edit', \App\Orchid\Screens\Setting\SettingEdit
     ->name('platform.systems.settings.edit')
     ->breadcrumbs(fn (Trail $trail, $setting) => $trail
         ->parent('platform.systems.settings')
-        ->push($setting->name, route('platform.systems.settings.edit', $setting)));
+        ->push($setting->title, route('platform.systems.settings.edit', $setting)));
 
 
 Route::screen('sliders', \App\Orchid\Screens\Customer\CustomerListScreen::class)

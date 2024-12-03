@@ -22,7 +22,7 @@ class SettingEditLayout extends Rows
                 ->type('text')
                 ->max(255)
                 ->required()
-                ->title(__('Name'))
+                ->title(__('Title'))
                 ->placeholder(__('Name')),
 
             Input::make('setting.value')
