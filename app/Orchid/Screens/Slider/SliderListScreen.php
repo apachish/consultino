@@ -4,6 +4,8 @@ namespace App\Orchid\Screens\Slider;
 
 use App\Models\Slider;
 use App\Orchid\Layouts\Slider\SliderFiltersLayout;
+use App\Orchid\Layouts\Slider\SliderListLayout;
+use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Screen;
 
 class SliderListScreen extends Screen
@@ -37,7 +39,7 @@ class SliderListScreen extends Screen
      */
     public function description(): ?string
     {
-        return 'You can change the static content of the site from here.';
+        return 'You can change the slider of the site from here.';
     }
 
 
@@ -57,9 +59,9 @@ class SliderListScreen extends Screen
     public function commandBar(): iterable
     {
         return [
-//            Link::make(__('Add'))
-//                ->icon('bs.plus-circle')
-//                ->route('platform.systems.settings.create'),
+            Link::make(__('Add'))
+                ->icon('bs.plus-circle')
+                ->route('platform.systems.sliders.create'),
         ];
     }
 
@@ -71,8 +73,8 @@ class SliderListScreen extends Screen
     public function layout(): iterable
     {
         return [
-            SettingFiltersLayout::class,
-            SettingListLayout::class,
+            SliderFiltersLayout::class,
+            SliderListLayout::class,
 
         ];
     }

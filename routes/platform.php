@@ -121,11 +121,26 @@ Route::screen('settings/{setting}/edit', \App\Orchid\Screens\Setting\SettingEdit
         ->push($setting->title, route('platform.systems.settings.edit', $setting)));
 
 
-Route::screen('sliders', \App\Orchid\Screens\Customer\CustomerListScreen::class)
+Route::screen('sliders', \App\Orchid\Screens\Slider\SliderListScreen::class)
     ->name('platform.systems.sliders')
     ->breadcrumbs(fn (Trail $trail) => $trail
         ->parent('platform.index')
         ->push(__('sliders'), route('platform.systems.sliders')));
+
+// Platform > System > slider > Create
+Route::screen('sliders/create', \App\Orchid\Screens\Slider\SliderEditScreen::class)
+    ->name('platform.systems.sliders.create')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+        ->parent('platform.systems.sliders')
+        ->push(__('Create'), route('platform.systems.sliders.create')));
+
+// Platform > System > slider > Doctor
+Route::screen('sliders/{slider}/edit', \App\Orchid\Screens\Slider\SliderEditScreen::class)
+    ->name('platform.systems.sliders.edit')
+    ->breadcrumbs(fn (Trail $trail, $slider) => $trail
+        ->parent('platform.systems.sliders')
+        ->push($slider->title, route('platform.systems.sliders.edit', $slider)));
+
 
 Route::screen('links', \App\Orchid\Screens\Customer\CustomerListScreen::class)
     ->name('platform.systems.links')
