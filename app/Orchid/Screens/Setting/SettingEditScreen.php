@@ -91,22 +91,12 @@ class SettingEditScreen extends Screen
                 $this->selectInput($type),
                 Select::make('setting.status')
                     ->options([
-                        true=> __("active"),
+                        true=> __("Active"),
                         false => __("Deactivate"),
                     ])
                     ->title('Status')
 
             ]),
-//            Layout::block(SettingEditLayout::class)
-//                ->title(__('Setting Information'))
-//                ->description(__('Edit Setting information.'))
-//                ->commands(
-//                    Button::make(__('Save'))
-//                        ->type(Color::DARK)
-//                        ->icon('bs.check-circle')
-//                        ->canSee($this->setting?true:false)
-//                        ->method('save')
-//                ),
         ];
     }
 

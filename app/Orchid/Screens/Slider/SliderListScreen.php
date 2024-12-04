@@ -2,6 +2,8 @@
 
 namespace App\Orchid\Screens\Slider;
 
+use App\Models\Slider;
+use App\Orchid\Layouts\Slider\SliderFiltersLayout;
 use Orchid\Screen\Screen;
 
 class SliderListScreen extends Screen
@@ -13,7 +15,11 @@ class SliderListScreen extends Screen
      */
     public function query(): iterable
     {
-        return [];
+        return [
+            'sliders' => Slider::filters(SliderFiltersLayout::class)
+                ->defaultSort('updated_at', 'desc')
+                ->paginate(),
+        ];
     }
 
     /**
@@ -23,8 +29,25 @@ class SliderListScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'SliderListScreen';
+        return 'slider List';
     }
+
+    /**
+     * Display header description.
+     */
+    public function description(): ?string
+    {
+        return 'You can change the static content of the site from here.';
+    }
+
+
+    public function permission(): ?iterable
+    {
+        return [
+            'platform.systems.users',
+        ];
+    }
+
 
     /**
      * The screen's action buttons.
@@ -33,7 +56,11 @@ class SliderListScreen extends Screen
      */
     public function commandBar(): iterable
     {
-        return [];
+        return [
+//            Link::make(__('Add'))
+//                ->icon('bs.plus-circle')
+//                ->route('platform.systems.settings.create'),
+        ];
     }
 
     /**
@@ -43,6 +70,22 @@ class SliderListScreen extends Screen
      */
     public function layout(): iterable
     {
-        return [];
+        return [
+            SettingFiltersLayout::class,
+            SettingListLayout::class,
+
+        ];
+    }
+
+    /**
+     * Loads user data when opening the modal window.
+     *
+     * @return array
+     */
+    public function loadUserOnOpenModal(Slider $slider): iterable
+    {
+        return [
+            'slider' => $slider,
+        ];
     }
 }

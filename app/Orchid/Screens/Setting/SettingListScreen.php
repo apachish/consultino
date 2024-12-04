@@ -3,10 +3,10 @@
 namespace App\Orchid\Screens\Setting;
 
 use App\Models\Setting;
-use App\Orchid\Layouts\Setting\SettingFiltersLayout;
+use App\Orchid\Layouts\Setting\SliderFiltersLayout;
 use Orchid\Support\Facades\Layout;
 use App\Orchid\Layouts\Setting\SettingEditLayout;
-use App\Orchid\Layouts\Setting\SettingListLayout;
+use App\Orchid\Layouts\Setting\SliderListLayout;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Screen;
 
@@ -20,7 +20,7 @@ class SettingListScreen extends Screen
     public function query(): iterable
     {
         return [
-            'settings' => Setting::filters(SettingFiltersLayout::class)
+            'settings' => Setting::filters(SliderFiltersLayout::class)
                 ->defaultSort('updated_at', 'desc')
                 ->paginate(),
         ];
@@ -61,9 +61,9 @@ class SettingListScreen extends Screen
     public function commandBar(): iterable
     {
         return [
-            Link::make(__('Add'))
-                ->icon('bs.plus-circle')
-                ->route('platform.systems.settings.create'),
+//            Link::make(__('Add'))
+//                ->icon('bs.plus-circle')
+//                ->route('platform.systems.settings.create'),
         ];
     }
 
@@ -75,8 +75,8 @@ class SettingListScreen extends Screen
     public function layout(): iterable
     {
         return [
-            SettingFiltersLayout::class,
-            SettingListLayout::class,
+            SliderFiltersLayout::class,
+            SliderListLayout::class,
 
         ];
     }

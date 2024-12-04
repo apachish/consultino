@@ -17,37 +17,50 @@ class SettingSeeder extends Seeder
             "telephone"=>[
                 "title"=>"تلفن",
                 "value"=>"0123456789",
-                "type"=>"text"
+                "type"=>"text",
+                "status"=>true,
             ],
             "email"=>[
                 "title"=>"پست الکترونیک",
                 "value"=>"contact@example.com",
-                "type"=>"text"
+                "type"=>"text",
+                                "status"=>true,
+
             ],
             "working_hours"=>[
                 "title"=>"ساعت کاری",
                 "value"=>"  شنبه - چهارشنبه: 9:00 - 19:00 ",
-                "type"=>"text"
+                "type"=>"text",
+                                "status"=>true,
+
             ],
             "logo"=>[
                 "title"=>"لوگو",
                 "value"=>"/images/logo-s.png",
-                "type"=>"image"
+                "type"=>"image",
+                                "status"=>true,
+
             ],
             "address"=>[
                 "title"=>"آدرس",
                 "value"=>"خیابان ولیعصر - بالاتر از پارک ساعی - کوچه ساعی دو - پلاک 31",
-                "type"=>"text"
+                "type"=>"text",
+                                "status"=>true,
+
             ],
             "text_contact_us"=>[
                 "title"=>"متن ارتباط با ما",
                 "value"=>"قدم های ساده به سمت موفقیت",
-                "type"=>"text"
+                "type"=>"text",
+                                "status"=>true,
+
             ],
             "logo_footer"=>[
                 "title"=>"لوگو فوتر",
                 "value"=>"/images/logo-r.png",
-                "type"=>"image"
+                "type"=>"image",
+                                "status"=>true,
+
             ],
             "description_footer"=>[
                 "title"=>"توضیحات فوتر",
@@ -57,12 +70,16 @@ class SettingSeeder extends Seeder
                  متن آزمایشی و متن تستی خودتان را تایپ کرده
                  و در طرح‌هایتان از این متن استفاده کنید...
                  تایپ کنید، به صورت خودکار ذخیره می‌شود.",
-                "type"=>"text"
+                "type"=>"text",
+                                "status"=>true,
+
             ],
             "copyright"=>[
                 "title"=>"کپی رایت",
                 "value"=>"Copyright ©2018 Apachish. All Rights Reserved",
-                "type"=>"text"
+                "type"=>"text",
+                                "status"=>true,
+
             ],
         ];
         foreach($settings as $key=>$setting){
