@@ -19,10 +19,8 @@ class Slider extends Model
      */
     protected $fillable = [
         'title',
-        'title',
-        'key',
-        'value',
-        'type',
+        'image',
+        'sort_order',
         'status',
     ];
     /**
@@ -32,7 +30,6 @@ class Slider extends Model
      */
     protected $allowedFilters = [
         'title'       => Like::class,
-        'value'      => Like::class,
         'updated_at' => WhereDateStartEnd::class,
     ];
 

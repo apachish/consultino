@@ -200,6 +200,7 @@
     "Services": "خدمات",
     "Portfolios": "نمونه کارها",
     "Site": "سایت",
+    "sliders": "اسلایدر",
     "Help": "راهنما",
     "A comprehensive list of all registered customers, including their profiles and privileges.": "فهرستی جامع از تمام مشتریان ثبت نام شده، از جمله مشخصات  آنها.",
     "A comprehensive list of all registered Doctor": "یک لیست جامع از تمام پزشکان ثبت نام شده",
@@ -211,5 +212,8 @@
     "Edit Setting": "ویرایش  تنظیمات",
     "Edit site constants": "ویرایش اطلاعات ثابت سایت",
     "Active": "فعال",
-    "Deactivate": "غیرفعال"
+    "Deactivate": "غیرفعال",
+
+    "Create Slider": "ایجاد اسلایدر",
+    "Edit Slider": "ویرایش اسلایدر"
 }
