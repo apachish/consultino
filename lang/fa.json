@@ -208,6 +208,8 @@
     "Setting List": "لیست تنظیمات",
     "You can change the static content of the site from here.": "شما می توانید محتوای ثابت سایت از اینجا تغییر دهید",
     "settings":"تنظیمات",
+    "services":"خدمات",
+    "links":"لینک ها",
     "Setting was saved.": "تنظیمات ذخیره شد",
     "Edit Setting": "ویرایش  تنظیمات",
     "Edit site constants": "ویرایش اطلاعات ثابت سایت",
@@ -215,5 +217,16 @@
     "Deactivate": "غیرفعال",
 
     "Create Slider": "ایجاد اسلایدر",
-    "Edit Slider": "ویرایش اسلایدر"
+    "Edit Slider": "ویرایش اسلایدر",
+    "slider List": "لیست اسلایدر ها",
+    "You can change the slider of the site from here.": "از اینجا می توانید اسلایدر سایت را تغییر دهید.",
+    "You can change the Link of the site from here.": "از اینجا می توانید لینک سایت را تغییر دهید.",
+    "You can change the service of the site from here.": "از اینجا می توانید خدمات سایت را تغییر دهید.",
+    "Link List": "لیست لینک ها",
+    "Create Link": "ایجاد لینک",
+    "Edit Link": "ویرایش لینک",
+    "services List": "لیست خدمات",
+    "Create Service": "ایجاد خدمات",
+    "Edit Service": "ویرایش خدمات",
+    "You can add icons from https://www.flaticon.com/": "شما می توانید از سایت https://www.flaticon.com/ مقدار icon اضافه کنید"
 }

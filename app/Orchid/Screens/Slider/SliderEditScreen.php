@@ -2,17 +2,13 @@
 
 namespace App\Orchid\Screens\Slider;
 
-use App\Models\Setting;
 use App\Models\Slider;
 use App\Orchid\Layouts\Slider\SliderEditLayout;
+use App\Orchid\Layouts\Slider\SliderListLayout;
 use Illuminate\Http\Request;
 use Orchid\Screen\Actions\Button;
-use Orchid\Screen\Fields\Input;
-use Orchid\Screen\Fields\Picture;
-use Orchid\Screen\Fields\Select;
+
 use Orchid\Screen\Screen;
-use Orchid\Support\Color;
-use Orchid\Support\Facades\Layout;
 use Orchid\Support\Facades\Toast;
 
 class SliderEditScreen extends Screen
@@ -40,7 +36,7 @@ class SliderEditScreen extends Screen
      */
     public function name(): ?string
     {
-        return $this->slider ? 'Edit Slider' : 'Create Slider';
+        return $this->slider->id ? 'Edit Slider' : 'Create Slider';
     }
 
 
@@ -49,7 +45,7 @@ class SliderEditScreen extends Screen
      */
     public function description(): ?string
     {
-        return $this->slider ? 'Edit Slider' : 'Create Slider';
+        return $this->slider->id ? 'Edit Slider' : 'Create Slider';
     }
 
     public function permission(): ?iterable
@@ -82,84 +78,36 @@ class SliderEditScreen extends Screen
     public function layout(): iterable
     {
         return [
-            Layout::rows([
-                Input::make('slider.title')
-                    ->type('text')
-                    ->max(255)
-                    ->required()
-                    ->title(__('Title'))
-                    ->placeholder(__('Name')),
-                Input::make('slider.key.subtitle')
-                    ->type('text')
-                    ->max(255)
-                    ->required()
-                    ->title(__('Subtitle'))
-                    ->placeholder(__('Subtitle')),
-                Input::make('slider.key.description')
-                    ->type('text')
-                    ->max(255)
-                    ->required()
-                    ->title(__('Title'))
-                    ->placeholder(__('Name')),
-                Input::make('slider.key.button1_text')
-                    ->type('text')
-                    ->max(255)
-                    ->required()
-                    ->title(__('Title'))
-                    ->placeholder(__('Name')),
-                Input::make('slider.key.button1_link')
-                    ->type('text')
-                    ->max(255)
-                    ->required()
-                    ->title(__('Title'))
-                    ->placeholder(__('Name')),
-                Input::make('slider.key.button2_text')
-                    ->type('text')
-                    ->max(255)
-                    ->required()
-                    ->title(__('Title'))
-                    ->placeholder(__('Name')),
-                Input::make('slider.key.button2_link')
-                    ->type('text')
-                    ->max(255)
-                    ->required()
-                    ->title(__('Title'))
-                    ->placeholder(__('Name')),
-                Picture::make('slider.image')
-                    ->title('Upload Image')
-                    ->accept('image/*')
-//                    ->multiple()
-                    ->help('Select an image file. You can upload files in any image format, such as JPG, PNG, or GIF.'),
-                Select::make('slider.status')
-                    ->options([
-                        true=> __("Active"),
-                        false => __("Deactivate"),
-                    ])
-                    ->title('Status')
-
-            ]),
+            SliderEditLayout::class
         ];
     }
 
     /**
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function save(Setting $setting, Request $request)
+    public function save(Slider $slider, Request $request)
     {
 
         $request->validate([
-            'setting.title' => [
+            'slider.title' => [
                 'required',
             ],
-            'setting.value' => [
-                'required',
+            'slider.image' => [
+                'required'
             ],
+            'slider.key.button1_link' => [
+                'nullable','url:http,https'
+            ],
+            'slider.key.button1_link' => [
+                'nullable','url:http,https'
+            ],
+
         ]);
 
-        $data = $request->collect('setting');
+        $data = $request->collect('slider');
 //        if ($request->file()) {
 //            $file = $request->file('value');
-//            if(file_exists($setting->value)) {
+//            if(file_exists($slider->value)) {
 //                dd("w");
 //            }
 //            $fileName = time() . '_' . $file->getClientOriginalName();
@@ -167,12 +115,17 @@ class SliderEditScreen extends Screen
 //            Storage::disk('images')->put($fileName, $file);
 //
 //        }
-        $setting->update($data->toArray());
+        $data['sort_order'] = 1;
+        if($slider->id)
+        $slider->update($data->toArray());
+        else
+            $slider->create($data->toArray());
 
 
-        Toast::info(__('Setting was saved.'));
 
-        return redirect()->route('platform.systems.settings');
+        Toast::info(__('Slider was saved.'));
+
+        return redirect()->route('platform.systems.sliders');
     }
 
 }

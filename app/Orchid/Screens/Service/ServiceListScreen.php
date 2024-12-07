@@ -2,6 +2,9 @@
 
 namespace App\Orchid\Screens\Service;
 
+use App\Models\Service;
+use App\Orchid\Layouts\Service\ServicesListLayout;
+use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Screen;
 
 class ServiceListScreen extends Screen
@@ -13,7 +16,10 @@ class ServiceListScreen extends Screen
      */
     public function query(): iterable
     {
-        return [];
+        return [
+            'services' => Service::defaultSort('updated_at', 'desc')
+                ->paginate(),
+        ];
     }
 
     /**
@@ -23,8 +29,25 @@ class ServiceListScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'ServiceListScreen';
+        return 'services List';
     }
+
+    /**
+     * Display header description.
+     */
+    public function description(): ?string
+    {
+        return 'You can change the service of the site from here.';
+    }
+
+
+    public function permission(): ?iterable
+    {
+        return [
+            'platform.systems.users',
+        ];
+    }
+
 
     /**
      * The screen's action buttons.
@@ -33,7 +56,11 @@ class ServiceListScreen extends Screen
      */
     public function commandBar(): iterable
     {
-        return [];
+        return [
+            Link::make(__('Add'))
+                ->icon('bs.plus-circle')
+                ->route('platform.systems.services.create'),
+        ];
     }
 
     /**
@@ -43,6 +70,9 @@ class ServiceListScreen extends Screen
      */
     public function layout(): iterable
     {
-        return [];
+        return [
+            ServicesListLayout::class,
+
+        ];
     }
 }

@@ -2,18 +2,28 @@
 
 namespace App\Orchid\Screens\Service;
 
+use App\Models\Service;
+use App\Orchid\Layouts\Service\ServiceEditLayout;
+use Illuminate\Http\Request;
+use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Screen;
 
 class ServiceEditScreen extends Screen
 {
     /**
+     * @var Service
+     */
+    public $service;
+    /**
      * Fetch data to be displayed on the screen.
      *
      * @return array
      */
-    public function query(): iterable
+    public function query(Service $service): iterable
     {
-        return [];
+        return [
+            'service'       => $service
+        ];
     }
 
     /**
@@ -23,8 +33,25 @@ class ServiceEditScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'ServiceEditScreen';
+        return $this->service->id ? 'Edit Service' : 'Create Service';
     }
+
+
+    /**
+     * Display header description.
+     */
+    public function description(): ?string
+    {
+        return $this->service->id ? 'Edit Service' : 'Create Service';
+    }
+
+    public function permission(): ?iterable
+    {
+        return [
+            'platform.systems.users',
+        ];
+    }
+
 
     /**
      * The screen's action buttons.
@@ -33,7 +60,11 @@ class ServiceEditScreen extends Screen
      */
     public function commandBar(): iterable
     {
-        return [];
+        return [
+            Button::make(__('Save'))
+                ->icon('bs.check-circle')
+                ->method('save'),
+        ];
     }
 
     /**
@@ -43,6 +74,55 @@ class ServiceEditScreen extends Screen
      */
     public function layout(): iterable
     {
-        return [];
+        return [
+            ServiceEditLayout::class
+        ];
+    }
+
+    /**
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function save(Service $service, Request $request)
+    {
+
+        $request->validate([
+            'service.title' => [
+                'required',
+            ],
+            'service.image' => [
+                'required'
+            ],
+            'service.sort_order' => [
+                'required','min:1'
+            ],
+            'service.url' => [
+                'required','url:http,https'
+            ],
+
+
+        ]);
+
+        $data = $request->collect('link');
+//        if ($request->file()) {
+//            $file = $request->file('value');
+//            if(file_exists($slider->value)) {
+//                dd("w");
+//            }
+//            $fileName = time() . '_' . $file->getClientOriginalName();
+//            dd($fileName);
+//            Storage::disk('images')->put($fileName, $file);
+//
+//        }
+        logger("q",$data->toArray());
+        if($service->id)
+            $service->update($data->toArray());
+        else
+            $service->create($data->toArray());
+
+
+
+        Toast::info(__('Slider was saved.'));
+
+        return redirect()->route('platform.systems.links');
     }
 }

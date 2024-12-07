@@ -2,9 +2,8 @@
 
 declare(strict_types=1);
 
-namespace App\Orchid\Layouts\Slider;
+namespace App\Orchid\Layouts\Link;
 
-use App\Models\Slider;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\DropDown;
 use Orchid\Screen\Actions\Link;
@@ -14,12 +13,12 @@ use Orchid\Screen\Layouts\Table;
 use Orchid\Screen\TD;
 use Orchid\Support\Color;
 
-class SliderListLayout extends Table
+class LinkListLayout extends Table
 {
     /**
      * @var string
      */
-    public $target = 'sliders';
+    public $target = 'links';
 
     /**
      * @return TD[]
@@ -35,6 +34,10 @@ class SliderListLayout extends Table
                     return "<img src='{$model->image}' alt='{$model->title}' style='width: 50px; height: 50px; object-fit: cover;'>";
                 })->width('100px'),
             TD::make('title', __('Title'))
+                ->sort()
+                ->cantHide()
+                ->filter(Input::make()),
+            TD::make('url', __('Url'))
                 ->sort()
                 ->cantHide()
                 ->filter(Input::make()),
@@ -56,12 +59,12 @@ class SliderListLayout extends Table
             TD::make(__('Actions'))
                 ->align(TD::ALIGN_CENTER)
                 ->width('100px')
-                ->render(fn (Slider $slider) => DropDown::make()
+                ->render(fn (\App\Models\Link $link) => DropDown::make()
                     ->icon('bs.three-dots-vertical')
                     ->list([
 
                         Link::make(__('Edit'))
-                            ->route('platform.systems.sliders.edit', $slider->id)
+                            ->route('platform.systems.sliders.edit', $link->id)
                             ->icon('bs.pencil'),
                     ])),
         ];

@@ -73,7 +73,7 @@ class SliderListScreen extends Screen
     public function layout(): iterable
     {
         return [
-            SliderFiltersLayout::class,
+//            SliderFiltersLayout::class,
             SliderListLayout::class,
 
         ];

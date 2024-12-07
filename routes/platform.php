@@ -142,17 +142,45 @@ Route::screen('sliders/{slider}/edit', \App\Orchid\Screens\Slider\SliderEditScre
         ->push($slider->title, route('platform.systems.sliders.edit', $slider)));
 
 
-Route::screen('links', \App\Orchid\Screens\Customer\CustomerListScreen::class)
+Route::screen('links', \App\Orchid\Screens\Link\LinkListScreen::class)
     ->name('platform.systems.links')
     ->breadcrumbs(fn (Trail $trail) => $trail
         ->parent('platform.index')
         ->push(__('links'), route('platform.systems.links')));
 
-Route::screen('services', \App\Orchid\Screens\Customer\CustomerListScreen::class)
+// Platform > System > link > Create
+Route::screen('links/create', \App\Orchid\Screens\Link\LinkEditScreen::class)
+    ->name('platform.systems.links.create')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+        ->parent('platform.systems.links')
+        ->push(__('Create'), route('platform.systems.links.create')));
+
+// Platform > System > link > Doctor
+Route::screen('links/{link}/edit', \App\Orchid\Screens\Link\LinkEditScreen::class)
+    ->name('platform.systems.links.edit')
+    ->breadcrumbs(fn (Trail $trail, $link) => $trail
+        ->parent('platform.systems.links')
+        ->push($link->title, route('platform.systems.links.edit', $link)));
+
+Route::screen('services', \App\Orchid\Screens\Service\ServiceListScreen::class)
     ->name('platform.systems.services')
     ->breadcrumbs(fn (Trail $trail) => $trail
         ->parent('platform.index')
         ->push(__('services'), route('platform.systems.services')));
+
+// Platform > System > service > Create
+Route::screen('services/create', \App\Orchid\Screens\Service\ServiceEditScreen::class)
+    ->name('platform.systems.services.create')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+        ->parent('platform.systems.services')
+        ->push(__('Create'), route('platform.systems.services.create')));
+
+// Platform > System > service > Doctor
+Route::screen('services/{service}/edit', \App\Orchid\Screens\Service\ServiceEditScreen::class)
+    ->name('platform.systems.services.edit')
+    ->breadcrumbs(fn (Trail $trail, $service) => $trail
+        ->parent('platform.systems.services')
+        ->push($service->title, route('platform.systems.services.edit', $service)));
 
 Route::screen('portfolios', \App\Orchid\Screens\Customer\CustomerListScreen::class)
     ->name('platform.systems.portfolios')
