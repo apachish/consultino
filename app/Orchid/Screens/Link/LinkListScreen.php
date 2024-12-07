@@ -4,8 +4,10 @@ namespace App\Orchid\Screens\Link;
 
 use App\Models\Link as LinkModel;
 use App\Orchid\Layouts\Link\LinkListLayout;
+use Illuminate\Http\Request;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Screen;
+use Orchid\Support\Facades\Toast;
 
 class LinkListScreen extends Screen
 {
@@ -74,5 +76,12 @@ class LinkListScreen extends Screen
             LinkListLayout::class,
 
         ];
+    }
+
+    public function remove(Request $request): void
+    {
+        LinkModel::findOrFail($request->get('id'))->delete();
+
+        Toast::info(__('Link was removed'));
     }
 }

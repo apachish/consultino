@@ -4,8 +4,10 @@ namespace App\Orchid\Screens\Service;
 
 use App\Models\Service;
 use App\Orchid\Layouts\Service\ServicesListLayout;
+use Illuminate\Http\Request;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Screen;
+use Orchid\Support\Facades\Toast;
 
 class ServiceListScreen extends Screen
 {
@@ -74,5 +76,12 @@ class ServiceListScreen extends Screen
             ServicesListLayout::class,
 
         ];
+    }
+
+    public function remove(Request $request): void
+    {
+        Service::findOrFail($request->get('id'))->delete();
+
+        Toast::info(__('Service was removed'));
     }
 }

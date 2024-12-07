@@ -5,8 +5,10 @@ namespace App\Orchid\Screens\Service;
 use App\Models\Service;
 use App\Orchid\Layouts\Service\ServiceEditLayout;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Screen;
+use Orchid\Support\Facades\Toast;
 
 class ServiceEditScreen extends Screen
 {
@@ -95,25 +97,16 @@ class ServiceEditScreen extends Screen
             'service.sort_order' => [
                 'required','min:1'
             ],
-            'service.url' => [
-                'required','url:http,https'
+            'service.description' => [
+                'required'
             ],
 
 
         ]);
 
-        $data = $request->collect('link');
-//        if ($request->file()) {
-//            $file = $request->file('value');
-//            if(file_exists($slider->value)) {
-//                dd("w");
-//            }
-//            $fileName = time() . '_' . $file->getClientOriginalName();
-//            dd($fileName);
-//            Storage::disk('images')->put($fileName, $file);
-//
-//        }
+        $data = $request->collect('service');
         logger("q",$data->toArray());
+        $data['slug'] = Str::slug($data['title']);
         if($service->id)
             $service->update($data->toArray());
         else
@@ -121,8 +114,8 @@ class ServiceEditScreen extends Screen
 
 
 
-        Toast::info(__('Slider was saved.'));
+        Toast::info(__('Services was saved.'));
 
-        return redirect()->route('platform.systems.links');
+        return redirect()->route('platform.systems.services');
     }
 }

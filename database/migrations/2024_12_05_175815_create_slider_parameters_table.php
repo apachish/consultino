@@ -22,7 +22,7 @@ return new class extends Migration
                 "button2_link",
             ]);
             $table->string('value');
-            $table->bigInteger('slide_id');
+            $table->unsignedBigInteger('slide_id');
             $table->foreign('slide_id')->references('id')->on('sliders')->onDelete('cascade');
 
             $table->timestamps();

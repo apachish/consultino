@@ -63,6 +63,12 @@ class SliderListLayout extends Table
                         Link::make(__('Edit'))
                             ->route('platform.systems.sliders.edit', $slider->id)
                             ->icon('bs.pencil'),
+                        Button::make(__('Delete'))
+                            ->icon('bs.trash3')
+                            ->confirm(__('Once the account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.'))
+                            ->method('remove', [
+                                'id' => $slider->id,
+                            ]),
                     ])),
         ];
     }

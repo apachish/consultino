@@ -5,8 +5,10 @@ namespace App\Orchid\Screens\Slider;
 use App\Models\Slider;
 use App\Orchid\Layouts\Slider\SliderFiltersLayout;
 use App\Orchid\Layouts\Slider\SliderListLayout;
+use Illuminate\Http\Request;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Screen;
+use Orchid\Support\Facades\Toast;
 
 class SliderListScreen extends Screen
 {
@@ -89,5 +91,12 @@ class SliderListScreen extends Screen
         return [
             'slider' => $slider,
         ];
+    }
+
+    public function remove(Request $request): void
+    {
+        Slider::findOrFail($request->get('id'))->delete();
+
+        Toast::info(__('Slider was removed'));
     }
 }

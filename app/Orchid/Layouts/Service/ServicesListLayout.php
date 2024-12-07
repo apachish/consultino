@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Orchid\Layouts\Service;
 
+use App\Models\Service;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Actions\DropDown;
 use Orchid\Screen\Actions\Link;
@@ -27,7 +28,7 @@ class ServicesListLayout extends Table
     {
         return [
 
-            TD::make('image', __('Title'))
+            TD::make('image', __('Image'))
                 ->sort()
                 ->cantHide()
                 ->render(function ($model) {
@@ -37,7 +38,7 @@ class ServicesListLayout extends Table
                 ->sort()
                 ->cantHide()
                 ->filter(Input::make()),
-            TD::make('url', __('Url'))
+            TD::make('slug', __('Slug'))
                 ->sort()
                 ->cantHide()
                 ->filter(Input::make()),
@@ -46,7 +47,7 @@ class ServicesListLayout extends Table
                 ->sort()
                 ->cantHide()
                 ->filter(Input::make())
-                ->render(fn($slider) => e($slider->status?
+                ->render(fn($service) => e($service->status?
                     Button::make('Active')->method('buttonClickProcessing')->type(Color::SUCCESS):
                     Button::make('Deactivate')->method('buttonClickProcessing')->type(Color::DANGER)
 
@@ -59,13 +60,19 @@ class ServicesListLayout extends Table
             TD::make(__('Actions'))
                 ->align(TD::ALIGN_CENTER)
                 ->width('100px')
-                ->render(fn (\App\Models\Link $link) => DropDown::make()
+                ->render(fn (Service $service) => DropDown::make()
                     ->icon('bs.three-dots-vertical')
                     ->list([
 
                         Link::make(__('Edit'))
-                            ->route('platform.systems.sliders.edit', $link->id)
+                            ->route('platform.systems.services.edit', $service->id)
                             ->icon('bs.pencil'),
+                        Button::make(__('Delete'))
+                            ->icon('bs.trash3')
+                            ->confirm(__('Once the account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.'))
+                            ->method('remove', [
+                                'id' => $service->id,
+                            ]),
                     ])),
         ];
     }
