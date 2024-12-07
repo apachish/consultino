@@ -2,7 +2,12 @@
 
 namespace App\Orchid\Screens\Portfolio;
 
+use App\Models\Portfolio;
+use App\Orchid\Layouts\Portfolio\PortfoliosListLayout;
+use Illuminate\Http\Request;
+use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Screen;
+use Orchid\Support\Facades\Toast;
 
 class PortfolioListScreen extends Screen
 {
@@ -13,7 +18,10 @@ class PortfolioListScreen extends Screen
      */
     public function query(): iterable
     {
-        return [];
+        return [
+            'portfolios' => Portfolio::defaultSort('updated_at', 'desc')
+                ->paginate(),
+        ];
     }
 
     /**
@@ -23,8 +31,25 @@ class PortfolioListScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'PortfolioListScreen';
+        return 'portfolios List';
     }
+
+    /**
+     * Display header description.
+     */
+    public function description(): ?string
+    {
+        return 'You can change the portfolio of the site from here.';
+    }
+
+
+    public function permission(): ?iterable
+    {
+        return [
+            'platform.systems.users',
+        ];
+    }
+
 
     /**
      * The screen's action buttons.
@@ -33,7 +58,11 @@ class PortfolioListScreen extends Screen
      */
     public function commandBar(): iterable
     {
-        return [];
+        return [
+            Link::make(__('Add'))
+                ->icon('bs.plus-circle')
+                ->route('platform.systems.portfolios.create'),
+        ];
     }
 
     /**
@@ -43,6 +72,16 @@ class PortfolioListScreen extends Screen
      */
     public function layout(): iterable
     {
-        return [];
+        return [
+            PortfoliosListLayout::class,
+
+        ];
+    }
+
+    public function remove(Request $request): void
+    {
+        Portfolio::findOrFail($request->get('id'))->delete();
+
+        Toast::info(__('Portfolio was removed'));
     }
 }
