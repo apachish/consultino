@@ -11,14 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('portfolios', function (Blueprint $table) {
+        Schema::create('category_portfolios', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('file');
-            $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('category_portfolios')->onDelete('cascade');
-            $table->string('sort_order');
-            $table->string('status');
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }
@@ -28,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('portfolios');
+        Schema::dropIfExists('category_portfolios');
     }
 };

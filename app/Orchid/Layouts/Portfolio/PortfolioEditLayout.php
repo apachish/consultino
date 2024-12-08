@@ -2,12 +2,12 @@
 
 namespace App\Orchid\Layouts\Portfolio;
 
+use App\Models\CategoryPortfolio;
 use Orchid\Screen\Field;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Picture;
-use Orchid\Screen\Fields\Quill;
+use Orchid\Screen\Fields\Relation;
 use Orchid\Screen\Fields\Select;
-use Orchid\Screen\Fields\TextArea;
 use Orchid\Screen\Layouts\Rows;
 
 class PortfolioEditLayout extends Rows
@@ -32,26 +32,19 @@ class PortfolioEditLayout extends Rows
             ->required()
             ->title(__('Title'))
             ->placeholder(__('Name')),
-            Input::make('portfolio.icon')
-                ->type('text')
-                ->max(255)
-                ->title(__('Icon'))
-                ->help(__('You can add icons from https://www.flaticon.com/'))
-                ->placeholder(__('Icon')),
-            TextArea::make('portfolio.description')
-                ->title('Example textarea')
-                ->required()
-                ->rows(6),
-            Quill::make('portfolio.body')
-                ->title(__('Body'))
-                ->popover('Quill is a free, open source WYSIWYG editor built for the modern web.'),
+            Relation::make('user')
+                ->fromModel(CategoryPortfolio::class, 'title')
+                ->allowAdd(true)
+                ->title('Select for Eloquent model'),
+
+
 
             Input::make('portfolio.sort_order')
                 ->type('number')
                 ->max(255)
                 ->title(__('sort Order'))
                 ->placeholder(1),
-            Picture::make('portfolio.image')
+            Picture::make('portfolio.file')
                 ->title('Upload Image')
                 ->minCanvas(500)
                 ->maxWidth(102)
