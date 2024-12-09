@@ -15,8 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('file');
-            $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('category_portfolios')->onDelete('cascade');
+            $table->string('category');
             $table->string('sort_order');
             $table->string('status');
             $table->timestamps();

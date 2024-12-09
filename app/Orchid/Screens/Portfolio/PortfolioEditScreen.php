@@ -93,7 +93,7 @@ class PortfolioEditScreen extends Screen
             'portfolio.file' => [
                 'required'
             ],
-            'portfolio.category_id' => [
+            'portfolio.category' => [
                 'required'
             ],
             'portfolio.sort_order' => [

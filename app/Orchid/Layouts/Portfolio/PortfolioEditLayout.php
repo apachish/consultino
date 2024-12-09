@@ -2,7 +2,7 @@
 
 namespace App\Orchid\Layouts\Portfolio;
 
-use App\Models\CategoryPortfolio;
+use App\Models\Portfolio;
 use Orchid\Screen\Field;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Picture;
@@ -26,15 +26,18 @@ class PortfolioEditLayout extends Rows
      */
     protected function fields(): iterable
     {
-        return [ Input::make('portfolio.title')
+        return [
+            Input::make('portfolio.title')
             ->type('text')
             ->max(255)
             ->required()
             ->title(__('Title'))
             ->placeholder(__('Name')),
-            Relation::make('category_id')
-                ->fromModel(CategoryPortfolio::class, 'title')
+
+            Relation::make('portfolio.category')
+                ->fromModel(Portfolio::class, 'category')
                 ->allowAdd(true)
+                ->applyScope('group') // اعمال scope گروه‌بندی
                 ->title('Select for Eloquent model'),
 
 
@@ -50,7 +53,7 @@ class PortfolioEditLayout extends Rows
                 ->maxWidth(102)
                 ->maxHeight(78)
                 ->storage('images')
-                ->accept('image/*')
+                ->accept('image/*,video/mp4,video/webm')
                 ->required()
                 //                    ->multiple()
                 ->help('Select an image file. You can upload files in any image format, such as JPG, PNG, or GIF.'),

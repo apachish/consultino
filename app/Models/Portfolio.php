@@ -9,6 +9,8 @@ use Orchid\Filters\Types\Like;
 use Orchid\Filters\Types\WhereDateStartEnd;
 use Orchid\Screen\AsSource;
 
+
+
 class Portfolio extends Model
 {
     use  Filterable,UserAccess,AsSource;
@@ -20,7 +22,7 @@ class Portfolio extends Model
     protected $fillable = [
         'title',
         'file',
-        'category_id',
+        'category',
         'sort_order',
         'status',
     ];
@@ -44,8 +46,9 @@ class Portfolio extends Model
         'updated_at',
     ];
 
-    public function category()
+    // Scope to group by category
+    public function scopeGroup(Builder $query)
     {
-        return $this->belongsTo(CategoryPortfolio::class);
+        return $query->groupBy('category')->orderBy('sort_order');
     }
 }
