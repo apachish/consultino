@@ -162,25 +162,44 @@ Route::screen('links/{link}/edit', \App\Orchid\Screens\Link\LinkEditScreen::clas
         ->parent('platform.systems.links')
         ->push($link->title, route('platform.systems.links.edit', $link)));
 
-Route::screen('services', \App\Orchid\Screens\Service\ServiceListScreen::class)
+Route::screen('services', \App\Orchid\Screens\Service\ArticleListScreen::class)
     ->name('platform.systems.services')
     ->breadcrumbs(fn (Trail $trail) => $trail
         ->parent('platform.index')
         ->push(__('services'), route('platform.systems.services')));
 
 // Platform > System > service > Create
-Route::screen('services/create', \App\Orchid\Screens\Service\ServiceEditScreen::class)
+Route::screen('services/create', \App\Orchid\Screens\Service\ArticleEditScreen::class)
     ->name('platform.systems.services.create')
     ->breadcrumbs(fn (Trail $trail) => $trail
         ->parent('platform.systems.services')
         ->push(__('Create'), route('platform.systems.services.create')));
 
 // Platform > System > service > Doctor
-Route::screen('services/{service}/edit', \App\Orchid\Screens\Service\ServiceEditScreen::class)
+Route::screen('services/{service}/edit', \App\Orchid\Screens\Service\ArticleEditScreen::class)
     ->name('platform.systems.services.edit')
     ->breadcrumbs(fn (Trail $trail, $service) => $trail
         ->parent('platform.systems.services')
         ->push($service->title, route('platform.systems.services.edit', $service)));
+
+Route::screen('portfolios', \App\Orchid\Screens\Portfolio\PortfolioListScreen::class)
+    ->name('platform.systems.portfolios')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+        ->parent('platform.index')
+        ->push(__('portfolios'), route('platform.systems.portfolios')));
+// Platform > System > portfolio > Create
+Route::screen('portfolios/create', \App\Orchid\Screens\Portfolio\PortfolioEditScreen::class)
+    ->name('platform.systems.portfolios.create')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+        ->parent('platform.systems.portfolios')
+        ->push(__('Create'), route('platform.systems.portfolios.create')));
+
+// Platform > System > portfolio > Doctor
+Route::screen('portfolios/{portfolio}/edit', \App\Orchid\Screens\Portfolio\PortfolioEditScreen::class)
+    ->name('platform.systems.portfolios.edit')
+    ->breadcrumbs(fn (Trail $trail, $portfolio) => $trail
+        ->parent('platform.systems.portfolios')
+        ->push($portfolio->title, route('platform.systems.portfolios.edit', $portfolio)));
 
 Route::screen('portfolios', \App\Orchid\Screens\Portfolio\PortfolioListScreen::class)
     ->name('platform.systems.portfolios')
