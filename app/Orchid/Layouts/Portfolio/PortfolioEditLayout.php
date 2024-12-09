@@ -32,7 +32,7 @@ class PortfolioEditLayout extends Rows
             ->required()
             ->title(__('Title'))
             ->placeholder(__('Name')),
-            Relation::make('user')
+            Relation::make('category_id')
                 ->fromModel(CategoryPortfolio::class, 'title')
                 ->allowAdd(true)
                 ->title('Select for Eloquent model'),
