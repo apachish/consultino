@@ -39,7 +39,7 @@ class ServiceEditLayout extends Rows
                 ->help(__('You can add icons from https://www.flaticon.com/'))
                 ->placeholder(__('Icon')),
             TextArea::make('service.description')
-                ->title('Example textarea')
+                ->title(__('Description'))
                 ->required()
                 ->rows(6),
             Quill::make('service.body')

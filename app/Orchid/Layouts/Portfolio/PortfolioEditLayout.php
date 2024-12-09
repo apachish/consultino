@@ -38,7 +38,7 @@ class PortfolioEditLayout extends Rows
                 ->fromModel(Portfolio::class, 'category')
                 ->allowAdd(true)
                 ->applyScope('group') // اعمال scope گروه‌بندی
-                ->title('Select for Eloquent model'),
+                ->title(__('Category')),
 
 
 
@@ -48,7 +48,7 @@ class PortfolioEditLayout extends Rows
                 ->title(__('sort Order'))
                 ->placeholder(1),
             Picture::make('portfolio.file')
-                ->title('Upload Image')
+                ->title(__('File'))
                 ->minCanvas(500)
                 ->maxWidth(102)
                 ->maxHeight(78)
@@ -62,7 +62,7 @@ class PortfolioEditLayout extends Rows
                     true=> __("Active"),
                     false => __("Deactivate"),
                 ])
-                ->title('Status')
+                ->title(__('Status'))
 
         ];
     }

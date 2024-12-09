@@ -29,17 +29,17 @@ class PortfoliosListLayout extends Table
     {
         return [
 
-            TD::make('image', __('Image'))
+            TD::make('file', __('File'))
                 ->sort()
                 ->cantHide()
                 ->render(function ($model) {
-                    return "<img src='{$model->image}' alt='{$model->title}' style='width: 50px; height: 50px; object-fit: cover;'>";
+                    return "<img src='{$model->file}' alt='{$model->title}' style='width: 50px; height: 50px; object-fit: cover;'>";
                 })->width('100px'),
             TD::make('title', __('Title'))
                 ->sort()
                 ->cantHide()
                 ->filter(Input::make()),
-            TD::make('slug', __('Slug'))
+            TD::make('category', __('Category'))
                 ->sort()
                 ->cantHide()
                 ->filter(Input::make()),
@@ -66,7 +66,7 @@ class PortfoliosListLayout extends Table
                     ->list([
 
                         Link::make(__('Edit'))
-                            ->route('platform.systems.services.edit', $portfolio->id)
+                            ->route('platform.systems.portfolios.edit', $portfolio->id)
                             ->icon('bs.pencil'),
                         Button::make(__('Delete'))
                             ->icon('bs.trash3')
