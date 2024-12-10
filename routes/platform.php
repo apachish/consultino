@@ -92,12 +92,6 @@ Route::screen('customers', \App\Orchid\Screens\Customer\CustomerListScreen::clas
     ->breadcrumbs(fn (Trail $trail) => $trail
         ->parent('platform.index')
         ->push(__('Customers'), route('platform.systems.customers')));
-
-Route::screen('blogs', \App\Orchid\Screens\Customer\CustomerListScreen::class)
-    ->name('platform.systems.blogs')
-    ->breadcrumbs(fn (Trail $trail) => $trail
-        ->parent('platform.index')
-        ->push(__('blogs'), route('platform.systems.blogs')));
 /*
  * setting
  */
@@ -162,21 +156,21 @@ Route::screen('links/{link}/edit', \App\Orchid\Screens\Link\LinkEditScreen::clas
         ->parent('platform.systems.links')
         ->push($link->title, route('platform.systems.links.edit', $link)));
 
-Route::screen('services', \App\Orchid\Screens\Service\ArticleListScreen::class)
+Route::screen('services', \App\Orchid\Screens\Service\ServiceListScreen::class)
     ->name('platform.systems.services')
     ->breadcrumbs(fn (Trail $trail) => $trail
         ->parent('platform.index')
         ->push(__('services'), route('platform.systems.services')));
 
 // Platform > System > service > Create
-Route::screen('services/create', \App\Orchid\Screens\Service\ArticleEditScreen::class)
+Route::screen('services/create', \App\Orchid\Screens\Service\ServiceEditScreen::class)
     ->name('platform.systems.services.create')
     ->breadcrumbs(fn (Trail $trail) => $trail
         ->parent('platform.systems.services')
         ->push(__('Create'), route('platform.systems.services.create')));
 
 // Platform > System > service > Doctor
-Route::screen('services/{service}/edit', \App\Orchid\Screens\Service\ArticleEditScreen::class)
+Route::screen('services/{service}/edit', \App\Orchid\Screens\Service\ServiceEditScreen::class)
     ->name('platform.systems.services.edit')
     ->breadcrumbs(fn (Trail $trail, $service) => $trail
         ->parent('platform.systems.services')
@@ -201,24 +195,24 @@ Route::screen('portfolios/{portfolio}/edit', \App\Orchid\Screens\Portfolio\Portf
         ->parent('platform.systems.portfolios')
         ->push($portfolio->title, route('platform.systems.portfolios.edit', $portfolio)));
 
-Route::screen('portfolios', \App\Orchid\Screens\Portfolio\PortfolioListScreen::class)
-    ->name('platform.systems.portfolios')
+Route::screen('blogs', \App\Orchid\Screens\Article\ArticleListScreen::class)
+    ->name('platform.systems.blogs')
     ->breadcrumbs(fn (Trail $trail) => $trail
         ->parent('platform.index')
-        ->push(__('portfolios'), route('platform.systems.portfolios')));
-// Platform > System > portfolio > Create
-Route::screen('portfolios/create', \App\Orchid\Screens\Portfolio\PortfolioEditScreen::class)
-    ->name('platform.systems.portfolios.create')
+        ->push(__('blogs'), route('platform.systems.blogs')));
+// Platform > System > article > Create
+Route::screen('blogs/create', \App\Orchid\Screens\Article\ArticleEditScreen::class)
+    ->name('platform.systems.blogs.create')
     ->breadcrumbs(fn (Trail $trail) => $trail
-        ->parent('platform.systems.portfolios')
-        ->push(__('Create'), route('platform.systems.portfolios.create')));
+        ->parent('platform.systems.blogs')
+        ->push(__('Create'), route('platform.systems.blogs.create')));
 
-// Platform > System > portfolio > Doctor
-Route::screen('portfolios/{portfolio}/edit', \App\Orchid\Screens\Portfolio\PortfolioEditScreen::class)
-    ->name('platform.systems.portfolios.edit')
-    ->breadcrumbs(fn (Trail $trail, $portfolio) => $trail
-        ->parent('platform.systems.portfolios')
-        ->push($portfolio->title, route('platform.systems.portfolios.edit', $portfolio)));
+// Platform > System > article > edit
+Route::screen('blogs/{article}/edit', \App\Orchid\Screens\Article\ArticleEditScreen::class)
+    ->name('platform.systems.blogs.edit')
+    ->breadcrumbs(fn (Trail $trail, $article) => $trail
+        ->parent('platform.systems.blogs')
+        ->push($article->title, route('platform.systems.blogs.edit', $article)));
 
 // Platform > System > Roles > Role
 Route::screen('roles/{role}/edit', RoleEditScreen::class)

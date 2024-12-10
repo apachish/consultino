@@ -3,7 +3,7 @@
 namespace App\Orchid\Screens\Article;
 
 use App\Models\Service;
-use App\Orchid\Layouts\Service\ArticleEditLayout;
+use App\Orchid\Layouts\Article\ArticleEditLayout;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Orchid\Screen\Actions\Button;
@@ -15,16 +15,16 @@ class ArticleEditScreen extends Screen
     /**
      * @var Service
      */
-    public $service;
+    public $article;
     /**
      * Fetch data to be displayed on the screen.
      *
      * @return array
      */
-    public function query(Service $service): iterable
+    public function query(Service $article): iterable
     {
         return [
-            'service'       => $service
+            'article'       => $article
         ];
     }
 
@@ -35,7 +35,7 @@ class ArticleEditScreen extends Screen
      */
     public function name(): ?string
     {
-        return $this->service->id ? 'Edit Service' : 'Create Service';
+        return $this->article->id ? 'Edit Article' : 'Create Article';
     }
 
 
@@ -44,7 +44,7 @@ class ArticleEditScreen extends Screen
      */
     public function description(): ?string
     {
-        return $this->service->id ? 'Edit Service' : 'Create Service';
+        return $this->article->id ? 'Edit Article' : 'Create Article';
     }
 
     public function permission(): ?iterable
@@ -84,38 +84,40 @@ class ArticleEditScreen extends Screen
     /**
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function save(Service $service, Request $request)
+    public function save(Service $article, Request $request)
     {
 
         $request->validate([
-            'service.title' => [
+            'article.title' => [
                 'required',
             ],
-            'service.image' => [
+            'article.image' => [
                 'required'
             ],
-            'service.sort_order' => [
+            'article.sort_order' => [
                 'required','min:1'
             ],
-            'service.description' => [
+            'article.description' => [
                 'required'
             ],
 
 
         ]);
 
-        $data = $request->collect('service');
+        $data = $request->collect('article');
         logger("q",$data->toArray());
         $data['slug'] = Str::slug($data['title']);
-        if($service->id)
-            $service->update($data->toArray());
+        if($article->id)
+            $article->update($data->toArray());
         else
-            $service->create($data->toArray());
+            $article->create($data->toArray());
 
 
 
-        Toast::info(__('Services was saved.'));
+        Toast::info(__('Article was saved.'));
 
-        return redirect()->route('platform.systems.services');
+        return redirect()->route('platform.systems.blogs');
     }
+
+
 }

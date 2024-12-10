@@ -2,8 +2,9 @@
 
 namespace App\Orchid\Screens\Article;
 
+use App\Models\Article;
 use App\Models\Service;
-use App\Orchid\Layouts\Service\ArticleListLayout;
+use App\Orchid\Layouts\Article\ArticleListLayout;
 use Illuminate\Http\Request;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Screen;
@@ -31,7 +32,7 @@ class ArticleListScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'services List';
+        return 'Article List';
     }
 
     /**
@@ -39,7 +40,7 @@ class ArticleListScreen extends Screen
      */
     public function description(): ?string
     {
-        return 'You can change the service of the site from here.';
+        return 'You can view, edit, and delete the list of articles.';
     }
 
 
@@ -61,7 +62,7 @@ class ArticleListScreen extends Screen
         return [
             Link::make(__('Add'))
                 ->icon('bs.plus-circle')
-                ->route('platform.systems.services.create'),
+                ->route('platform.systems.blogs.create'),
         ];
     }
 
@@ -80,8 +81,8 @@ class ArticleListScreen extends Screen
 
     public function remove(Request $request): void
     {
-        Service::findOrFail($request->get('id'))->delete();
+        Article::findOrFail($request->get('id'))->delete();
 
-        Toast::info(__('Service was removed'));
+        Toast::info(__('Article was removed'));
     }
 }

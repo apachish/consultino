@@ -63,4 +63,12 @@ class Article extends Model
         'updated_at',
         'created_at',
     ];
+
+
+    // Scope to group by category
+    public function scopeGroup(Builder $query)
+    {
+        return $query->groupBy('category')->orderBy('sort_order');
+    }
+
 }

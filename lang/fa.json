@@ -247,5 +247,10 @@
     "Button Text First": "عنوان دکمه اول",
     "Button Link First": "لینک دکمه اول",
     "Button Text Second": "عنوان دکمه دوم",
-    "Button Link Second": "لینک دکمه دوم"
+    "Button Link Second": "لینک دکمه دوم",
+    "blogs": "مقاله ها",
+    "Article List": "لیست مقالات",
+    "You can view, edit, and delete the list of articles.": "می توانید لیست مقالات را مشاهد کنید و ویرایش و حذف کنید",
+    "Edit Article": "ویرایش مقاله",
+    "Create Article":"ایجاد مقاله"
 }

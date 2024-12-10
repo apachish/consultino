@@ -91,7 +91,15 @@ class ExampleFieldsAdvancedScreen extends Screen
                         'Attribute',
                         'Value',
                         'Units',
-                    ]),
+                    ])
+                    ->fields([
+                        'Attribute'   => Input::make()->type('number'),
+                        'Value'   => Input::make()->type('text'),
+                        'Units' => Picture::make('setting.value')
+                            ->title('Upload Image')
+                            ->accept('image/*'),
+                    ])
+                ,
 
                 Map::make('place')
                     ->title('Object on the map')
