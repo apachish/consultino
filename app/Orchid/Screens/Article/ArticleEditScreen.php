@@ -4,6 +4,7 @@ namespace App\Orchid\Screens\Article;
 
 use App\Models\Service;
 use App\Orchid\Layouts\Article\ArticleEditLayout;
+use App\Orchid\Layouts\SubtractListener;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Orchid\Screen\Actions\Button;
@@ -77,7 +78,9 @@ class ArticleEditScreen extends Screen
     public function layout(): iterable
     {
         return [
-            ArticleEditLayout::class
+            ArticleEditLayout::class,
+            SubtractListener::class
+
         ];
     }
 

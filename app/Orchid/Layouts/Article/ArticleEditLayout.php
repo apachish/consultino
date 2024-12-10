@@ -69,7 +69,7 @@ class ArticleEditLayout extends Rows
                 ])
                 ->empty('Select a type', '') // گزینه پیش‌فرض
                 ->help('Choose whether you want to upload an image or a video.')
-                ->addAttributes(['id' => 'select-type']), // شنونده برای تغییر
+            , // شنونده برای تغییر
 
             Input::make('article.url')
                 ->title('Video URL')
