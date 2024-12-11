@@ -4,6 +4,9 @@ namespace App\Orchid\Layouts;
 
 use Illuminate\Http\Request;
 use Orchid\Screen\Fields\Input;
+use Orchid\Screen\Fields\Matrix;
+use Orchid\Screen\Fields\Picture;
+use Orchid\Screen\Fields\Upload;
 use Orchid\Screen\Layouts\Listener;
 use Orchid\Screen\Repository;
 use Orchid\Support\Facades\Layout;
@@ -26,15 +29,41 @@ class SubtractListener extends Listener
      */
     protected function layouts(): iterable
     {
+        $selectedType = request()->input('article.type');
+
         return [
             Layout::rows([
-                Input::make('minuend')
-                    ->title('First argument')
-                    ->type('number'),
+                Input::make('article.url')
+                    ->title('Video URL')
+                    ->placeholder('Enter the video URL')
+                    ->canSee($selectedType === 'iframe'), // بررسی مقدار مستقیم
 
-                Input::make('subtrahend')
-                    ->title('Second argument')
-                    ->type('number'),
+
+                Picture::make('article.image')
+                    ->title('Upload Image')
+                    ->minCanvas(500)
+                    ->maxWidth(102)
+                    ->maxHeight(78)
+                    ->storage('images')
+                    ->accept('image/*')
+                    ->required()
+                    //                    ->multiple()
+                    ->help('Select an image file. You can upload files in any image format, such as JPG, PNG, or GIF.')
+                    ->canSee($selectedType === 'image'), // بررسی مقدار مستقیم
+                Matrix::make('matrix')
+                    ->columns([
+                        'title',
+                        'image',
+                    ])
+                    ->fields([
+                        'title'   => Input::make()->type('title'),
+                        'image' => Input::make('picture')
+                            ->type('file')
+                            ->title('Upload Image')
+                            ->accept('image/*')
+                            ->required(),
+                    ])->canSee($selectedType === 'slider')
+
             ]),
         ];
     }
@@ -49,14 +78,22 @@ class SubtractListener extends Listener
      */
     public function handle(Repository $repository, Request $request): Repository
     {
-        logger("Ww",[$request->all()]);
-        $minuend = $request->input('article.type');
+        $type = $request->input('article.type');
+        return $repository->set('type', $type);
+    }
 
-        $subtrahend = $request->input('subtrahend');
+    public function save(Request $request)
+    {
+        dd($request->all());
+        $file = $request->file('image'); // فایل تصویر از فرم
 
-        return $repository
-            ->set('minuend', $minuend)
-            ->set('subtrahend', $subtrahend)
-            ->set('result', $minuend - $subtrahend);
+        // ذخیره فایل در مسیر public/storage/images
+        $path = $file->store('images', 'public');
+
+        // ذخیره مسیر فایل در دیتابیس
+        Picture::create([
+            'name' => $file->getClientOriginalName(),
+            'image' => $path,
+        ]);
     }
 }

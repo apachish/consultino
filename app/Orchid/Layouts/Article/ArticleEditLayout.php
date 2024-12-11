@@ -29,9 +29,9 @@ class ArticleEditLayout extends Rows
      */
     protected function fields(): iterable
     {
-        $selectedType = request()->input('article.type');
 
-        return [ Input::make('article.title')
+        return [
+            Input::make('article.title')
             ->type('text')
             ->max(255)
             ->required()
@@ -55,40 +55,6 @@ class ArticleEditLayout extends Rows
                 ->title(__('Body'))
                 ->popover('Quill is a free, open source WYSIWYG editor built for the modern web.'),
 
-            Input::make('article.sort_order')
-                ->type('number')
-                ->max(255)
-                ->title(__('sort Order'))
-                ->placeholder(1),
-            Select::make('article.type')
-                ->title('Select Type')
-                ->options([
-                    'image' => 'Image',
-                    'iframe' => 'Iframe',
-                    'slide' => 'Slider',
-                ])
-                ->empty('Select a type', '') // گزینه پیش‌فرض
-                ->help('Choose whether you want to upload an image or a video.')
-            , // شنونده برای تغییر
-
-            Input::make('article.url')
-                ->title('Video URL')
-                ->placeholder('Enter the video URL')
-                ->canSee($selectedType === 'video'), // بررسی مقدار مستقیم
-
-
-            Picture::make('article.image')
-                ->title('Upload Image')
-                ->minCanvas(500)
-                ->maxWidth(102)
-                ->maxHeight(78)
-                ->storage('images')
-                ->accept('image/*')
-                ->required()
-                //                    ->multiple()
-                ->help('Select an image file. You can upload files in any image format, such as JPG, PNG, or GIF.')
-                ->canSee($selectedType === 'image'), // بررسی مقدار مستقیم
-
 
 
             Select::make('article.status')
@@ -96,7 +62,19 @@ class ArticleEditLayout extends Rows
                     true=> __("Active"),
                     false => __("Deactivate"),
                 ])
-                ->title('Status')
+                ->title('Status'),
+            Select::make('article.type')
+                ->title('Select Type')
+                ->options([
+                    'image' => 'Image',
+                    'iframe' => 'Iframe',
+                    'slider' => 'Slider',
+                ])
+                ->empty('Select a type', '') // گزینه پیش‌فرض
+                ->help('Choose whether you want to upload an image or a video.')
+            , // شنونده برای تغییر
+
+
 
         ];
     }

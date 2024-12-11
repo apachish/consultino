@@ -7,6 +7,8 @@ use App\Orchid\Layouts\Article\ArticleEditLayout;
 use App\Orchid\Layouts\SubtractListener;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
+use Orchid\Attachment\File;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Toast;
@@ -89,13 +91,12 @@ class ArticleEditScreen extends Screen
      */
     public function save(Service $article, Request $request)
     {
-
         $request->validate([
             'article.title' => [
                 'required',
             ],
-            'article.image' => [
-                'required'
+            'article.type' => [
+                'required',Rule::in(["image", "iframe", "slider"])
             ],
             'article.sort_order' => [
                 'required','min:1'
@@ -103,6 +104,23 @@ class ArticleEditScreen extends Screen
             'article.description' => [
                 'required'
             ],
+            'article.category' => [
+                'required'
+            ],
+            'article.slider' => [
+                'required_if:type,slider'
+            ],
+            'article.slider.*' => [
+                'required_if:type,slider','extensions:jpg,png'
+            ],
+            'article.image' => [
+                'required_if:type,image','extensions:jpg,png'
+            ],
+            'article.url' => [
+                'required_if:type,iframe','url:http,https'
+            ],
+
+
 
 
         ]);
@@ -121,6 +139,9 @@ class ArticleEditScreen extends Screen
 
         return redirect()->route('platform.systems.blogs');
     }
+
+
+
 
 
 }

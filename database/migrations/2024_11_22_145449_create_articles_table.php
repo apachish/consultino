@@ -13,6 +13,22 @@ return new class extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('description');
+            $table->string('category');
+            $table->string('body');
+            $table->boolean('status');
+            $table->enum('type',[
+                'image',
+                'iframe',
+                'slider',
+            ]);
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -221,6 +221,29 @@ Route::screen('roles/{role}/edit', RoleEditScreen::class)
         ->parent('platform.systems.roles')
         ->push($role->name, route('platform.systems.roles.edit', $role)));
 
+Route::prefix('panel')->group(function () {
+    Route::post('files', [AttachmentController::class, 'upload'])
+        ->name('panel.files.upload');
+
+    Route::post('media', [AttachmentController::class, 'media'])
+        ->name('panel.files.media');
+
+    Route::post('files/sort', [AttachmentController::class, 'sort'])
+        ->name('panel.files.sort');
+
+    Route::delete('files/{id}', [AttachmentController::class, 'destroy'])
+        ->name('panel.files.destroy');
+
+    Route::put('files/post/{id}', [AttachmentController::class, 'update'])
+        ->name('panel.files.update');
+
+    Route::post('relation', [RelationController::class, 'view'])
+        ->name('panel.relation');
+
+    Route::post('sorting', [SortableController::class, 'saveSortOrder'])
+        ->name('panel.sorting');
+});
+
 // Platform > System > Roles > Create
 Route::screen('roles/create', RoleEditScreen::class)
     ->name('platform.systems.roles.create')
