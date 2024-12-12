@@ -31,7 +31,7 @@
             <div class="header-bottominner">
                 <div class="header-logo">
                     <a href="index.html">
-                        <img src="{{data_get($settings,'logo.value')}}" alt="deconsult logo" height="40" width="230">
+                        <img src="{{data_get($settings,'logo.value')}}" alt="deconsult logo" height="130" width="200">
                     </a>
                 </div>
                 <nav class="tm-navigation">

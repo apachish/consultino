@@ -42,4 +42,9 @@ class Slider extends Model
         'title',
         'updated_at',
     ];
+
+    public function parameters()
+    {
+        return $this->hasMany(SliderParameter::class);
+    }
 }
