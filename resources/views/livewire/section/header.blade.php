@@ -7,16 +7,16 @@
                 <div class="col-md-7 col-12">
                     <div class="header-topinfo">
                         <ul>
-                            <li><a href="tel://+1-800-915-6270"><i class="fa fa-phone"></i> 1-800-915-6270</a></li>
+                            <li><a href="tel://+1-800-915-6270"><i class="fa fa-phone"></i> {{data_get($settings,'telephone.value')}}</a></li>
                             <li><a href="mailto://contact@example.com"><i class="fa fa-envelope-o"></i>
-                                    contact@example.com</a></li>
+                                    {{data_get($settings,'email.value')}}</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-md-5 col-12">
                     <div class="header-topinfo text-right">
                         <ul>
-                            <li><i class="fa fa-clock-o"></i> Mon - Fri: 9:00 - 19:00 GMT-05</li>
+                            <li><i class="fa fa-clock-o"></i> {{data_get($settings,'working_hours.value')}}</li>
                         </ul>
                     </div>
                 </div>
@@ -31,7 +31,7 @@
             <div class="header-bottominner">
                 <div class="header-logo">
                     <a href="index.html">
-                        <img src="assets/images/logo/logo.png" alt="deconsult logo">
+                        <img src="{{data_get($settings,'logo.value')}}" alt="deconsult logo" height="40" width="230">
                     </a>
                 </div>
                 <nav class="tm-navigation">
@@ -47,15 +47,15 @@
                         <li>
                             <button title="Search" class="header-searchtrigger"><i class="fa fa-search"></i></button>
                         </li>
-{{--                        <li>--}}
-{{--                            <a href="cart.html" title="Shopping Cart"><i class="fa fa-shopping-cart"></i></a>--}}
-{{--                        </li>--}}
+                        {{--                        <li>--}}
+                        {{--                            <a href="cart.html" title="Shopping Cart"><i class="fa fa-shopping-cart"></i></a>--}}
+                        {{--                        </li>--}}
                         @auth
-                        <li>
-                            <button title="dashboard" class="header-loginformtrigger" type="button"
-                                    onclick="window.location='{{route("platform.main")}}'"
-                                    ><i class="fa fa-user"></i></button>
-                        </li>
+                            <li>
+                                <button title="dashboard" class="header-loginformtrigger" type="button"
+                                        onclick="window.location='{{route("platform.main")}}'"
+                                ><i class="fa fa-user"></i></button>
+                            </li>
                         @else
                             <li>
                                 <button title="Login / Register" class="header-loginformtrigger" type="button"

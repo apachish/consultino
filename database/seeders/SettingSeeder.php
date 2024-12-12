@@ -36,7 +36,7 @@ class SettingSeeder extends Seeder
             ],
             "logo"=>[
                 "title"=>"لوگو",
-                "value"=>"/images/logo-s.png",
+                "value"=>"/images/logo-r.png",
                 "type"=>"image",
                                 "status"=>true,
 

@@ -19,7 +19,7 @@
 <div id="wrapper" class="wrapper">
 
     <!-- Header -->
-    @include('includes.header')
+    <livewire:section.header/>
     <!--// Header -->
 
     <!-- Heroslider -->
