@@ -1,7 +1,7 @@
 /*
  * %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  *
- * Template Name: Deconsult - Business Consulting Bootstrap4 Template   
+ * Template Name: Deconsult - Business Consulting Bootstrap4 Template
  * Template URI: https://thememarch.com/demo/html/deconsult/
  * Description: Deconsult is a business consulting HTML template which comes with the unique and clean design. It helps you to create a beautiful business consulting HTML website. It has also e-commerce support. E-commerce pages are included on this template.
  * Author: Thememarch

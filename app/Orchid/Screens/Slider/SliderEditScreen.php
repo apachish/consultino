@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Orchid\Screen\Actions\Button;
 
 use Orchid\Screen\Screen;
+use Orchid\Support\Facades\Alert;
+use Orchid\Support\Facades\Layout;
 use Orchid\Support\Facades\Toast;
 
 class SliderEditScreen extends Screen
@@ -17,6 +19,7 @@ class SliderEditScreen extends Screen
      * @var Slider
      */
     public $slider;
+
     /**
      * Fetch data to be displayed on the screen.
      *
@@ -25,7 +28,9 @@ class SliderEditScreen extends Screen
     public function query(Slider $slider): iterable
     {
         return [
-            'slider'       => $slider
+            'slider' => $slider,
+            'parameter' => $slider->parameter(), // واکشی مقدار subtitle
+
         ];
     }
 
@@ -77,8 +82,13 @@ class SliderEditScreen extends Screen
      */
     public function layout(): iterable
     {
+        $imagePath = $this->slider->image ?? null;
+        $video = data_get($this->slider->parameter(),'video.value') ;
         return [
-            SliderEditLayout::class
+            $imagePath ? Layout::columns([
+                SliderEditLayout::class,
+                Layout::view('partials.preview', ['imagePath' => $imagePath, 'video' => $video]),
+            ]) : SliderEditLayout::class
         ];
     }
 
@@ -87,24 +97,28 @@ class SliderEditScreen extends Screen
      */
     public function save(Slider $slider, Request $request)
     {
+        $hasImage = $slider && $slider->image;
 
         $request->validate([
             'slider.title' => [
                 'required',
             ],
-            'slider.image' => [
-                'required'
+            'slider.image' => $hasImage ? ['nullable', 'file', 'mimes:jpg,jpeg,png'] : ['required', 'file', 'mimes:jpg,jpeg,png'],
+            'parameter.video.value' => [
+                'nullable', 'extensions:mp4'// ['video/mp4', 'video/x-m4v', 'video/avi', 'video/mkv']
+
             ],
-            'slider.key.button1_link' => [
-                'nullable','url:http,https'
+            'parameter.button1_link.value' => [
+                'nullable', 'url:http,https'
             ],
-            'slider.key.button1_link' => [
-                'nullable','url:http,https'
+            'parameter.button2_link.value' => [
+                'nullable', 'url:http,https'
             ],
 
         ]);
 
         $data = $request->collect('slider');
+        $parameters = $request->collect('parameter');
 //        if ($request->file()) {
 //            $file = $request->file('value');
 //            if(file_exists($slider->value)) {
@@ -115,14 +129,49 @@ class SliderEditScreen extends Screen
 //            Storage::disk('images')->put($fileName, $file);
 //
 //        }
-        $data['sort_order'] = 1;
-        if($slider->id)
-        $slider->update($data->toArray());
+
+        $image = $request->file('slider.image');
+
+        if ($image) {
+            // بررسی نوع MIME فایل
+            $mimeType = $image->getMimeType();
+
+
+            // ذخیره‌سازی فایل
+            $imagePath = $image->store('images', 'images');
+            $data["image"] = url("images/" . $imagePath);
+        }
+
+        $data['sort_order'] = Slider::count() + 1;
+        if ($slider->id)
+            $slider->update($data->toArray());
         else
-            $slider->create($data->toArray());
+            $slider = $slider->create($data->toArray());
 
+        $video = $request->file('parameter.video.value');
+        if ($video) {
 
+            $videoPath = $video->store('videos', 'videos');
+            if($videoPath) {
+                $slider->parameters()->updateOrCreate([
+                    'slide_id' => $slider->id,
+                    'key' => "video",
+                ], [
+                    'value' => url("videos/".$videoPath),
+                ]);
+            }
+        }
+        foreach ($parameters as $key => $value) {
 
+            if (data_get($value, 'value')) {
+                $slider->parameters()->updateOrCreate([
+                    'slide_id' => $slider->id,
+                    'key' => $key,
+                ], [
+                    'value' => $value['value'],
+                ]);
+            }
+        }
         Toast::info(__('Slider was saved.'));
 
         return redirect()->route('platform.systems.sliders');

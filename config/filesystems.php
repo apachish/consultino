@@ -51,6 +51,13 @@ return [
             'visibility' => 'public',
             'throw' => false,
         ],
+        'videos' => [
+            'driver' => 'local',
+            'root' => public_path('videos'),
+            'url' => env('APP_URL').'/videos',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
 
         's3' => [
             'driver' => 's3',

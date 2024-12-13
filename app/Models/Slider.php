@@ -45,6 +45,13 @@ class Slider extends Model
 
     public function parameters()
     {
-        return $this->hasMany(SliderParameter::class);
+        return $this->hasMany(SliderParameter::class,"slide_id");
+    }
+
+    public function parameter()
+    {
+        return $this->parameters()
+            ->get() // داده‌ها را به‌صورت Collection دریافت می‌کند
+            ->keyBy('key');
     }
 }
