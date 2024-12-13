@@ -26,6 +26,9 @@ Route::get('/blog', \App\Livewire\Blog::class)->name("blog");
 Route::get('/blog/{slug}', \App\Livewire\BlogDetails::class)->name("blog.details");
 Route::get('/services/{slug}', \App\Livewire\Services::class)->name("services");
 
+Route::get('/portfolios/{category?}', \App\Livewire\Portfolios::class)->name("portfolios");
+Route::get('/portfolios/{category}/{slug}', \App\Livewire\PortfolioDetails::class)->name("portfolios.details");
+
 Route::group(['middleware'=>'guest'], function(){
 });
 

@@ -1,0 +1,86 @@
+<?php
+
+namespace App\Orchid\Screens\Expertise;
+
+use App\Models\Expertise;
+use Illuminate\Http\Request;
+use Orchid\Screen\Actions\Link;
+use Orchid\Screen\Screen;
+use Orchid\Support\Facades\Toast;
+
+class ExpertiseListScreen extends Screen
+{
+    /**
+     * Fetch data to be displayed on the screen.
+     *
+     * @return array
+     */
+    public function query(): iterable
+    {
+        return [
+            'expertises' => Expertise::defaultSort('updated_at', 'desc')
+                ->paginate(),
+        ];
+    }
+
+    /**
+     * The name of the screen displayed in the header.
+     *
+     * @return string|null
+     */
+    public function name(): ?string
+    {
+        return 'Expertise List';
+    }
+
+    /**
+     * Display header description.
+     */
+    public function description(): ?string
+    {
+        return 'You can change the expertise of the site from here.';
+    }
+
+
+    public function permission(): ?iterable
+    {
+        return [
+            'platform.systems.users',
+        ];
+    }
+
+
+    /**
+     * The screen's action buttons.
+     *
+     * @return \Orchid\Screen\Action[]
+     */
+    public function commandBar(): iterable
+    {
+        return [
+            Link::make(__('Add'))
+                ->icon('bs.plus-circle')
+                ->route('platform.systems.expertise.create'),
+        ];
+    }
+
+    /**
+     * The screen's layout elements.
+     *
+     * @return \Orchid\Screen\Layout[]|string[]
+     */
+    public function layout(): iterable
+    {
+        return [
+            ExpertiseListScreen::class,
+
+        ];
+    }
+
+    public function remove(Request $request): void
+    {
+        Expertise::findOrFail($request->get('id'))->delete();
+
+        Toast::info(__('Expertise was removed'));
+    }
+}

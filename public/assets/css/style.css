@@ -3969,6 +3969,7 @@ button.tm-videobutton.tm-videobutton-lg span i {
 	font-size: 36px;
 	margin-top: -9px;
 	display: block;
+    direction: ltr;
 }
 
 .tm-funfact-content h5 {

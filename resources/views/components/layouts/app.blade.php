@@ -41,12 +41,19 @@
                 <div class="row align-items-center tm-cta">
                     <div class="col-lg-9 col-md-8 col-12">
                         <div class="tm-cta-content">
-                            <h3>Are you worried about your business?</h3>
+                            <h3>{{__("Become a member of our family now!")}}</h3>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-4 col-12">
                         <div class="tm-cta-button">
-                            <a href="contact-us.html" class="tm-button tm-button-white">Contact Us <b></b></a>
+                            @auth
+                            <a  onclick="window.location='{{route("platform.main")}}'" class="tm-button tm-button-white">
+                                {{__("Appointment booking")}}<b></b></a>
+                            @else
+                                <a href="contact-us.html" class="tm-button tm-button-white header-loginformtrigger" type="button"
+                                   data-toggle="modal" data-target="#tm-loginregister-popup"
+                                >{{__("Appointment booking")}}<b></b></a>
+                            @endauth
                         </div>
                     </div>
                 </div>

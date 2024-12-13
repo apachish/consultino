@@ -195,6 +195,28 @@ Route::screen('portfolios/{portfolio}/edit', \App\Orchid\Screens\Portfolio\Portf
         ->parent('platform.systems.portfolios')
         ->push($portfolio->title, route('platform.systems.portfolios.edit', $portfolio)));
 
+
+Route::screen('expertises', \App\Orchid\Screens\Expertise\ExpertiseListScreen::class)
+    ->name('platform.systems.expertises')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+        ->parent('platform.index')
+        ->push(__('expertises'), route('platform.systems.expertises')));
+
+// Platform > System > expertise > Create
+Route::screen('expertises/create', \App\Orchid\Screens\Expertise\ExpertiseEditScreen::class)
+    ->name('platform.systems.expertises.create')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+        ->parent('platform.systems.expertises')
+        ->push(__('Create'), route('platform.systems.expertises.create')));
+
+// Platform > System > Expertise > edit
+Route::screen('expertises/{expertise}/edit', \App\Orchid\Screens\Expertise\ExpertiseEditScreen::class)
+    ->name('platform.systems.expertises.edit')
+    ->breadcrumbs(fn (Trail $trail, $expertise) => $trail
+        ->parent('platform.systems.expertises')
+        ->push($expertise->title, route('platform.systems.expertises.edit', $expertise)));
+
+
 Route::screen('blogs', \App\Orchid\Screens\Article\ArticleListScreen::class)
     ->name('platform.systems.blogs')
     ->breadcrumbs(fn (Trail $trail) => $trail

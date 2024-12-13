@@ -1,84 +1,19 @@
-<div class="tm-section brand-logo-area bg-grey tm-padding-section">
-    <div class="container">
-        <div class="brandlogo-slider tm-slider-arrow tm-slider-arrow-hovervisible">
-            <!-- Brang Logo Single -->
-            <div class="brandlogo">
-                <a href="#">
-                    <img src="assets/images/brand-logo/brand-logo-1.png" alt="brand-logo">
-                </a>
+<di>
+    @if($links->count())
+        <div class="tm-section brand-logo-area bg-grey tm-padding-section">
+            <div class="container">
+                <div class="brandlogo-slider tm-slider-arrow tm-slider-arrow-hovervisible">
+                    @foreach($links as $link)
+                    <!-- Brang Logo Single -->
+                    <div class="brandlogo">
+                        <a href="{{data_get($link,'url')}}">
+                            <img src="{{data_get($link,'image')}}" alt="{{data_get($link,'title')}}">
+                        </a>
+                    </div>
+                    <!--// Brang Logo Single -->
+                    @endforeach
+                </div>
             </div>
-            <!--// Brang Logo Single -->
-
-            <!-- Brang Logo Single -->
-            <div class="brandlogo">
-                <a href="#">
-                    <img src="assets/images/brand-logo/brand-logo-2.png" alt="brand-logo">
-                </a>
-            </div>
-            <!--// Brang Logo Single -->
-
-            <!-- Brang Logo Single -->
-            <div class="brandlogo">
-                <a href="#">
-                    <img src="assets/images/brand-logo/brand-logo-3.png" alt="brand-logo">
-                </a>
-            </div>
-            <!--// Brang Logo Single -->
-
-            <!-- Brang Logo Single -->
-            <div class="brandlogo">
-                <a href="#">
-                    <img src="assets/images/brand-logo/brand-logo-4.png" alt="brand-logo">
-                </a>
-            </div>
-            <!--// Brang Logo Single -->
-
-            <!-- Brang Logo Single -->
-            <div class="brandlogo">
-                <a href="#">
-                    <img src="assets/images/brand-logo/brand-logo-5.png" alt="brand-logo">
-                </a>
-            </div>
-            <!--// Brang Logo Single -->
-            <!-- Brang Logo Single -->
-            <div class="brandlogo">
-                <a href="#">
-                    <img src="assets/images/brand-logo/brand-logo-1.png" alt="brand-logo">
-                </a>
-            </div>
-            <!--// Brang Logo Single -->
-
-            <!-- Brang Logo Single -->
-            <div class="brandlogo">
-                <a href="#">
-                    <img src="assets/images/brand-logo/brand-logo-2.png" alt="brand-logo">
-                </a>
-            </div>
-            <!--// Brang Logo Single -->
-
-            <!-- Brang Logo Single -->
-            <div class="brandlogo">
-                <a href="#">
-                    <img src="assets/images/brand-logo/brand-logo-3.png" alt="brand-logo">
-                </a>
-            </div>
-            <!--// Brang Logo Single -->
-
-            <!-- Brang Logo Single -->
-            <div class="brandlogo">
-                <a href="#">
-                    <img src="assets/images/brand-logo/brand-logo-4.png" alt="brand-logo">
-                </a>
-            </div>
-            <!--// Brang Logo Single -->
-
-            <!-- Brang Logo Single -->
-            <div class="brandlogo">
-                <a href="#">
-                    <img src="assets/images/brand-logo/brand-logo-5.png" alt="brand-logo">
-                </a>
-            </div>
-            <!--// Brang Logo Single -->
         </div>
-    </div>
-</div>
+        @endif
+</di>

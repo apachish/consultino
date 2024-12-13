@@ -126,9 +126,11 @@ return [
      */
 
     'resource' => [
-        'stylesheets' => [],
+        'stylesheets' => [
+            '/build/assets/app-D13XkI2U.css',
+        ],
         'scripts'     => [
-            '/js/dashboard.js'
+//            '/build/assets/app-tSu9RSS1.js '
         ],
     ],
 

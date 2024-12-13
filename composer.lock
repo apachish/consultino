@@ -4,8 +4,53 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9c1f0096e2542e3f7f79e6223085721e",
+    "content-hash": "c1d9363833caecb1aabe86ca9c4213cb",
     "packages": [
+        {
+            "name": "amidesfahani/nova-persian-date",
+            "version": "v1.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/amidesfahani/nova-persian-date.git",
+                "reference": "a755fb6a5e5f0d71c60d67fb8558af0b6cd78e91"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/amidesfahani/nova-persian-date/zipball/a755fb6a5e5f0d71c60d67fb8558af0b6cd78e91",
+                "reference": "a755fb6a5e5f0d71c60d67fb8558af0b6cd78e91",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Amidesfahani\\NovaPersianDate\\FieldServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Amidesfahani\\NovaPersianDate\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A Laravel Nova field.",
+            "keywords": [
+                "laravel",
+                "nova"
+            ],
+            "support": {
+                "issues": "https://github.com/amidesfahani/nova-persian-date/issues",
+                "source": "https://github.com/amidesfahani/nova-persian-date/tree/v1.0.5"
+            },
+            "time": "2021-05-29T14:15:20+00:00"
+        },
         {
             "name": "anetwork/validation",
             "version": "v2.3.0",
@@ -8960,12 +9005,12 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": "^8.2"
     },
-    "platform-dev": [],
+    "platform-dev": {},
     "plugin-api-version": "2.6.0"
 }

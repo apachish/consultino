@@ -187,40 +187,40 @@ window.chartColors = {
     };
 
     window.onload = function () {
-        var ctx = document.getElementById('business-growth').getContext('2d');
-        window.myBar = new Chart(ctx, {
-            type: 'bar',
-            data: barChartData,
-            options: {
-                responsive: true,
-                steppedLine: false,
-                legend: {
-                    display: false,
-                },
-                title: {
-                    display: false,
-                },
-                scales: {
-                    xAxes: [{
-                        categoryPercentage: 0.65,
-                        barPercentage: 1.4,
-                        stacked: true,
-                        gridLines: {
-                            display: false
-                        }
-                    }],
-                    yAxes: [{
-                        display: true,
-                        ticks: {
-                            beginAtZero: true,
-                            steps: 10,
-                            stepValue: 10,
-                            max: 100
-                        },
-                    }]
-                },
-            }
-        });
+        // var ctx = document.getElementById('business-growth').getContext('2d');
+        // window.myBar = new Chart(ctx, {
+        //     type: 'bar',
+        //     data: barChartData,
+        //     options: {
+        //         responsive: true,
+        //         steppedLine: false,
+        //         legend: {
+        //             display: false,
+        //         },
+        //         title: {
+        //             display: false,
+        //         },
+        //         scales: {
+        //             xAxes: [{
+        //                 categoryPercentage: 0.65,
+        //                 barPercentage: 1.4,
+        //                 stacked: true,
+        //                 gridLines: {
+        //                     display: false
+        //                 }
+        //             }],
+        //             yAxes: [{
+        //                 display: true,
+        //                 ticks: {
+        //                     beginAtZero: true,
+        //                     steps: 10,
+        //                     stepValue: 10,
+        //                     max: 100
+        //                 },
+        //             }]
+        //         },
+        //     }
+        // });
 
     };
 

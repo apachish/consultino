@@ -17,7 +17,7 @@ class Services extends Component
     {
         $this->service = Service::where("status",1)
             ->where("slug",$this->slug)
-            ->orderBy("sort_order","DESC")->firstOrFail();
+            ->firstOrFail();
         $this->services = Service::select("title","slug","status")->where("status",1)->get();
         return view('livewire.services');
     }

@@ -4,6 +4,7 @@ namespace App\Orchid\Screens\Portfolio;
 
 use App\Models\Portfolio;
 use App\Orchid\Layouts\Portfolio\PortfolioEditLayout;
+use App\Orchid\Layouts\SubtractListener;
 use Illuminate\Http\Request;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Screen;
@@ -76,7 +77,9 @@ class PortfolioEditScreen extends Screen
     public function layout(): iterable
     {
         return [
-            PortfolioEditLayout::class
+            PortfolioEditLayout::class,
+            SubtractListener::class
+
         ];
     }
 

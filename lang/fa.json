@@ -188,7 +188,7 @@
     "Enter your Email:": "ایمیل خود را وارد کنید:",
     "Verify Code": "کد تایید",
     "Code verification": "تایید کد",
-    "Customers": "مشتریان",
+    "Customers":" مراجعه کننده",
     "Enter your verification code to :email_mobile :": "کد تایید خود را به :email_mobile : وارد کنید.",
     "Customer Management": "مدیریت مشتری",
     "There are no objects currently displayed": "هیچ ایتمی در حال حاضر نمایش داده نمی شود",
@@ -260,7 +260,31 @@
     "Upload video": "آپلود ویدیو",
     "OUR SERVICES": "خدمات ما",
     "We aim to provide psychological and psychiatric services to you by experienced and skilled specialists and psychiatrists.": "فعالیت خود را با هدف ارائه خدمات روانشناسی و روانپزشکی توسط متخصصان و روانپزشکان مجرب و حاذق در خدمت شماییم.",
-    "Read More": "توضیحات بیشتر"
+    "Read More": "توضیحات بیشتر",
+    "Request for advice": "درخواست مشاوره",
+    "If you need advice, you can send your request so that colleagues related to that department will contact you.": "در صورتی که نیاز به مشاوره می توانید درخواست خود را ارسال کنید. تا همکاران مرتبط با ان بخش با شما تماس بگیرند",
+    "Enter Full Name": "نام و نام خانوادگی",
+    "Select Categories": "انتخاب دسته بندی",
+    "Phone Number": "شماره تلفن",
+    "Select Date": "انتخاب تاریخ",
+    "Send request": "ارسال درخواست",
+    "Appointment booking": "رزرو نوبت",
+    "Number of users": " مراجعه کننده",
+    "Specialist therapist": "درمانگر متخصص",
+    "Registered appointment": "نوبت ثبت شده",
+    "Getting to know the psychotherapists of the psychology center": "آشنایی با روان درمانگران مرکز روانشناسی",
+    "Become a member of our family now!": "هم اکنون عضو خانواده ما شوید!",
+    "OUR LATEST BLOGS": "جدیدترین مقالات آموزشی ما",
+    "Take a step towards greater awareness and a better life with our educational articles.": "با مقالات آموزشی ما، گامی به سوی آگاهی بیشتر و زندگی بهتر بردارید.",
+    "Writer": "نویسنده",
+    "WHAT CLIENTS SAY": "مراجعه کنندگان چه می گویند",
+    "This is where you are our top priority; we are with you to ensure you have the best experience.": "اینجا جایی است که شما مهم‌ترین اولویت ما هستید؛ همراهتان هستیم تا بهترین تجربه را داشته باشید.",
+    "OUR PORTFOLIOS": "نمونه کارها ما",
+    "Our work samples are a reflection of our commitment, expertise, and client satisfaction.": "نمونه کارهای ما، بازتابی از تعهد، تخصص و رضایت مراجعین ماست.",
+    "View All": "مشاهد همه",
+    "All": "همه"
+
+
 
 
 

@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "amidesfahani/nova-persian-date": "*",
         "anetwork/validation": "^2.3",
         "ipe/smsir-php": "^1.0",
         "kavenegar/laravel": "^1.3",

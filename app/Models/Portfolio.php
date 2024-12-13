@@ -23,6 +23,9 @@ class Portfolio extends Model
         'title',
         'file',
         'category',
+        'date',
+        'rate',
+        'type',
         'sort_order',
         'status',
     ];

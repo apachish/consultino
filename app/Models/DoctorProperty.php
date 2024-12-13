@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class DocterProperty extends Model
+class DoctorProperty extends Model
 {
     //
 }

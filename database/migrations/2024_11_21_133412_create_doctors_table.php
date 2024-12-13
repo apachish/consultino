@@ -13,6 +13,17 @@ return new class extends Migration
     {
         Schema::create('doctors', function (Blueprint $table) {
             $table->id();
+            $table->string("fullName");
+            $table->string("avatar")->nullable();
+            $table->string("national_code")->unique();
+            $table->string("mobile");
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table->enum("status",\App\Models\Doctor::getStatus());
             $table->timestamps();
         });
     }

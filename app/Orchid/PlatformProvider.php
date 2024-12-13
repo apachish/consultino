@@ -39,17 +39,14 @@ class PlatformProvider extends OrchidServiceProvider
                 ->route('platform.example')
             ->divider(),
 
-            Menu::make(__('Users'))
-                ->icon('bs.people')
-                ->route('platform.systems.users')
-                ->permission('platform.systems.users')
-                ->title(__('User Controls')),
 
 
             Menu::make('Form Elements')
                 ->icon('bs.card-list')
                 ->route('platform.example.fields')
-                ->active('*/examples/form/*'),
+                ->active('*/examples/form/*')
+                ->title(__('help'))
+            ,
 
             Menu::make('Overview Layouts')
                 ->icon('bs.window-sidebar')
@@ -94,6 +91,10 @@ class PlatformProvider extends OrchidServiceProvider
                 ->permission('platform.systems.users')
                 ->title(__('Site')),
 
+            Menu::make(__('Expertise'))
+                ->icon('bs.columns-gap')
+                ->route('platform.systems.expertises')
+                ->permission('platform.systems.users'),
             Menu::make(__('Settings'))
                 ->icon('bs.gear')
                 ->route('platform.systems.settings')

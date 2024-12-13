@@ -11,6 +11,8 @@
 
     <!-- For Safari on iOS -->
     <meta name="theme-color" content="#21252a">
+    @vite('resources/js/app.js')
+
 @endpush
 
 <div class="h2 d-flex align-items-center">
