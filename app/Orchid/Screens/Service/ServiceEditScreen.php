@@ -2,12 +2,14 @@
 
 namespace App\Orchid\Screens\Service;
 
+use App\Models\Faq;
 use App\Models\Service;
 use App\Orchid\Layouts\Service\ServiceEditLayout;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Screen;
+use Orchid\Support\Facades\Layout;
 use Orchid\Support\Facades\Toast;
 
 class ServiceEditScreen extends Screen
@@ -76,9 +78,14 @@ class ServiceEditScreen extends Screen
      */
     public function layout(): iterable
     {
+        $imagePath = $this->service->image ?? null;
         return [
-            ServiceEditLayout::class
+            $imagePath ? Layout::columns([
+                ServiceEditLayout::class,
+                Layout::view('partials.preview', ['imagePath' => $imagePath,'video'=>null]),
+            ]) : ServiceEditLayout::class
         ];
+
     }
 
     /**
@@ -86,14 +93,15 @@ class ServiceEditScreen extends Screen
      */
     public function save(Service $service, Request $request)
     {
+        $hasImage = $service && $service->image;
 
         $request->validate([
             'service.title' => [
                 'required',
             ],
-            'service.image' => [
-                'required'
-            ],
+
+            'service.image' => $hasImage ? ['nullable', 'file', 'mimes:jpg,jpeg,png'] : ['required', 'file', 'mimes:jpg,jpeg,png'],
+
             'service.sort_order' => [
                 'required','min:1'
             ],
@@ -105,14 +113,49 @@ class ServiceEditScreen extends Screen
         ]);
 
         $data = $request->collect('service');
+        $image = $request->file('service.image');
+
+        if ($image) {
+            // بررسی نوع MIME فایل
+            $mimeType = $image->getMimeType();
+
+
+            // ذخیره‌سازی فایل
+            $imagePath = $image->store('images', 'images');
+            $data["image"] = url("images/" . $imagePath);
+        }
         logger("q",$data->toArray());
-        $data['slug'] = Str::slug($data['title']);
+        $data['slug'] = slug_seo($data['title']);
         if($service->id)
             $service->update($data->toArray());
         else
-            $service->create($data->toArray());
+            $service = $service->create($data->toArray());
 
+        $currentTagIds = $service->faqs->pluck('id')->toArray();
 
+        if(data_get($data,'faqs')) {
+            $faqs = collect();
+            foreach (data_get($data, 'faqs') as $row) {
+                $faqs->push(Faq::updateOrCreate($row, $row));
+            }
+            $newTagIds = $faqs->pluck('id')->toArray();
+
+            // پیدا کردن تگ‌هایی که باید اضافه شوند
+            $faqsToAttach = array_diff($newTagIds, $currentTagIds);
+
+            // پیدا کردن تگ‌هایی که باید حذف شوند
+            $faqsToDetach = array_diff($currentTagIds, $newTagIds);
+
+            // افزودن تگ‌های جدید
+            $service->faqs()->attach($faqsToAttach);
+
+            // حذف تگ‌های غیرضروری
+            $service->faqs()->detach($faqsToDetach);
+        }else{
+            $faqsToDetach = array_diff($currentTagIds, []);
+            $service->faqs()->detach($faqsToDetach);
+
+        }
 
         Toast::info(__('Services was saved.'));
 

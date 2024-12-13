@@ -7,16 +7,16 @@
                 <div class="col-md-7 col-12">
                     <div class="header-topinfo">
                         <ul>
-                            <li><a href="tel://+1-800-915-6270"><i class="fa fa-phone"></i> {{data_get($settings,'telephone.value')}}</a></li>
-                            <li><a href="mailto://contact@example.com"><i class="fa fa-envelope-o"></i>
-                                    {{data_get($settings,'email.value')}}</a></li>
+                            <li><a href="tel://{{$telephone}}"><i class="fa fa-phone"></i> {{$telephone}}</a></li>
+                            <li><a href="mailto://{{$email}}"><i class="fa fa-envelope-o"></i>
+                                    {{$email}}</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-md-5 col-12">
                     <div class="header-topinfo text-right">
                         <ul>
-                            <li><i class="fa fa-clock-o"></i> {{data_get($settings,'working_hours.value')}}</li>
+                            <li><i class="fa fa-clock-o"></i> {{$working_hours}}</li>
                         </ul>
                     </div>
                 </div>
@@ -31,7 +31,7 @@
             <div class="header-bottominner">
                 <div class="header-logo">
                     <a href="index.html">
-                        <img src="{{data_get($settings,'logo.value')}}" alt="deconsult logo" height="130" width="200">
+                        <img src="{{$logo}}" alt="deconsult logo" height="130" width="200">
                     </a>
                 </div>
                 <nav class="tm-navigation">

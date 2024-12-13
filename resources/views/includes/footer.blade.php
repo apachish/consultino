@@ -1,7 +1,7 @@
 <div class="footer fixed-footer">
 
     <!-- Footer Widgets Area -->
-    <div class="footer-toparea tm-padding-section" data-bgimage="assets/images/bg/footer-bg.jpg" data-overlay="2">
+    <div class="footer-toparea tm-padding-section" data-bgimage="/assets/images/bg/footer-bg.jpg" data-overlay="2">
         <div class="container">
             <div class="row widgets footer-widgets">
 
@@ -9,7 +9,7 @@
                     <!-- Single Widget (Widget Info) -->
                     <div class="single-widget widget-info">
                         <a href="index.html" class="widget-info-logo">
-                            <img src="assets/images/logo/logo-white.png" alt="footer logo">
+                            <img src="/assets/images/logo/logo-white.png" alt="footer logo">
                         </a>
                         <p>Lorem ipsum dolor sit amet conse ctetur adipisicing elit. Rerum harum ipsum
                             quibusdam quas qui ratione inventore dolore natus recusandae assumenda.</p>
@@ -41,7 +41,7 @@
                         <ul>
                             <li>
                                 <a href="blog-details.html" class="widget-recentpost-image">
-                                    <img src="assets/images/blog/thumbnails/blog-thumbnail-1.jpg" alt="blog thumbnail">
+                                    <img src="/assets/images/blog/thumbnails/blog-thumbnail-1.jpg" alt="blog thumbnail">
                                 </a>
                                 <div class="widget-recentpost-content">
                                     <h6><a href="blog-details.html">Architecto earum maxime deleniti qui
@@ -51,7 +51,7 @@
                             </li>
                             <li>
                                 <a href="blog-details.html" class="widget-recentpost-image">
-                                    <img src="assets/images/blog/thumbnails/blog-thumbnail-2.jpg" alt="blog thumbnail">
+                                    <img src="/assets/images/blog/thumbnails/blog-thumbnail-2.jpg" alt="blog thumbnail">
                                 </a>
                                 <div class="widget-recentpost-content">
                                     <h6><a href="blog-details.html">Minus omnis eos eaque illum dolo</a></h6>
@@ -60,7 +60,7 @@
                             </li>
                             <li>
                                 <a href="blog-details.html" class="widget-recentpost-image">
-                                    <img src="assets/images/blog/thumbnails/blog-thumbnail-3.jpg" alt="blog thumbnail">
+                                    <img src="/assets/images/blog/thumbnails/blog-thumbnail-3.jpg" alt="blog thumbnail">
                                 </a>
                                 <div class="widget-recentpost-content">
                                     <h6><a href="blog-details.html">Corporis eaque illum dolo</a></h6>

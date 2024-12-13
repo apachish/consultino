@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string("slug");
             $table->string("icon")->nullable();
             $table->string("description");
-            $table->string("body")->nullable();
+            $table->text("body")->nullable();
             $table->integer("sort_order")->default(1);
             $table->boolean("status")->default(false);
             $table->timestamps();

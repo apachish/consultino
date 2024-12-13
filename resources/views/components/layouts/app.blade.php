@@ -25,7 +25,7 @@
     <!-- Heroslider -->
     @if(Route::is('home'))
         <livewire:slider/>
-    @else
+    @elseif(false)
         <livewire:breadcrumb/>
     @endif
 

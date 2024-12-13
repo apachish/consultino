@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Orchid\Access\UserAccess;
 use Orchid\Filters\Filterable;
 use Orchid\Filters\Types\Like;
@@ -21,6 +22,7 @@ class Service extends Model
         'title',
         'image',
         'slug',
+        'icon',
         'description',
         'body',
         'sort_order',
@@ -45,4 +47,9 @@ class Service extends Model
         'title',
         'updated_at',
     ];
+
+    public function faqs(): MorphToMany
+    {
+        return $this->morphToMany(Faq::class, 'faqable')->withTimestamps();
+    }
 }
