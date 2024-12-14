@@ -52,14 +52,15 @@
                                         <span class="{{$rate<=6?"active":''}}"><i class="fa fa-star"></i></span>
                                     </div>
                                 </li>
-{{--                                <li><b>Share :</b>--}}
-{{--                                    <ul class="tm-portfoliodetails-share">--}}
-{{--                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>--}}
-{{--                                        <li><a href="#"><i class="fa fa-facebook-f"></i></a></li>--}}
-{{--                                        <li><a href="#"><i class="fa fa-skype"></i></a></li>--}}
-{{--                                        <li><a href="#"><i class="fa fa-pinterest-p"></i></a></li>--}}
-{{--                                    </ul>--}}
-{{--                                </li>--}}
+                                @if($social)
+                                    <li><b>Share :</b>
+                                        <ul class="tm-portfoliodetails-share">
+                                            @foreach($social as $key=>$item)
+                                                <li><a href="{{$item}}" data-toggle="tooltip" data-placement="top" title="{{ucwords($key)}}"><i class="fa fa-{{$key}}"></i></a></li>
+                                            @endforeach
+                                        </ul>
+                                    </li>
+                                @endif
                             </ul>
                         </div>
                     </div>

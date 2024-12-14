@@ -36,7 +36,7 @@ class AppServiceProvider extends ServiceProvider
             $view->address = data_get($settings, 'address.value');
             $view->description_footer = data_get($settings, 'description_footer.value');
             $view->logo_footer = data_get($settings, 'logo_footer.value');
-            $view->social = data_get($settings, 'social.value');
+            $view->social = json_decode(data_get($settings, 'social.value'),true);
             $view->copyright = data_get($settings, 'copyright.value');
         });
     }

@@ -44,15 +44,15 @@
     <div class="footer-copyrightarea">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-md-8 col-12">
+                <div class="col-md-6 col-12">
                     <p class="footer-copyright">{!! $copyright !!}</p>
                 </div>
-                <div class="col-md-4 col-12">
+                <div class="col-md-6 col-12">
                     @if($social)
                     <div class="footer-copyrightsocial">
                         <ul>
                             @foreach($social as $key=>$item)
-                                <li><a href="{{$item}}" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-{{$key}}"></i></a></li>
+                                <li><a href="{{$item}}" data-toggle="tooltip" data-placement="top" title="{{ucwords($key)}}"><i class="fa fa-{{$key}}"></i></a></li>
                             @endforeach
 {{--                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><i--}}
 {{--                                        class="fa fa-facebook-f"></i></a></li>--}}

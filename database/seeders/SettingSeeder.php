@@ -81,9 +81,14 @@ class SettingSeeder extends Seeder
                                 "status"=>true,
 
             ],
+            "social"=>[
+                "title"=>"شبکه اجتماعی",
+                "value"=>'{"twitter":"https:\/\/twitter.com\/","facebook-f":"https:\/\/facebook.com\/","skype":"myskype","pinterest":"","linkedin":"https:\/\/linkedin.com","instagram":"https:\/\/instagram.com","telegram":"https:\/\/t.me\/www","whatsapp":"https:\/\/wa.me\/qr\/2XVF22JMOJKKO1"}',
+                "type"=>"json",
+                "status"=>true,
+            ]
         ];
         foreach($settings as $key=>$setting){
-            logger("2",$setting);
             Setting::updateOrCreate(["key"=>$key],$setting);
         }
 
