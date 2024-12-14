@@ -13,6 +13,9 @@ class Portfolios extends Component
     {
         $this->portfolios = Portfolio::where("status",1)->orderBy("sort_order","DESC")->get();
         $this->categories = $this->portfolios->pluck('category')->toArray();
+        $this->portfolios = $this->portfolios->map(function ($portfolio) {
+            return ["portfolio"=>$portfolio,"parameters"=>$portfolio->parameters->keyBy('key')];
+        });
         return view('livewire.portfolios');
     }
 }

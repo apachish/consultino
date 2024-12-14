@@ -13,13 +13,15 @@ use Orchid\Support\Facades\Layout;
 
 class SubtractListener extends Listener
 {
+
+
     /**
      * List of field names for which values will be listened.
      *
      * @var string[]
      */
     protected $targets = [
-        'article.type',
+        "subtract.type",
     ];
 
     /**
@@ -29,40 +31,38 @@ class SubtractListener extends Listener
      */
     protected function layouts(): iterable
     {
-        $selectedType = request()->input('article.type');
+        $selectedType = request()->input('subtract.type');
 
         return [
             Layout::rows([
-                Input::make('article.url')
+                Input::make('subtract.url')
                     ->title('Video URL')
                     ->placeholder('Enter the video URL')
                     ->canSee($selectedType === 'iframe'), // بررسی مقدار مستقیم
 
 
-                Picture::make('article.image')
+                Input::make('subtract.image')
+                    ->type('file')
                     ->title('Upload Image')
-                    ->minCanvas(500)
-                    ->maxWidth(102)
-                    ->maxHeight(78)
-                    ->storage('images')
                     ->accept('image/*')
-                    ->required()
-                    //                    ->multiple()
                     ->help('Select an image file. You can upload files in any image format, such as JPG, PNG, or GIF.')
                     ->canSee($selectedType === 'image'), // بررسی مقدار مستقیم
-                Matrix::make('matrix')
+                Matrix::make('subtract.images')
                     ->columns([
                         'title',
                         'image',
                     ])
                     ->fields([
-                        'title'   => Input::make()->type('title'),
-                        'image' => Input::make('picture')
+                        'title' => Input::make()->type('title'),
+                        'image' =>Input::make('image')
                             ->type('file')
                             ->title('Upload Image')
                             ->accept('image/*')
-                            ->required(),
+                            ->help('Select an image file. You can upload files in any image format, such as JPG, PNG.')
+                        ,
                     ])->canSee($selectedType === 'slider')
+
+
 
             ]),
         ];
@@ -72,7 +72,7 @@ class SubtractListener extends Listener
      * Update state
      *
      * @param \Orchid\Screen\Repository $repository
-     * @param \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      *
      * @return \Orchid\Screen\Repository
      */

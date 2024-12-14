@@ -95,9 +95,6 @@ class ArticleEditScreen extends Screen
             'article.title' => [
                 'required',
             ],
-            'article.type' => [
-                'required',Rule::in(["image", "iframe", "slider"])
-            ],
             'article.sort_order' => [
                 'required','min:1'
             ],
@@ -107,16 +104,19 @@ class ArticleEditScreen extends Screen
             'article.category' => [
                 'required'
             ],
-            'article.slider' => [
+            'subtract.type' => [
+                'required',Rule::in(["image", "iframe", "slider"])
+            ],
+            'subtract.images' => [
                 'required_if:type,slider'
             ],
-            'article.slider.*' => [
+            'subtract.images.*' => [
                 'required_if:type,slider','extensions:jpg,png'
             ],
-            'article.image' => [
+            'subtract.image' => [
                 'required_if:type,image','extensions:jpg,png'
             ],
-            'article.url' => [
+            'subtract.url' => [
                 'required_if:type,iframe','url:http,https'
             ],
 

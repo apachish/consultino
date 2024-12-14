@@ -33,7 +33,6 @@ class PortfolioEditLayout extends Rows
      */
     protected function fields(): iterable
     {
-        $shamsiDate = CalendarUtils::strftime('Y/m/d', strtotime('today'));
 
         return [
             Input::make('portfolio.title')
@@ -46,52 +45,20 @@ class PortfolioEditLayout extends Rows
             Relation::make('portfolio.category')
                 ->fromModel(Portfolio::class, 'category')
                 ->allowAdd(true)
+                ->required()
                 ->applyScope('group') // اعمال scope گروه‌بندی
                 ->title(__('Category')),
-            // اضافه کردن فیلد تاریخ به فرم
-//            DateTimer::make('date')
-//                ->title('تاریخ شمسی')
-//                ->format('Y/m/d') // قالب تاریخ شمسی
-//                ->help('لطفا تاریخ مورد نظر را وارد کنید.')
-//                ->set('id', 'data-picker-p')
-//                ->value(CalendarUtils::strftime('Y/m/d', strtotime($this->query->get("portfolio.date"))))
-
-//                ->required(),
-            DatePicker::make('selectedDate')
-                ->title('انتخاب تاریخ')
-                ->help('لطفاً تاریخ مورد نظر را انتخاب کنید.'),
-//            Input::make('date')
-//                ->type('text')
-//                ->title('تاریخ')
-//                ->set('id', 'data-picker-p') // اضافه کردن ویژگی id
-//                ->placeholder('لطفاً تاریخ را وارد کنید')
-//
-//                ,
-
-
-
-            Quill::make('portfolio.body')
-                ->title(__('Body'))
-                ->popover('Quill is a free, open source WYSIWYG editor built for the modern web.'),
-
-
-            Input::make('portfolio.rate')
-                ->type('number')
-                ->min(0)
-                ->max(5)
-                ->title(__('Rate'))
-                ->placeholder(1),
             Input::make('portfolio.sort_order')
                 ->type('number')
                 ->max(255)
+                ->required()
                 ->title(__('sort Order'))
                 ->placeholder(1),
             Input::make('portfolio.image')
                               ->type('file')
                               ->title('Upload Image')
                               ->accept('image/*')
-                              ->horizontal()
-                              ->required(!$this->query->has('slider.image') )
+                              ->required(!$this->query->has('portfolio.image') )
                               ->help('Select an image file. You can upload files in any image format, such as JPG, PNG.')
             ,
             Select::make('portfolio.status')
@@ -100,15 +67,40 @@ class PortfolioEditLayout extends Rows
                     false => __("Deactivate"),
                 ])
                 ->title(__('Status')),
-            Select::make('article.type')
+            /*
+             * parameters
+             */
+            DatePicker::make('selectedDate')
+                ->setWithTime(false)
+                ->title('تاریخ')
+                ->name('parameter.date.value')
+                ->showFormat("jYYYY/jMM/jDD")
+            ->required(false)
+            ->defaultDate(date('Y-m-d H:i:s'))
+            ->setNullInput()
+                ->ignoreWire()
+                ->withTimeSeconds(false),
+            Quill::make('parameter.body.value')
+                ->title(__('Body')),
+            Input::make('parameter.rate.value')
+                ->type('number')
+                ->min(0)
+                ->max(5)
+                ->title(__('Rate'))
+                ->placeholder(1),
+
+
+
+            Select::make('subtract.type')
                 ->title('Select Type')
                 ->options([
                     'image' => 'Image',
                     'iframe' => 'Iframe',
                     'slider' => 'Slider',
                 ])
-                ->empty('Select a type', '') // گزینه پیش‌فرض
-                ->help('Choose whether you want to upload an image or a video.')
+                ->required()
+                ->empty(__('Select a type'), '') // گزینه پیش‌فرض
+                ->help('Choose whether you want to upload an image or a video link.')
             , // شنونده برای تغییر
 
 

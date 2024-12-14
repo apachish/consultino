@@ -298,7 +298,11 @@
     "Expertise": "تخصص ",
     "Edit Expertise": "ویرایش تخصص",
     "Create Expertise": "افزودن تخصص",
-    "Parent Expertise": "تخصص پدر"
+    "Parent Expertise": "تخصص پدر",
+    "Rate": "امتیاز",
+    "Select Type": "نوع را انتخاب کنید",
+    "Select a type": "یک نوع را انتخاب کنید",
+    "Choose whether you want to upload an image or a video link.": "انتخاب کنید که آیا می خواهید تصویری آپلود کنید یا لینک ویدیو "
 
 
 

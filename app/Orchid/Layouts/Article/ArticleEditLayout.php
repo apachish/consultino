@@ -63,15 +63,15 @@ class ArticleEditLayout extends Rows
                     false => __("Deactivate"),
                 ])
                 ->title('Status'),
-            Select::make('article.type')
+            Select::make('subtract.type')
                 ->title('Select Type')
                 ->options([
                     'image' => 'Image',
                     'iframe' => 'Iframe',
                     'slider' => 'Slider',
                 ])
-                ->empty('Select a type', '') // گزینه پیش‌فرض
-                ->help('Choose whether you want to upload an image or a video.')
+                ->empty(__('Select a type'), '') // گزینه پیش‌فرض
+                ->help('Choose whether you want to upload an image or a video link.')
             , // شنونده برای تغییر
 
 

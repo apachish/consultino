@@ -11,8 +11,11 @@ class Portfolios extends Component
     public $categories;
     public function render()
     {
-        $this->portfolios = Portfolio::where("status",1)->groupBy("category")->limit(9)->orderBy("sort_order","DESC")->get();
+        $this->portfolios = Portfolio::where("status",1)->groupBy("category")->with("parameters")->limit(9)->orderBy("sort_order","DESC")->get();
         $this->categories = $this->portfolios->pluck('category')->toArray();
+        $this->portfolios = $this->portfolios->map(function ($portfolio) {
+            return ["portfolio"=>$portfolio,"parameters"=>$portfolio->parameters->keyBy('key')];
+        });
         return view('livewire.section.portfolios');
     }
 }

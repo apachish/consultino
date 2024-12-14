@@ -25,45 +25,43 @@
                     @foreach($portfolios as $portfolio)
                         <!-- Portfolio Single -->
                         <div
-                            class="col-lg-4 col-md-6 col-12 tm-portfolio-item portfolio-filter-{{\Illuminate\Support\Str::slug($category)}}">
+                            class="col-lg-4 col-md-6 col-12 tm-portfolio-item portfolio-filter-{{\Illuminate\Support\Str::slug(data_get($portfolio,'portfolio.category'))}}">
                             <div class="tm-portfolio mt-30 wow fadeInUp">
                                 <div class="tm-portfolio-image">
-                                    <img src="assets/images/portfolio/portfolio-image-1.jpg" alt="portfolio image">
+                                    <img src="{{data_get($portfolio,'portfolio.image')}}" alt="portfolio image">
                                     <ul class="tm-portfolio-actions">
                                         <li class="link-button">
-                                            <a href="portfolio-details.html"><i class="fa fa-link"></i></a>
+                                            <a href="{{route("portfolios",["category"=>data_get($portfolio,'portfolio.category'),"slug"=>data_get($portfolio,'portfolio.slug')])}}"><i class="fa fa-link"></i></a>
                                         </li>
-                                        @if(data_get($portfolio,'type')=="image")
+                                        @if(data_get($portfolio,'portfolio.type')=="image")
                                             <li class="zoom-button">
-                                                <a href="assets/images/portfolio/lg/portfolio-image-lg-1.jpg"><i
+                                                <a href="{{data_get($portfolio,'parameters.image.value')}}"><i
                                                         class="fa fa-search-plus"></i></a>
                                             </li>
-                                        @elseif(data_get($portfolio,'type')=="slider")
+                                        @elseif(data_get($portfolio,'portfolio.type')=="slider")
 
                                             <li class="zoom-button">
-                                                <a href="assets/images/portfolio/lg/portfolio-image-lg-2.jpg"><i
+                                                @foreach(json_decode(data_get($portfolio,'parameters.images.value')) as $slide)
+                                                <a href="{{data_get($slide,'image')}}" title="{{data_get($slide,'title')}}"><i
                                                         class="fa fa-clone"></i></a>
-                                                <a href="assets/images/portfolio/lg/portfolio-image-lg-3.jpg"><i
-                                                        class="fa fa-clone"></i></a>
-                                                <a href="assets/images/portfolio/lg/portfolio-image-lg-4.jpg"><i
-                                                        class="fa fa-clone"></i></a>
+                                                @endforeach
                                             </li>
-                                        @elseif(data_get($portfolio,'type')=="iframe")
+                                        @elseif(data_get($portfolio,'portfolio.type')=="iframe")
 
                                             <li class="zoom-button">
-                                                <a href="https://www.youtube.com/watch?v=Sv511KEiIJQ"><i class="fa fa-play"></i></a>
+                                                <a href="{{data_get($portfolio,'parameters.iframe.value')}}"><i class="fa fa-play"></i></a>
                                             </li>
                                         @endif
                                     </ul>
                                 </div>
                                 <div class="tm-portfolio-content">
                                     <h5>
-                                        <a href="{{route("portfolios",["category"=>data_get($portfolio,'category'),"slug"=>data_get($portfolio,'slug')])}}">
-                                            {{data_get($portfolio,'title')}}
+                                        <a href="{{route("portfolios",["category"=>data_get($portfolio,'portfolio.category'),"slug"=>data_get($portfolio,'portfolio.slug')])}}">
+                                            {{data_get($portfolio,'portfolio.title')}}
                                         </a></h5>
                                     <h6>
-                                        <a href="{{route("portfolios",["category"=>data_get($portfolio,'category')])}}">
-                                            {{data_get($portfolio,'category')}}
+                                        <a href="{{route("portfolios",["category"=>data_get($portfolio,'portfolio.category')])}}">
+                                            {{data_get($portfolio,'portfolio.category')}}
                                         </a></h6>
                                 </div>
                             </div>

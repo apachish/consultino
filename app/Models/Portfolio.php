@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Query\Builder;
 use Orchid\Access\UserAccess;
 use Orchid\Filters\Filterable;
 use Orchid\Filters\Types\Like;
@@ -21,10 +22,9 @@ class Portfolio extends Model
      */
     protected $fillable = [
         'title',
-        'file',
+        "slug",
+        'image',
         'category',
-        'date',
-        'rate',
         'type',
         'sort_order',
         'status',
@@ -53,5 +53,17 @@ class Portfolio extends Model
     public function scopeGroup(Builder $query)
     {
         return $query->groupBy('category')->orderBy('sort_order');
+    }
+
+    public function parameters()
+    {
+        return $this->hasMany(PortfolioParameters::class,"portfolio_id");
+    }
+
+    public function parameter()
+    {
+        return $this->parameters()
+            ->get() // داده‌ها را به‌صورت Collection دریافت می‌کند
+            ->keyBy('key');
     }
 }

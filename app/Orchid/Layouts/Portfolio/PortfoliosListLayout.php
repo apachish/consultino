@@ -29,11 +29,11 @@ class PortfoliosListLayout extends Table
     {
         return [
 
-            TD::make('file', __('File'))
+            TD::make('image', __('File'))
                 ->sort()
                 ->cantHide()
                 ->render(function ($model) {
-                    return "<img src='{$model->file}' alt='{$model->title}' style='width: 50px; height: 50px; object-fit: cover;'>";
+                    return "<img src='{$model->image}' alt='{$model->title}' style='width: 50px; height: 50px; object-fit: cover;'>";
                 })->width('100px'),
             TD::make('title', __('Title'))
                 ->sort()

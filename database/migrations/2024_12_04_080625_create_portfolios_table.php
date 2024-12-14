@@ -14,13 +14,13 @@ return new class extends Migration
         Schema::create('portfolios', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('file');
+            $table->string('image');
+            $table->string('slug');
+
             $table->string('category');
-            $table->timestamp('date')->nullable();
-            $table->integer("rate")->default(1);
-            $table->text("description");
             $table->string('sort_order');
             $table->string('status');
+            $table->enum('type',["image","iframe","slider"]);
             $table->timestamps();
         });
     }
