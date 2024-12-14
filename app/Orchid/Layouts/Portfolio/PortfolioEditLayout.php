@@ -3,7 +3,9 @@
 namespace App\Orchid\Layouts\Portfolio;
 
 use App\Models\Portfolio;
+use App\Orchid\Fields\DatePicker;
 use Morilog\Jalali\CalendarUtils;
+use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Field;
 use Orchid\Screen\Fields\DateTimer;
 use Orchid\Screen\Fields\Input;
@@ -11,7 +13,9 @@ use Orchid\Screen\Fields\Picture;
 use Orchid\Screen\Fields\Quill;
 use Orchid\Screen\Fields\Relation;
 use Orchid\Screen\Fields\Select;
+use Orchid\Screen\Fields\TextArea;
 use Orchid\Screen\Layouts\Rows;
+use Orchid\Support\Color;
 
 class PortfolioEditLayout extends Rows
 {
@@ -45,19 +49,27 @@ class PortfolioEditLayout extends Rows
                 ->applyScope('group') // اعمال scope گروه‌بندی
                 ->title(__('Category')),
             // اضافه کردن فیلد تاریخ به فرم
-            DateTimer::make('date')
-                ->title('تاریخ شمسی')
-                ->format('Y/m/d') // قالب تاریخ شمسی
-                ->help('لطفا تاریخ مورد نظر را وارد کنید.')
-                ->value(CalendarUtils::strftime('Y/m/d', strtotime($this->query->get("portfolio.date"))))
+//            DateTimer::make('date')
+//                ->title('تاریخ شمسی')
+//                ->format('Y/m/d') // قالب تاریخ شمسی
+//                ->help('لطفا تاریخ مورد نظر را وارد کنید.')
+//                ->set('id', 'data-picker-p')
+//                ->value(CalendarUtils::strftime('Y/m/d', strtotime($this->query->get("portfolio.date"))))
 
-                ->required(),
-            Input::make('date')
-                ->type('text')
-                ->title('تاریخ')
-                ->set('class', 'data-picker-p form-control') // اضافه کردن ویژگی id
-                ->placeholder('لطفاً تاریخ را وارد کنید')
-                ->required(),
+//                ->required(),
+            DatePicker::make('selectedDate')
+                ->title('انتخاب تاریخ')
+                ->help('لطفاً تاریخ مورد نظر را انتخاب کنید.'),
+//            Input::make('date')
+//                ->type('text')
+//                ->title('تاریخ')
+//                ->set('id', 'data-picker-p') // اضافه کردن ویژگی id
+//                ->placeholder('لطفاً تاریخ را وارد کنید')
+//
+//                ,
+
+
+
             Quill::make('portfolio.body')
                 ->title(__('Body'))
                 ->popover('Quill is a free, open source WYSIWYG editor built for the modern web.'),

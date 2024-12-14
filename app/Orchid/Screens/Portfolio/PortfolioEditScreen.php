@@ -78,7 +78,7 @@ class PortfolioEditScreen extends Screen
     {
         return [
             PortfolioEditLayout::class,
-            SubtractListener::class
+            SubtractListener::class,
 
         ];
     }

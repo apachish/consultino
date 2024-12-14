@@ -34,3 +34,5 @@
         </p>
     </div>
 @endguest
+@vite('resources/js/app.js')
+@livewireScripts

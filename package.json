@@ -6,16 +6,20 @@
         "dev": "vite"
     },
     "devDependencies": {
+        "@tailwindcss/forms": "^0.5.0",
+        "@tailwindcss/typography": "^0.5.0",
+        "alpinejs": "^3.0.6",
         "autoprefixer": "^10.4.20",
         "axios": "^1.7.4",
         "concurrently": "^9.0.1",
+        "jalali-moment": "^3.3.11",
         "laravel-vite-plugin": "^1.0",
+        "moment-timezone": "^0.5.40",
         "postcss": "^8.4.47",
         "tailwindcss": "^3.4.13",
         "vite": "^5.0"
     },
     "dependencies": {
-        "jquery": "^3.7.1",
-        "persian-datepicker": "^1.2.0"
+        "jquery": "^3.7.1"
     }
 }
