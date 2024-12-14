@@ -76,7 +76,7 @@ class SettingSeeder extends Seeder
             ],
             "copyright"=>[
                 "title"=>"کپی رایت",
-                "value"=>"Copyright ©2018 Apachish. All Rights Reserved",
+                "value"=>"Copyright ©2018 <a href='https://apachish.ir'>Apachish</a>. All Rights Reserved",
                 "type"=>"text",
                                 "status"=>true,
 
