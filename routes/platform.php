@@ -35,7 +35,11 @@ use Tabuna\Breadcrumbs\Trail;
 // Main
 Route::screen('/main', PlatformScreen::class)
     ->name('platform.main');
-
+Route::screen('dashboard', \App\Orchid\Screens\Dashboard::class)
+    ->name('platform.dashboard')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+        ->parent('platform.index')
+        ->push(__('Dashboard')));
 // Platform > Profile
 Route::screen('profile', UserProfileScreen::class)
     ->name('platform.profile')
@@ -200,7 +204,7 @@ Route::screen('expertises', \App\Orchid\Screens\Expertise\ExpertiseListScreen::c
     ->name('platform.systems.expertises')
     ->breadcrumbs(fn (Trail $trail) => $trail
         ->parent('platform.index')
-        ->push(__('expertises'), route('platform.systems.expertises')));
+        ->push(__('Expertises'), route('platform.systems.expertises')));
 
 // Platform > System > expertise > Create
 Route::screen('expertises/create', \App\Orchid\Screens\Expertise\ExpertiseEditScreen::class)
@@ -214,7 +218,7 @@ Route::screen('expertises/{expertise}/edit', \App\Orchid\Screens\Expertise\Exper
     ->name('platform.systems.expertises.edit')
     ->breadcrumbs(fn (Trail $trail, $expertise) => $trail
         ->parent('platform.systems.expertises')
-        ->push($expertise->title, route('platform.systems.expertises.edit', $expertise)));
+        ->push($expertise->name, route('platform.systems.expertises.edit', $expertise)));
 
 
 Route::screen('blogs', \App\Orchid\Screens\Article\ArticleListScreen::class)

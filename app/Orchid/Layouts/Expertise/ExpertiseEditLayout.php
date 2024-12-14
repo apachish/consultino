@@ -2,7 +2,7 @@
 
 namespace App\Orchid\Layouts\Expertise;
 
-use App\Models\Category;
+use App\Models\Expertise;
 use Orchid\Screen\Field;
 use Orchid\Screen\Fields\Input;
 
@@ -26,17 +26,17 @@ class ExpertiseEditLayout extends Rows
      */
     protected function fields(): iterable
     {
-        return [Input::make('expertise.title')
+        return [Input::make('expertise.name')
             ->type('text')
             ->max(255)
             ->required()
             ->title(__('Title'))
             ->placeholder(__('Name')),
 
-            Relation::make('expertise.expertise')
-                ->fromModel(Category::class, 'name')
+            Relation::make('expertise.parent_id')
+                ->fromModel(Expertise::class, 'name')
                 ->title(__('Parent')),
-            Select::make('expertise.status')
+            Select::make('expertise.is_active')
                 ->options([
                     true => __("Active"),
                     false => __("Deactivate"),

@@ -18,7 +18,7 @@ class Expertise extends Model
      * @var array
      */
     protected $fillable = [
-        'title',
+        'name',
         'parent_id',
         'is_active',
     ];

@@ -36,34 +36,34 @@ class PlatformProvider extends OrchidServiceProvider
         return [
             Menu::make(__('Dashboard'))
                 ->icon('bs.book')
-                ->route('platform.example')
+                ->route('platform.dashboard')
             ->divider(),
 
 
 
-            Menu::make('Form Elements')
-                ->icon('bs.card-list')
-                ->route('platform.example.fields')
-                ->active('*/examples/form/*')
-                ->title(__('help'))
-            ,
-
-            Menu::make('Overview Layouts')
-                ->icon('bs.window-sidebar')
-                ->route('platform.example.layouts'),
-
-            Menu::make('Grid System')
-                ->icon('bs.columns-gap')
-                ->route('platform.example.grid'),
-
-            Menu::make('Charts')
-                ->icon('bs.bar-chart')
-                ->route('platform.example.charts'),
-
-            Menu::make('Cards')
-                ->icon('bs.card-text')
-                ->route('platform.example.cards')
-                ->divider(),
+//            Menu::make('Form Elements')
+//                ->icon('bs.card-list')
+//                ->route('platform.example.fields')
+//                ->active('*/examples/form/*')
+//                ->title(__('help'))
+//            ,
+//
+//            Menu::make('Overview Layouts')
+//                ->icon('bs.window-sidebar')
+//                ->route('platform.example.layouts'),
+//
+//            Menu::make('Grid System')
+//                ->icon('bs.columns-gap')
+//                ->route('platform.example.grid'),
+//
+//            Menu::make('Charts')
+//                ->icon('bs.bar-chart')
+//                ->route('platform.example.charts'),
+//
+//            Menu::make('Cards')
+//                ->icon('bs.card-text')
+//                ->route('platform.example.cards')
+//                ->divider(),
 
             Menu::make(__('Users'))
                 ->icon('bs.people')
@@ -91,7 +91,7 @@ class PlatformProvider extends OrchidServiceProvider
                 ->permission('platform.systems.users')
                 ->title(__('Site')),
 
-            Menu::make(__('Expertise'))
+            Menu::make(__('Expertises'))
                 ->icon('bs.columns-gap')
                 ->route('platform.systems.expertises')
                 ->permission('platform.systems.users'),

@@ -3,6 +3,7 @@
 namespace App\Orchid\Screens\Expertise;
 
 use App\Models\Expertise;
+use App\Orchid\Layouts\Expertise\ExpertiseListLayout;
 use Illuminate\Http\Request;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Screen;
@@ -18,7 +19,7 @@ class ExpertiseListScreen extends Screen
     public function query(): iterable
     {
         return [
-            'expertises' => Expertise::defaultSort('updated_at', 'desc')
+            'expertises' => Expertise::with("parent")->defaultSort('updated_at', 'desc')
                 ->paginate(),
         ];
     }
@@ -60,7 +61,7 @@ class ExpertiseListScreen extends Screen
         return [
             Link::make(__('Add'))
                 ->icon('bs.plus-circle')
-                ->route('platform.systems.expertise.create'),
+                ->route('platform.systems.expertises.create'),
         ];
     }
 
@@ -72,7 +73,7 @@ class ExpertiseListScreen extends Screen
     public function layout(): iterable
     {
         return [
-            ExpertiseListScreen::class,
+            ExpertiseListLayout::class,
 
         ];
     }

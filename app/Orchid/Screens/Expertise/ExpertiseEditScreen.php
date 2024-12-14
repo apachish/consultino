@@ -3,7 +3,6 @@
 namespace App\Orchid\Screens\Expertise;
 
 use App\Models\Expertise;
-use App\Models\Service;
 use App\Orchid\Layouts\Expertise\ExpertiseEditLayout;
 use Illuminate\Http\Request;
 use Orchid\Screen\Actions\Button;
@@ -35,7 +34,7 @@ class ExpertiseEditScreen extends Screen
      */
     public function name(): ?string
     {
-        return $this->expertise->id ? 'Edit Service' : 'Create Service';
+        return $this->expertise->id ? 'Edit Expertise' : 'Create Expertise';
     }
 
 
@@ -44,7 +43,7 @@ class ExpertiseEditScreen extends Screen
      */
     public function description(): ?string
     {
-        return $this->expertise->id ? 'Edit Service' : 'Create Service';
+        return $this->expertise->id ? 'Edit Expertise' : 'Create Expertise';
     }
 
     public function permission(): ?iterable
@@ -85,10 +84,8 @@ class ExpertiseEditScreen extends Screen
     /**
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function save(Service $expertise, Request $request)
+    public function save(Expertise $expertise, Request $request)
     {
-        $hasImage = $expertise && $expertise->image;
-
         $request->validate([
             'expertise.name' => [
                 'required',
@@ -105,6 +102,6 @@ class ExpertiseEditScreen extends Screen
 
         Toast::info(__('Expertise was saved.'));
 
-        return redirect()->route('platform.systems.expertise');
+        return redirect()->route('platform.systems.expertises');
     }
 }
