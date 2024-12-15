@@ -302,13 +302,22 @@
     "Rate": "امتیاز",
     "Select Type": "نوع را انتخاب کنید",
     "Select a type": "یک نوع را انتخاب کنید",
-    "Choose whether you want to upload an image or a video link.": "انتخاب کنید که آیا می خواهید تصویری آپلود کنید یا لینک ویدیو "
-
-
-
-
-
-
+    "Choose whether you want to upload an image or a video link.": "انتخاب کنید که آیا می خواهید تصویری آپلود کنید یا لینک ویدیو ",
+    "Continue Reading": "ادامه مطلب",
+    "tag": "برچسب",
+    "Previous Post": "پست قبلی",
+    "Next Post": "پست بعدی",
+    "Comments": "نظرات",
+    "Comment": "نظر",
+    "Reply": "پاسخ",
+    "Leave a Comment": "نظر بدهید",
+    "Your email address will not be published. Required fields are marked": "آدرس ایمیل شما منتشر نخواهد شد. فیلدهای الزامی مشخص شده اند",
+    "Post Comment": "ارسال نظر",
+    "Archives": "آرشیو",
+    "View Comments": "نظرات",
+    "comments": "نظرات",
+    "Comment List": "لیست نظرات",
+    "You can see and change status  the comment of the site from here.": "از اینجا می توانید نظر سایت را ببینید و تغییر وضعیت دهید."
 
 
 }

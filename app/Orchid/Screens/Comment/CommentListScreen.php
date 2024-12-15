@@ -1,16 +1,15 @@
 <?php
 
-namespace App\Orchid\Screens\Article;
+namespace App\Orchid\Screens\Comment;
 
-use App\Models\Article;
-use App\Models\Service;
-use App\Orchid\Layouts\Article\ArticleListLayout;
+use App\Models\Comment;
+use App\Orchid\Layouts\Comment\CommentListLayout;
 use Illuminate\Http\Request;
 use Orchid\Screen\Actions\Link;
 use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Toast;
 
-class ArticleListScreen extends Screen
+class CommentListScreen extends Screen
 {
     /**
      * Fetch data to be displayed on the screen.
@@ -20,7 +19,7 @@ class ArticleListScreen extends Screen
     public function query(): iterable
     {
         return [
-            'articles' => Article::defaultSort('updated_at', 'desc')
+            'comments' => Comment::with("parent")->defaultSort('updated_at', 'desc')
                 ->paginate(),
         ];
     }
@@ -32,7 +31,7 @@ class ArticleListScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'Article List';
+        return 'Comment List';
     }
 
     /**
@@ -40,7 +39,7 @@ class ArticleListScreen extends Screen
      */
     public function description(): ?string
     {
-        return 'You can view, edit, and delete the list of articles.';
+        return 'You can see and change status  the comment of the site from here.';
     }
 
 
@@ -60,12 +59,6 @@ class ArticleListScreen extends Screen
     public function commandBar(): iterable
     {
         return [
-            Link::make(__('Add'))
-                ->icon('bs.plus-circle')
-                ->route('platform.systems.blogs.create'),
-            Link::make(__('View Comments'))
-                ->icon('bs.chat-square-text')
-                ->route('platform.systems.comments'),
         ];
     }
 
@@ -77,15 +70,15 @@ class ArticleListScreen extends Screen
     public function layout(): iterable
     {
         return [
-            ArticleListLayout::class,
+            CommentListLayout::class,
 
         ];
     }
 
     public function remove(Request $request): void
     {
-        Article::findOrFail($request->get('id'))->delete();
+        Comment::findOrFail($request->get('id'))->delete();
 
-        Toast::info(__('Article was removed'));
+        Toast::info(__('Comment was removed'));
     }
 }

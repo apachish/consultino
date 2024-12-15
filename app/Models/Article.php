@@ -3,12 +3,18 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Orchid\Access\UserAccess;
+use Orchid\Filters\Filterable;
 use Orchid\Filters\Types\Like;
 use Orchid\Filters\Types\Where;
 use Orchid\Filters\Types\WhereDateStartEnd;
+use Orchid\Screen\AsSource;
 
 class Article extends Model
 {
+    use  Filterable,UserAccess,AsSource;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -16,9 +22,12 @@ class Article extends Model
      */
     protected $fillable = [
         'title',
-        'content',
+        'description',
+        'category',
+        'body',
         'author_id',
         'is_published',
+        'type',
     ];
 
     /**
@@ -69,6 +78,43 @@ class Article extends Model
     public function scopeGroup(Builder $query)
     {
         return $query->groupBy('category')->orderBy('sort_order');
+    }
+    public function comments(): MorphMany
+    {
+        return $this->morphMany(Comment::class, 'commentable');
+    }
+
+    public function parameters()
+    {
+        return $this->hasMany(ArticleParameter::class,"article_id");
+    }
+
+    public function parameter()
+    {
+        return $this->parameters()
+            ->get() // داده‌ها را به‌صورت Collection دریافت می‌کند
+            ->keyBy('key');
+    }
+
+    public function tags()
+    {
+        return $this->morphToMany(Tag::class,'taggable');
+    }
+
+    public function previous()
+    {
+        return self::where('id', '<', $this->id)
+            ->where('category',$this->category)
+            ->orderBy('id', 'desc')
+            ->first();
+    }
+
+    public function next()
+    {
+        return self::where('id', '>', $this->id)
+            ->where('category',$this->category)
+            ->orderBy('id', 'asc')
+            ->first();
     }
 
 }

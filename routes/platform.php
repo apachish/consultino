@@ -240,6 +240,12 @@ Route::screen('blogs/{article}/edit', \App\Orchid\Screens\Article\ArticleEditScr
         ->parent('platform.systems.blogs')
         ->push($article->title, route('platform.systems.blogs.edit', $article)));
 
+Route::screen('comments', \App\Orchid\Screens\Comment\CommentListScreen::class)
+    ->name('platform.systems.comments')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+        ->parent('platform.index')
+        ->push(__('comments'), route('platform.systems.comments')));
+
 // Platform > System > Roles > Role
 Route::screen('roles/{role}/edit', RoleEditScreen::class)
     ->name('platform.systems.roles.edit')

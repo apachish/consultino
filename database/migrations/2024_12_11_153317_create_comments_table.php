@@ -13,16 +13,14 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id')->nullable();
-            $table->foreign('user_id')
-                ->references('id')
-                ->on('users')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
+            $table->string('email');
+            $table->string('full_name');
             $table->boolean('status')->default(false);
-            $table->mediumText('comment');
+            $table->mediumText('message');
             $table->unsignedBigInteger('commentable_id');
             $table->string('commentable_type');
+            $table->unsignedBigInteger('user_id');
+            $table->string('user_type');
             $table->unsignedBigInteger('parant_id')->nullable();
             $table->foreign('parant_id')
                 ->references('id')

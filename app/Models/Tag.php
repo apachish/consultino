@@ -8,4 +8,10 @@ class Tag extends Model
 {
     protected $fillable = ['title'];
     protected $table = 'tags';
+
+
+    public function articles()
+    {
+        return $this->morphedByMany(Article::class,'taggable');
+    }
 }

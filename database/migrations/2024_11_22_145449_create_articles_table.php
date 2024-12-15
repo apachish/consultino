@@ -16,15 +16,15 @@ return new class extends Migration
             $table->string('title');
             $table->string('description');
             $table->string('category');
-            $table->string('body');
-            $table->boolean('status');
+            $table->longText('body');
+            $table->boolean('is_published');
             $table->enum('type',[
                 'image',
                 'iframe',
                 'slider',
             ]);
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')
+            $table->unsignedBigInteger('author_id');
+            $table->foreign('author_id')
                 ->references('id')
                 ->on('users')
                 ->onUpdate('cascade')

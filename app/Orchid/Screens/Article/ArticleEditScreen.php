@@ -2,7 +2,9 @@
 
 namespace App\Orchid\Screens\Article;
 
+use App\Models\Article;
 use App\Models\Service;
+use App\Models\Tag;
 use App\Orchid\Layouts\Article\ArticleEditLayout;
 use App\Orchid\Layouts\SubtractListener;
 use Illuminate\Http\Request;
@@ -16,7 +18,7 @@ use Orchid\Support\Facades\Toast;
 class ArticleEditScreen extends Screen
 {
     /**
-     * @var Service
+     * @var Article
      */
     public $article;
     /**
@@ -24,7 +26,7 @@ class ArticleEditScreen extends Screen
      *
      * @return array
      */
-    public function query(Service $article): iterable
+    public function query(Article $article): iterable
     {
         return [
             'article'       => $article
@@ -89,14 +91,11 @@ class ArticleEditScreen extends Screen
     /**
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function save(Service $article, Request $request)
+    public function save(Article $article, Request $request)
     {
         $request->validate([
             'article.title' => [
                 'required',
-            ],
-            'article.sort_order' => [
-                'required','min:1'
             ],
             'article.description' => [
                 'required'
@@ -119,20 +118,71 @@ class ArticleEditScreen extends Screen
             'subtract.url' => [
                 'required_if:type,iframe','url:http,https'
             ],
-
-
-
-
         ]);
 
         $data = $request->collect('article');
-        logger("q",$data->toArray());
+        $subtracts = $request->collect('subtract');
+        $data = $data->toArray();
+        $data['type'] = $subtracts['type'];
         $data['slug'] = Str::slug($data['title']);
+        $data['author_id'] = auth()->id();
         if($article->id)
-            $article->update($data->toArray());
+            $article->update($data);
         else
-            $article->create($data->toArray());
+            $article = $article->create($data);
 
+        foreach (data_get($data,'tags') as $row) {
+            $tag = Tag::updateOrCreate(["title" => $row],["title" => $row]);
+            $article->tags()->attach($tag->id);
+        }
+
+        switch ($subtracts['type']) {
+            case 'slider':
+                $slides = [];
+                foreach (data_get($subtracts, 'images', []) as $key => $item) {
+                    $slide['title'] = $item['title'];
+                    $file = $request->file("subtract.images.$key.image");
+                    if ($file) {
+                        // ذخیره‌سازی فایل
+                        $imagePath = $file->store('portfolio', 'images');
+                        $slide['image'] = url("images/" . $imagePath);
+                    }
+                    $slides[] = $slide;
+                }
+                $article->parameters()->updateOrCreate([
+                    'article_id' => $article->id,
+                    'key' => 'images',
+                ], [
+                    'value' => json_encode($slides),
+                ]);
+
+
+                break;
+            case 'image':
+                $image = $request->file('subtract.image');
+
+                if ($image) {
+                    // ذخیره‌سازی فایل
+                    $imagePath = $image->store('$article', 'images');
+                    $url_image = url("images/" . $imagePath);
+                    $article->parameters()->updateOrCreate([
+                        'article_id' => $article->id,
+                        'key' => 'image',
+                    ], [
+                        'value' => $url_image,
+                    ]);
+                }
+
+                break;
+            case 'iframe':
+                $article->parameters()->updateOrCreate([
+                    '$article_id' => $article->id,
+                    'key' => 'iframe',
+                ], [
+                    'value' => data_get($subtracts, 'url'),
+                ]);
+                break;
+        }
 
 
         Toast::info(__('Article was saved.'));

@@ -42,7 +42,7 @@ class ArticleEditLayout extends Rows
                 ->allowAdd(true)
                 ->applyScope('group') // اعمال scope گروه‌بندی
                 ->title(__('Category')),
-            Relation::make('article.category')
+            Relation::make('article.tags')
                 ->fromModel(Tag::class, 'title')
                 ->allowAdd(true)
                 ->multiple()
@@ -52,12 +52,8 @@ class ArticleEditLayout extends Rows
                 ->required()
                 ->rows(6),
             Quill::make('article.body')
-                ->title(__('Body'))
-                ->popover('Quill is a free, open source WYSIWYG editor built for the modern web.'),
-
-
-
-            Select::make('article.status')
+                ->title(__('Body')),
+            Select::make('article.is_published')
                 ->options([
                     true=> __("Active"),
                     false => __("Deactivate"),

@@ -22,8 +22,8 @@ Route::get('/', \App\Livewire\Home::class)->name("home");
 Route::get('/login', \App\Livewire\Home::class)->name("login");
 Route::get('/contact-us', \App\Livewire\ContactUs::class)->name("contact-us");
 Route::get('/about-us', \App\Livewire\AboutUs::class)->name("about-us");
-Route::get('/blog', \App\Livewire\Blog::class)->name("blog");
-Route::get('/blog/{slug}', \App\Livewire\BlogDetails::class)->name("blog.details");
+Route::get('/blog/{category?}', \App\Livewire\Blog::class)->name("blog");
+Route::get('/blog/{category}/{slug}', \App\Livewire\BlogDetails::class)->name("blog.details");
 Route::get('/services/{slug}', \App\Livewire\Services::class)->name("services");
 
 Route::get('/portfolios/{category?}', \App\Livewire\Portfolios::class)->name("portfolios");
