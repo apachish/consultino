@@ -41,13 +41,13 @@ class PortfolioEditLayout extends Rows
             ->required()
             ->title(__('Title'))
             ->placeholder(__('Name')),
-
-            Relation::make('portfolio.category')
-                ->fromModel(Portfolio::class, 'category')
-                ->allowAdd(true)
-                ->required()
-                ->applyScope('group') // اعمال scope گروه‌بندی
-                ->title(__('Category')),
+            Select::make('portfolio.category') // نام فیلد در دیتابیس
+            ->fromQuery(
+                Portfolio::select('category')->distinct(), // کوئری معتبر
+                'category' // نام ستون برای نمایش به‌عنوان لیبل
+            )
+                ->title(__('Category'))
+                ->allowAdd(),
             Input::make('portfolio.sort_order')
                 ->type('number')
                 ->max(255)

@@ -37,11 +37,12 @@ class ArticleEditLayout extends Rows
             ->required()
             ->title(__('Title'))
             ->placeholder(__('Name')),
-            Relation::make('article.category')
-                ->fromModel(Article::class, 'category')
-                ->allowAdd(true)
-                ->applyScope('group') // اعمال scope گروه‌بندی
-                ->title(__('Category')),
+            Select::make('article.category') // نام فیلد در دیتابیس
+            ->options(
+                Article::distinct()->pluck('category', 'category')->toArray() // آرایه مقادیر
+            )
+                ->title(__('Category'))
+                ->allowAdd(),
             Relation::make('article.tags')
                 ->fromModel(Tag::class, 'title')
                 ->allowAdd(true)
@@ -67,6 +68,7 @@ class ArticleEditLayout extends Rows
                     'slider' => 'Slider',
                 ])
                 ->empty(__('Select a type'), '') // گزینه پیش‌فرض
+
                 ->help('Choose whether you want to upload an image or a video link.')
             , // شنونده برای تغییر
 

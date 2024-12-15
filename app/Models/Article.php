@@ -117,4 +117,6 @@ class Article extends Model
             ->first();
     }
 
+
+
 }

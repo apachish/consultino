@@ -40,13 +40,13 @@ class BlogDetails extends Component
         $this->blog = Article::where('slug', $this->slug)
             ->with(["parameters",'tags','comments'])
             ->withCount('comments')
-            ->where("status",1)
+            ->where("is_published",1)
             ->firstOrFail();
         $this->previous = $this->blog->previous();
         $this->next = $this->blog->next();
-        $this->categories = Article::groupBy("category")->get()->pluck("category")->toArray();
+        $this->categories = Article::groupBy("category")->where("is_published",1)->get()->pluck("category")->toArray();
         $this->parameters = $this->blog->parameters->keyBy('key');
-        $this->recent_post = Article::where("status",1)->limit(3)->orderBy("created_at",'DESC')->get();
+        $this->recent_post = Article::where("is_published",1)->limit(3)->orderBy("created_at",'DESC')->get();
         $this->tags = Tag::inRandomOrder()->limit(15)->get();
         $this->archives  = Article::selectRaw('YEAR(created_at) as year, MONTH(created_at) as month, COUNT(*) as post_count')
             ->groupBy('year', 'month')

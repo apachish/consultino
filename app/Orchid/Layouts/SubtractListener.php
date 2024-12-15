@@ -2,8 +2,10 @@
 
 namespace App\Orchid\Layouts;
 
+use App\Orchid\Fields\ImagePreview;
 use Illuminate\Http\Request;
 use Orchid\Screen\Fields\Input;
+use Orchid\Screen\Fields\Label;
 use Orchid\Screen\Fields\Matrix;
 use Orchid\Screen\Fields\Picture;
 use Orchid\Screen\Fields\Upload;
@@ -14,6 +16,7 @@ use Orchid\Support\Facades\Layout;
 class SubtractListener extends Listener
 {
 
+    protected $selectedType ="iframe";
 
     /**
      * List of field names for which values will be listened.
@@ -24,6 +27,10 @@ class SubtractListener extends Listener
         "subtract.type",
     ];
 
+    public function __construct($type = null)
+    {
+        $this->selectedType = $type;
+    }
     /**
      * The screen's layout elements.
      *
@@ -31,14 +38,15 @@ class SubtractListener extends Listener
      */
     protected function layouts(): iterable
     {
-        $selectedType = request()->input('subtract.type');
+        $this->selectedType = request()->input('subtract.type',$this->selectedType);
 
         return [
             Layout::rows([
+
                 Input::make('subtract.url')
                     ->title('Video URL')
                     ->placeholder('Enter the video URL')
-                    ->canSee($selectedType === 'iframe'), // بررسی مقدار مستقیم
+                    ->canSee($this->selectedType === 'iframe'), // بررسی مقدار مستقیم
 
 
                 Input::make('subtract.image')
@@ -46,7 +54,9 @@ class SubtractListener extends Listener
                     ->title('Upload Image')
                     ->accept('image/*')
                     ->help('Select an image file. You can upload files in any image format, such as JPG, PNG, or GIF.')
-                    ->canSee($selectedType === 'image'), // بررسی مقدار مستقیم
+                    ->canSee($this->selectedType === 'image'), // بررسی مقدار مستقیم
+
+
                 Matrix::make('subtract.images')
                     ->columns([
                         'title',
@@ -60,9 +70,12 @@ class SubtractListener extends Listener
                             ->accept('image/*')
                             ->help('Select an image file. You can upload files in any image format, such as JPG, PNG.')
                         ,
-                    ])->canSee($selectedType === 'slider')
+                    ])->canSee($this->selectedType === 'slider'),
 
-
+                ImagePreview::make('subtract.picture')
+                    ->set('type_view',$this->selectedType)
+                    ->canSee(in_array($this->selectedType ,[ 'image','slider']))
+                ,
 
             ]),
         ];
@@ -78,22 +91,7 @@ class SubtractListener extends Listener
      */
     public function handle(Repository $repository, Request $request): Repository
     {
-        $type = $request->input('article.type');
+        $type = $request->input('subtract.type','iframe');
         return $repository->set('type', $type);
-    }
-
-    public function save(Request $request)
-    {
-        dd($request->all());
-        $file = $request->file('image'); // فایل تصویر از فرم
-
-        // ذخیره فایل در مسیر public/storage/images
-        $path = $file->store('images', 'public');
-
-        // ذخیره مسیر فایل در دیتابیس
-        Picture::create([
-            'name' => $file->getClientOriginalName(),
-            'image' => $path,
-        ]);
     }
 }

@@ -28,8 +28,21 @@ class ArticleEditScreen extends Screen
      */
     public function query(Article $article): iterable
     {
+        $images = $article->parameters()->where('key', "slider")->first();
+//        dd(["type"=>$article->type,
+//            'picture'=>$article->parameters()->where('key', $article->type)->first()?->value,
+//            'image'=>$article->parameters()->where('key', "image")->first()?->value,
+//            'images'=>$images?json_decode($images->value):null,
+//            'url'=>$article->parameters()->where('key', "iframe")->first()?->value
+//        ]);
         return [
-            'article'       => $article
+            'article'       => $article,
+            'subtract'      => ["type"=>$article->type,
+                'picture'=>$article->parameters()->where('key', $article->type)->first()?->value,
+                'image'=>$article->parameters()->where('key', "image")->first()?->value,
+                'images'=>$images?json_decode($images->value,true):null,
+            'url'=>$article->parameters()->where('key', "iframe")->first()?->value
+            ]
         ];
     }
 
@@ -83,7 +96,7 @@ class ArticleEditScreen extends Screen
     {
         return [
             ArticleEditLayout::class,
-            SubtractListener::class
+            new SubtractListener($this->article->type),
 
         ];
     }
@@ -109,11 +122,11 @@ class ArticleEditScreen extends Screen
             'subtract.images' => [
                 'required_if:type,slider'
             ],
-            'subtract.images.*' => [
-                'required_if:type,slider','extensions:jpg,png'
+            'subtract.images.*.image' => [
+                'required_if:type,slider','mimes:jpg,png,jpeg,webp'
             ],
             'subtract.image' => [
-                'required_if:type,image','extensions:jpg,png'
+                'required_if:type,image','mimes:jpg,png,jpeg,webp'
             ],
             'subtract.url' => [
                 'required_if:type,iframe','url:http,https'
@@ -151,7 +164,7 @@ class ArticleEditScreen extends Screen
                 }
                 $article->parameters()->updateOrCreate([
                     'article_id' => $article->id,
-                    'key' => 'images',
+                    'key' => 'slider',
                 ], [
                     'value' => json_encode($slides),
                 ]);
@@ -163,7 +176,7 @@ class ArticleEditScreen extends Screen
 
                 if ($image) {
                     // ذخیره‌سازی فایل
-                    $imagePath = $image->store('$article', 'images');
+                    $imagePath = $image->store('article', 'images');
                     $url_image = url("images/" . $imagePath);
                     $article->parameters()->updateOrCreate([
                         'article_id' => $article->id,
@@ -176,7 +189,7 @@ class ArticleEditScreen extends Screen
                 break;
             case 'iframe':
                 $article->parameters()->updateOrCreate([
-                    '$article_id' => $article->id,
+                    'article_id' => $article->id,
                     'key' => 'iframe',
                 ], [
                     'value' => data_get($subtracts, 'url'),

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->enum('key',[
                 "image",
-                "images",
+                "slider",
                 "iframe",
                 "iframe_sound",
             ]);

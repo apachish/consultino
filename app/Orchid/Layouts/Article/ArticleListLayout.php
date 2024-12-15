@@ -37,11 +37,11 @@ class ArticleListLayout extends Table
                 ->cantHide()
                 ->filter(Input::make()),
 
-            TD::make('status', __('Status'))
+            TD::make('is_published', __('Status'))
                 ->sort()
                 ->cantHide()
                 ->filter(Input::make())
-                ->render(fn($article) => e($article->status?
+                ->render(fn($article) => e($article->is_published?
                     Button::make('Active')->method('buttonClickProcessing')->type(Color::SUCCESS):
                     Button::make('Deactivate')->method('buttonClickProcessing')->type(Color::DANGER)
                 )),

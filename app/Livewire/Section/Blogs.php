@@ -10,7 +10,7 @@ class Blogs extends Component
     public $blogs;
     public function render()
     {
-        $this->blogs = Article::where("status", 1)->limit(9)->get();
+        $this->blogs = Article::where("is_published", 1)->limit(9)->get();
         return view('livewire.section.blogs');
     }
 }

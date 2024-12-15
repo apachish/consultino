@@ -18,7 +18,7 @@ return new class extends Migration
                 "date",
                 "rate",
                 "image",
-                "images",
+                "slider",
                 "iframe",
             ]);
             $table->text('value');
