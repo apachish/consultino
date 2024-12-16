@@ -47,15 +47,16 @@ class Verify extends Component
                 $query->where($key,$value);
             }
         })->first();
+
         if(!$customer){
             $data = $credentials;
-            $data["password"] = Hash::make("123456789");
+            $data["password"] = Hash::make($this->email_mobile);
             $data["is_verified"] = true;
             Customer::create($data);
         }
         if($verify)
             $verify->update(["used"=>true]);
-        $credentials["password"] = "123456789";
+        $credentials["password"] = $this->email_mobile;
         logger("a",$credentials);
         if (Auth::guard('customer')->attempt($credentials)) {
             return $this->redirectRoute('dashboard', navigate: true);

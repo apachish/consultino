@@ -27,12 +27,8 @@ class Customer extends Authenticatable
         'mobile',
         'email',
         'fullName',
-        'national_code',
-        'address',
         'password',
-        'gender',
         'is_verified',
-
     ];
 
     /**
