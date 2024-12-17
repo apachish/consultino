@@ -9,24 +9,9 @@
             </div>
             <div class="col-xl-6 col-lg-7">
                 <div class="tm-about-content">
-                    <h2>درکنار شما هستیم</h2>
+                    <h2>{{$about_us_title}}</h2>
                     <span class="divider"><i class="fa fa-superpowers"></i></span>
-                    <p>
-                        مرکز مشاوره ما با تکیه بر تیمی از مشاوران و روانشناسان متخصص، فضایی امن و حرفه‌ای برای رسیدگی به نیازهای روانشناختی و مشاوره‌ای شما فراهم کرده است. هدف ما این است که با ارائه خدمات مشاوره فردی، خانواده، تحصیلی و شغلی، به شما در مدیریت چالش‌ها، بهبود روابط و رشد شخصی کمک کنیم.
-
-                        ما معتقدیم که هر فرد ارزشمند است و شایسته دریافت بهترین حمایت‌ها برای دستیابی به آرامش و موفقیت در زندگی است. در این مسیر، تلاش ما بر ارائه راهکارهای علمی و کاربردی است تا بتوانیم همراه شما در ساختن فردایی بهتر باشیم.
-                    </p>
-                    <ul class="stylish-list">
-                        <li><i class="fa fa-check-square-o"></i>
-                            درمانگران متخصص</li>
-                        <li><i class="fa fa-check-square-o"></i>  روان‌سنجی حرفه ای</li>
-                        <li><i class="fa fa-check-square-o"></i>
-                            مشاوره آنلاین</li>
-                        <li><i class="fa fa-check-square-o"></i>
-                            نوبت دهی آسان</li>
-                        <li><i class="fa fa-check-square-o"></i>
-                            مشاوره تخصصی کودک</li>
-                    </ul>
+                    {!!  $about_us_description !!}
                     @auth
                         <a  onclick="window.location='{{route("platform.main")}}'" class="tm-button tm-button">
                             {{__("Appointment booking")}}<b></b></a>

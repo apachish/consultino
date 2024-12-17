@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Morilog\Jalali\Jalalian;
 use Orchid\Access\UserAccess;
 use Orchid\Filters\Filterable;
 use Orchid\Filters\Types\Like;
@@ -119,6 +120,24 @@ class Article extends Model
             ->first();
     }
 
+    // اسکوپ برای فیلتر مقالات بر اساس سال و ماه شمسی
+    public function scopeByShamsiMonth($query, $year, $month)
+    {
+        $between_month = $this->getBetweenMonth($year, $month);
 
+        return $query->whereBetween('created_at',$between_month);
+    }
+
+    function getBetweenMonth($year,$month): array
+    {
+//        if($month==12)
+//            $year = convertNumber(toJalali(now()->subYear(1), "Y"));
+//        else
+//            $year = convertNumber(toJalali(now(), "Y"));
+        $days = (new Jalalian($year, $month, 15))->getMonthDays();
+        $date_between[] = (new Jalalian($year, $month, 1))->toCarbon()->format("Y-m-d"); // [2016, 5, 7]
+        $date_between[] = (new Jalalian($year, $month, $days))->toCarbon()->format("Y-m-d"); // [2016, 5, 7]
+        return  $date_between;
+    }
 
 }

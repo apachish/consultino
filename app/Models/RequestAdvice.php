@@ -17,7 +17,7 @@ class RequestAdvice extends Model
      *
      * @var array
      */
-    protected $fillable = ["full_name","category","message","status",'date'];
+    protected $fillable = ["full_name","expertise_id","message","status",'date'];
     /**
      * The attributes for which you can use filters in url.
      *

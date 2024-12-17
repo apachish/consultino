@@ -7,7 +7,7 @@
                     @if(data_get($blog,'type')=="image")
                         <div class="tm-blog-image">
                             <a href="{{route("blog.details",["slug"=>data_get($blog,'slug')])}}">
-                                <img src="{{data_get($blog,'image')}}" alt="{{data_get($blog,'title')}}">
+                                <img src="{{data_get($blog,'parameters.image.value')}}" alt="{{data_get($blog,'title')}}">
                             </a>
                         </div>
                         {{--                    audio--}}
@@ -18,12 +18,15 @@
                                         src="{{data_get($parameters,'iframe_sound.value')}}"></iframe>
                             </div>
                         </div>
-                    @endif
                     {{--                    imageslider--}}
                     @elseif(data_get($blog,'type')=="slider")
                         <div class="tm-blog-imageslider tm-slider-arrow tm-slider-dots">
-                            @foreach(json_decode(data_get($parameters,'images.value')) as $slide)
-                                <a href="{{route("blog.details",["slug"=>data_get($blog,'slug')])}}"
+                            @php
+                                $slider = data_get($parameters,'slider');
+                                $slider =  json_decode(data_get($slider,'value'),true)
+                            @endphp
+                            @foreach($slider as $slide)
+                                <a href="{{route("blog.details",["category"=>data_get($blog,'category'),"slug"=>data_get($blog,'slug')])}}"
                                    class="blogitem-imageslider-image">
                                     <img src="{{data_get($slide,'image')}}" alt="{{data_get($slide,'title')}}">
                                 </a>
@@ -42,7 +45,7 @@
                     <div class="tm-blog-content">
                         <div class="tm-blog-meta">
                                     <span><i class="fa fa-user-o"></i>{{__("Writer")}}
-                                        <a href="{{route("blog.details",["slug"=>data_get($blog,'slug')])}}">
+                                        <a href="{{route("blog.details",["category"=>data_get($blog,'category'),"slug"=>data_get($blog,'slug')])}}">
                                             {{data_get($blog,'user.name')}}
                                         </a>
                                     </span>
@@ -53,8 +56,8 @@
                                     {{data_get($blog,'category')}}
                                 </a></span>
                         </div>
-                        <h3>{{data_get($blod,'title')}}</h3>
-                        {!! data_get($blod,'body') !!}
+                        <h3>{{data_get($blog,'title')}}</h3>
+                        {!! data_get($blog,'body') !!}
                     </div>
                     <div class="tm-blog-tags">
                                     <span class="tm-blog-tags-title">
@@ -63,8 +66,8 @@
                         <ul>
                             @foreach(data_get($blog,'tags') as $tag)
                                 <li>
-                                    <a href="{{route("blog")."?tag=".$tag}}">
-                                        {{$tag}}</a>
+                                    <a href="{{route("blog")."?tag=".data_get($tag,'title')}}">
+                                        {{data_get($tag,'title')}}</a>
                                 </li>
                             @endforeach
                         </ul>
@@ -190,11 +193,10 @@
                         <ul>
                             @foreach($recent_post as $post)
                             <li>
-                                <a href="blog-details.html" class="widget-recentpost-image">
-                                    <img src="{{data_get($post,'image')}}" alt="{{data_get($post,'title')}}">
-                                </a>
                                 <div class="widget-recentpost-content">
-                                    <h6><a href="blog-details.html">{{data_get($post,'title')}}</a></h6>
+                                    <h6><a
+                                            href="{{route("blog.details",["category"=>data_get($post,'category'),'slug'=>data_get($post,'slug')])}}">
+                                            {{data_get($post,'title')}}</a></h6>
                                     <span>{{tojalali(data_get($post,'created_at'),"%A, %d %B %y")}}</span>
                                 </div>
                             </li>
@@ -207,8 +209,13 @@
                     <div class="single-widget widget-archives">
                         <h5 class="widget-title">{{__("Archives")}}</h5>
                         <ul>
-                            @foreach($archives as $key => $archive)
-                            <li><a href="{{route("blog")."?month=".$archive}}">{{$archive." ".$key}} </a></li>
+                            @foreach($archives as  $archive)
+                                @if(data_get($archive,'article_count'))
+                            <li><a href="{{route("blog")."?month=".data_get($archive,'month')}}">
+                                    {{data_get($archive,'name')." ".data_get($archive,'year')." (".data_get($archive,'article_count').")"}}
+                                </a>
+                            </li>
+                                @endif
                             @endforeach
                         </ul>
                     </div>
@@ -219,7 +226,9 @@
                         <h5 class="widget-title">{{__("tags")}}</h5>
                         <ul>
                             @foreach($tags as $tag)
-                                <li><a href="{{route("blog")."?tag=".$tag}}">{{$tag}}</a></li>
+                                @if(data_get($tag,'title'))
+                                <li><a href="{{route("blog")."?tag=".data_get($tag,'title')}}">{{data_get($tag,'title')}}</a></li>
+                                @endif
                             @endforeach
                         </ul>
                     </div>

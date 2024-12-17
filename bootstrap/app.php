@@ -15,6 +15,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'customer' => \App\Http\Middleware\CustomerMiddleware::class,
             'Kavenegar' => Kavenegar\Laravel\Facade::class,
+            'Faker' => Ybazli\Faker\Facades\Faker::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

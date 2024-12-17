@@ -4,6 +4,8 @@
 <head>
 
     @include('includes.head')
+
+
 </head>
 
 <body>
@@ -86,6 +88,8 @@
 <script src="/assets/js/chart.min.js"></script>
 <script src="/assets/js/chart-active.js"></script>
 <script src="/assets/js/main.js"></script>
+@vite('resources/js/app.js')
+
 <script>
     function otpSend(num) {
         const milliseconds = num * 1000 //60 seconds

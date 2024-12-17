@@ -3,7 +3,10 @@
 namespace Database\Factories;
 
 use App\Models\Article;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 use Ybazli\Faker\Facades\Faker;
 
 /**
@@ -25,10 +28,10 @@ class ArticleFactory extends Factory
             'description'=>fake()->text(200),
             'category'=>rand(0,1)?(Article::distinct()->pluck('category', 'category')->first()?:fake()->word()):fake()->word(),
             'slug'=>slug_seo($title),
-            'body',
-            'author_id',
-            'is_published',
-            'type',
+            'body'=> Faker::paragraph(),
+            'author_id'=>User::inRandomOrder()->first()->id,
+            'is_published'=>true,
+            'type'=>Arr::random(['image','iframe','slider']),
         ];
     }
 }

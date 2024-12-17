@@ -4,27 +4,30 @@
     <!--// About Us Area -->
 
     <!-- Video Callback -->
-    <div class="tm-section video-area tm-padding-section" data-bgimage="assets/images/bg/bg-image-1.jpg"
+    @if($about_us_image)
+    <div class="tm-section video-area tm-padding-section" data-bgimage="{{$about_us_image}}"
          data-overlay="9">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-8 col-lg-9 col-md-11 col-12">
+                    @if($about_us_video)
                     <div class="tm-video text-center">
                         <div class="tm-videobutton tm-videobutton-lg">
-                            <a href="https://www.youtube.com/embed/XWcjIahn7xI">
+                            <a href="{{$about_us_video}}">
                                 <span><i class="fa fa-play"></i></span>
                             </a>
                         </div>
                         <div class="tm-video-content">
-                            <h2>Play the video to know more about us</h2>
-                            <p>Tempora maiores amet quasi temporibus impedit. Asperiores earum maiores at.
-                                Sed autem non reiciendis qui. Sapiente necessitatibus saepe ad corporis.</p>
+                            <h2>{{$about_us_video_title}}</h2>
+                            <p>{{$about_us_video_description}}</p>
                         </div>
                     </div>
+                    @endif
                 </div>
             </div>
         </div>
     </div>
+    @endif
     <!--// Video Callback -->
 
     <!-- Request Callback Area -->

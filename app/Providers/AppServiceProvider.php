@@ -38,6 +38,13 @@ class AppServiceProvider extends ServiceProvider
             $view->logo_footer = data_get($settings, 'logo_footer.value');
             $view->social = json_decode(data_get($settings, 'social.value'),true);
             $view->copyright = data_get($settings, 'copyright.value');
+            $view->about_us_title = data_get($settings, 'about_us_title.value');
+            $view->about_us_description = data_get($settings, 'about_us_description.value');
+            $view->about_us_image = data_get($settings, 'about_us_image.value');
+            $view->about_us_video = data_get($settings, 'about_us_video.value');
+            $view->about_us_video_title = data_get($settings, 'about_us_video_title.value');
+            $view->about_us_video_description = data_get($settings, 'about_us_video_description.value');
+            $view->location = data_get($settings, 'location.value');
         });
     }
 }

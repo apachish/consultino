@@ -6,6 +6,7 @@ use App\Models\Article;
 use App\Models\Comment;
 use App\Models\Tag;
 use Livewire\Component;
+use Morilog\Jalali\Jalalian;
 
 class BlogDetails extends Component
 {
@@ -48,11 +49,28 @@ class BlogDetails extends Component
         $this->parameters = $this->blog->parameters->keyBy('key');
         $this->recent_post = Article::where("is_published",1)->limit(3)->orderBy("created_at",'DESC')->get();
         $this->tags = Tag::inRandomOrder()->limit(15)->get();
-        $this->archives  = Article::selectRaw('YEAR(created_at) as year, MONTH(created_at) as month, COUNT(*) as post_count')
-            ->groupBy('year', 'month')
-            ->orderBy('year', 'desc')
-            ->orderBy('month', 'desc')
-            ->get();
+//        $this->archives  = Article::selectRaw('YEAR(created_at) as year, MONTH(created_at) as month, COUNT(*) as post_count')
+//            ->groupBy('year', 'month')
+//            ->orderBy('year', 'desc')
+//            ->orderBy('month', 'desc')
+//            ->get();
+
+        $currentYear = Jalalian::now()->getYear();
+        $currentMonth = Jalalian::now()->getMonth();
+        $this->archives  = collect(range(1, $currentMonth))->map(function ($month) use ($currentYear) {
+            if($month<10)
+                $month = "0".$month;
+            $article_count = Article::byShamsiMonth($currentYear, $month)->count();
+            $name = Jalalian::fromFormat('Y-m-d H:i:s', "$currentYear-$month-18 12:00:40")->format('%B');
+
+            return [
+                'year' => $currentYear,
+                'name' => $name,
+                'month' => $month,
+                'article_count' => $article_count,
+
+            ];
+        });
         return view('livewire.blog-details');
     }
 }

@@ -3,20 +3,28 @@
 namespace App\Livewire\Section;
 
 use App\Models\Expertise;
+use App\Models\RequestAdvice;
+use Carbon\Carbon;
 use Livewire\Component;
 
 class RequestCallback extends Component
 {
-    public $advice_full_name;
-    public $advice_category;
-    public $advice_mobile;
-    public $advice_date;
-
-    public $expertises;
+    public $advice = [];
+    public $datepickerDate;
+    public $expertises =[];
 
     public function sendRequest()
     {
-        dd('s');
+        logger("22",[$this->advice,$this->datepickerDate]);
+
+        $this->validate([
+            'advice.full_name' => 'required|min:1|max:100',
+            'advice.expertise_id' => 'required|exists:expertises,id',
+            'advice.mobile' => 'required|iran_mobile',
+            'advice.date' => 'required',
+        ]);
+        data_set($this->advice,'date',Carbon::parse((int)data_get($this->advice,"date"))->format('Y-m-d'));
+        RequestAdvice::create($this->advice);
     }
     public function render()
     {

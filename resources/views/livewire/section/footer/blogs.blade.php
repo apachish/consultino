@@ -6,11 +6,11 @@
             <ul>
                 @foreach($blogs as $blog)
                     <li>
-                        <a href="{{route("blog.details",["slug"=>data_get($blog,'slug')])}}" class="widget-recentpost-image">
-                            <img src="{{data_get($blog,'image')}}" alt="blog thumbnail">
-                        </a>
+{{--                        <a href="{{route("blog.details",["slug"=>data_get($blog,'slug')])}}" class="widget-recentpost-image">--}}
+{{--                            <img src="{{data_get($blog,'image')}}" alt="blog thumbnail">--}}
+{{--                        </a>--}}
                         <div class="widget-recentpost-content">
-                            <h6><a href="{{route("blog.details",["slug"=>data_get($blog,'slug')])}}">{{data_get($blog,'title')}}</a></h6>
+                            <h6><a href="{{route("blog.details",["category"=>data_get($blog,'category'),"slug"=>data_get($blog,'slug')])}}">{{data_get($blog,'title')}}</a></h6>
                             <span>{{toJalali(data_get($blog,'created_at'))}}</span>
                         </div>
                     </li>
