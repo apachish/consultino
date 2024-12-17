@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Orchid\Access\UserAccess;
@@ -14,7 +15,7 @@ use Orchid\Screen\AsSource;
 class Article extends Model
 {
     use  Filterable,UserAccess,AsSource;
-
+    use HasFactory;
     /**
      * The attributes that are mass assignable.
      *
@@ -24,6 +25,7 @@ class Article extends Model
         'title',
         'description',
         'category',
+        'slug',
         'body',
         'author_id',
         'is_published',

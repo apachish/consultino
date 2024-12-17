@@ -13,6 +13,21 @@ return new class extends Migration
     {
         Schema::create('files', function (Blueprint $table) {
             $table->id();
+            $table->string('fullName',80);
+            $table->boolean('gender')->default(false);
+            $table->string('national_code',10);
+            $table->string('address')->nullable();
+            $table->string('status')->nullable();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+
+
+
+
             $table->timestamps();
         });
     }
