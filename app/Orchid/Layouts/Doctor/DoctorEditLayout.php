@@ -4,8 +4,11 @@ declare(strict_types=1);
 
 namespace App\Orchid\Layouts\Doctor;
 
+use App\Models\Expertise;
 use Orchid\Screen\Field;
 use Orchid\Screen\Fields\Input;
+use Orchid\Screen\Fields\Matrix;
+use Orchid\Screen\Fields\Relation;
 use Orchid\Screen\Layouts\Rows;
 
 class DoctorEditLayout extends Rows
@@ -58,6 +61,15 @@ class DoctorEditLayout extends Rows
                 ->required()
                 ->title(__('University'))
                 ->placeholder(__('University')),
+            Matrix::make('doctor.expertise')
+                ->columns([
+                    'expertise',
+                ])
+                ->fields([
+                    'title' =>         Relation::make('expertise')
+                        ->fromModel(Expertise::class, 'name')
+                        ->title(__('Parent')),
+                ]),
         ];
     }
 }

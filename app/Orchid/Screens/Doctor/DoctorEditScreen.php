@@ -116,6 +116,14 @@ class DoctorEditScreen extends Screen
     public function save(Doctor $doctor, Request $request)
     {
         $request->validate([
+            'doctor.fullName'=>"required",
+            'doctor.avatar'=>"required",
+            'doctor.national_code'=>"required",
+            'doctor.mobile'=>"required",
+            'doctor.birthday'=>"required",
+            'doctor.degree'=>"required",
+            'doctor.university'=>"required",
+            'doctor.expertise'=>"required",
             'doctor.email' => [
                 'required',
                 Rule::unique(Doctor::class, 'email')->ignore($doctor),
