@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string("fullName");
             $table->string("avatar")->nullable();
             $table->string("national_code")->unique();
+            $table->string("email")->unique();
             $table->string("mobile");
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')

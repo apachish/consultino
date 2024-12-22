@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Orchid\Layouts\Doctor;
 
 use App\Models\Expertise;
+use App\Orchid\Fields\DatePicker;
 use Orchid\Screen\Field;
 use Orchid\Screen\Fields\Input;
 use Orchid\Screen\Fields\Matrix;
@@ -21,12 +22,6 @@ class DoctorEditLayout extends Rows
     public function fields(): array
     {
         return [
-            Input::make('doctor.fullName')
-                ->type('text')
-                ->max(255)
-                ->required()
-                ->title(__('fullName'))
-                ->placeholder(__('fullName')),
             Input::make('doctor.avatar')
                 ->type('file')
                 ->size("2mb")
@@ -35,22 +30,28 @@ class DoctorEditLayout extends Rows
                 ->placeholder(__('Avatar')),
 
             Input::make('doctor.national_code')
-                ->type('text')
+                ->type('number')
                 ->required()
                 ->title(__('National Code'))
                 ->placeholder(__('National Code')),
 
             Input::make('doctor.mobile')
-                ->type('mobile')
+                ->type('number')
                 ->required()
                 ->title(__('Mobile'))
                 ->placeholder(__('Mobile')),
 
-            Input::make('doctor.birthday')
-                ->type('date')
-                ->required()
-                ->title(__('birthday'))
-                ->placeholder(__('birthday')),
+
+            DatePicker::make('doctor.birthday')
+                ->setWithTime(false)
+                ->title('تاریخ تولد')
+                ->name('doctor.birthday')
+                ->showFormat("jYYYY/jMM/jDD")
+                ->required(false)
+                ->defaultDate(date('Y-m-d H:i:s'))
+                ->setNullInput()
+                ->ignoreWire(true)
+                ->withTimeSeconds(false),
             Input::make('doctor.degree')
                 ->type('text')
                 ->required()
@@ -66,9 +67,10 @@ class DoctorEditLayout extends Rows
                     'expertise',
                 ])
                 ->fields([
-                    'title' =>         Relation::make('expertise')
+                    'expertise' =>
+                        Relation::make('expertise')
                         ->fromModel(Expertise::class, 'name')
-                        ->title(__('Parent')),
+                       ,
                 ]),
         ];
     }

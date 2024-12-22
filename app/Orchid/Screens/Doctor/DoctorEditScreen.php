@@ -8,7 +8,10 @@ use App\Models\Doctor;
 use App\Orchid\Layouts\Role\RolePermissionLayout;
 use App\Orchid\Layouts\Doctor\DoctorEditLayout;
 use App\Orchid\Layouts\Doctor\DoctorPasswordLayout;
+use App\Orchid\Layouts\User\UserEditLayout;
+use App\Orchid\Layouts\User\UserPasswordLayout;
 use App\Orchid\Layouts\User\UserRoleLayout;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -28,6 +31,7 @@ class DoctorEditScreen extends Screen
      * @var Doctor
      */
     public $doctor;
+    public $user;
 
     /**
      * Fetch data to be displayed on the screen.
@@ -36,10 +40,10 @@ class DoctorEditScreen extends Screen
      */
     public function query(Doctor $doctor): iterable
     {
-        $doctor->load(['user']);
 
         return [
             'doctor'       => $doctor,
+            'user'       => $doctor->user,
             'permission' => $doctor->getStatusPermission(),
         ];
     }
@@ -49,7 +53,7 @@ class DoctorEditScreen extends Screen
      */
     public function name(): ?string
     {
-        return $this->doctor ? 'Edit Doctor' : 'Create Doctor';
+        return $this->doctor->id ? 'Edit Doctor' : 'Create Doctor';
     }
 
     /**
@@ -57,13 +61,13 @@ class DoctorEditScreen extends Screen
      */
     public function description(): ?string
     {
-        return 'Doctor profile and privileges, including their associated role.';
+        return 'You can enter additional information for the doctor.';
     }
 
     public function permission(): ?iterable
     {
         return [
-            'platform.systems.users',
+            'platform.systems.doctors',
         ];
     }
 
@@ -80,7 +84,7 @@ class DoctorEditScreen extends Screen
                 ->icon('bs.trash3')
                 ->confirm(__('Once the account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.'))
                 ->method('remove')
-                ->canSee($this->doctor?true:false),
+                ->canSee($this->doctor->id?true:false),
 
             Button::make(__('Save'))
                 ->icon('bs.check-circle')
@@ -93,7 +97,15 @@ class DoctorEditScreen extends Screen
      */
     public function layout(): iterable
     {
+
         return [
+            Layout::block(UserEditLayout::class)
+                ->title(__('Profile Information'))
+                ->description(__('Update your account\'s profile information and email address.')),
+
+            Layout::block(UserPasswordLayout::class)
+                ->title(__('Password'))
+                ->description(__('Ensure your account is using a long, random password to stay secure.')),
 
             Layout::block(DoctorEditLayout::class)
                 ->title(__('Doctor Information'))
@@ -115,36 +127,33 @@ class DoctorEditScreen extends Screen
      */
     public function save(Doctor $doctor, Request $request)
     {
+
         $request->validate([
             'doctor.fullName'=>"required",
             'doctor.avatar'=>"required",
             'doctor.national_code'=>"required",
             'doctor.mobile'=>"required",
-            'doctor.birthday'=>"required",
+            'datepickerDate'=>"required",
             'doctor.degree'=>"required",
             'doctor.university'=>"required",
             'doctor.expertise'=>"required",
-            'doctor.email' => [
+            'user.email' => [
                 'required',
-                Rule::unique(Doctor::class, 'email')->ignore($doctor),
+                Rule::unique(User::class, 'email')->ignore($user),
             ],
         ]);
+        $data = $request->collect('doctor');
 
-        $permissions = collect($request->get('permissions'))
-            ->map(fn ($value, $key) => [base64_decode($key) => $value])
-            ->collapse()
-            ->toArray();
+        if ($request->get('datepickerDate')) {
+            $data['date'] = ["value" => Carbon::parse((int)$request->get('datepickerDate'))->format('Y-m-d')];
+        }
+        $data = $request->collect('expertise');
 
-        $doctor->when($request->filled('doctor.password'), function (Builder $builder) use ($request) {
-            $builder->getModel()->password = Hash::make($request->input('doctor.password'));
-        });
 
-        $doctor
-            ->fill($request->collect('doctor')->except(['password', 'permissions', 'roles'])->toArray())
-            ->forceFill(['permissions' => $permissions])
-            ->save();
-
-        $doctor->replaceRoles($request->input('doctor.roles'));
+        if($expertise->id)
+            $expertise->update($data->toArray());
+        else
+            $expertise = $expertise->create($data->toArray());
 
         Toast::info(__('Doctor was saved.'));
 

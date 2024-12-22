@@ -45,6 +45,7 @@ class RolePermissionLayout extends Rows
 
     private function makeCheckBoxGroup(Collection $permissions, string $title): Collection
     {
+        dd($permissions);
         return $permissions
             ->map(fn (array $chunks) => $this->makeCheckBox(collect($chunks)))
             ->flatten()

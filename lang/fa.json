@@ -331,7 +331,11 @@
     "Subject": "موضوع",
     "Message": "پیام",
     "Send Message": "ارسال پیام",
-    "Message successfully sent.": "پیام با موفقیت ارسال شد"
+    "Message successfully sent.": "پیام با موفقیت ارسال شد",
+    "Doctor Information": "اطلاعات دکتر",
+    "You can enter additional information for the doctor.": "شما می توانید اطلاعات تکمیلی برای دکتر وارد کنید",
+    "Edit Doctor": "ویرایش دکتر",
+    "Create Doctor": "ایجاد دکتر"
 
 
 
