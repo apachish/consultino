@@ -128,8 +128,9 @@ class DoctorEditScreen extends Screen
     public function save(Doctor $doctor, Request $request)
     {
 
+        $user = $doctor->user;
         $request->validate([
-            'doctor.fullName'=>"required",
+            'user.name'=>"required",
             'doctor.avatar'=>"required",
             'doctor.national_code'=>"required",
             'doctor.mobile'=>"required",
@@ -150,10 +151,10 @@ class DoctorEditScreen extends Screen
         $data = $request->collect('expertise');
 
 
-        if($expertise->id)
-            $expertise->update($data->toArray());
+        if($doctor->id)
+            $doctor->update($data->toArray());
         else
-            $expertise = $expertise->create($data->toArray());
+            $doctor = $doctor->create($data->toArray());
 
         Toast::info(__('Doctor was saved.'));
 

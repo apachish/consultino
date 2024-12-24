@@ -22,7 +22,7 @@ class PermissionServiceProvider extends ServiceProvider
     public function boot(Dashboard $dashboard): void
     {
         $permissions = ItemPermission::group('doctors')
-            ->addPermission('add doctor', 'Access to add Doctor')
+            ->addPermission('platform.systems.doctors', 'Access to add Doctor')
             ;
 
         $dashboard->registerPermissions($permissions);
