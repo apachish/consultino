@@ -8,17 +8,18 @@ use Orchid\Filters\Filterable;
 use Orchid\Filters\Types\Like;
 use Orchid\Filters\Types\Where;
 use Orchid\Filters\Types\WhereDateStartEnd;
+use Orchid\Screen\AsSource;
 
 class Doctor extends Model
 {
-    use  Filterable,UserAccess;
+    use  Filterable,UserAccess,AsSource;
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'fullName',
         'avatar',
         'national_code',
         'mobile',
@@ -54,8 +55,8 @@ class Doctor extends Model
      */
     protected $allowedFilters = [
         'id'         => Where::class,
-        'name'       => Like::class,
-        'email'      => Like::class,
+        'national_code'       => Like::class,
+        'mobile'      => Like::class,
         'updated_at' => WhereDateStartEnd::class,
         'created_at' => WhereDateStartEnd::class,
     ];
@@ -67,8 +68,8 @@ class Doctor extends Model
      */
     protected $allowedSorts = [
         'id',
-        'name',
-        'email',
+        'national_code',
+        'mobile',
         'updated_at',
         'created_at',
     ];
@@ -80,7 +81,7 @@ class Doctor extends Model
 
     public function properties()
     {
-        return $this->hasMany(DoctorProperty::class,'doctor_id');
+        return $this->hasMany(DoctorProperty::class,"doctor_id");
     }
 
     // تعریف مقادیر ENUM به صورت کانستنت
@@ -115,5 +116,10 @@ class Doctor extends Model
         return self::getStatusLabels()[$this->status] ?? 'نامشخص';
     }
 
-
+    public function property()
+    {
+        return $this->properties()
+            ->get() // داده‌ها را به‌صورت Collection دریافت می‌کند
+            ->keyBy('key');
+    }
 }

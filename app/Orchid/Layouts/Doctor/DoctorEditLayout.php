@@ -42,34 +42,34 @@ class DoctorEditLayout extends Rows
                 ->placeholder(__('Mobile')),
 
 
-            DatePicker::make('doctor.birthday')
+            DatePicker::make('property.birthday')
                 ->setWithTime(false)
                 ->title('تاریخ تولد')
-                ->name('doctor.birthday')
+                ->name('property.birthday')
                 ->showFormat("jYYYY/jMM/jDD")
                 ->required(false)
                 ->defaultDate(date('Y-m-d H:i:s'))
                 ->setNullInput()
                 ->ignoreWire(true)
                 ->withTimeSeconds(false),
-            Input::make('doctor.degree')
+            Input::make('property.degree.value')
                 ->type('text')
-                ->required()
+                ->required(false)
                 ->title(__('Degree'))
                 ->placeholder(__('Degree')),
-            Input::make('doctor.university')
+            Input::make('property.university.value')
                 ->type('text')
-                ->required()
+                ->required(false)
                 ->title(__('University'))
                 ->placeholder(__('University')),
-            Matrix::make('doctor.expertise')
+            Matrix::make('property')
                 ->columns([
                     'expertise',
                 ])
                 ->fields([
                     'expertise' =>
-                        Relation::make('expertise')
-                        ->fromModel(Expertise::class, 'name')
+                        Relation::make('expertise.value')
+                        ->fromModel(Expertise::class, 'name')->required(false)
                        ,
                 ]),
         ];

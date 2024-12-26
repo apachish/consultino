@@ -86,7 +86,7 @@ Route::screen('doctors/{doctor}/edit', DoctorEditScreen::class)
     ->name('platform.systems.doctors.edit')
     ->breadcrumbs(fn (Trail $trail, $docter) => $trail
         ->parent('platform.systems.doctors')
-        ->push($docter->name, route('platform.systems.doctors.edit', $docter)));
+        ->push($docter->user->name, route('platform.systems.doctors.edit', $docter)));
 
 
 

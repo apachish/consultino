@@ -26,8 +26,7 @@ class DoctorListScreen extends Screen
     public function query(): iterable
     {
         return [
-            'doctors' => Doctor::with('user')
-                ->filters(DoctorFiltersLayout::class)
+            'doctors' => Doctor::with(['user'])
                 ->defaultSort('id', 'desc')
                 ->paginate(),
         ];
@@ -78,7 +77,7 @@ class DoctorListScreen extends Screen
     public function layout(): iterable
     {
         return [
-            DoctorFiltersLayout::class,
+//            DoctorFiltersLayout::class,
             DocterListLayout::class,
 
             Layout::modal('editDoctorModal', DoctorEditLayout::class)

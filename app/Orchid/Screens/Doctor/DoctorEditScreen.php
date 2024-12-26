@@ -44,6 +44,8 @@ class DoctorEditScreen extends Screen
         return [
             'doctor'       => $doctor,
             'user'       => $doctor->user,
+            'property' => $doctor->property(),
+
             'permission' => $doctor->getStatusPermission(),
         ];
     }
@@ -67,7 +69,7 @@ class DoctorEditScreen extends Screen
     public function permission(): ?iterable
     {
         return [
-            'platform.systems.doctors',
+            'platform.systems.users',
         ];
     }
 
@@ -128,33 +130,70 @@ class DoctorEditScreen extends Screen
     public function save(Doctor $doctor, Request $request)
     {
 
-        $user = $doctor->user;
+        $data_user = $request->get('user');
+        $user = User::where("email",data_get($data_user,'email'))->first();
+        if(!$user)
+            $user = $doctor->user?: new User();
         $request->validate([
             'user.name'=>"required",
             'doctor.avatar'=>"required",
-            'doctor.national_code'=>"required",
-            'doctor.mobile'=>"required",
+            'doctor.national_code'=>["required","melli_code",Rule::unique(Doctor::class, 'national_code')->ignore($doctor)],
+            'doctor.mobile'=>"required|iran_mobile",
             'datepickerDate'=>"required",
-            'doctor.degree'=>"required",
-            'doctor.university'=>"required",
-            'doctor.expertise'=>"required",
             'user.email' => [
-                'required',
-                Rule::unique(User::class, 'email')->ignore($user),
+                'required','email',
             ],
         ]);
-        $data = $request->collect('doctor');
 
-        if ($request->get('datepickerDate')) {
-            $data['date'] = ["value" => Carbon::parse((int)$request->get('datepickerDate'))->format('Y-m-d')];
-        }
-        $data = $request->collect('expertise');
+        $permissions = [
+            "platform.systems.doctors" => "1"
+
+        ];
 
 
-        if($doctor->id)
-            $doctor->update($data->toArray());
+        $user->when($request->filled('user.password'), function (Builder $builder) use ($request) {
+            $builder->getModel()->password = Hash::make($request->input('user.password'));
+        });
+
+        $user = $user
+            ->fill($request->collect('user')->except(['password', 'permissions', 'roles'])->toArray())
+            ->forceFill(['permissions' => $permissions]);
+        if($user->id)
+            $user->update;
         else
-            $doctor = $doctor->create($data->toArray());
+           $user->save();
+
+        $data = $request->collect('doctor')->only(['mobile', 'national_code'])->toArray();
+
+        $image = $request->file('doctor.avatar');
+
+        if ($image) {
+            // ذخیره‌سازی فایل
+            $imagePath = $image->store('doctor', 'images');
+            $url_image = url("images/" . $imagePath);
+            $data['image'] = $url_image;
+        }
+
+        $doctor = $doctor->updateOrCreate(['user_id' => $user->id],$data);
+
+        $parameters =  $request->collect('property');
+        if ($request->get('datepickerDate')) {
+            $parameters['birthday'] = Carbon::parse((int)$request->get('datepickerDate'))->format('Y-m-d');
+        }
+        foreach ($parameters as $key => $value) {
+            if(is_array(data_get($value,"value")))
+                $value = json_encode(data_get($value,"value"));
+            else
+                $value  = data_get($value,"value");
+            if ($value) {
+                $doctor->properties()->updateOrCreate([
+                    'doctor_id' => $doctor->id,
+                    'key' => $key,
+                ], [
+                    'value' => $value,
+                ]);
+            }
+        }
 
         Toast::info(__('Doctor was saved.'));
 

@@ -232,5 +232,11 @@ return [
         "advice.category"=>"تخصص",
         "advice.mobile"=>"موبایل",
         "advice.date"=>"تاریخ تماس",
+        "user.name"=>"نام کاربری",
+        "doctor.avatar"=>"عکس",
+        "doctor.national_code"=>"کد ملی",
+        "doctor.mobile"=>"موبایل",
+        "datepickerDate"=>"تاریخ",
+        "user.email"=>"پست الکترونیک",
     ],
 ];

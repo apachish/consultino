@@ -262,6 +262,7 @@
     "Request for advice": "درخواست مشاوره",
     "If you need advice, you can send your request so that colleagues related to that department will contact you.": "در صورتی که نیاز به مشاوره می توانید درخواست خود را ارسال کنید. تا همکاران مرتبط با ان بخش با شما تماس بگیرند",
     "Enter Full Name": "نام و نام خانوادگی",
+    "Full Name": "نام و نام خانوادگی",
     "Select Categories": "انتخاب دسته بندی",
     "Phone Number": "شماره تلفن",
     "Select Date": "انتخاب تاریخ",
@@ -335,7 +336,8 @@
     "Doctor Information": "اطلاعات دکتر",
     "You can enter additional information for the doctor.": "شما می توانید اطلاعات تکمیلی برای دکتر وارد کنید",
     "Edit Doctor": "ویرایش دکتر",
-    "Create Doctor": "ایجاد دکتر"
+    "Create Doctor": "ایجاد دکتر",
+    "National Code": "کدملی"
 
 
 
