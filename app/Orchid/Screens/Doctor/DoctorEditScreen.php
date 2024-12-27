@@ -45,7 +45,6 @@ class DoctorEditScreen extends Screen
             'doctor'       => $doctor,
             'user'       => $doctor->user,
             'property' => $doctor->property(),
-
             'permission' => $doctor->getStatusPermission(),
         ];
     }
@@ -134,12 +133,15 @@ class DoctorEditScreen extends Screen
         $user = User::where("email",data_get($data_user,'email'))->first();
         if(!$user)
             $user = $doctor->user?: new User();
+        $hasImage = $doctor && $doctor->avatar;
+
         $request->validate([
             'user.name'=>"required",
             'doctor.avatar'=>"required",
+            'doctor.avatar' => $hasImage ? ['nullable', 'file', 'mimes:jpg,png,jpeg,webp'] : ['required', 'file', 'mimes:jpg,png,jpeg,webp'],
+
             'doctor.national_code'=>["required","melli_code",Rule::unique(Doctor::class, 'national_code')->ignore($doctor)],
             'doctor.mobile'=>"required|iran_mobile",
-            'datepickerDate'=>"required",
             'user.email' => [
                 'required','email',
             ],
@@ -171,18 +173,18 @@ class DoctorEditScreen extends Screen
             // ذخیره‌سازی فایل
             $imagePath = $image->store('doctor', 'images');
             $url_image = url("images/" . $imagePath);
-            $data['image'] = $url_image;
+            $data['avatar'] = $url_image;
         }
 
         $doctor = $doctor->updateOrCreate(['user_id' => $user->id],$data);
 
         $parameters =  $request->collect('property');
-        if ($request->get('datepickerDate')) {
-            $parameters['birthday'] = Carbon::parse((int)$request->get('datepickerDate'))->format('Y-m-d');
-        }
+
         foreach ($parameters as $key => $value) {
-            if(is_array(data_get($value,"value")))
-                $value = json_encode(data_get($value,"value"));
+            if($key=="expertise")
+                $value = json_encode($value);
+            if($key=="birthday" && data_get($value,"value"))
+                $value = toGregorian(data_get($value,"value"),"Y/m/d");
             else
                 $value  = data_get($value,"value");
             if ($value) {

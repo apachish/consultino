@@ -127,10 +127,16 @@ return [
 
     'resource' => [
         'stylesheets' => [
-            '/build/assets/app-D13XkI2U.css',
+//            '/build/assets/app-DcM4ADPe.css',
+        "/vendor/persian-datepicker/dist/css/persian-datepicker.css"
         ],
         'scripts'     => [
 //            '/build/assets/app-tSu9RSS1.js '
+            "/assets/js/jquery.min.js",
+            "/js/moment.min.js",
+            "/vendor/persian-date/dist/persian-date.js",
+            "/vendor/persian-datepicker/dist/js/persian-datepicker.js",
+            "/js/datepicker.js",
         ],
     ],
 

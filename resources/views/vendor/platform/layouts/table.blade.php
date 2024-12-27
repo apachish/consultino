@@ -38,7 +38,6 @@
                 <tr>
 
                     @foreach($columns as $column)
-                        {{logger("w",[$source, $loop->parent])}}
                         {!! $column->buildTd($source, $loop->parent) !!}
                     @endforeach
                 </tr>

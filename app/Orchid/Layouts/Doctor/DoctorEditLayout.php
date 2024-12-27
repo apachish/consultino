@@ -21,11 +21,21 @@ class DoctorEditLayout extends Rows
      */
     public function fields(): array
     {
+
+        if($this->query->get("property.expertise"))
+        {
+            $property = $this->query->get("property");
+            $property["expertise"] = json_decode($this->query->get("property.expertise.value"),true);
+            $property["birthday"]['value'] = convertNumber(toJalali($this->query->get("property.birthday.value"),"Y/m/d"));
+            $this->query->set("property", $property);
+        }
+
         return [
             Input::make('doctor.avatar')
                 ->type('file')
                 ->size("2mb")
-                ->required()
+                ->accept('image/*')
+                ->required(!$this->query->has('doctor.avatar') )
                 ->title(__('Avatar'))
                 ->placeholder(__('Avatar')),
 
@@ -42,16 +52,13 @@ class DoctorEditLayout extends Rows
                 ->placeholder(__('Mobile')),
 
 
-            DatePicker::make('property.birthday')
+            DatePicker::make('property.birthday.value')
                 ->setWithTime(false)
-                ->title('تاریخ تولد')
-                ->name('property.birthday')
-                ->showFormat("jYYYY/jMM/jDD")
-                ->required(false)
-                ->defaultDate(date('Y-m-d H:i:s'))
-                ->setNullInput()
-                ->ignoreWire(true)
-                ->withTimeSeconds(false),
+                ->title(__('Date of birth'))
+                ->placeholder(__('Date of birth'))
+
+                ->name('property.birthday.value')
+                ->required(false),
             Input::make('property.degree.value')
                 ->type('text')
                 ->required(false)
@@ -62,13 +69,14 @@ class DoctorEditLayout extends Rows
                 ->required(false)
                 ->title(__('University'))
                 ->placeholder(__('University')),
-            Matrix::make('property')
+            Matrix::make("property.expertise")
                 ->columns([
-                    'expertise',
+                    "value"
                 ])
                 ->fields([
-                    'expertise' =>
-                        Relation::make('expertise.value')
+                    "value" =>
+                        Relation::make()
+
                         ->fromModel(Expertise::class, 'name')->required(false)
                        ,
                 ]),

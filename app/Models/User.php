@@ -66,4 +66,9 @@ class User extends Authenticatable
         'updated_at',
         'created_at',
     ];
+
+    public function doctor()
+    {
+        return $this->hasOne(Doctor::class);
+    }
 }

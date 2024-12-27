@@ -337,7 +337,13 @@
     "You can enter additional information for the doctor.": "شما می توانید اطلاعات تکمیلی برای دکتر وارد کنید",
     "Edit Doctor": "ویرایش دکتر",
     "Create Doctor": "ایجاد دکتر",
-    "National Code": "کدملی"
+    "National Code": "کدملی",
+    "Degree": "مدرک",
+    "University": "دانشگاه",
+    "Value": "ایتم",
+    "Date of birth": "تاریخ تولد"
+
+
 
 
 

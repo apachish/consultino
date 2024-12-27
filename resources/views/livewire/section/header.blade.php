@@ -50,7 +50,13 @@
                         {{--                        <li>--}}
                         {{--                            <a href="cart.html" title="Shopping Cart"><i class="fa fa-shopping-cart"></i></a>--}}
                         {{--                        </li>--}}
-                        @auth
+                        @auth('customer')
+                        <li>
+                            <button title="dashboard" class="header-loginformtrigger" type="button"
+                                    onclick="window.location='{{route("dashboard")}}'"
+                            ><i class="fa fa-user"></i></button>
+                        </li>
+                        @elseauth
                             <li>
                                 <button title="dashboard" class="header-loginformtrigger" type="button"
                                         onclick="window.location='{{route("platform.main")}}'"

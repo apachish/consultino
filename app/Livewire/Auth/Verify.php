@@ -59,9 +59,12 @@ class Verify extends Component
         $credentials["password"] = $this->email_mobile;
         logger("a",$credentials);
         if (Auth::guard('customer')->attempt($credentials)) {
-            return $this->redirectRoute('dashboard', navigate: true);
+            auth('customer')->login($customer);
+//            return $this->redirectRoute('dashboard', navigate: true);
+            session()->flash('message', 'You have successfully registered & logged in!');
+            return redirect(route("dashboard"));
+
         }
-        session()->flash('message', 'You have successfully registered & logged in!');
 
     }
 

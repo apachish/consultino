@@ -11,6 +11,7 @@ use Orchid\Screen\Field;
  * @method DatePicker placeholder(string $value = null)
  * @method DatePicker setWithTime(bool $value = null)
  * @method DatePicker name(string $value = null)
+ * @method DatePicker value(string $value = null)
  * @method DatePicker showFormat(string $value = null)
  * @method DatePicker defaultDate(\DateTime $value = null)
  * @method DatePicker required(bool $value = true)
@@ -31,6 +32,7 @@ class DatePicker extends Field
 
     protected $inlineAttributes = [
         'name',
+        'value',
         'placeholder',
         'showFormat',
         'title',

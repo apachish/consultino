@@ -15,11 +15,14 @@
         "jalali-moment": "^3.3.11",
         "laravel-vite-plugin": "^1.0",
         "moment-timezone": "^0.5.40",
+        "persian-date": "^1.1.0",
         "postcss": "^8.4.47",
         "tailwindcss": "^3.4.13",
         "vite": "^5.0"
     },
     "dependencies": {
-        "jquery": "^3.7.1"
+        "@originjs/vite-plugin-global-style": "^1.0.3",
+        "jquery": "^3.7.1",
+        "persian-datepicker": "^1.2.0"
     }
 }

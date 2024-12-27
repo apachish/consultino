@@ -8,7 +8,7 @@ use Livewire\Attributes\Validate;
 
 class Mobile extends Component
 {
-    #[Validate('required|iran_mobile|unique:customers,mobile')]
+    #[Validate('required|iran_mobile')]
     public $mobile;
 
     public $password_confirmation;

@@ -113,8 +113,10 @@ class DoctorListScreen extends Screen
 
     public function remove(Request $request): void
     {
-        User::findOrFail($request->get('id'))->delete();
+        User::whereHas("doctor",function ($query) use ($request){
+            $query->where("id",$request->input('id'));
+        })->first()->delete();
 
-        Toast::info(__('User was removed'));
+        Toast::info(__('Doctor was removed'));
     }
 }

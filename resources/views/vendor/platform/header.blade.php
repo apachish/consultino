@@ -11,7 +11,7 @@
 
     <!-- For Safari on iOS -->
     <meta name="theme-color" content="#21252a">
-    @vite('resources/css/app.css')
+{{--    @vite('resources/css/app.css')--}}
 {{--    @vite(['resources/css/app.css', 'resources/js/app.js'])--}}
     @livewireStyles
 
