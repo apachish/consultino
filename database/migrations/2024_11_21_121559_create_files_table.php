@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('files', function (Blueprint $table) {
             $table->id();
-            $table->string('fullName',80);
+            $table->string('firstName',80);
+            $table->string('lastName',80);
             $table->boolean('gender')->default(false);
             $table->string('national_code',10);
             $table->string('address')->nullable();

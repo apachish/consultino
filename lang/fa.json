@@ -341,7 +341,20 @@
     "Degree": "مدرک",
     "University": "دانشگاه",
     "Value": "ایتم",
-    "Date of birth": "تاریخ تولد"
+    "Date of birth": "تاریخ تولد",
+    "Logout": "خروج",
+    "Click here to choose": "برای انتخاب اینجا کلیک کنید",
+    "Important note": "نکته مهم",
+    "Doctor appointment time": "زمان ها ملاقات",
+    "Files": "پرونده",
+    "New Request": "درخواست جدید",
+    "First name": "نام",
+    "Last name": "نام خانوادگی",
+    "Register a request": "ثبت درخواست",
+    "Female": "خانم",
+    "Male": "آقا",
+    "Please record the details of the person who is to be visited (not the parents, spouse, or author) so that there is no discrepancy in the registration of the case. Obviously, the responsibility for any discrepancy lies with you.": "لطفا مشخصات فردی که قرار است ملاقات شود (نه پدر و مادر، همسر یا نویسنده) را ثبت کنید تا در ثبت پرونده مغایرتی وجود نداشته باشد. بدیهی است مسئولیت هرگونه مغایرت با شماست."
+
 
 
 

@@ -4,146 +4,39 @@
             <ul class="nav tm-tabgroup justify-content-start justify-content-lg-center" id="account" role="tablist">
                 <li class="nav-item">
                     <a class="nav-link active" id="account-dashboard-tab" data-toggle="tab" href="#account-dashboard"
-                       role="tab" aria-controls="account-dashboard" aria-selected="true">Dashboard</a>
+                       role="tab" aria-controls="account-dashboard" aria-selected="true">{{__("New Request")}}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="account-orders-tab" data-toggle="tab" href="#account-orders"
-                       role="tab" aria-controls="account-orders" aria-selected="false">Orders</a>
+                       role="tab" aria-controls="account-orders" aria-selected="false">{{__("Doctor appointment time")}}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="account-address-tab" data-toggle="tab" href="#account-address"
-                       role="tab" aria-controls="account-address" aria-selected="false">Address</a>
+                       role="tab" aria-controls="account-address" aria-selected="false">{{__("Files")}}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="account-acdetails-tab" data-toggle="tab" href="#account-acdetails"
-                       role="tab" aria-controls="account-acdetails" aria-selected="false">Account Details</a>
+                       role="tab" aria-controls="account-acdetails" aria-selected="false">{{__("Profile")}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="account-logout-tab" href="home.blade.php" role="tab"
-                       aria-controls="account-address" aria-selected="false">Logout</a>
+                    <a class="nav-link" id="account-logout-tab" wire:click="logout" role="tab" class=" btn btn-danger"
+                       aria-controls="account-address" aria-selected="false">{{__("Logout")}}</a>
                 </li>
             </ul>
 
             <div class="tab-content" id="account-ontent">
                 <div class="tab-pane fade show active" id="account-dashboard" role="tabpanel"
                      aria-labelledby="account-dashboard-tab">
-                    <div class="tm-myaccount-dashboard">
-                        <p>Hello <b>Jonathon Doe</b> (not <b>Jonathon Doe</b>? <a href="login-register.html">Log
-                                out</a>)</p>
-                        <p>From your account dashboard you can view your recent orders, manage your
-                            shipping and billing addresses, and edit your password and account details.</p>
-                    </div>
+                    <livewire:account.register-order :customer="$customer"/>
                 </div>
                 <div class="tab-pane fade" id="account-orders" role="tabpanel" aria-labelledby="account-orders-tab">
-                    <div class="tm-myaccount-orders">
-                        <div class="table-responsive">
-                            <table class="table table-bordered mb-0">
-                                <thead>
-                                <tr>
-                                    <th class="tm-myaccount-orders-col-id">ORDER ID</th>
-                                    <th class="tm-myaccount-orders-col-date">DATE</th>
-                                    <th class="tm-myaccount-orders-col-status">STATUS</th>
-                                    <th class="tm-myaccount-orders-col-total">TOTAL</th>
-                                    <th class="tm-myaccount-orders-col-view">VIEW</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>#12345</td>
-                                    <td>30 December 2018</td>
-                                    <td>On Hold</td>
-                                    <td>$132.00 for 2 items</td>
-                                    <td><a href="#" class="tm-button tm-button-sm">View <b></b></a></td>
-                                </tr>
-                                <tr>
-                                    <td>#12346</td>
-                                    <td>30 December 2018</td>
-                                    <td>On Hold</td>
-                                    <td>$220.00 for 3 items</td>
-                                    <td><a href="#" class="tm-button tm-button-sm">View <b></b></a></td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                    <livewire:account.list-order :customer="$customer"/>
                 </div>
                 <div class="tab-pane fade" id="account-address" role="tabpanel" aria-labelledby="account-address-tab">
-                    <div class="tm-myaccount-address">
-                        <p><b>The following addresses will be used on the checkout page by default.</b></p>
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6">
-                                <div class="tm-myaccount-address-billing">
-                                    <a href="#" class="edit-button">Edit</a>
-                                    <h3>Billing Address</h3>
-                                    <address>
-                                        Jonathon Doe<br>
-                                        Example company<br>
-                                        516 Wintheiser Circles <br>
-                                        Lake Jordanmouth <br>
-                                        Jordan
-                                    </address>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6 mt-30 mt-md-0">
-                                <div class="tm-myaccount-address-shipping">
-                                    <a href="#" class="edit-button">Edit</a>
-                                    <h3>Shipping Address</h3>
-                                    <address>
-                                        Jonathon Doe<br>
-                                        Example company<br>
-                                        516 Wintheiser Circles <br>
-                                        Lake Jordanmouth <br>
-                                        Jordan
-                                    </address>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <livewire:account.list-file :customer="$customer"/>
                 </div>
                 <div class="tab-pane fade" id="account-acdetails" role="tabpanel" aria-labelledby="account-acdetails-tab">
-                    <div class="tm-myaccount-acdetails">
-                        <form action="#" class="tm-form tm-form-bordered">
-                            <h4>Account Details</h4>
-                            <div class="tm-form-inner">
-                                <div class="tm-form-field tm-form-fieldhalf">
-                                    <label for="acdetails-firstname">First name</label>
-                                    <input type="text" id="acdetails-firstname">
-                                </div>
-                                <div class="tm-form-field tm-form-fieldhalf">
-                                    <label for="acdetails-lastname">Last name</label>
-                                    <input type="text" id="acdetails-lastname">
-                                </div>
-                                <div class="tm-form-field">
-                                    <label for="acdetails-displayname">Dispaly name</label>
-                                    <input type="text" id="acdetails-displayname">
-                                </div>
-                                <div class="tm-form-field">
-                                    <label for="acdetails-email">Email address</label>
-                                    <input type="email" id="acdetails-email">
-                                </div>
-                                <div class="tm-form-field">
-                                    <label for="acdetails-password">Old password</label>
-                                    <input type="password" id="acdetails-password">
-                                </div>
-                                <div class="tm-form-field">
-                                    <label for="acdetails-newpassword">New password</label>
-                                    <input type="password" id="acdetails-newpassword">
-                                </div>
-                                <div class="tm-form-field">
-                                    <label for="acdetails-confirmpass">Confirm password</label>
-                                    <input type="password" id="acdetails-confirmpass">
-                                </div>
-                                <div class="tm-form-field">
-                                    <input type="checkbox" name="acdetails-agreeterms" id="acdetails-agreeterms">
-                                    <label for="acdetails-agreeterms">I have read and agree to the Privacy
-                                        Policy</label>
-                                </div>
-                                <div class="tm-form-field">
-                                    <button type="submit" class="tm-button">Save Changes <b></b></button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+                    <livewire:account.profile :customer="$customer"/>
                 </div>
             </div>
         </div>
