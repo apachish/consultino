@@ -32,14 +32,14 @@
                             <template x-if="getTime() <= 0">
                                 <form wire:submit="resendOtp">
                                     <button type="submit">
-                                        Resend OTP
+                                        {{__("Resend OTP")}}
                                     </button>
                                     <input type="hidden" wire:model="otp">
                                 </form>
                             </template>
                             <template x-if="getTime() > 0">
                                 <small>
-                                    Resend OTP in
+                                    {{__("Resend OTP in")}}
                                     <span x-text="formatTime(getTime())"></span>
                                 </small>
                             </template>

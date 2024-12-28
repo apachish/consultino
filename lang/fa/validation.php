@@ -238,5 +238,9 @@ return [
         "doctor.mobile"=>"موبایل",
         "datepickerDate"=>"تاریخ",
         "user.email"=>"پست الکترونیک",
+        "file.national_code"=>"کدملی",
+        "file.firstName"=>"نام",
+        "file.lastName"=>"نام خانوادگی",
+        "file.accept"=>"تایید قوانین",
     ],
 ];

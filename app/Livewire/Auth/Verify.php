@@ -52,7 +52,7 @@ class Verify extends Component
             $data = $credentials;
             $data["password"] = Hash::make($this->email_mobile);
             $data["is_verified"] = true;
-            Customer::create($data);
+           $customer= Customer::create($data);
         }
         if($verify)
             $verify->update(["used"=>true]);

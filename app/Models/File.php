@@ -17,7 +17,7 @@ class File extends Model
      */
     protected $fillable = [
         'user_id',
-        'fullName',
+        "firstName","lastName",
         'national_code',
         'address',
         'gender',

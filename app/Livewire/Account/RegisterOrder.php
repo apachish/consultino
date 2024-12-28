@@ -8,23 +8,34 @@ use Livewire\Component;
 class RegisterOrder extends Component
 {
     public $files = [];
-    public $order;
+    public $file = [
+        "gender"=>false
+    ];
+
+    public $firstName;
     public $customer ;
 
-    public function newOrder()
+    public function getRules()
     {
-        $this->validate([
-           "order.national_code" => "required|melli_code|unique:files,national_code",
-           "order.firstName" => "required",
-           "order.lastName" => "required",
-            "order.accept" => "required",
-        ]);
-        File::create($this->order->only(["national_code","firstName","lastName","gender"])->toArray());
-        return redirect(route("doctors"));
-
+        return [
+            "file.national_code" => "required|melli_code|unique:files,national_code",
+            'file.firstName' => 'required|string|max:80',
+            'file.lastName' => 'required|string|max:80',
+            "file.accept" => "required",
+        ];
     }
+    public function save()
+    {
+        $this->validate();
+        $data = collect($this->file)->only(["national_code","firstName","lastName","gender",'address'])->toArray();
+        $data["user_id"] = $this->customer->id;
+        $file = File::create($data);
+        return redirect(route("doctors",["file_id"=>$file->id]));
+    }
+
     public function render()
     {
+        $this->files = File::where("user_id",$this->customer->id)->get();
         return view('livewire.account.register-order');
     }
 }

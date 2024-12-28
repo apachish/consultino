@@ -1,14 +1,12 @@
 <div class="tm-section shop-page-area bg-white tm-padding-section">
     <div class="container">
         <div class="tm-shop-productsarea">
-            <form action="#" class="tm-shop-header">
+            <form  wire:submit="orderBy" class="tm-shop-header">
                 <p class="tm-shop-countview">Showing 1 to 12 of 24 </p>
                 <select>
-                    <option value="value">Default Sorting</option>
-                    <option value="value">Name A-Z</option>
-                    <option value="value">Date</option>
-                    <option value="value">Best Sellers</option>
-                    <option value="value">Trending</option>
+                    <option value="value">{{__("Time")}}</option>
+                    <option value="value">{{__("Name")}}</option>
+                    <option value="value">{{__("Rate")}}</option>
                 </select>
             </form>
             <div class="tm-shop-products">
