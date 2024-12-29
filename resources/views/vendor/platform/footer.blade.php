@@ -8,10 +8,9 @@
                 </svg>
             </span>
 
-           by Alexandr Chernyaev
+           by <a href="https://apachish.ir"> Apachish</a>
         </p>
     </div>
-
     <p class="small text-center mb-1 px-5">
         {{ __('The application code is published under the MIT license.') }}
     </p>
