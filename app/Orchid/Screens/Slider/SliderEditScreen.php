@@ -103,7 +103,7 @@ class SliderEditScreen extends Screen
             'slider.title' => [
                 'required',
             ],
-            'slider.image' => $hasImage ? ['nullable', 'file', 'mimes:jpg,jpeg,png'] : ['required', 'file', 'mimes:jpg,jpeg,png'],
+            'slider.image' => $hasImage ? ['nullable', 'file', 'mimes:jpg,jpeg,png,webp'] : ['required', 'file', 'mimes:jpg,jpeg,png,webp'],
             'parameter.video.value' => [
                 'nullable', 'extensions:mp4'// ['video/mp4', 'video/x-m4v', 'video/avi', 'video/mkv']
 

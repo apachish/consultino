@@ -25,7 +25,7 @@ class DoctorEditLayout extends Rows
         if($this->query->get("property.expertise"))
         {
             $property = $this->query->get("property");
-            $property["expertise"] = json_decode($this->query->get("property.expertise.value"),true);
+//            $property["expertise"] = json_decode($this->query->get("property.expertise.value"),true);
             $property["birthday"]['value'] = convertNumber(toJalali($this->query->get("property.birthday.value"),"Y/m/d"));
             $this->query->set("property", $property);
         }
@@ -69,12 +69,12 @@ class DoctorEditLayout extends Rows
                 ->required(false)
                 ->title(__('University'))
                 ->placeholder(__('University')),
-            Matrix::make("property.expertise")
+            Matrix::make("expertises")
                 ->columns([
-                    "value"
+                    "id"
                 ])
                 ->fields([
-                    "value" =>
+                    "id" =>
                         Relation::make()
 
                         ->fromModel(Expertise::class, 'name')->required(false)

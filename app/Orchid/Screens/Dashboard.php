@@ -41,8 +41,12 @@ class Dashboard extends Screen
          $yesterday_register = Customer::whereDate("created_at",now()->subDay(1))->count();
         $today_request = RequestAdvice::whereDate("created_at",now())->count();
         $yesterday_request = RequestAdvice::whereDate("created_at",now()->subDay(1))->count();
+        $articles  = Article::orderBy("updated_at","DESC")->limit(3)->get();
+        $a = $articles->map(function ($item) {
+            return new Repository(['id' => $item->id,  'name' => $item->title, 'price' => 10.24, 'created_at' => toJalali($item->created_at)]);
+        })->toArray();
         return [
-            'table'   => Article::orderBy("updated_at","DESC")->limit(3)->get(),
+            'articles'   => $a,
             'metrics' => [
                 'register'    => ['value' => number_format($today_register), 'diff' =>($today_register-$yesterday_register)/100],
                 'request' => ['value' => number_format($today_request), 'diff' =>($today_request-$yesterday_request)/100],

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Orchid\Access\UserAccess;
 use Orchid\Filters\Filterable;
 use Orchid\Filters\Types\Like;
@@ -82,6 +83,15 @@ class Doctor extends Model
     public function properties()
     {
         return $this->hasMany(DoctorProperty::class,"doctor_id");
+    }
+
+    public function expertises()
+    {
+        return $this->belongsToMany(Expertise::class)->withTimestamps();
+    }
+    public function comments(): MorphMany
+    {
+        return $this->morphMany(Comment::class, 'commentable');
     }
 
     // تعریف مقادیر ENUM به صورت کانستنت

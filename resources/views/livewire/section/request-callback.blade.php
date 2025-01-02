@@ -1,4 +1,4 @@
-<div id="advice" class="tm-section callback-area bg-white tm-padding-section">
+<div id="advice" class="tm-section callback-area bg-white tm-padding-section"  >
     <div class="container">
         <div class="row">
             <div class="col-lg-6">
@@ -8,7 +8,8 @@
                     @if($errors)
                         <span>{{ $errors->first() }}</span>
                     @endif
-                    <form wire:submit="sendRequest" class="tm-form">
+                    <form wire:submit.prevent="sendRequest" class="tm-form" >
+                        @csrf
                         <div class="tm-form-inner">
                             <div class="tm-form-field">
                                 <input type="text" placeholder="{{__("Enter Full Name")}}*" class="form-control @error('advice.full_name') is-invalid @enderror" id="advice.full_name" wire:model="advice.full_name"
@@ -18,31 +19,25 @@
                                 @endif
                             </div>
                             <div class="tm-form-field tm-form-fieldhalf">
-                                <input type="text" placeholder="{{__("Phone Number")}}*"  class="form-control @error('advice.mobile') is-invalid @enderror" id="advice.mobile" wire:model="advice.mobile">
+                                <input type="text" placeholder="{{__("Phone Number")}}*"
+                                       class="form-control @error('advice.mobile') is-invalid @enderror"
+                                       id="advice.mobile" wire:model="advice.mobile">
                                 @if ($errors->has('advice.mobile'))
                                     <span class="text-danger">{{ $errors->first('advice.mobile') }}</span>
                                 @endif
                             </div>
-                            <div class="tm-form-field tm-form-fieldhalf">
-                                <x-persian-datepicker
-                                    wirePropertyName="advice.date"
-                                    label=""
-                                    showFormat="jYYYY/jMM/jDD"
-                                    returnFormat="X"
-                                    :required="true"
-                                    :defaultDate="date('Y-m-d')"
-                                    :setNullInput="true"
-                                    :withTime="false"
-                                    :ignoreWire="true"
-                                    :withTimeSeconds="true"/>
 
+                            <div class="tm-form-field tm-form-fieldhalf">
+                                <input type="text" placeholder="{{__("Date Call")}}*"
+                                       class="form-control @error('advice.date') is-invalid @enderror"
+                                       id="inlineExampleAlt" wire:model="advice.date">
                                 @if ($errors->has('advice.date'))
                                     <span class="text-danger">{{ $errors->first('advice.date') }}</span>
                                 @endif
                             </div>
                             <div class="tm-form-field">
 
-                                <select class="form-control @error('advice.expertise_id') is-invalid @enderror" id="advice.expertise_id"
+                                <select class="form-control @error('advice.expertise_id') is-invalid @enderror" id="advice-expertise_id"
                                         wire:model="advice.expertise_id">
                                     <option value="">{{__("Select Categories")}}</option>
                                     @foreach($expertises as $expertise)
@@ -59,6 +54,15 @@
                             </div>
                         </div>
                     </form>
+                    @if (session()->has('message-call-back'))
+                        <div class="row justify-content-center text-center mt-3">
+                            <div class="col-md-8">
+                                <div class="alert alert-success" role="alert">
+                                    {{ session('message-call-back') }}
+                                </div>
+                            </div>
+                        </div>
+                    @endif
                     <div class="mb-3 row">
                         <span wire:loading class="col-md-3 offset-md-5 text-primary">Processing...</span>
                     </div>
@@ -72,3 +76,4 @@
         </div>
     </div>
 </div>
+

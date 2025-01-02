@@ -20,7 +20,7 @@ class Mobile extends Component
         dispatch(new VerifySendSms($this->mobile,"sms"));
         $this->dispatch('post-created',email_mobile:$this->mobile)->to(Modal::class);
 
-        session()->flash('message', 'You have successfully registered & logged in!');
+        session()->flash('message', __('You have successfully registered & logged in!'));
 
     }
 

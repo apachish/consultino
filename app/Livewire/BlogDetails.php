@@ -25,16 +25,19 @@ class BlogDetails extends Component
     public function sendComment(){
         $this->validate([
             'comment.fullName' => 'required',
-            'comment.email' => 'required,email',
+            'comment.email' => 'required|email',
             'comment.message' => 'required'
 
         ]);
         $comment = Comment::create([
-            'article_id' => $this->blog->id,
-            'full_name' => $this->comment->fullName,
-            'email' => $this->comment->email,
-            'message' => $this->comment->message,
+            "commentable_id"=>$this->blog->id,
+            "commentable_type"=>Article::class,
+            'full_name' => data_get($this->comment,'fullName'),
+            'email' => data_get($this->comment,'email'),
+            'message' => data_get($this->comment,'message'),
         ]);
+        session()->flash('message-comment', __('Your comment was successfully submitted.'));
+        $this->comment = [];
     }
     public function render()
     {

@@ -11,10 +11,10 @@
 <body>
 
 <!-- Preloader -->
-<div class="tm-preloader">
-    <span class="tm-preloader-box"></span>
-    <button class="tm-button tm-button-sm tm-button-white">Cancel Preloader <b></b></button>
-</div>
+{{--<div class="tm-preloader">--}}
+{{--    <span class="tm-preloader-box"></span>--}}
+{{--    <button class="tm-button tm-button-sm tm-button-white">Cancel Preloader <b></b></button>--}}
+{{--</div>--}}
 <!--// Preloader -->
 
 <!-- Wrapper -->
@@ -85,12 +85,17 @@
 <script src="/assets/js/popper.min.js"></script>
 <script src="/assets/js/bootstrap.min.js"></script>
 <script src="/assets/js/plugins.js"></script>
-<script src="/assets/js/chart.min.js"></script>
-<script src="/assets/js/chart-active.js"></script>
+{{--<script src="/assets/js/chart.min.js"></script>--}}
+{{--<script src="/assets/js/chart-active.js"></script>--}}
 <script src="/assets/js/main.js"></script>
-@vite('resources/js/app.js')
+<script src="/js/moment.min.js"></script>
+<script src="/vendor/persian-date/dist/persian-date.js"></script>
+<script src="/vendor/persian-datepicker/dist/js/persian-datepicker.js"></script>
+<script src="/js/datepicker.js"></script>
+{{--@vite('resources/js/app.js')--}}
 
 <script>
+
     function otpSend(num) {
         const milliseconds = num * 1000 //60 seconds
         const currentDate = Date.now() + milliseconds
@@ -125,6 +130,37 @@
             }
         }
     }
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+
+        // به‌روزرسانی بعد از هر تغییر یا رندر دوباره
+        // Livewire.hook('message.processed', (message, component) => {
+        //     if ($('#advice-expertise_id').length) {
+        //         $('#advice-expertise_id').niceSelect('destroy'); // حذف مقداردهی قبلی
+        //         $('#advice-expertise_id').niceSelect(); // مقداردهی مجدد
+        //     }
+        // });
+
+        // ارسال تغییرات به Livewire
+        $('#advice-expertise_id').on('change', function () {
+            var value = $(this).val();
+            console.log(value);
+            Livewire.dispatch('updateNiceSelect', { value });
+
+        });
+
+        $('#file_id').on('change', function () {
+            var value = $(this).val();
+            console.log(value);
+            Livewire.dispatch('updateNiceSelect', { value });
+
+        });
+
+    });
+
+
 </script>
 <!--// Js Files -->
 </body>

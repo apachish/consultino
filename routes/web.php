@@ -35,6 +35,7 @@ Route::group(['middleware'=>'guest'], function(){
 Route::group(['middleware'=>'auth:customer'], function(){
     Route::get('/dashboard', \App\Livewire\MyAccount::class)->name('dashboard');
     Route::get('/doctors/{file_id}', \App\Livewire\Doctors::class)->name('doctors');
+    Route::get('/doctors/{file_id}/set-time/{doctor_id}', \App\Livewire\DoctorSetTime::class)->name('doctors.set-time');
 //    Route::get('/logout', Logout::class)->name('logout');
 });
 

@@ -25,6 +25,20 @@ class RequestCallback extends Component
         ]);
         data_set($this->advice,'date',Carbon::parse((int)data_get($this->advice,"date"))->format('Y-m-d'));
         RequestAdvice::create($this->advice);
+        session()->flash('message-call-back', __('Your request has been registered. Wait for our colleagues to contact you.'));
+        $this->advice = [];
+
+    }
+
+    protected $listeners = ['updateNiceSelect','dateUpdated'];
+
+    public function updateNiceSelect($value)
+    {
+        data_set($this->advice,'expertise_id' , $value);
+    }
+    public function dateUpdated($data)
+    {
+        data_set($this->advice,'date', $data);
     }
     public function render()
     {

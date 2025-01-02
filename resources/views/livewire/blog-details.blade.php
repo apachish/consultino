@@ -118,8 +118,11 @@
                     <!--// tm-blog Comments -->
 
                     <!-- tm-blog Commentbox -->
-                    <div class="tm-blog-commentbox mt-50">
+                    <div class="tm-blog-commentbox mt-50" >
                         <h5 class="small-title">{{__("Leave a Comment")}} </h5>
+                        @if($errors)
+                            <span>{{ $errors->first() }}</span>
+                        @endif
                         <form wire:submit="sendComment" class="tm-commentbox">
                             <div class="tm-commentbox-singlefield">
                                 <p>{{__("Your email address will not be published. Required fields are marked")}} *</p>
@@ -155,6 +158,15 @@
                                 <button type="submit" class="tm-button">{{__("Post Comment")}} <b></b></button>
                             </div>
                         </form>
+                        @if (session()->has('message-comment'))
+                            <div class="row justify-content-center text-center mt-3">
+                                <div class="col-md-8">
+                                    <div class="alert alert-success" role="alert">
+                                        {{ session('message-comment') }}
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
                         <div class="mb-3 row">
                             <span wire:loading class="col-md-3 offset-md-5 text-primary">Processing...</span>
                         </div>

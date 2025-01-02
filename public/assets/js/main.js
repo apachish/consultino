@@ -549,12 +549,35 @@
 
         /* Product Rating Input */
         productRatingInput: function () {
-            $('.tm-rating-input').each(function () {
-                $(this).find('span').on('mouseenter', function () {
-                    $('.tm-rating-input span').addClass('active');
-                    $(this).nextAll('span').removeClass('active');
-                });
+            document.addEventListener("DOMContentLoaded", function () {
 
+                var savedRating = $('#rating-value').val();
+
+                $('.tm-rating-input').each(function () {
+                    $(this).find('span').on('mouseenter', function () {
+                        $('.tm-rating-input span').addClass('active');
+                        savedRating = $(this).data('value');
+                        $('#rating-value').val(savedRating);
+                        Livewire.dispatch('rateUpdated', {rate: savedRating});
+
+                        $(this).nextAll('span').removeClass('active');
+                    });
+
+                });
+                $('.tm-rating-input span').on('click', function () {
+                    const ratingValue = $(this).data('value');
+
+                    // ذخیره مقدار در فیلد مخفی
+                    $('#rating-value').val(ratingValue);
+                    Livewire.dispatch('rateUpdated', {rate: ratingValue});
+
+                    // افزودن کلاس active به ستاره‌های کلیک‌شده
+                    $('.tm-rating-input span').removeClass('active');
+                    $(this).prevAll('span').addClass('active');
+                    $(this).addClass('active');
+
+                    console.log('امتیاز انتخاب شده:', ratingValue); // فقط برای مشاهده مقدار در کنسول
+                });
             });
         },
 

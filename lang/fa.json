@@ -346,6 +346,7 @@
     "Click here to choose": "برای انتخاب اینجا کلیک کنید",
     "Important note": "نکته مهم",
     "Doctor appointment time": "زمان ها ملاقات",
+    "Reviews": "نظرات",
     "Files": "پرونده",
     "New Request": "درخواست جدید",
     "First name": "نام",
@@ -356,9 +357,17 @@
     "Please record the details of the person who is to be visited (not the parents, spouse, or author) so that there is no discrepancy in the registration of the case. Obviously, the responsibility for any discrepancy lies with you.": "لطفا مشخصات فردی که قرار است ملاقات شود (نه پدر و مادر، همسر یا نویسنده) را ثبت کنید تا در ثبت پرونده مغایرتی وجود نداشته باشد. بدیهی است مسئولیت هرگونه مغایرت با شماست.",
     "Resend OTP": "ارسال مجدد کد",
     "Resend OTP in": "ارسال مجدد کد به",
-    "You have successfully registered & logged in!": "شما با موفقیت ثبت نام کردید و وارد سیستم شدید!"
-
-
-
+    "Design  with": "طراحی با",
+    "Your request has been registered. Wait for our colleagues to contact you.": "درخواست شما ثبت گردید منتظر تماس همکاران ما باشید",
+    "Date Call": "تاریخ تماس",
+    "List of specialists": "لیست متخصصان",
+    "Time": "جدیدترین",
+    "They currently have a specialist available to book time.": "در حال حاضر  متخصصی برای رزرو تایم آزاد ندارند",
+    "Add a review": "ثبت نظر",
+    "Your comment was successfully submitted.": "نظر شما با موفقیت ثبت شد",
+    "Post Review": "ارسال نظر",
+    "Appointment registration": "ثبت نوبت",
+    "Enter your visit times.": "زمان های  مراجعه های خود را وارد کنید",
+    "Visiting times": "زمان مراجعه"
 
 }

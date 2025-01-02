@@ -1,6 +1,6 @@
 @guest
     <div class="m-4 text-center text-muted">
-        <p>Crafted with
+        <p>{{__("Design  with")}}
 
             <span title="Love from Lipetsk">
                 <svg height="1.5em" width="1.5em" class="text-success" fill="currentColor" role="img" viewBox="0 0 44.07 52.31" xmlns="http://www.w3.org/2000/svg">
@@ -15,13 +15,7 @@
         {{ __('The application code is published under the MIT license.') }}
     </p>
 
-    <ul class="nav justify-content-center mb-5">
-        <li class="nav-item"><a href="https://orchid.software" class="nav-link px-2 text-muted">Documentation</a></li>
-        <li class="nav-item"><a href="https://github.com/orchidsoftware/platform/discussions" target="_blank" class="nav-link px-2 text-muted">Discussions</a></li>
-        <li class="nav-item"><a href="https://opencollective.com/orchid" target="_blank" class="nav-link px-2 text-muted">Donation</a></li>
-        <li class="nav-item"><a href="https://orchid.software/en/hig/" target="_blank" class="nav-link px-2 text-muted">Design</a></li>
-        <li class="nav-item"><a href="https://github.com/orchidsoftware" target="_blank" class="nav-link px-2 text-muted">GitHub</a></li>
-    </ul>
+
 @else
 
     <div class="text-center user-select-none my-4 d-none d-lg-block">

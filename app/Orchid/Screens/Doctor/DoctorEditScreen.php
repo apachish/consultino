@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Orchid\Screens\Doctor;
 
 use App\Models\Doctor;
+use App\Orchid\Layouts\Doctor\DoctorDateEditLayout;
 use App\Orchid\Layouts\Role\RolePermissionLayout;
 use App\Orchid\Layouts\Doctor\DoctorEditLayout;
 use App\Orchid\Layouts\Doctor\DoctorPasswordLayout;
@@ -45,6 +46,7 @@ class DoctorEditScreen extends Screen
             'doctor'       => $doctor,
             'user'       => $doctor->user,
             'property' => $doctor->property(),
+            'expertises' => $doctor->expertises,
             'permission' => $doctor->getStatusPermission(),
         ];
     }
@@ -111,6 +113,10 @@ class DoctorEditScreen extends Screen
             Layout::block(DoctorEditLayout::class)
                 ->title(__('Doctor Information'))
                 ->description(__('Add a doctor or edit doctor information.'))
+                ,
+            Layout::block(DoctorDateEditLayout::class)
+                ->title(__('Visiting times'))
+                ->description(__('Enter your visit times.'))
                 ->commands(
                     Button::make(__('Save'))
                         ->type(Color::DARK)
@@ -134,7 +140,6 @@ class DoctorEditScreen extends Screen
         if(!$user)
             $user = $doctor->user?: new User();
         $hasImage = $doctor && $doctor->avatar;
-
         $request->validate([
             'user.name'=>"required",
             'doctor.avatar'=>"required",
@@ -179,22 +184,29 @@ class DoctorEditScreen extends Screen
         $doctor = $doctor->updateOrCreate(['user_id' => $user->id],$data);
 
         $parameters =  $request->collect('property');
+        $expertises =  $request->collect('expertises');
+        if($expertises->count()) {
+            $ids = collect($expertises)->pluck("id")->toArray();
+            $olds = $doctor->expertises->pluck('id')->toArray();
+            $id_detach = array_diff($olds, $ids);
+            if ($id_detach)
+                $doctor->expertises()->detach($id_detach);
 
+            $doctor->expertises()->syncWithoutDetaching($ids);
+        }
         foreach ($parameters as $key => $value) {
-            if($key=="expertise")
-                $value = json_encode($value);
-            if($key=="birthday" && data_get($value,"value"))
-                $value = toGregorian(data_get($value,"value"),"Y/m/d");
-            else
-                $value  = data_get($value,"value");
-            if ($value) {
-                $doctor->properties()->updateOrCreate([
-                    'doctor_id' => $doctor->id,
-                    'key' => $key,
-                ], [
-                    'value' => $value,
-                ]);
-            }
+                if ($key == "birthday" && data_get($value, "value"))
+                    $value = toGregorian(data_get($value, "value"), "Y/m/d");
+                else
+                    $value = data_get($value, "value");
+                if ($value) {
+                    $doctor->properties()->updateOrCreate([
+                        'doctor_id' => $doctor->id,
+                        'key' => $key,
+                    ], [
+                        'value' => $value,
+                    ]);
+                }
         }
 
         Toast::info(__('Doctor was saved.'));

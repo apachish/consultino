@@ -17,7 +17,9 @@
             </div>
         </div>
     @endif
-    <form  wire:submit="save" >
+    <form  wire:submit.prevent="save" >
+        @csrf
+
         <div class="tm-form  tm-form-bordered align-items-center">
             <div class="row">
                 <div class="col-lg-2 "></div>
@@ -26,11 +28,11 @@
                     <p>لطفا جهت ثبت نوبت،فرد مورد نظر را انتخاب کنید:</p>
                     <div class="tm-form-inner">
                         <div class="tm-form-field tm-form-fieldhalf">
-                            <select class="form-control @error('file.file_id') is-invalid @enderror" id="file.file_id"
-                                    wire:model="file.file_id">
+                            <select class="form-control @error('file_id') is-invalid @enderror" id="file_id"
+                                    wire:model="file_id">
                                 <option value="">{{__("Click here to choose")}}</option>
                                 @foreach($files as $file)
-                                    <option value="{{data_get($file,"id")}}">{{data_get($file,"firstName")." ".data_get($file,"lastName")}}</option>
+                                    <option value="{{data_get($file,"id")}}" {{$file_id==data_get($file,"id")?"selected":"" }}>{{data_get($file,"firstName")." ".data_get($file,"lastName")}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -39,7 +41,6 @@
 
             </div>
         </div>
-
         <div class="centered-div">
             <p>-یا-</p>
         </div>
@@ -56,7 +57,8 @@
                            class="form-control @error('file.firstName') is-invalid @enderror"
                            id="file-firstName"
                            wire:model="file.firstName"
-                           required="required">
+                           @if(!$file_id)required="required"@endif
+                    >
                     @if ($errors->has('file.firstName'))
                         <span class="text-danger">{{ $errors->first('file.firstName') }}</span>
                     @endif
@@ -67,7 +69,9 @@
                            class="form-control @error('file.lastName') is-invalid @enderror"
                            id="file-lastName"
                            wire:model="file.lastName"
-                           required="required">
+                           @if(!$file_id)required="required"@endif
+
+                    >
                     @if ($errors->has('file.lastName'))
                         <span class="text-danger">{{ $errors->first('file.lastName') }}</span>
                     @endif
@@ -78,7 +82,9 @@
                            class="form-control @error('file.national_code') is-invalid @enderror"
                            id="file-national_code"
                            wire:model="file.national_code"
-                           required="required">
+                           @if(!$file_id)required="required"@endif
+
+                    >
                     @if ($errors->has('file.national_code'))
                         <span class="text-danger">{{ $errors->first('file.national_code') }}</span>
                     @endif
@@ -142,11 +148,12 @@
                     @endif
                 </div>
 
-                <div class="tm-form-field">
-                    <button type="submit" class="tm-button">{{__("Register a request")}} <b></b></button>
 
-                </div>
             </div>
+        </div>
+        <div class="tm-form-field">
+            <button type="submit" class="tm-button">{{__("Register a request")}} <b></b></button>
+
         </div>
     </form>
     <div class="mb-3 row">
