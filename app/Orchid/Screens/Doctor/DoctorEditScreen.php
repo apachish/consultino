@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Orchid\Screens\Doctor;
 
 use App\Models\Doctor;
+use App\Models\DoctorDate;
+use App\Models\TimeSlot;
 use App\Orchid\Layouts\Doctor\DoctorDateEditLayout;
 use App\Orchid\Layouts\Role\RolePermissionLayout;
 use App\Orchid\Layouts\Doctor\DoctorEditLayout;
@@ -185,6 +187,8 @@ class DoctorEditScreen extends Screen
 
         $parameters =  $request->collect('property');
         $expertises =  $request->collect('expertises');
+        $date =  $request->collect('date');
+
         if($expertises->count()) {
             $ids = collect($expertises)->pluck("id")->toArray();
             $olds = $doctor->expertises->pluck('id')->toArray();
@@ -207,6 +211,18 @@ class DoctorEditScreen extends Screen
                         'value' => $value,
                     ]);
                 }
+        }
+        if($date){
+            foreach ($date as $key => $value) {
+                $doctor_date = DoctorDate::updateOrCreate(["doctor_id" => $doctor->id,"date" => $value["date"]],["is_available"=>true]);
+                if($doctor_date && $doctor_date->started_at && $doctor_date->ended_at){
+                    TimeSlot::updateOrCreate([
+                        "date_id"=> $doctor_date->id,
+                        "start_time" => $value["start_time"],
+                        "end_time" => $value["end_time"],
+                    ],["is_available"=>true]);
+                }
+            }
         }
 
         Toast::info(__('Doctor was saved.'));

@@ -16,20 +16,20 @@ class SettingSeeder extends Seeder
         $settings = [
             "telephone" => [
                 "title" => "تلفن",
-                "value" => "0123456789",
+                "value" => "09923294034",
                 "type" => "text",
                 "status" => true,
             ],
             "email" => [
                 "title" => "پست الکترونیک",
-                "value" => "contact@example.com",
+                "value" => "landi.psy.clinic@gmail.com",
                 "type" => "text",
                 "status" => true,
 
             ],
             "working_hours" => [
                 "title" => "ساعت کاری",
-                "value" => "  شنبه - چهارشنبه: 9:00 - 19:00 ",
+                "value" => " شنبه - پنجشنبه: 14:00 - 20:00 ",
                 "type" => "text",
                 "status" => true,
 
@@ -43,14 +43,14 @@ class SettingSeeder extends Seeder
             ],
             "address" => [
                 "title" => "آدرس",
-                "value" => "خیابان ولیعصر - بالاتر از پارک ساعی - کوچه ساعی دو - پلاک 31",
+                "value" => "سعادت آباد بلوار دریا سردار دریا عباسی اناری کوی مروارید شقایق یکم پلاک 10 واحد همکف",
                 "type" => "text",
                 "status" => true,
 
             ],
             "text_contact_us" => [
                 "title" => "متن ارتباط با ما",
-                "value" => "قدم های ساده به سمت موفقیت",
+                "value" => "قدم های ساده به سمت بهبودی",
                 "type" => "text",
                 "status" => true,
 
@@ -76,7 +76,7 @@ class SettingSeeder extends Seeder
             ],
             "copyright" => [
                 "title" => "کپی رایت",
-                "value" => "Copyright ©2018 <a href='https://apachish.ir'>Apachish</a>. All Rights Reserved",
+                "value" => "Copyright ©2024 <a href='https://landiclinic.com'>Landi Psychology Center</a>. All Rights Reserved",
                 "type" => "text",
                 "status" => true,
 
@@ -122,7 +122,7 @@ class SettingSeeder extends Seeder
             "about_us_image" => [
                 "title" => "عکس ویدیو درباره ما",
                 "value" => url("/images/def.webp"),
-                "type" => "file",
+                "type" => "image",
                 "status" => true,
             ],
 
