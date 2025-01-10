@@ -19,6 +19,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
+use Morilog\Jalali\Jalalian;
 use Orchid\Access\Impersonation;
 use App\Models\User;
 use Orchid\Screen\Action;
@@ -49,6 +50,7 @@ class DoctorEditScreen extends Screen
             'user'       => $doctor->user,
             'property' => $doctor->property(),
             'expertises' => $doctor->expertises,
+            'date' => $doctor->doctorDates,
             'permission' => $doctor->getStatusPermission(),
         ];
     }
@@ -214,13 +216,17 @@ class DoctorEditScreen extends Screen
         }
         if($date){
             foreach ($date as $key => $value) {
-                $doctor_date = DoctorDate::updateOrCreate(["doctor_id" => $doctor->id,"date" => $value["date"]],["is_available"=>true]);
-                if($doctor_date && $doctor_date->started_at && $doctor_date->ended_at){
-                    TimeSlot::updateOrCreate([
-                        "date_id"=> $doctor_date->id,
-                        "start_time" => $value["start_time"],
-                        "end_time" => $value["end_time"],
-                    ],["is_available"=>true]);
+                if(data_get($value,"start_time") && data_get($value,"end_time")) {
+                    $day = (new Jalalian((int)data_get($value, 'year'), (int)data_get($value, 'month'), (int)data_get($value, 'day'), 0, 0, 0))
+                        ->toCarbon()->toDateTimeString();
+                    $doctor_date = DoctorDate::updateOrCreate(["doctor_id" => $doctor->id, "date" => $day], ["is_available" => true]);
+                    if ($doctor_date) {
+                        TimeSlot::updateOrCreate([
+                            "date_id" => $doctor_date->id,
+                            "start_time" => data_get($value,"start_time"),
+                            "end_time" => data_get($value,"end_time"),
+                        ], ["is_available" => true]);
+                    }
                 }
             }
         }
@@ -254,5 +260,18 @@ class DoctorEditScreen extends Screen
         Toast::info(__('You are now impersonating this doctor'));
 
         return redirect()->route(config('platform.index'));
+    }
+
+    public function loadDay(Request $request)
+    {
+        $month = (int)$request->get('month');
+        $year = (int)$request->get('year');
+        $day = (new Jalalian($year, $month, 15))->getMonthDays();
+        $days = [];
+        for ($i = 1; $i <= $day; $i++) {
+            $days[$i] = $i;
+        }
+        // بازگرداندن مقادیر به‌صورت JSON
+        return response()->json($days);
     }
 }

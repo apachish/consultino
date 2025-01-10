@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\Comment;
 use App\Models\Doctor;
+use App\Models\DoctorDate;
 use App\Models\File;
 use App\Models\Rate;
 use Livewire\Component;
@@ -16,6 +17,8 @@ class DoctorSetTime extends Component
     public $file;
     public $properties;
     public $set_time=false;
+    public $times=false;
+    public $selected_time=false;
     public $comment =[
         "rate"=>4
     ];
@@ -29,7 +32,13 @@ class DoctorSetTime extends Component
 
     public function dataChanged($date)
     {
-        $this->set_time=true;
+        $this->set_time=$date;
+        $this->times=data_get($date,'times');
+    }
+
+    public function setSelectedTime($id)
+    {
+        $this->selected_time=$id;
     }
     public function sendComment()
     {
@@ -60,12 +69,18 @@ class DoctorSetTime extends Component
 
     public function appointmentRegistration()
     {
-        dd("ww");
+        $this->validate([
+            'selected_time' => 'required',
+        ]);
+        dd($this->selected_time);
     }
 
     public function render()
     {
-        $this->doctor = Doctor::with(["comments.rate", "properties"])->withCount("comments")->findOrFail($this->doctor_id);
+        $this->doctor = Doctor::with(["comments.rate", "properties",'doctorDates'=>function ($query) {
+            $query->whereDate("date", ">=", now());
+        }])
+            ->withCount("comments")->findOrFail($this->doctor_id);
         $this->properties = $this->doctor->properties->keyBy('key');
 
         $this->file = File::findOrFail($this->file_id);

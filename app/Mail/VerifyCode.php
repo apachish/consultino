@@ -20,6 +20,8 @@ class VerifyCode extends Mailable
     public function __construct($code)
     {
         $this->code = $code;
+        $this->afterCommit();
+
     }
 
     /**
@@ -38,7 +40,7 @@ class VerifyCode extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.verify-code',
+            view: 'mail.verify-code',
         );
     }
 

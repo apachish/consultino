@@ -95,76 +95,32 @@
                             <form wire:submit="appointmentRegistration" class="tm-form">
                             <div class="container">
                                 <div class="date-card-container">
-                                    <div class="date-card" @click="$dispatch('date-changed', { date: 'Post Title' })">
-                                        <div class="day-name">پنج‌شنبه</div>
-                                        <div class="date">13 دی</div>
-                                        <div class="relative-day">امروز</div>
+                                    @if($doctor->doctorDates && $doctor->doctorDates->count())
+                                    @foreach(data_get($doctor,'doctorDates') as $dates)
+                                    <div class="date-card" @click="$dispatch('date-changed', { date: @js($dates)})">
+                                        <div class="day-name">{{toJalali($dates->date,"%A")}}</div>
+                                        <div class="date">{{toJalali($dates->date,"%d %B")}}</div>
+                                        <div class="relative-day">{{humanReadableDate($dates->date)}}</div>
                                     </div>
-                                    <div class="date-card">
-                                        <div class="day-name">جمعه</div>
-                                        <div class="date">14 دی</div>
-                                        <div class="relative-day">فردا</div>
-                                    </div>
-                                    <div class="date-card">
-                                        <div class="day-name">شنبه</div>
-                                        <div class="date">15 دی</div>
-                                        <div class="relative-day">پس‌فردا</div>
-                                    </div>
-                                    <div class="date-card">
-                                        <div class="day-name">یک‌شنبه</div>
-                                        <div class="date">16 دی</div>
-                                        <div class="relative-day">3 روز دیگر</div>
-                                    </div>
-                                    <div class="date-card">
-                                        <div class="day-name">دوشنبه</div>
-                                        <div class="date">17 دی</div>
-                                        <div class="relative-day">4 روز دیگر</div>
-                                    </div>
+                                    @endforeach
+                                    @else
+                                        <p class="alert alert-info">{{__("There is no time available for this doctor.")}} </p>
+                                    @endif
                                 </div>
                             </div>
                             @if($set_time)
                                 <div class="schedule-container">
                                     <div class="schedule-header">
-                                        <div>یکشنبه 16 دی 1403</div>
-                                        <div>(4 روز دیگر)</div>
+                                        <div>{{toJalali(data_get($set_time,'date'),"%A, %d %B %y")}}</div>
+                                        <div>({{humanReadableDate(data_get($set_time,'date'))}})</div>
                                     </div>
                                     <div class="time-slot-grid">
-                                        <div class="time-slot">
-                                            <div class="time">15:45</div>
-                                            <input type="checkbox">
+                                        @foreach($times as $time)
+                                        <div class="time-slot {{$selected_time == data_get($time,'id')?"active":""}}"  wire:click="setSelectedTime('{{data_get($time,'id')}}')">
+                                            <div class="time">{{getYourTimeColumnAttribute(data_get($time,'start_time'))}}</div>
+                                            <input type="checkbox" wire:model="selected_time.{{data_get($time,'id')}}">
                                         </div>
-                                        <div class="time-slot">
-                                            <div class="time">16:15</div>
-                                            <input type="checkbox">
-                                        </div>
-                                        <div class="time-slot">
-                                            <div class="time">16:45</div>
-                                            <input type="checkbox">
-                                        </div>
-                                        <div class="time-slot">
-                                            <div class="time">17:15</div>
-                                            <input type="checkbox">
-                                        </div>
-                                        <div class="time-slot">
-                                            <div class="time">17:45</div>
-                                            <input type="checkbox">
-                                        </div>
-                                        <div class="time-slot">
-                                            <div class="time">18:15</div>
-                                            <input type="checkbox">
-                                        </div>
-                                        <div class="time-slot">
-                                            <div class="time">18:45</div>
-                                            <input type="checkbox">
-                                        </div>
-                                        <div class="time-slot">
-                                            <div class="time">19:15</div>
-                                            <input type="checkbox">
-                                        </div>
-                                        <div class="time-slot">
-                                            <div class="time">19:45</div>
-                                            <input type="checkbox">
-                                        </div>
+                                        @endforeach
                                     </div>
                                     <div class="tm-form-field">
                                         <button type="submit" class="tm-button">{{__("Appointment registration")}} <b></b></button>

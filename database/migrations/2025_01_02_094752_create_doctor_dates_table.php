@@ -30,6 +30,7 @@ return new class extends Migration
                 ->onDelete('cascade');
             $table->boolean('is_available');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

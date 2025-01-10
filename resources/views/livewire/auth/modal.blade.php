@@ -6,7 +6,7 @@
 
                     <div class="col-xl-8 col-lg-9 col-md-10 col-sm-10 col-12">
                         @if($email_mobile)
-                            <livewire:auth.verify :email_mobile="$email_mobile"/>
+                            <livewire:auth.verify :email_mobile="$email_mobile" :type="$type" />
                         @else
                             <div class="tm-loginregister">
                                 <p>{{__("Log in to the panel using one of the two methods below:")}}

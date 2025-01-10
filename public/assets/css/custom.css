@@ -94,6 +94,10 @@
     background: #e9f7f0;
     border-color: #90caf9;
 }
+.time-slot.active {
+    background: #28a745;
+    color: #ffffff;
+}
 .time-slot .time {
     color: #90caf9;
     font-weight: bold;

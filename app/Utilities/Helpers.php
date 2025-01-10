@@ -325,6 +325,39 @@ if (!function_exists('toAgo')) {
     }
 }
 
+if (!function_exists('getYourTimeColumnAttribute')) {
+    function getYourTimeColumnAttribute($value)
+    {
+        return Carbon::createFromFormat('H:i:s', $value)->format('H:i');
+    }
+}
+
+if (!function_exists('humanReadableDate')) {
+    function humanReadableDate($date)
+    {
+        $date = Carbon::parse($date);
+        $now = Jalalian::now();
+        $givenDate = Jalalian::fromCarbon($date);
+
+        // مقایسه تاریخ‌ها
+        $diffInDays = $givenDate->getTimestamp() - $now->getTimestamp();
+        $diffInDays = (int) ceil($diffInDays / (60 * 60 * 24)); // محاسبه اختلاف به روز
+
+        if ($diffInDays === 0) {
+            return 'امروز';
+        } elseif ($diffInDays === 1) {
+            return 'فردا';
+        } elseif ($diffInDays > 1) {
+            return $diffInDays . ' روز دیگر';
+        } elseif ($diffInDays === -1) {
+            return 'دیروز';
+        } elseif ($diffInDays < -1) {
+            return abs($diffInDays) . ' روز پیش';
+        }
+    }
+}
+
+
 if (!function_exists('toGregorian')) {
     function toGregorian($time, $format = 'Y/m/d H:i:s')
     {

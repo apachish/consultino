@@ -16,11 +16,11 @@ class Verify extends Component
 
     public $code;
     public $email_mobile;
+    public $type;
 
 
     protected function rules()
     {
-        logger("codee",[VerifyCode::where("code",$this->code)->first(),$this->code]);
         return [
             'code' => ['required', Rule::exists('verify_codes', 'code')
 //                ->where('expires_at',">=", now())
@@ -29,9 +29,10 @@ class Verify extends Component
         ];
     }
 
-    public function mount($email_mobile)
+    public function mount($email_mobile,$type)
     {
         $this->email_mobile = $email_mobile;
+        $this->type = $type;
     }
     public $password_confirmation;
 
@@ -40,7 +41,6 @@ class Verify extends Component
         $this->validate();
         $verify = VerifyCode::where("mobile_email",$this->email_mobile)->first();
 
-        logger("customer",[Customer::all()]);
         $credentials = $this->credentials();
         $customer  = Customer::where(function ($query) use ($credentials) {
             foreach ($credentials as $key => $value) {
@@ -72,16 +72,14 @@ class Verify extends Component
     protected function credentials()
     {
         $email_mobile = convert2english($this->email_mobile);
-        $mobile = false;
-        try {
-            $email_mobile = phone($email_mobile, 'IR');
-            $email_mobile = $email_mobile->formatForMobileDialingInCountry($email_mobile->getCountry());
-            $this->email_mobile = $email_mobile;
-            $mobile = true;
-        } catch (\Exception $e) {
-            $mobile = false;
-        }
-        if ($mobile) {
+        if ($this->type == "sms") {
+            try {
+                $email_mobile = phone($email_mobile, 'IR');
+                $email_mobile = $email_mobile->formatForMobileDialingInCountry($email_mobile->getCountry());
+                $this->email_mobile = $email_mobile;
+            } catch (\Exception $e) {
+                logger("error",[$e->getMessage()]);
+            }
             return ['mobile' => $email_mobile];
         }  elseif (filter_var($email_mobile, FILTER_VALIDATE_EMAIL)) {
             $this->email_mobile = $email_mobile;
@@ -93,8 +91,7 @@ class Verify extends Component
 
     public function resendOtp()
     {
-        logger($this->email_mobile);
-        dispatch(new VerifySendSms($this->email_mobile,"sms"));
+        dispatch(new VerifySendSms($this->email_mobile,$this->type));
 
     }
 

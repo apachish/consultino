@@ -1,5 +1,5 @@
 <div class="tab-pane fade show active" id="bstab1-area1" role="tabpanel"
-     aria-labelledby="bstab1-area1-tab" >
+     aria-labelledby="bstab1-area1-tab" wire:ignore.self>
     @if (session()->has('message'))
         <div class="row justify-content-center text-center mt-3">
             <div class="col-md-8">

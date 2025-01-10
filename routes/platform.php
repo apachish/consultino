@@ -89,6 +89,7 @@ Route::screen('doctors/{doctor}/edit', DoctorEditScreen::class)
         ->push($docter->user->name, route('platform.systems.doctors.edit', $docter)));
 
 
+Route::get('/admin/load-day', [DoctorEditScreen::class, 'loadDay']);
 
 
 Route::screen('customers', \App\Orchid\Screens\Customer\CustomerListScreen::class)

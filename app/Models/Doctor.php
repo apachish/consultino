@@ -93,6 +93,10 @@ class Doctor extends Model
     {
         return $this->morphMany(Comment::class, 'commentable');
     }
+    public function doctorDates()
+    {
+        return $this->hasMany(DoctorDate::class, 'doctor_id')->with("times")->groupBy("date");
+    }
 
     // تعریف مقادیر ENUM به صورت کانستنت
     public const STATUS_PENDING = 'pending';

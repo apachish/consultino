@@ -57,7 +57,8 @@ class VerifySendSms implements ShouldQueue
                         logger("verify code",[$code]);
                     break;
                 case "mail":
-                    Mail::to($this->mobile_email)->send(new VerifyCode($token));
+                   $e =  Mail::to($this->mobile_email)->send(new VerifyCode($token));
+                   logger("email",[$e]);
                     break;
             }
 

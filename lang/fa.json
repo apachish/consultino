@@ -368,6 +368,7 @@
     "Post Review": "ارسال نظر",
     "Appointment registration": "ثبت نوبت",
     "Enter your visit times.": "زمان های  مراجعه های خود را وارد کنید",
-    "Visiting times": "زمان مراجعه"
-
+    "Visiting times": "زمان مراجعه",
+    "You have successfully registered & logged in!": "شما با موفقیت ثبت نام کردید و وارد سیستم شدید!",
+    "There is no time available for this doctor.": "زمان برای این دکتر موجود نمی باشد"
 }
