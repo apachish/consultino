@@ -1,4 +1,4 @@
-<div class="tm-myaccount-address">
+<div class="tm-myaccount-address" wire:ignore.self>
     <p><b>{{__("Files accessed with your username")}}</b></p>
     <div class="row">
         @if($files->count())
@@ -9,7 +9,7 @@
                     <h3>{{data_get($file,'firstName')." ".data_get($file,'lastName')}}</h3>
                     <address>
                         {{__("National Code")}}:  {{data_get($file,'national_code')}}<br>
-                        {{__("Gender")}}       :  {{data_get($file,'gender')}}<br>
+                        {{__("Gender")}}       :  {{$file->getGenderLabel()}}<br>
                         {{__("Address")}}      :  {{data_get($file,'address')}}
                     </address>
                 </div>

@@ -243,5 +243,7 @@ return [
         "file.lastName"=>"نام خانوادگی",
         "file.accept"=>"تایید قوانین",
         "code"=>" کد تایید",
+        "user.firstname"=>"نام",
+        "user.lastname"=>"نام خانوادگی",
     ],
 ];

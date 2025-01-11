@@ -24,6 +24,31 @@ class File extends Model
         'gender',
         'status',
     ];
+    public const GENDER_MALE = 0;
+    public const GENDER_FEMALE = 1;
+
+
+    public static function getGender(): array
+    {
+        return [
+            self::GENDER_MALE ,
+            self::GENDER_FEMALE,
+
+        ];
+    }
+    // متدی برای نگاشت مقادیر به نمایش کاربرپسند
+    public static function getGenderLabels(): array
+    {
+        return [
+            self::GENDER_MALE => __("Male"),
+            self::GENDER_FEMALE =>__("Female"),
+        ];
+    }
+
+    public function getGenderLabel(): string
+    {
+        return self::getGenderLabels()[$this->gender] ?? 'نامشخص';
+    }
 
     public function doctors()
     {

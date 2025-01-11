@@ -1,4 +1,4 @@
-<div class="tm-myaccount-dashboard" >
+<div class="tm-myaccount-dashboard"  wire:ignore.self>
     @if (session()->has('message'))
         <div class="row justify-content-center text-center mt-3">
             <div class="col-md-8">

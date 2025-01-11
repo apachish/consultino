@@ -1,4 +1,4 @@
-<div class="tm-myaccount-orders">
+<div class="tm-myaccount-orders" wire:ignore.self>
     <div class="table-responsive">
         <table class="table table-bordered mb-0">
             <thead>

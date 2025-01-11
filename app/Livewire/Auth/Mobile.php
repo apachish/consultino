@@ -18,7 +18,7 @@ class Mobile extends Component
 
         $this->validate();
         dispatch(new VerifySendSms($this->mobile,"sms"));
-        $this->dispatch('post-created',email_mobile:$this->mobile,type:"mail")->to(Modal::class);
+        $this->dispatch('post-created',email_mobile:$this->mobile,type:"sms")->to(Modal::class);
 
         session()->flash('message', __('You have successfully registered & logged in!'));
 
