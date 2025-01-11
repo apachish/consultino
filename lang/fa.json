@@ -370,5 +370,17 @@
     "Enter your visit times.": "زمان های  مراجعه های خود را وارد کنید",
     "Visiting times": "زمان مراجعه",
     "You have successfully registered & logged in!": "شما با موفقیت ثبت نام کردید و وارد سیستم شدید!",
-    "There is no time available for this doctor.": "زمان برای این دکتر موجود نمی باشد"
+    "There is no time available for this doctor.": "زمان برای این دکتر موجود نمی باشد",
+    "Tracking Code": "کد پیگیری",
+    "DATE": "تاریخ",
+    "Doctor": "دکتر",
+    "VIEW": "نمایش",
+    "Doctor's appointment not set.": "وقت دکتری تنظیم نشده",
+    "Files accessed with your username": "پرونده های که با کاربری شما مراجعه کردید",
+    "Gender": "جنسیت",
+    "The file is not available for you.": "پرونده برای شما موجود نیست",
+    "Account Details": "اطلاعات حساب",
+    "Save Changes": "ذخیره تغییرات"
+
+
 }

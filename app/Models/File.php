@@ -17,10 +17,16 @@ class File extends Model
      */
     protected $fillable = [
         'user_id',
-        "firstName","lastName",
+        "firstName",
+        "lastName",
         'national_code',
         'address',
         'gender',
         'status',
     ];
+
+    public function doctors()
+    {
+        return $this->belongsToMany(Doctor::class,'doctor_file','file_id','doctor_id');
+    }
 }
