@@ -6,6 +6,10 @@ use App\Models\Slider;
 use App\Orchid\Layouts\Slider\SliderEditLayout;
 use App\Orchid\Layouts\Slider\SliderListLayout;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Drivers\Imagick\Driver;
+use Intervention\Image\ImageManager;
+use Intervention\Image\Laravel\Facades\Image;
 use Orchid\Screen\Actions\Button;
 
 use Orchid\Screen\Screen;
@@ -138,8 +142,27 @@ class SliderEditScreen extends Screen
 
 
             // ذخیره‌سازی فایل
-            $imagePath = $image->store('images', 'images');
-            $data["image"] = url("images/" . $imagePath);
+//            $imagePath = $image->store('sliders', 'images');
+//            $data["image"] = url("images/" . $imagePath);
+            // read image from temporary file
+            $manager = new ImageManager(new Driver());
+            $filename = time() . '_slider.' . $image->getClientOriginalExtension();
+
+            // مسیر ذخیره‌سازی کامل در دیسک خارجی
+            $externalPath = Storage::disk('external_uploads_images')->path("sliders/".$filename);
+
+
+
+            $img =$manager->read($image);
+//
+            $img->scale(width: 1792,height: 1024);
+//
+//// insert watermark
+////            $image->place('images/watermark.png');
+//
+//// save modified image in new format
+            $img->save($externalPath);
+            $data["image"] = url('/images/sliders/'.$filename);
         }
 
         $data['sort_order'] = Slider::count() + 1;

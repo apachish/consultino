@@ -30,7 +30,7 @@
         <div class="container">
             <div class="header-bottominner">
                 <div class="header-logo">
-                    <a href="index.html">
+                    <a href="{{route("home")}}">
                         <img src="{{$logo}}" alt="deconsult logo" height="130" width="200">
                     </a>
                 </div>

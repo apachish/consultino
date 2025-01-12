@@ -44,6 +44,25 @@ return [
             'visibility' => 'public',
             'throw' => false,
         ],
+
+        'external_uploads_images' => [
+            'driver' => 'local',
+            'root' => '/home/landic/domains/landiclinic.com/public_html/images',
+            'url' => env('APP_URL') . '/images', // فقط در صورت نیاز به دسترسی عمومی
+            'visibility' => 'public', // یا 'private' بسته به نیاز شما
+        ],
+        'external_uploads_videos' => [
+            'driver' => 'local',
+            'root' => '/home/landic/domains/landiclinic.com/public_html/videos',
+            'url' => env('APP_URL') . '/videos', // فقط در صورت نیاز به دسترسی عمومی
+            'visibility' => 'public', // یا 'private' بسته به نیاز شما
+        ],
+        'external_uploads_files' => [
+            'driver' => 'local',
+            'root' => '/home/landic/domains/landiclinic.com/public_html/files',
+            'url' => env('APP_URL') . '/videos', // فقط در صورت نیاز به دسترسی عمومی
+            'visibility' => 'public', // یا 'private' بسته به نیاز شما
+        ],
         'images' => [
             'driver' => 'local',
             'root' => public_path('images'),

@@ -3400,7 +3400,7 @@ button.tm-videobutton.tm-videobutton-lg span i {
 	color: #ffffff;
 	font-weight: 500;
 	text-transform: uppercase;
-	margin-top: -10px;
+	/*margin-top: -10px;*/
 }
 
 .heroslider-content h1 span {
