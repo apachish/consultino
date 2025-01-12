@@ -345,7 +345,7 @@
     "Logout": "خروج",
     "Click here to choose": "برای انتخاب اینجا کلیک کنید",
     "Important note": "نکته مهم",
-    "Doctor appointment time": "زمان ها ملاقات",
+    "Doctor appointment time": "زمان های ملاقات",
     "Reviews": "نظرات",
     "Files": "پرونده",
     "New Request": "درخواست جدید",
@@ -383,7 +383,8 @@
     "Save Changes": "ذخیره تغییرات",
     "Information updated.": "اطلاعات بروزرسانی شد",
     "GO BACK TO HOMEPAGE": "برگشت به خانه",
-    "Not Found": "یافت نشد"
+    "Not Found": "یافت نشد",
+    "Updated successfully!": "به روزرسانی با موفقیت انجام شد"
 
 
 }
