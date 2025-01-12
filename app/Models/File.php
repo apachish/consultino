@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Orchid\Access\UserAccess;
 use Orchid\Filters\Filterable;
 use Orchid\Screen\AsSource;
@@ -50,8 +51,8 @@ class File extends Model
         return self::getGenderLabels()[$this->gender] ?? 'نامشخص';
     }
 
-    public function doctors()
+    public function doctors(): BelongsToMany
     {
-        return $this->belongsToMany(Doctor::class,'doctor_file','file_id','doctor_id');
+        return $this->belongsToMany(Doctor::class,'doctor_file','file_id','doctor_id')->with(['status','time_id'])->withTimestamps();
     }
 }

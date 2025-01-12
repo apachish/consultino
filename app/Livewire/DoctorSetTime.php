@@ -7,6 +7,7 @@ use App\Models\Doctor;
 use App\Models\DoctorDate;
 use App\Models\File;
 use App\Models\Rate;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
 class DoctorSetTime extends Component
@@ -25,6 +26,11 @@ class DoctorSetTime extends Component
 
     protected $listeners = ['rateUpdated','date-changed'=>'dataChanged'];
 
+    protected $messages = [
+        "selected_time.required"=>"یک زمان را انتخاب کنید",
+        "selected_time.exists"=>"یک زمان را انتخاب کنید"
+
+    ];
     public function rateUpdated($rate)
     {
         data_set($this->comment,'rate' , $rate);
@@ -70,9 +76,21 @@ class DoctorSetTime extends Component
     public function appointmentRegistration()
     {
         $this->validate([
-            'selected_time' => 'required',
+            'selected_time' => 'required|exists:time_slots,id',
         ]);
-        dd($this->selected_time);
+        $exists = DB::table('doctor_file') // نام جدول واسط
+        ->where('doctor_id', $this->doctor->id)
+            ->where('file_id',  $this->file->id)
+            ->where('time_id', $this->selected_time)
+            ->exists();
+        if($exists){
+            session()->flash('message-error-set-time', __('exists set Time'));
+
+        }else {
+            $this->file->doctors()->syncWithoutDetaching([$this->doctor->id => ['time_id' => $this->selected_time]]);
+            session()->flash('message-set-time', __('Meeting time setting was successful.'));
+        }
+        $this->selected_time=null;
     }
 
     public function render()

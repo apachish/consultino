@@ -17,6 +17,9 @@ return new class extends Migration
             $table->foreign('doctor_id')->references('id')->on('doctors')->onDelete('cascade');
             $table->unsignedBigInteger('file_id');
             $table->foreign('file_id')->references('id')->on('files')->onDelete('cascade');
+            $table->unsignedBigInteger('time_id');
+            $table->foreign('time_id')->references('id')->on('time_slots')->onDelete('cascade');
+            $table->string('status')->default('pending');
             $table->timestamps();
         });
     }

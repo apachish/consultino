@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Orchid\Access\UserAccess;
 use Orchid\Filters\Filterable;
@@ -98,6 +99,10 @@ class Doctor extends Model
         return $this->hasMany(DoctorDate::class, 'doctor_id')->with("times")->groupBy("date");
     }
 
+    public function files(): BelongsToMany
+    {
+        return $this->belongsToMany(File::class,"doctor_file", "file_id","doctor_id")->withTimestamps();
+    }
     // تعریف مقادیر ENUM به صورت کانستنت
     public const STATUS_PENDING = 'pending';
     public const STATUS_ACTIVE = 'active';

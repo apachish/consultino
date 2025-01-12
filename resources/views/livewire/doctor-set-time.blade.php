@@ -89,9 +89,27 @@
                     <div class="tab-pane fade show active" id="prodetails-area1" role="tabpanel"
                          aria-labelledby="prodetails-area1-tab">
                         <div class="tm-prodetails-description">
-                            @if($errors)
-                                <span>{{ $errors->first() }}</span>
+                            @if($errors->first())
+                                <div class="alert alert-danger">{{ $errors->first() }}</div>
                             @endif
+                                @if (session()->has('message-set-time'))
+                                    <div class="row justify-content-center text-center mt-3">
+                                        <div class="col-md-8">
+                                            <div class="alert alert-success" role="alert">
+                                                {{ session('message-set-time') }}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                @elseif (session()->has('message-error-set-time'))
+                                    <div class="row justify-content-center text-center mt-3">
+                                        <div class="col-md-8">
+                                            <div class="alert alert-danger" role="alert">
+                                                {{ session('message-error-set-time') }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
                             <form wire:submit="appointmentRegistration" class="tm-form">
                             <div class="container">
                                 <div class="date-card-container">
@@ -117,7 +135,7 @@
                                     <div class="time-slot-grid">
                                         @foreach($times as $time)
                                         <div class="time-slot {{$selected_time == data_get($time,'id')?"active":""}}"  wire:click="setSelectedTime('{{data_get($time,'id')}}')">
-                                            <div class="time">{{getYourTimeColumnAttribute(data_get($time,'start_time'))}}</div>
+                                            <div class="time">{{getYourTimeColumnAttribute(data_get($time,'start_time')).'-'.getYourTimeColumnAttribute(data_get($time,'end_time'))}}</div>
                                             <input type="checkbox" wire:model="selected_time.{{data_get($time,'id')}}">
                                         </div>
                                         @endforeach

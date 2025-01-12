@@ -384,7 +384,9 @@
     "Information updated.": "اطلاعات بروزرسانی شد",
     "GO BACK TO HOMEPAGE": "برگشت به خانه",
     "Not Found": "یافت نشد",
-    "Updated successfully!": "به روزرسانی با موفقیت انجام شد"
+    "Updated successfully!": "به روزرسانی با موفقیت انجام شد",
+    "Meeting time setting was successful.": "تنظیم ساعت ملاقت با موفقیت انجام شد",
+    "exists set Time": "قبل گرفته اید"
 
 
 }
