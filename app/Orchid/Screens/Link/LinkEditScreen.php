@@ -5,6 +5,9 @@ namespace App\Orchid\Screens\Link;
 use App\Models\Link;
 use App\Orchid\Layouts\Link\LinkEditLayout;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Drivers\Imagick\Driver;
+use Intervention\Image\ImageManager;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Toast;
@@ -85,14 +88,13 @@ class LinkEditScreen extends Screen
      */
     public function save(Link $link, Request $request)
     {
+        $hasImage = $link && $link->image;
 
         $request->validate([
             'link.title' => [
                 'required',
             ],
-            'link.image' => [
-                'required'
-            ],
+            'link.image' => $hasImage ? ['nullable', 'file', 'mimes:jpg,jpeg,png,webp'] : ['required', 'file', 'mimes:jpg,jpeg,png,webp'],
             'link.sort_order' => [
                 'required','min:1'
             ],
@@ -104,16 +106,25 @@ class LinkEditScreen extends Screen
         ]);
 
         $data = $request->collect('link');
-//        if ($request->file()) {
-//            $file = $request->file('value');
-//            if(file_exists($slider->value)) {
-//                dd("w");
-//            }
-//            $fileName = time() . '_' . $file->getClientOriginalName();
-//            dd($fileName);
-//            Storage::disk('images')->put($fileName, $file);
-//
-//        }
+        $image = $request->file('link.image');
+
+        if ($image) {
+            // بررسی نوع MIME فایل
+            $mimeType = $image->getMimeType();
+
+            $manager = new ImageManager(new Driver());
+            $filename = time() . '_slider.' . $image->getClientOriginalExtension();
+
+            // مسیر ذخیره‌سازی کامل در دیسک خارجی
+            $externalPath = Storage::disk('external_uploads_images')->path("links/".$filename);
+
+            $img =$manager->read($image);
+
+            $img->scale(width: 102,height: 78);
+
+            $img->save($externalPath);
+            $data["image"] = url('/images/links/'.$filename);
+        }
         logger("q",$data->toArray());
         if($link->id)
             $link->update($data->toArray());

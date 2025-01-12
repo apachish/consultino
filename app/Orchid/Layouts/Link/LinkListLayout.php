@@ -64,7 +64,7 @@ class LinkListLayout extends Table
                     ->list([
 
                         Link::make(__('Edit'))
-                            ->route('platform.systems.sliders.edit', $link->id)
+                            ->route('platform.systems.links.edit', $link->id)
                             ->icon('bs.pencil'),
                         Button::make(__('Delete'))
                             ->icon('bs.trash3')

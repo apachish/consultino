@@ -140,27 +140,16 @@ class SliderEditScreen extends Screen
             // بررسی نوع MIME فایل
             $mimeType = $image->getMimeType();
 
-
-            // ذخیره‌سازی فایل
-//            $imagePath = $image->store('sliders', 'images');
-//            $data["image"] = url("images/" . $imagePath);
-            // read image from temporary file
             $manager = new ImageManager(new Driver());
             $filename = time() . '_slider.' . $image->getClientOriginalExtension();
 
             // مسیر ذخیره‌سازی کامل در دیسک خارجی
             $externalPath = Storage::disk('external_uploads_images')->path("sliders/".$filename);
 
-
-
             $img =$manager->read($image);
-//
+
             $img->scale(width: 1792,height: 1024);
-//
-//// insert watermark
-////            $image->place('images/watermark.png');
-//
-//// save modified image in new format
+
             $img->save($externalPath);
             $data["image"] = url('/images/sliders/'.$filename);
         }

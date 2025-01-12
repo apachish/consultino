@@ -40,15 +40,11 @@ class LinkEditLayout extends Rows
                 ->max(255)
                 ->title(__('sort Order'))
                 ->placeholder(1),
-            Picture::make('link.image')
+            Input::make('link.image')
+                ->type('file')
                 ->title('Upload Image')
-                ->minCanvas(500)
-                ->maxWidth(102)
-                ->maxHeight(78)
-                ->storage('images')
                 ->accept('image/*')
-                ->required()
-                //                    ->multiple()
+                ->required(!$this->query->has('link.image') )
                 ->help('Select an image file. You can upload files in any image format, such as JPG, PNG, or GIF.'),
             Select::make('link.status')
                 ->options([
