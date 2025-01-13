@@ -34,11 +34,12 @@ class ServiceEditLayout extends Rows
             ->title(__('Title'))
             ->placeholder(__('Name')),
             Input::make('service.icon')
-                ->type('text')
-                ->max(255)
-                ->title(__('Icon'))
-                ->help(__('You can add icons from https://www.flaticon.com/'))
-                ->placeholder(__('Icon')),
+                ->type('file')
+                ->title('Upload icon')
+                ->accept('image/*')
+                ->horizontal()
+                ->required(!$this->query->has('service.icon') )
+                ->help('Select an image file. You can upload files in any image format, such as JPG, PNG.'),
             TextArea::make('service.description')
                 ->title(__('Description'))
                 ->required()

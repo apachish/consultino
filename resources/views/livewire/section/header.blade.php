@@ -31,7 +31,7 @@
             <div class="header-bottominner">
                 <div class="header-logo">
                     <a href="{{route("home")}}">
-                        <img src="{{$logo}}" alt="deconsult logo" height="130" width="200">
+                        <img src="{{$logo}}" alt="deconsult logo">
                     </a>
                 </div>
                 <nav class="tm-navigation">

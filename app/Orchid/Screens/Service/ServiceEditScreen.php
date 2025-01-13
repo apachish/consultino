@@ -6,7 +6,10 @@ use App\Models\Faq;
 use App\Models\Service;
 use App\Orchid\Layouts\Service\ServiceEditLayout;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Intervention\Image\Drivers\Imagick\Driver;
+use Intervention\Image\ImageManager;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Layout;
@@ -113,16 +116,21 @@ class ServiceEditScreen extends Screen
         ]);
 
         $data = $request->collect('service');
+        $icon = $request->file('service.icon');
+
+        if ($icon) {
+            // بررسی نوع MIME فایل
+            $filename = $this->saveImage($icon,50,50);
+
+            $data["icon"] = url("images/services/" . $filename);
+        }
         $image = $request->file('service.image');
 
         if ($image) {
             // بررسی نوع MIME فایل
-            $mimeType = $image->getMimeType();
+            $filename = $this->saveImage($image,800,700);
 
-
-            // ذخیره‌سازی فایل
-            $imagePath = $image->store('images', 'images');
-            $data["image"] = url("images/" . $imagePath);
+            $data["image"] = url("images/services/" . $filename);
         }
         logger("q",$data->toArray());
         $data['slug'] = slug_seo($data['title']);
@@ -160,5 +168,23 @@ class ServiceEditScreen extends Screen
         Toast::info(__('Services was saved.'));
 
         return redirect()->route('platform.systems.services');
+    }
+
+    public function saveImage(array|\Illuminate\Http\UploadedFile $image,$width,$heigt): string
+    {
+        $mimeType = $image->getMimeType();
+
+        $manager = new ImageManager(new Driver());
+        $filename = time() . '_service.' . $image->getClientOriginalExtension();
+
+        // مسیر ذخیره‌سازی کامل در دیسک خارجی
+        $externalPath = Storage::disk('external_uploads_images')->path("services/" . $filename);
+
+        $img = $manager->read($image);
+
+        $img->scale(width: $width, height: $heigt);
+
+        $img->save($externalPath);
+        return $filename;
     }
 }

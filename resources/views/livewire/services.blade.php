@@ -21,16 +21,16 @@
                     <div id="service-acc" class="tm-accordion pt-2">
                         @foreach($service->faqs as $faq)
                         <div class="card">
-                            <div class="card-header" id="service-acc-heading1">
+                            <div class="card-header" id="service-acc-heading{{data_get($faq,'id')}}">
                                 <h5 class="mb-0">
-                                    <button class="btn btn-link" data-toggle="collapse" data-target="#service-acc-collapse1" aria-expanded="true" aria-controls="service-acc-collapse1">
+                                    <button class="btn btn-link" data-toggle="collapse" data-target="#service-acc-collapse{{data_get($faq,'id')}}" aria-expanded="true" aria-controls="service-acc-collapse{{data_get($faq,'id')}}">
                                         {{data_get($faq,'question')}}
                                     </button>
                                 </h5>
                             </div>
-                            <div id="service-acc-collapse1" class="collapse show" aria-labelledby="service-acc-heading1" data-parent="#service-acc">
+                            <div id="service-acc-collapse{{data_get($faq,'id')}}" class="collapse show " aria-labelledby="service-acc-heading{{data_get($faq,'id')}}" data-parent="#service-acc">
                                 <div class="card-body">
-                                    <p>{{data_get($faq,'answer')}}</p>
+                                    <p >{{data_get($faq,'answer')}}</p>
                                 </div>
                             </div>
                         </div>

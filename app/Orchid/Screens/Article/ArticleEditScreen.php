@@ -8,8 +8,11 @@ use App\Models\Tag;
 use App\Orchid\Layouts\Article\ArticleEditLayout;
 use App\Orchid\Layouts\SubtractListener;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
+use Intervention\Image\Drivers\Imagick\Driver;
+use Intervention\Image\ImageManager;
 use Orchid\Attachment\File;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Screen;
@@ -157,8 +160,14 @@ class ArticleEditScreen extends Screen
                     $file = $request->file("subtract.images.$key.image");
                     if ($file) {
                         // ذخیره‌سازی فایل
-                        $imagePath = $file->store('portfolio', 'images');
-                        $slide['image'] = url("images/" . $imagePath);
+//                        $imagePath = $file->store('portfolio', 'images');
+//                        $slide['image'] = url("images/" . $imagePath);
+//
+//                        $image = $request->file('slider.image');
+                            // بررسی نوع MIME فایل
+                            $filename = $this->saveImage($file);
+                            $slide["image"] = url('/images/articles/'.$filename);
+
                     }
                     $slides[] = $slide;
                 }
@@ -176,8 +185,10 @@ class ArticleEditScreen extends Screen
 
                 if ($image) {
                     // ذخیره‌سازی فایل
-                    $imagePath = $image->store('article', 'images');
-                    $url_image = url("images/" . $imagePath);
+//                    $imagePath = $image->store('article', 'images');
+//                    $url_image = url("images/" . $imagePath);
+                    $filename = $this->saveImage($image);
+                    $url_image = url('/images/articles/'.$filename);
                     $article->parameters()->updateOrCreate([
                         'article_id' => $article->id,
                         'key' => 'image',
@@ -203,8 +214,27 @@ class ArticleEditScreen extends Screen
         return redirect()->route('platform.systems.blogs');
     }
 
+    /**
+     * @param array|\Illuminate\Http\UploadedFile $image
+     * @return string
+     */
+    public function saveImage(array|\Illuminate\Http\UploadedFile $image): string
+    {
+        $mimeType = $image->getMimeType();
 
+        $manager = new ImageManager(new Driver());
+        $filename = time() . '_article.' . $image->getClientOriginalExtension();
 
+        // مسیر ذخیره‌سازی کامل در دیسک خارجی
+        $externalPath = Storage::disk('external_uploads_images')->path("articles/" . $filename);
+
+        $img = $manager->read($image);
+
+        $img->scale(width: 1792, height: 1024);
+
+        $img->save($externalPath);
+        return $filename;
+    }
 
 
 }

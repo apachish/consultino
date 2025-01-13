@@ -18,7 +18,10 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
+use Intervention\Image\Drivers\Imagick\Driver;
+use Intervention\Image\ImageManager;
 use Morilog\Jalali\Jalalian;
 use Orchid\Access\Impersonation;
 use App\Models\User;
@@ -177,12 +180,22 @@ class DoctorEditScreen extends Screen
         $data = $request->collect('doctor')->only(['mobile', 'national_code'])->toArray();
 
         $image = $request->file('doctor.avatar');
-
         if ($image) {
-            // ذخیره‌سازی فایل
-            $imagePath = $image->store('doctor', 'images');
-            $url_image = url("images/" . $imagePath);
-            $data['avatar'] = $url_image;
+            // بررسی نوع MIME فایل
+            $mimeType = $image->getMimeType();
+
+            $manager = new ImageManager(new Driver());
+            $filename = time() . '_doctor.' . $image->getClientOriginalExtension();
+
+            // مسیر ذخیره‌سازی کامل در دیسک خارجی
+            $externalPath = Storage::disk('external_uploads_images')->path("doctors/".$filename);
+
+            $img =$manager->read($image);
+
+            $img->scale(width: 1792,height: 1024);
+
+            $img->save($externalPath);
+            $data["avatar"] = url('/images/doctors/'.$filename);
         }
 
         $doctor = $doctor->updateOrCreate(['user_id' => $user->id],$data);

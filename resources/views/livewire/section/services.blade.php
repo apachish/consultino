@@ -17,14 +17,14 @@
                         <!-- Single Service -->
                         <div class="col-lg-4 col-md-6 col-12 mt-30">
                             <div class="tm-service text-center wow fadeInUp">
-                                    <span class="tm-service-bgicon">
-                                        <i class="{{data_get($service,'icon')}}"></i>
-                                    </span>
+{{--                                    <span class="tm-service-bgicon">--}}
+{{--                                        <img src="{{data_get($service,'icon')}}" />--}}
+{{--                                    </span>--}}
                                 <span class="tm-service-icon">
-                                        <i class="{{data_get($service,'icon')}}"></i>
+                                        <img src="{{data_get($service,'icon')}}" />
                                     </span>
                                 <div class="tm-service-content">
-                                    <h5><a href="service-details.html">{{data_get($service,'title')}}</a></h5>
+                                    <h5><a href="{{route("services",["slug"=>data_get($service,'slug')])}}">{{data_get($service,'title')}}</a></h5>
                                     <p>{{data_get($service,'description')}}</p>
                                     <a href="{{route("services",["slug"=>data_get($service,'slug')])}}" class="tm-readmore">{{__("Read More")}}</a>
                                 </div>

@@ -7,7 +7,10 @@ use App\Orchid\Layouts\Portfolio\PortfolioEditLayout;
 use App\Orchid\Layouts\SubtractListener;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
+use Intervention\Image\Drivers\Imagick\Driver;
+use Intervention\Image\ImageManager;
 use Orchid\Screen\Actions\Button;
 use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Toast;
@@ -138,8 +141,10 @@ class PortfolioEditScreen extends Screen
 
         if ($image) {
             // ذخیره‌سازی فایل
-            $imagePath = $image->store('portfolio', 'images');
-            $url_image = url("images/" . $imagePath);
+//            $imagePath = $image->store('portfolio', 'images');
+            $image_name = $this->saveImage($image,150,100);
+
+            $url_image = url("images/portfolio/" . $image_name);
             $data['image'] = $url_image;
         }
         $data["slug"] = slug_seo($data['title']);
@@ -172,8 +177,10 @@ class PortfolioEditScreen extends Screen
                     $file = $request->file("subtract.images.$key.image");
                     if ($file) {
                         // ذخیره‌سازی فایل
-                        $imagePath = $file->store('portfolio', 'images');
-                        $slide['image'] = url("images/" . $imagePath);
+//                        $imagePath = $file->store('portfolio', 'images');
+                        $image_name = $this->saveImage($file,800,400);
+
+                        $slide['image'] = url("images/portfolio/" . $imagePath);
                     }
                     $slides[] = $slide;
                 }
@@ -191,8 +198,9 @@ class PortfolioEditScreen extends Screen
 
                 if ($image) {
                     // ذخیره‌سازی فایل
-                    $imagePath = $image->store('portfolio', 'images');
-                    $url_image = url("images/" . $imagePath);
+//                    $imagePath = $image->store('portfolio', 'images');
+                    $image_name = $this->saveImage($image,800,400);
+                    $url_image = url("images/portfolio/" . $image_name);
                     $portfolio->parameters()->updateOrCreate([
                         'portfolio_id' => $portfolio->id,
                         'key' => 'image',
@@ -216,5 +224,23 @@ class PortfolioEditScreen extends Screen
         Toast::info(__('Portfolio was saved.'));
 
         return redirect()->route('platform.systems.portfolios');
+    }
+
+    public function saveImage(array|\Illuminate\Http\UploadedFile $image,$width,$heigt): string
+    {
+        $mimeType = $image->getMimeType();
+
+        $manager = new ImageManager(new Driver());
+        $filename = time() . '_portfolio.' . $image->getClientOriginalExtension();
+
+        // مسیر ذخیره‌سازی کامل در دیسک خارجی
+        $externalPath = Storage::disk('external_uploads_images')->path("portfolio/" . $filename);
+
+        $img = $manager->read($image);
+
+        $img->scale(width: $width, height: $heigt);
+
+        $img->save($externalPath);
+        return $filename;
     }
 }

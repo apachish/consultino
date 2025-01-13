@@ -33,9 +33,9 @@ class ExpertiseEditLayout extends Rows
             ->title(__('Title'))
             ->placeholder(__('Name')),
 
-            Relation::make('expertise.parent_id')
-                ->fromModel(Expertise::class, 'name')
-                ->title(__('Parent')),
+//            Relation::make('expertise.parent_id')
+//                ->fromModel(Expertise::class, 'name')
+//                ->title(__('Parent')),
             Select::make('expertise.is_active')
                 ->options([
                     true => __("Active"),

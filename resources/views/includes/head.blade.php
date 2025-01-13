@@ -18,5 +18,5 @@
 
 <link rel="stylesheet" href="/assets/css/custom.css">
 <link rel="stylesheet" href="/vendor/persian-datepicker/dist/css/persian-datepicker.css">
-@vite('resources/css/app.css')
+{{--@vite('resources/css/app.css')--}}
 @livewireStyles

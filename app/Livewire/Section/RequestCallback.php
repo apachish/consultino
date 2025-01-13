@@ -15,8 +15,6 @@ class RequestCallback extends Component
 
     public function sendRequest()
     {
-        logger("22",[$this->advice,$this->datepickerDate]);
-
         $this->validate([
             'advice.full_name' => 'required|min:1|max:100',
             'advice.expertise_id' => 'required|exists:expertises,id',
