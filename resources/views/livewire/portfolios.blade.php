@@ -18,11 +18,12 @@
                             <img src="{{data_get($portfolio,'portfolio.image')}}" alt="portfolio image">
                             <ul class="tm-portfolio-actions">
                                 <li class="link-button">
-                                    <a href="portfolio-details.html"><i class="fa fa-link"></i></a>
+                                    <a href="{{route("portfolios",["category"=>data_get($portfolio,'portfolio.category')])}}">
+                                        <i class="fa fa-link"></i></a>
                                 </li>
                                 @if(data_get($portfolio,'portfolio.type')=="image")
                                     <li class="zoom-button">
-                                        <a href="{{data_get($portfolio,'parameters.iframe.value')}}"><i
+                                        <a href="{{data_get($portfolio,'parameters.image.value')}}"><i
                                                 class="fa fa-search-plus"></i></a>
                                     </li>
                                 @elseif(data_get($portfolio,'portfolio.type')=="slider")

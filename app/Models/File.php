@@ -55,4 +55,13 @@ class File extends Model
     {
         return $this->belongsToMany(Doctor::class,'doctor_file','file_id','doctor_id')->with(['status','time_id'])->withTimestamps();
     }
+
+    public function doctor()
+    {
+        return $this->belongsTo(Doctor::class,'doctor_id');
+    }
+    public function time()
+    {
+        return $this->belongsTo(TimeSlot::class,'time_id');
+    }
 }
