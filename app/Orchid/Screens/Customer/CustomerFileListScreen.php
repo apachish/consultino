@@ -5,8 +5,10 @@ declare(strict_types=1);
 namespace App\Orchid\Screens\Customer;
 
 use App\Models\Customer;
+use App\Models\File;
 use App\Models\User;
 use App\Orchid\Layouts\Customer\CustomerEditLayout;
+use App\Orchid\Layouts\Customer\CustomerFileLayout;
 use App\Orchid\Layouts\Customer\CustomerFiltersLayout;
 use App\Orchid\Layouts\Customer\CustomerListLayout;
 use Illuminate\Http\Request;
@@ -15,19 +17,23 @@ use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Layout;
 use Orchid\Support\Facades\Toast;
 
-class CustomerListScreen extends Screen
+class CustomerFileListScreen extends Screen
 {
+    public $customer;
     /**
      * Fetch data to be displayed on the screen.
      *
      * @return array
      */
-    public function query(): iterable
+    public function query(Customer $customer): iterable
     {
         return [
-            'customers' => Customer::filters(CustomerFiltersLayout::class)->withCount('files')
+            'files' => File::whereHas('customer', function ($query) use ($customer) {
+                $query->where("user_id",$customer->id);
+            })
                 ->defaultSort('id', 'desc')
                 ->paginate(),
+            'customer' => $customer,
         ];
     }
 
@@ -36,7 +42,7 @@ class CustomerListScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'Customer Site Management';
+        return __("File Management").' '.data_get($this, 'customer.firstname')." ".data_get($this, 'customer.lastname');
     }
 
     /**
@@ -74,24 +80,14 @@ class CustomerListScreen extends Screen
     public function layout(): iterable
     {
         return [
-            CustomerListLayout::class,
+            CustomerFileLayout::class,
 
             Layout::modal('editUserModal', CustomerEditLayout::class)
                 ->deferred('loadUserOnOpenModal'),
         ];
     }
 
-    /**
-     * Loads user data when opening the modal window.
-     *
-     * @return array
-     */
-    public function loadUserOnOpenModal(Customer $customer): iterable
-    {
-        return [
-            'customer' => $customer,
-        ];
-    }
+
 
     public function saveUser(Request $request, Customer $customer): void
     {

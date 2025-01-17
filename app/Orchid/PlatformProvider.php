@@ -36,34 +36,8 @@ class PlatformProvider extends OrchidServiceProvider
         return [
             Menu::make(__('Dashboard'))
                 ->icon('bs.book')
-                ->route('platform.dashboard')
+                ->route('platform.main')
             ->divider(),
-
-
-
-//            Menu::make('Form Elements')
-//                ->icon('bs.card-list')
-//                ->route('platform.example.fields')
-//                ->active('*/examples/form/*')
-//                ->title(__('help'))
-//            ,
-//
-//            Menu::make('Overview Layouts')
-//                ->icon('bs.window-sidebar')
-//                ->route('platform.example.layouts'),
-//
-//            Menu::make('Grid System')
-//                ->icon('bs.columns-gap')
-//                ->route('platform.example.grid'),
-//
-//            Menu::make('Charts')
-//                ->icon('bs.bar-chart')
-//                ->route('platform.example.charts'),
-//
-//            Menu::make('Cards')
-//                ->icon('bs.card-text')
-//                ->route('platform.example.cards')
-//                ->divider(),
 
             Menu::make(__('Users'))
                 ->icon('bs.people')
@@ -75,8 +49,8 @@ class PlatformProvider extends OrchidServiceProvider
                 ->icon('bs.person-hearts')
                 ->route('platform.systems.doctors')
                 ->permission('platform.systems.users'),
-            Menu::make(__('Customers'))
-                ->icon('bs.person-lines-fill')
+            Menu::make(__('Customers Site'))
+                ->icon('bs.emoji-grin')
                 ->route('platform.systems.customers')
                 ->permission('platform.systems.users'),
 
@@ -85,6 +59,19 @@ class PlatformProvider extends OrchidServiceProvider
                 ->route('platform.systems.roles')
                 ->permission('platform.systems.roles')
                 ->divider(),
+
+            Menu::make(__('Customers'))
+                ->icon('bs.person-lines-fill')
+                ->route('platform.systems.doctor.appointment')
+                ->permission('platform.systems.users')
+                ->title(__('Doctor'))->badge(fn () => 6),
+            Menu::make(__('Consultation hours'))
+                ->icon('bs.person-lines-fill')
+                ->route('platform.systems.customers')
+                ->permission('platform.systems.users')
+            ->divider(),
+
+
             Menu::make(__('Blogs'))
                 ->icon('bs.file-earmark-medical-fill')
                 ->route('platform.systems.blogs')
@@ -118,20 +105,7 @@ class PlatformProvider extends OrchidServiceProvider
                 ->divider(),
             Menu::make(__("Help"))
                 ->icon('bs.collection')
-                ->route('platform.index'),
-
-            //->badge(fn () => 6)
-//            Menu::make('Documentation')
-//                ->title('Docs')
-//                ->icon('bs.box-arrow-up-right')
-//                ->url('https://orchid.software/en/docs')
-//                ->target('_blank'),
-//
-//            Menu::make('Changelog')
-//                ->icon('bs.box-arrow-up-right')
-//                ->url('https://github.com/orchidsoftware/platform/blob/master/CHANGELOG.md')
-//                ->target('_blank')
-//                ->badge(fn () => Dashboard::version(), Color::DARK),
+                ->route('platform.help'),
         ];
     }
 

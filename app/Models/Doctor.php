@@ -99,10 +99,19 @@ class Doctor extends Model
         return $this->hasMany(DoctorDate::class, 'doctor_id')->with("times")->groupBy("date");
     }
 
+
     public function files(): BelongsToMany
     {
-        return $this->belongsToMany(File::class,"doctor_file", "file_id","doctor_id")->withTimestamps();
+        return $this->belongsToMany(File::class, 'doctor_file') // جدول میانی
+        ->withPivot('status', 'time_id') // ستون‌های جدول میانی
+        ->withTimestamps();
     }
+
+    public function timeslots()
+    {
+        return $this->belongsToMany(TimeSlot::class, 'doctor_file','time_id','doctor_id');
+    }
+
     // تعریف مقادیر ENUM به صورت کانستنت
     public const STATUS_PENDING = 'pending';
     public const STATUS_ACTIVE = 'active';
@@ -141,4 +150,5 @@ class Doctor extends Model
             ->get() // داده‌ها را به‌صورت Collection دریافت می‌کند
             ->keyBy('key');
     }
+
 }

@@ -15,7 +15,7 @@ use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Layout;
 use Orchid\Support\Facades\Toast;
 
-class CustomerListScreen extends Screen
+class ClientListScreen extends Screen
 {
     /**
      * Fetch data to be displayed on the screen.
@@ -36,7 +36,7 @@ class CustomerListScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'Customer Site Management';
+        return 'Customer Management';
     }
 
     /**
@@ -44,7 +44,7 @@ class CustomerListScreen extends Screen
      */
     public function description(): ?string
     {
-        return 'A list customers register in site.';
+        return 'A list of all clients who request advice.';
     }
 
     public function permission(): ?iterable

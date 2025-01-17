@@ -33,10 +33,10 @@ use Tabuna\Breadcrumbs\Trail;
 */
 
 // Main
-Route::screen('/main', PlatformScreen::class)
-    ->name('platform.main');
+Route::screen('/help', PlatformScreen::class)
+    ->name('platform.help');
 Route::screen('dashboard', \App\Orchid\Screens\Dashboard::class)
-    ->name('platform.dashboard')
+    ->name('platform.main')
     ->breadcrumbs(fn (Trail $trail) => $trail
         ->parent('platform.index')
         ->push(__('Dashboard')));
@@ -89,6 +89,16 @@ Route::screen('doctors/{doctor}/edit', DoctorEditScreen::class)
         ->push($docter->user->name, route('platform.systems.doctors.edit', $docter)));
 
 
+Route::screen('doctors/appointment/list', \App\Orchid\Screens\Doctor\DoctorCustomerListScreen::class)
+    ->name('platform.systems.doctor.appointment')
+    ->breadcrumbs(function (Trail $trail) {
+        return $trail
+            ->push(
+                __('List of Appointments'),
+                route('platform.systems.doctor.appointment')
+            );
+    });
+
 Route::get('/admin/load-day', [DoctorEditScreen::class, 'loadDay']);
 
 
@@ -97,6 +107,43 @@ Route::screen('customers', \App\Orchid\Screens\Customer\CustomerListScreen::clas
     ->breadcrumbs(fn (Trail $trail) => $trail
         ->parent('platform.index')
         ->push(__('Customers'), route('platform.systems.customers')));
+Route::screen('customers/{customer}/edit', \App\Orchid\Screens\Customer\CustomerEditScreen::class)
+    ->name('platform.systems.customers.edit')
+    ->breadcrumbs(fn (Trail $trail, $customer) => $trail
+        ->parent('platform.systems.customers')
+        ->push($customer->firstname." ".$customer->lastname, route('platform.systems.customers.edit', $customer)));
+
+
+Route::screen('customers/{customer}/files', \App\Orchid\Screens\Customer\CustomerFileListScreen::class)
+    ->name('platform.systems.customers.files')
+    ->breadcrumbs(fn (Trail $trail, $customer) => $trail
+        ->parent('platform.systems.customers')
+        ->push($customer->firstname." ".$customer->lastname, route('platform.systems.customers.files', $customer)));
+
+
+
+Route::screen('customers/{customer}/files/{file}/edit', \App\Orchid\Screens\Customer\CustomerFileEditScreen::class)
+    ->name('platform.systems.files.edit')
+    ->breadcrumbs(function (Trail $trail, $customer, $file) {
+        return $trail
+            ->parent('platform.systems.customers.files',$customer) // مسیر والد
+            ->push(
+                $file->firstName." ".$file->lastName,
+                route('platform.systems.files.edit', ['customer' => $customer->id, 'file' => $file->id])
+            );
+    });
+
+Route::screen('customers/{customer}/files/{file}/appointment', \App\Orchid\Screens\Customer\CustomerFileAppointmentListScreen::class)
+    ->name('platform.systems.files.appointment')
+    ->breadcrumbs(function (Trail $trail, $customer, $file) {
+        return $trail
+            ->parent('platform.systems.customers.files',$customer) // مسیر والد
+            ->push(
+                $file->firstName." ".$file->lastName,
+                route('platform.systems.files.appointment',
+                    ['customer' => $customer->id, 'file' => $file->id])
+            );
+    });
 /*
  * setting
  */

@@ -53,7 +53,9 @@ class File extends Model
 
     public function doctors(): BelongsToMany
     {
-        return $this->belongsToMany(Doctor::class,'doctor_file','file_id','doctor_id')->with(['status','time_id'])->withTimestamps();
+        return $this->belongsToMany(Doctor::class,'doctor_file','file_id','doctor_id')
+            ->with("user")
+            ->withPivot(['status','time_id'])->withTimestamps();
     }
 
     public function doctor()
@@ -63,5 +65,11 @@ class File extends Model
     public function time()
     {
         return $this->belongsTo(TimeSlot::class,'time_id');
+    }
+
+
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class,'user_id');
     }
 }

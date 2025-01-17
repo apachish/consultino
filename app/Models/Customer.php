@@ -28,7 +28,6 @@ class Customer extends Authenticatable
         'lastname',
         'mobile',
         'email',
-        'fullName',
         'password',
         'is_verified',
     ];
@@ -75,4 +74,9 @@ class Customer extends Authenticatable
         'updated_at',
         'created_at',
     ];
+
+    public function files()
+    {
+        return $this->hasMany(File::class,"user_id");
+    }
 }

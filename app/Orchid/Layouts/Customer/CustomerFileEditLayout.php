@@ -6,9 +6,10 @@ namespace App\Orchid\Layouts\Customer;
 
 use Orchid\Screen\Field;
 use Orchid\Screen\Fields\Input;
+use Orchid\Screen\Fields\Select;
 use Orchid\Screen\Layouts\Rows;
 
-class CustomerEditLayout extends Rows
+class CustomerFileEditLayout extends Rows
 {
     /**
      * The screen's layout elements.
@@ -18,29 +19,35 @@ class CustomerEditLayout extends Rows
     public function fields(): array
     {
         return [
-            Input::make('customer.firstname')
+            Input::make('file.firstName')
                 ->type('text')
                 ->max(255)
                 ->required()
                 ->title(__('Firstname'))
                 ->placeholder(__('Firstname')),
-            Input::make('customer.lastname')
+            Input::make('file.lastName')
                 ->type('text')
                 ->required()
                 ->title(__('Lastname'))
                 ->placeholder(__('Lastname')),
 
-            Input::make('customer.mobile')
-                ->type('mobile')
+            Input::make('file.national_code')
+                ->type('numeric')
                 ->required()
-                ->title(__('Mobile'))
-                ->placeholder(__('Mobile')),
+                ->title(__('National Code'))
+                ->placeholder(__('National Code')),
 
-            Input::make('customer.email')
+            Input::make('file.address')
                 ->type('text')
                 ->required()
-                ->title(__('Email'))
-                ->placeholder(__('Email')),
+                ->title(__('Address'))
+                ->placeholder(__('Address')),
+            Select::make('file.gender')
+                ->title(__('Gender'))
+                ->options([
+                    0 => __("Male"),
+                    1 => __("Female"),
+                ])
         ];
     }
 }

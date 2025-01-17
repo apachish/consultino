@@ -5,8 +5,11 @@ declare(strict_types=1);
 namespace App\Orchid\Screens\Customer;
 
 use App\Models\Customer;
+use App\Models\File;
 use App\Models\User;
 use App\Orchid\Layouts\Customer\CustomerEditLayout;
+use App\Orchid\Layouts\Customer\CustomerFileAppointmentLayout;
+use App\Orchid\Layouts\Customer\CustomerFileLayout;
 use App\Orchid\Layouts\Customer\CustomerFiltersLayout;
 use App\Orchid\Layouts\Customer\CustomerListLayout;
 use Illuminate\Http\Request;
@@ -15,19 +18,24 @@ use Orchid\Screen\Screen;
 use Orchid\Support\Facades\Layout;
 use Orchid\Support\Facades\Toast;
 
-class CustomerListScreen extends Screen
+class CustomerFileAppointmentListScreen extends Screen
 {
+    public $customer;
+    public $file;
     /**
      * Fetch data to be displayed on the screen.
      *
      * @return array
      */
-    public function query(): iterable
+    public function query(Customer $customer,File $file): iterable
     {
         return [
-            'customers' => Customer::filters(CustomerFiltersLayout::class)->withCount('files')
-                ->defaultSort('id', 'desc')
-                ->paginate(),
+            'file' => $file,
+            'customer' => $customer,
+//            "appointments"=> $file->doctors
+            'appointments' => File::where("id",$file->id)->with(['doctors' => function ($query) {
+                $query->with(['timeslots.date']);
+            }])->get(),
         ];
     }
 
@@ -36,7 +44,7 @@ class CustomerListScreen extends Screen
      */
     public function name(): ?string
     {
-        return 'Customer Site Management';
+        return __("Doctor appointment list").' '.data_get($this, 'file.firstName')." ".data_get($this, 'file.lastName');
     }
 
     /**
@@ -74,24 +82,14 @@ class CustomerListScreen extends Screen
     public function layout(): iterable
     {
         return [
-            CustomerListLayout::class,
+            CustomerFileAppointmentLayout::class,
 
             Layout::modal('editUserModal', CustomerEditLayout::class)
                 ->deferred('loadUserOnOpenModal'),
         ];
     }
 
-    /**
-     * Loads user data when opening the modal window.
-     *
-     * @return array
-     */
-    public function loadUserOnOpenModal(Customer $customer): iterable
-    {
-        return [
-            'customer' => $customer,
-        ];
-    }
+
 
     public function saveUser(Request $request, Customer $customer): void
     {
