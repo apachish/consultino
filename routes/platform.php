@@ -98,6 +98,27 @@ Route::screen('doctors/appointment/list', \App\Orchid\Screens\Doctor\DoctorCusto
                 route('platform.systems.doctor.appointment')
             );
     });
+Route::screen('doctors/appointment/time/list', \App\Orchid\Screens\Doctor\DoctorTimeScreen::class)
+    ->name('platform.systems.doctor.appointment.time')
+    ->breadcrumbs(function (Trail $trail) {
+        return $trail
+            ->push(
+                __('Consultation hours'),
+                route('platform.systems.doctor.appointment.time')
+            );
+    });
+Route::screen('doctors/appointment/time/create', \App\Orchid\Screens\Doctor\DoctorEditTimeScreen::class)
+    ->name('platform.systems.doctor.appointment.time.create')
+    ->breadcrumbs(fn (Trail $trail) => $trail
+        ->parent('platform.systems.doctor.appointment.time')
+        ->push(__('Create'), route('platform.systems.doctor.appointment.time.create')));
+
+// Platform > System > setting > Doctor
+Route::screen('doctors/appointment/time/{time}/edit', \App\Orchid\Screens\Doctor\DoctorEditTimeScreen::class)
+    ->name('platform.systems.doctor.appointment.time.edit')
+    ->breadcrumbs(fn (Trail $trail, $setting) => $trail
+        ->parent('platform.systems.doctor.appointment.time')
+        ->push($setting->title, route('platform.systems.doctor.appointment.time.edit', $setting)));
 
 Route::get('/admin/load-day', [DoctorEditScreen::class, 'loadDay']);
 

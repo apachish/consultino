@@ -45,12 +45,15 @@ class DoctorEditTimeScreen extends Screen
      *
      * @return array
      */
-    public function query(Doctor $doctor): iterable
+    public function query(): iterable
     {
 
+        $user =  auth()->user();
+        $doctor = data_get($user, 'doctor');
+        if (!$doctor) return [];
         return [
             'doctor'       => $doctor,
-            'user'       => $doctor->user,
+            'user'       =>$user,
             'property' => $doctor->property(),
             'expertises' => $doctor->expertises,
             'date' => $doctor->doctorDates,
@@ -63,7 +66,7 @@ class DoctorEditTimeScreen extends Screen
      */
     public function name(): ?string
     {
-        return $this->doctor->id ? 'Edit Doctor' : 'Create Doctor';
+        return 'Add Doctor appointment';
     }
 
     /**
@@ -71,7 +74,7 @@ class DoctorEditTimeScreen extends Screen
      */
     public function description(): ?string
     {
-        return 'You can enter additional information for the doctor.';
+        return 'You can enter times that may apply to you here.';
     }
 
     public function permission(): ?iterable
@@ -88,18 +91,21 @@ class DoctorEditTimeScreen extends Screen
      */
     public function commandBar(): iterable
     {
+        if($this->doctor)
         return [
 
             Button::make(__('Remove'))
                 ->icon('bs.trash3')
                 ->confirm(__('Once the account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.'))
                 ->method('remove')
-                ->canSee($this->doctor->id?true:false),
+                ->canSee(($this->doctor->id)?true:false),
 
             Button::make(__('Save'))
                 ->icon('bs.check-circle')
                 ->method('save'),
         ];
+        else
+            return [];
     }
 
     /**
@@ -108,32 +114,24 @@ class DoctorEditTimeScreen extends Screen
     public function layout(): iterable
     {
 
-        return [
-            Layout::block(UserEditLayout::class)
-                ->title(__('Profile Information'))
-                ->description(__('Update your account\'s profile information and email address.')),
-
-            Layout::block(UserPasswordLayout::class)
-                ->title(__('Password'))
-                ->description(__('Ensure your account is using a long, random password to stay secure.')),
-
-            Layout::block(DoctorEditLayout::class)
-                ->title(__('Doctor Information'))
-                ->description(__('Add a doctor or edit doctor information.'))
-                ,
-            Layout::block(DoctorDateEditLayout::class)
-                ->title(__('Visiting times'))
-                ->description(__('Enter your visit times.'))
-                ->commands(
-                    Button::make(__('Save'))
-                        ->type(Color::DARK)
-                        ->icon('bs.check-circle')
-                        ->canSee($this->doctor?true:false)
-                        ->method('save')
-                ),
+        if($this->doctor)
+            return [
+                Layout::block(DoctorDateEditLayout::class)
+                    ->title(__('Visiting times'))
+                    ->description(__('Enter your visit times.'))
+                    ->commands(
+                        Button::make(__('Save'))
+                            ->type(Color::DARK)
+                            ->icon('bs.check-circle')
+                            ->method('save')
+                    )
+            ];
+        else
+                return [];
 
 
-        ];
+
+
     }
 
     /**
@@ -141,92 +139,11 @@ class DoctorEditTimeScreen extends Screen
      */
     public function save(Doctor $doctor, Request $request)
     {
-
-        $data_user = $request->get('user');
-        $user = User::where("email",data_get($data_user,'email'))->first();
-        if(!$user)
-            $user = $doctor->user?: new User();
-        $hasImage = $doctor && $doctor->avatar;
         $request->validate([
-            'user.name'=>"required",
-            'doctor.avatar'=>"required",
-            'doctor.avatar' => $hasImage ? ['nullable', 'file', 'mimes:jpg,png,jpeg,webp'] : ['required', 'file', 'mimes:jpg,png,jpeg,webp'],
-
-            'doctor.national_code'=>["required","melli_code",Rule::unique(Doctor::class, 'national_code')->ignore($doctor)],
-            'doctor.mobile'=>"required|iran_mobile",
-            'user.email' => [
-                'required','email',
-            ],
+            "data"=>"required|array",
         ]);
-
-        $permissions = [
-            "platform.systems.doctors" => "1"
-
-        ];
-
-
-        $user->when($request->filled('user.password'), function (Builder $builder) use ($request) {
-            $builder->getModel()->password = Hash::make($request->input('user.password'));
-        });
-
-        $user = $user
-            ->fill($request->collect('user')->except(['password', 'permissions', 'roles'])->toArray())
-            ->forceFill(['permissions' => $permissions]);
-        if($user->id)
-            $user->update;
-        else
-           $user->save();
-
-        $data = $request->collect('doctor')->only(['mobile', 'national_code'])->toArray();
-
-        $image = $request->file('doctor.avatar');
-        if ($image) {
-            // بررسی نوع MIME فایل
-            $mimeType = $image->getMimeType();
-
-            $manager = new ImageManager(new Driver());
-            $filename = time() . '_doctor.' . $image->getClientOriginalExtension();
-
-            // مسیر ذخیره‌سازی کامل در دیسک خارجی
-            $externalPath = Storage::disk('external_uploads_images')->path("doctors/".$filename);
-
-            $img =$manager->read($image);
-
-            $img->scale(width: 1792,height: 1024);
-
-            $img->save($externalPath);
-            $data["avatar"] = url('/images/doctors/'.$filename);
-        }
-
-        $doctor = $doctor->updateOrCreate(['user_id' => $user->id],$data);
-
-        $parameters =  $request->collect('property');
-        $expertises =  $request->collect('expertises');
         $date =  $request->collect('date');
 
-        if($expertises->count()) {
-            $ids = collect($expertises)->pluck("id")->toArray();
-            $olds = $doctor->expertises->pluck('id')->toArray();
-            $id_detach = array_diff($olds, $ids);
-            if ($id_detach)
-                $doctor->expertises()->detach($id_detach);
-
-            $doctor->expertises()->syncWithoutDetaching($ids);
-        }
-        foreach ($parameters as $key => $value) {
-                if ($key == "birthday" && data_get($value, "value"))
-                    $value = toGregorian(data_get($value, "value"), "Y/m/d");
-                else
-                    $value = data_get($value, "value");
-                if ($value) {
-                    $doctor->properties()->updateOrCreate([
-                        'doctor_id' => $doctor->id,
-                        'key' => $key,
-                    ], [
-                        'value' => $value,
-                    ]);
-                }
-        }
         if($date){
             foreach ($date as $key => $value) {
                 if(data_get($value,"start_time") && data_get($value,"end_time")) {
@@ -244,7 +161,7 @@ class DoctorEditTimeScreen extends Screen
             }
         }
 
-        Toast::info(__('Doctor was saved.'));
+        Toast::info(__('Doctor Time added successfully.'));
 
         return redirect()->route('platform.systems.doctors');
     }

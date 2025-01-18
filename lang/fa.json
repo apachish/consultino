@@ -407,7 +407,10 @@
     "Edit File": "ویرایش فایل",
     "Create File": "ایجاد فایل",
     "Doctor appointment list": "وقت ملاقات",
-    "List of users who have an appointment": "لیست کاربرانی که وقت مراجعه دارند"
+    "Add Doctor appointment": "افزودن وقت ملاقات",
+    "You can enter times that may apply to you here.": "شما می توانید تایم هایی که می تواند به شما مراجعه کنند در اینجا وارد کنید",
+    "List of users who have an appointment": "لیست کاربرانی که وقت مراجعه دارند",
+    "The times you have set for your consultation": "زمان های که برای مشاوره شما مشخص کرده اید"
 
 
 }

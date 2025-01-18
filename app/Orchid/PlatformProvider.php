@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Orchid;
 
+use App\Models\File;
 use Orchid\Platform\Dashboard;
 use Orchid\Platform\ItemPermission;
 use Orchid\Platform\OrchidServiceProvider;
@@ -33,6 +34,11 @@ class PlatformProvider extends OrchidServiceProvider
      */
     public function menu(): array
     {
+        $count = File::with(['doctors' => function ($query) {
+                $query->with(['timeslots.date']);
+            }])->whereHas("doctors",function ($query){
+                $query->where("doctor_id",data_get(auth()->user()->doctor,'id'));
+            })->count();
         return [
             Menu::make(__('Dashboard'))
                 ->icon('bs.book')
@@ -64,10 +70,10 @@ class PlatformProvider extends OrchidServiceProvider
                 ->icon('bs.person-lines-fill')
                 ->route('platform.systems.doctor.appointment')
                 ->permission('platform.systems.users')
-                ->title(__('Doctor'))->badge(fn () => 6),
+                ->title(__('Doctor'))->badge(fn () => $count),
             Menu::make(__('Consultation hours'))
                 ->icon('bs.person-lines-fill')
-                ->route('platform.systems.customers')
+                ->route('platform.systems.doctor.appointment.time')
                 ->permission('platform.systems.users')
             ->divider(),
 

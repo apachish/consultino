@@ -32,12 +32,6 @@ class DocterDateListLayout extends Table
     protected function columns(): iterable
     {
         return [
-            TD::make('avatar', __('File'))
-                ->sort()
-                ->cantHide()
-                ->render(function ($model) {
-                    return "<img src='{$model->avatar}' alt='{$model->title}' style='width: 50px; height: 50px; object-fit: cover;'>";
-                })->width('100px'),
             TD::make('user.name', __('Full Name'))
                 ->sort()
                 ->cantHide()
